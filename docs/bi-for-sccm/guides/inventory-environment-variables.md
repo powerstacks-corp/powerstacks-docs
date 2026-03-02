@@ -20,7 +20,7 @@ Hardware inventory must be enabled.
 1. Select the **Client Settings** node.
 1. Select the **client settings** in which you have configured your hardware inventory settings.
 1. On the **Home** tab, in the **Properties** group, choose **Properties**.
-![](images/sccm_client_settings-1024x893.png)
+![](../images/sccm_client_settings-1024x893.png)
 ### Step 2
 
 
@@ -29,7 +29,7 @@ Hardware inventory must be enabled.
 
 1. In the **client settings** dialog box, choose **Hardware Inventory**.
 1. In the **Device Settings** list, select **Set Classes**.
-![](images/sccm_hinv_set_classes-1024x947.png)
+![](../images/sccm_hinv_set_classes-1024x947.png)
 ### Step 3
 
 
@@ -39,7 +39,7 @@ Hardware inventory must be enabled.
 1. In the **Hardware Inventory Classes** dialog box, use the **Search for inventory classes** field to search for the **Environment**class.
 1. Select the **Environment**class.
 1. Select **OK.**
-![](images/cm_environment_vars.png)
+![](../images/cm_environment_vars.png)
 ### Step 4
 
 
@@ -47,4 +47,4 @@ Hardware inventory must be enabled.
 
 
 1. In the **client settings** dialog box, select **OK**.
-![](images/sccm_client_settings_ok-1024x955.png)
+![](../images/sccm_client_settings_ok-1024x955.png)

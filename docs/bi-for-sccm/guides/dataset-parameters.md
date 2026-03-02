@@ -14,7 +14,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 1. Select **Workspaces**.
 1. Select the **BI for SCCM** workspace.
-![](images/access-sccm-workspace.png)
+![](../images/access-sccm-workspace.png)
 ### Step 2
 
 
@@ -24,7 +24,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Hover over the bi_for_sccm **Semantic model** to reveal a **kebab menu** (three vertical dots).
 1. Select the **kebab menu**.
 1. Select **Settings**.
-![sccm semantic model](images/sccm_semantic_model-926x1024.png)
+![sccm semantic model](../images/sccm_semantic_model-926x1024.png)
 ### Step 3
 
 
@@ -40,7 +40,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. The **Software Update Not Required Status Enable**field accepts
 1. **TRUE/FALSE** values. This field controls whether or not software updates required by no computers are displayed in Power BI. It's strongly recommended to leave this value as **FALSE**.
 1. Select **Apply**.
-![](images/cm-dataset-parameters-941x1024.png)
+![](../images/cm-dataset-parameters-941x1024.png)
 ### Step 4
 
 
@@ -50,7 +50,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Expand **Gateway Connection**.
 1. Under **Actions**, expand the toggle button to view the data sources.
 1. Select the **Add to gateway** link for the **SQL Server** data source.
-![](images/expand-gateway-connection-1-1024x712.png)
+![](../images/expand-gateway-connection-1-1024x712.png)
 ### Step 5
 
 
@@ -66,7 +66,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Enter **database reader** user account in the **Username field**. If this is an Active Directory user account you must prefix the username with the domain name and a "". **Do Not** **Use** the "@" sign plus domain name.
 1. Enter the password for the database reader account in the **Password** field.
 1. Select **Add**.
-![](images/cm-new-datasource-1024x874.png)
+![](../images/cm-new-datasource-1024x874.png)
 ### Step 6
 
 
@@ -75,7 +75,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 1. Select **Workspaces**.
 1. Select the **BI for SCCM** workspace.
-![](images/access-sccm-workspace.png)
+![](../images/access-sccm-workspace.png)
 ### Step 7
 
 
@@ -86,7 +86,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Hover over the **bi_for_sccm** dataset to reveal a **kebab menu** (three vertical dots).
 1. Select the **kebab menu**.
 1. Select **Settings**.
-![](images/cm-dataset-settings-955x1024.png)
+![](../images/cm-dataset-settings-955x1024.png)
 ### Step 8
 
 
@@ -96,7 +96,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Expand **Gateway Connection**.
 1. Under **Actions**, expand the toggle button to view the data sources.
 1. Select the **Add to gateway** link for the **SQL Server** data source.
-![](images/expand-gateway-connection-1-1024x712.png)
+![](../images/expand-gateway-connection-1-1024x712.png)
 ### Step 9
 
 
@@ -108,7 +108,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Ignore the warning that your data source can't be refreshed.
 1. Select **Apply**.
 1. Select Edit credentials.
-![](images/cm-maps-to-1-1024x722.png)
+![](../images/cm-maps-to-1-1024x722.png)
 ### Step 10
 
 
@@ -118,7 +118,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Select **Anonymous**as the **Authentication Method.**
 1. Select **Organizational**as the **Privacy level setting for this data source**.
 1. Select **Sign in**.
-![](images/cm-powerstacks-data-source.png)
+![](../images/cm-powerstacks-data-source.png)
 ### Step 11
 
 
@@ -129,7 +129,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Select **Add another time**.
 1. Enter up to eight times of the of the day for the data to refresh. Depending upon the environment, most customers select 1-3 times per day.
 1. Grab something cold to drink, you made it through configuring the dataset. The refresh can take anywhere from 5 minutes to 2 hours depending upon your environment. On average, it's about 30 minutes.
-![](images/scheduled-refresh-1024x925.png)
+![](../images/scheduled-refresh-1024x925.png)
 ### Step 12
 
 
@@ -138,7 +138,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 1. Select **Workspaces**.
 1. Select the **BI for SCCM** workspace.
-![](images/access-sccm-workspace.png)
+![](../images/access-sccm-workspace.png)
 ### Step 13
 
 
@@ -149,4 +149,4 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 1. Hover over the **bi_for_sccm** dataset to reveal the **Refresh now** button.
 1. Select the **Refresh now** button.
 1. Grab something cold to drink. You've made it through configuring the dataset. The refresh will take anywhere between 5 minutes and 2 hours depending on the environment, however the average is about 30 minutes.
-![](images/cm-refresh-now-1024x455.png)
+![](../images/cm-refresh-now-1024x455.png)

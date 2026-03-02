@@ -15,7 +15,7 @@ Our backup process consists of creating a new workspace by installing a second i
 1. Login to **Power BI**.
 1. Select **Apps**.
 1. Select **Get apps**.
-![](images/Get-App-1024x211.png)
+![](../images/Get-App-1024x211.png)
 ### Step 2
 
 
@@ -25,7 +25,7 @@ Our backup process consists of creating a new workspace by installing a second i
 1. Select **Template apps**.
 1. Search for **BI for SCCM**.
 1. Select **BI for SCCM**.
-![](images/cm-get-app-1024x661.png)
+![](../images/cm-get-app-1024x661.png)
 ### Step 3
 
 
@@ -33,7 +33,7 @@ Our backup process consists of creating a new workspace by installing a second i
 
 
 1. Select **Get It Now**.
-![](images/cm-get-it-now-1024x666.png)
+![](../images/cm-get-it-now-1024x666.png)
 ### Step 4
 
 
@@ -43,7 +43,7 @@ Our backup process consists of creating a new workspace by installing a second i
 1. Enter the required information.
 1. Accept the **Microsoft agreement**.
 1. Select **Continue**.
-![](images/cm-agreement-1024x660.png)
+![](../images/cm-agreement-1024x660.png)
 ### Step 5
 
 
@@ -53,7 +53,7 @@ Our backup process consists of creating a new workspace by installing a second i
 1. Select I**nstall another copy of the app into a new workspace**.
 1. Enter a name for the new workspace.
 1. Select **Install**.
-![](images/cm-install-another-coppy-1024x679.png)
+![](../images/cm-install-another-coppy-1024x679.png)
 ### Step 6
 
 
@@ -62,4 +62,4 @@ Our backup process consists of creating a new workspace by installing a second i
 
 1. Watch for the **update completed** notification in your browser.
 1. There's no need to configure the dataset in this workspace, it's just a placeholder for the backup of your custom reports. Do not forget to run the backup script to copy your reports to the backup workspace.
-![](images/Update-Complete.png)
+![](../images/Update-Complete.png)

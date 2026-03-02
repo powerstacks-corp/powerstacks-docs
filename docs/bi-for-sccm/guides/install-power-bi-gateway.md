@@ -16,7 +16,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. In the gateway installer, keep the default installation path.
 1. Accept the **terms of use**.
 1. Select **Install**.
-![](images/install-path.png)
+![](../images/install-path.png)
 ### Step 2
 
 
@@ -25,7 +25,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 
 1. Enter the same email address that was used to install BI for SCCM.
 1. Select **Sign in**.
-![](images/email-address.png)
+![](../images/email-address.png)
 ### Step 3
 
 
@@ -34,7 +34,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 
 1. Select **Register a new gateway on this computer.**
 1. Select **Next**.
-![](images/register-gateway.png)
+![](../images/register-gateway.png)
 ### Step 4
 
 
@@ -44,7 +44,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. Enter a **Name** for the gateway.
 1. Enter a memorable **recovery key.** You will only need this key if you ever want to recover or move your gateway
 1. Select **Configure**.
-![](images/configure-gateway.png)
+![](../images/configure-gateway.png)
 ### Step 5
 
 
@@ -52,4 +52,4 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 
 
 1. Select **Close**.
-![](images/summary-screen.png)
+![](../images/summary-screen.png)

@@ -498,7 +498,7 @@ if ($WarObj){
 1. If applicable enter the Dell Client ID and Client Secret values. When you retrieve this info from TechDirect it will be in a format similar to xxxxxxxxxx (yyyyyyyyy). The part before the opening parenthesis is the Client ID, the part inside the parenthesis is the Client Secret. (**Note**: Do not enter the parenthesis themselves in the script)
 1. If applicable enter the Lenovo Client ID provided to you by your Lenovo account rep.
 1. Save the edited script.
-![](images/SCCM_Warranty_Vendors.png)
+![](../images/SCCM_Warranty_Vendors.png)
 
 ### Step 2
 
@@ -508,7 +508,7 @@ if ($WarObj){
 
 1. We recommend manually running the script on a computer to confirm that all of the settings are correct. If you have computers from more than manufacturer run the script on one of each.
 1. After running the script manually on a computer use [WMI Explorer](https://github.com/vinaypamnani/wmie2) to confirm that the data has been populated.
-![](images/cm_warranty_wmi_explorer-1024x367.png)
+![](../images/cm_warranty_wmi_explorer-1024x367.png)
 
 ### Step 3
 
@@ -520,7 +520,7 @@ if ($WarObj){
 1. Select **Hardware Inventory.**
 1. Add the **RootPowerStack**s WMI class. For more detailed instructions see the official Microsoft guidance **How to Extend Hardware Inventory**, specifically the [Add a Class section](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory#add-a-new-class).
 1. It is not recommended to modify the Default Client Settings. Instead, deselect the newly added class before closing the Default Client Settings and add the settings to your custom client agent settings.
-![](images/cm_warranty_hinv-1024x951.png)
+![](../images/cm_warranty_hinv-1024x951.png)
 
 ### Step 4
 
@@ -530,7 +530,7 @@ if ($WarObj){
 
 1. Copy the tested PowerShell script to your ConfigMgr package source files share.
 1. In ConfigMgr [create a software](https://docs.microsoft.com/en-us/mem/configmgr/apps/deploy-use/packages-and-programs) package pointing the source to the directory containing the PowerShell script.
-![](images/cm_warranty_create_package-1024x880.png)
+![](../images/cm_warranty_create_package-1024x880.png)
 
 ### Step 5
 
@@ -540,7 +540,7 @@ if ($WarObj){
 
 1. In the package [create a program](https://docs.microsoft.com/en-us/mem/configmgr/apps/deploy-use/packages-and-programs#create-a-program) to run the PowerShell script. As an example, the command line that to be run should look similar to this: **powershell.exe -noprofile -executionpolicy bypass -file .warranty_info.ps1**
 1. [Deploy the package and program](https://docs.microsoft.com/en-us/mem/configmgr/apps/deploy-use/packages-and-programs#deploy-packages-and-programs) to a collection of devices from which you would like to report on warranty data.
-![](images/cm_warranty_create_program-1024x881.png)
+![](../images/cm_warranty_create_program-1024x881.png)
 
 ### Step 6
 
@@ -550,7 +550,7 @@ if ($WarObj){
 
 1. You have now completed the steps required to collect and report on warranty information.
 1. Once devices have run the package, hardware inventory has been run, and Power BI has run a sync you will see the warranty data on the default Device Details page.
-![](images/cm_warranty_device_details-1024x578.png)
+![](../images/cm_warranty_device_details-1024x578.png)
 
 ### Step 7
 
@@ -559,4 +559,4 @@ if ($WarObj){
 
 
 1. Of course, you can also create a custom warranty info page to display the warranty data in any way that you would prefer to see it. If you need help with this, please contact us.
-![](images/cm_warranty_custom_page-1024x583.png)
+![](../images/cm_warranty_custom_page-1024x583.png)

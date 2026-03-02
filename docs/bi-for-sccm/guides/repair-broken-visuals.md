@@ -19,4 +19,4 @@ Correcting a visualization that contains a field which has been renamed is quite
 1. On the **Data pane** search for the new field name. You can find the new name in the "[What's New](https://powerstacks.com/bi-for-sccm-change-log/)" section of our website. Select the field by placing a checkmark in the box beside the field name.
 1. You might want to rearrange the order in which items appear within the visualization. Do so by dragging the newly added field up or down in the list of columns on the Visualizations pane. (The same area where you clicked the "X" to remove the old column name)
 1. **Save** the changes and return to **Reading view**.
-![SCCM Broken Visualization Page](images/SCCM_Broken_Page-1024x556.png)
+![SCCM Broken Visualization Page](../images/SCCM_Broken_Page-1024x556.png)

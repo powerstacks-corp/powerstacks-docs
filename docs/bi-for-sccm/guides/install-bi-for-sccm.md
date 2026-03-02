@@ -18,7 +18,7 @@ To get started select the "**Install Now**" button to be directed to Microsoft A
 
 1. Select the "**Install Now**" button above.
 1. On the**BI for SCCM** page in **Microsoft AppSource** select **Get it now**.
-![](images/sccm-get-it-now-1024x506.png)
+![](../images/sccm-get-it-now-1024x506.png)
 ### Step 2
 
 
@@ -26,7 +26,7 @@ To get started select the "**Install Now**" button to be directed to Microsoft A
 
 
 1. Enter your **work email address** and select **Sign in**.
-![](images/Sign-in.png)
+![](../images/Sign-in.png)
 ### Step 3
 
 
@@ -34,7 +34,7 @@ To get started select the "**Install Now**" button to be directed to Microsoft A
 
 
 1. Select **Install**.
-![](images/Install_Button-1-1024x450.png)
+![](../images/Install_Button-1-1024x450.png)
 ### Step 4
 
 
@@ -42,7 +42,7 @@ To get started select the "**Install Now**" button to be directed to Microsoft A
 
 
 1. You will see a notification that BI for Install is installing. Once this has disappeared you have successfully installed BI for Intune. You may now view the app using the sample data provided or you can connect your data by [requesting a trial license key](request-a-license-key.md).
-![](images/Installing-App.png)
+![](../images/Installing-App.png)
 ### Step 5
 
 
@@ -50,4 +50,4 @@ To get started select the "**Install Now**" button to be directed to Microsoft A
 
 
 1. Upon opening the BI for SCCM workspace you may notice a banner that says, "**You're viewing this app with sample data. Connect your data**." This can be safely ignored. If you'd like to try BI for Intune before connecting your data it installs with sample data. If you prefer to go ahead and see your own data proceed to the next step in our documentation.
-![](images/BI-for-SCCM-Connect-Your-Data-1024x459.png)
+![](../images/BI-for-SCCM-Connect-Your-Data-1024x459.png)

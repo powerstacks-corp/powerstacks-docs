@@ -14,7 +14,7 @@ In order to read data from the ConfigMgr database an account with at least read 
 1. In **SQL Management Studio** connect to your ConfigMgr database.
 1. Expand the database in which to create the new database user.
 1. Right-click the **Security** folder, point to **New**, and select **User....**
-![Database User - New User](images/New_User.png)
+![Database User - New User](../images/New_User.png)
 ### Step 2
 
 
@@ -23,7 +23,7 @@ In order to read data from the ConfigMgr database an account with at least read 
 
 1. In the **Database User - New** dialog box, on the **General** page, select a user types from the **User type** list.
 1. Enter the **User name** for the database reader account. If you have chosen **Windows user** from the **User type** list, you can also select the ellipsis (**...**) to open the **Select User or Group** dialog box.
-![Database User - Select User](images/Select_User-1.png)
+![Database User - Select User](../images/Select_User-1.png)
 ### Step 3
 
 
@@ -33,4 +33,4 @@ In order to read data from the ConfigMgr database an account with at least read 
 1. In the **Database User - New** dialog box select the **Owned Schemas** page.
 1. Select **db_datareader**.
 1. Select **OK**.
-![DB Reader](images/DB_Reader.png)
+![DB Reader](../images/DB_Reader.png)

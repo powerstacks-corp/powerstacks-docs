@@ -19,7 +19,7 @@ Active Directory User Discovery must be enabled.
 1. In the Configuration Manager console, go to the **Administration** workspace, expand **Hierarchy Configuration**, and select the **Discovery Methods** node.
 1. Select **Active Directory User Discovery**.
 1. On the **Home** tab of the ribbon, select **Properties**.
-![](images/AD_User_Discovery_1-986x1024.png)
+![](../images/AD_User_Discovery_1-986x1024.png)
 ### Step 2
 
 
@@ -45,4 +45,4 @@ Active Directory User Discovery must be enabled.
 1. telephoneNumber
 1. title
 If your organization uses the user **extensionAttributes** (1-15) in Active Directory, consider adding those as well. Select **OK**
-![](images/AD_User_Discovery_attributes.png)
+![](../images/AD_User_Discovery_attributes.png)
