@@ -10,7 +10,7 @@ For more information on extending Configuration Manager hardware inventory see [
 
 Hardware inventory must be enabled.
 
-### Step 1
+### Step 1: Open Client Settings Properties
 
 
 
@@ -21,7 +21,7 @@ Hardware inventory must be enabled.
 1. Select the **client settings** in which you have configured your hardware inventory settings.
 1. On the **Home** tab, in the **Properties** group, choose **Properties**.
 ![](../images/sccm_client_settings-1024x893.png)
-### Step 2
+### Step 2: Open Hardware Inventory Classes
 
 
 
@@ -30,7 +30,7 @@ Hardware inventory must be enabled.
 1. In the **client settings** dialog box, choose **Hardware Inventory**.
 1. In the **Device Settings** list, select **Set Classes**.
 ![](../images/sccm_hinv_set_classes-1024x947.png)
-### Step 3
+### Step 3: Enable Environment Class
 
 
 
@@ -40,7 +40,7 @@ Hardware inventory must be enabled.
 1. Select the **Environment**class.
 1. Select **OK.**
 ![](../images/cm_environment_vars.png)
-### Step 4
+### Step 4: Confirm Client Settings
 
 
 

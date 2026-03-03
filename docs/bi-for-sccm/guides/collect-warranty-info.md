@@ -487,7 +487,7 @@ if ($WarObj){
     }
 }
 
-### Step 1
+### Step 1: Configure Vendor API Keys
 
 
 
@@ -500,7 +500,7 @@ if ($WarObj){
 1. Save the edited script.
 ![](../images/SCCM_Warranty_Vendors.png)
 
-### Step 2
+### Step 2: Test the Script Manually
 
 
 
@@ -510,7 +510,7 @@ if ($WarObj){
 1. After running the script manually on a computer use [WMI Explorer](https://github.com/vinaypamnani/wmie2) to confirm that the data has been populated.
 ![](../images/cm_warranty_wmi_explorer-1024x367.png)
 
-### Step 3
+### Step 3: Extend Hardware Inventory
 
 
 
@@ -522,7 +522,7 @@ if ($WarObj){
 1. It is not recommended to modify the Default Client Settings. Instead, deselect the newly added class before closing the Default Client Settings and add the settings to your custom client agent settings.
 ![](../images/cm_warranty_hinv-1024x951.png)
 
-### Step 4
+### Step 4: Create the Software Package
 
 
 
@@ -532,7 +532,7 @@ if ($WarObj){
 1. In ConfigMgr [create a software](https://docs.microsoft.com/en-us/mem/configmgr/apps/deploy-use/packages-and-programs) package pointing the source to the directory containing the PowerShell script.
 ![](../images/cm_warranty_create_package-1024x880.png)
 
-### Step 5
+### Step 5: Create and Deploy Program
 
 
 
@@ -542,7 +542,7 @@ if ($WarObj){
 1. [Deploy the package and program](https://docs.microsoft.com/en-us/mem/configmgr/apps/deploy-use/packages-and-programs#deploy-packages-and-programs) to a collection of devices from which you would like to report on warranty data.
 ![](../images/cm_warranty_create_program-1024x881.png)
 
-### Step 6
+### Step 6: Verify Warranty Data
 
 
 
@@ -552,7 +552,7 @@ if ($WarObj){
 1. Once devices have run the package, hardware inventory has been run, and Power BI has run a sync you will see the warranty data on the default Device Details page.
 ![](../images/cm_warranty_device_details-1024x578.png)
 
-### Step 7
+### Step 7: Create Custom Warranty Page
 
 
 

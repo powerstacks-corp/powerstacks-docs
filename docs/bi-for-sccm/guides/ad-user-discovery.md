@@ -10,7 +10,7 @@ Ensure the following items have been added to AD User discovery. Skipping this s
 
 Active Directory User Discovery must be enabled.
 
-### Step 1
+### Step 1: Open User Discovery Properties
 
 
 
@@ -20,7 +20,7 @@ Active Directory User Discovery must be enabled.
 1. Select **Active Directory User Discovery**.
 1. On the **Home** tab of the ribbon, select **Properties**.
 ![](../images/AD_User_Discovery_1-986x1024.png)
-### Step 2
+### Step 2: Add Active Directory Attributes
 
 
 

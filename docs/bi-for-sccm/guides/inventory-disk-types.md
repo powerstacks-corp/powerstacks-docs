@@ -10,7 +10,7 @@ For more information on extending Configuration Manager hardware inventory see [
 
 Hardware inventory must be enabled.
 
-### Step 1
+### Step 1: Open Client Settings Properties
 
 
 
@@ -21,7 +21,7 @@ Hardware inventory must be enabled.
 1. Select the **client settings** in which you have configured your hardware inventory settings.
 1. On the **Home** tab, in the **Properties** group, choose **Properties**.
 ![SCCM Client Settings](../images/sccm_client_settings-1024x893.png)
-### Step 2
+### Step 2: Open Hardware Inventory Classes
 
 
 
@@ -30,7 +30,7 @@ Hardware inventory must be enabled.
 1. In the **client settings** dialog box, choose **Hardware Inventory**.
 1. In the **Device Settings** list, select **Set Classes**.
 ![SCCM Hinv Set Classes](../images/sccm_hinv_set_classes-1024x947.png)
-### Step 3
+### Step 3: Enable LogicalDiskToPartition Class
 
 
 
@@ -40,7 +40,7 @@ Hardware inventory must be enabled.
 1. Select the **Win32_LogicalDiskToPartition**class.
 1. Do not select **OK.**
 ![](../images/sccm_Win32_LogicalDiskToPartition-1024x900.png)
-### Step 4
+### Step 4: Enable DiskDriveToDiskPartition Class
 
 
 
@@ -50,7 +50,7 @@ Hardware inventory must be enabled.
 1. Select the **Win32_DiskDriveToDiskPartition**class.
 1. Do not select **OK.**
 ![](../images/sccm_Win32_DiskDriveToDiskPartition-1024x920.png)
-### Step 5
+### Step 5: Enable PhysicalDisk Class
 
 
 
@@ -60,7 +60,7 @@ Hardware inventory must be enabled.
 1. Select the **MSFT_PhysicalDisk**class.
 1. Select **OK.**
 ![](../images/sccm_MSFT_PhysicalDisk-1024x889.png)
-### Step 6
+### Step 6: Confirm Client Settings
 
 
 

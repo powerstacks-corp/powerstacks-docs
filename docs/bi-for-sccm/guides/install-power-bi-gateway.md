@@ -6,7 +6,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 
 **Pre-requisites:**The gateway communicates on the following outbound ports: TCP 443, 5671, 5672, and from 9350 through 9354. The gateway doesn't require inbound ports. For a detailed list of URL's, ports, and IP's that need to be allowed please see this [Microsoft Article](https://docs.microsoft.com/en-us/data-integration/gateway/service-gateway-communication#ports).
 
-### Step 1
+### Step 1: Install the Gateway
 
 
 
@@ -17,7 +17,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. Accept the **terms of use**.
 1. Select **Install**.
 ![](../images/install-path.png)
-### Step 2
+### Step 2: Sign In with Email
 
 
 
@@ -26,7 +26,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. Enter the same email address that was used to install BI for SCCM.
 1. Select **Sign in**.
 ![](../images/email-address.png)
-### Step 3
+### Step 3: Register New Gateway
 
 
 
@@ -35,7 +35,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. Select **Register a new gateway on this computer.**
 1. Select **Next**.
 ![](../images/register-gateway.png)
-### Step 4
+### Step 4: Name and Configure Gateway
 
 
 
@@ -45,7 +45,7 @@ A Microsoft Power BI date gateway an app that you install in on an on-premises d
 1. Enter a memorable **recovery key.** You will only need this key if you ever want to recover or move your gateway
 1. Select **Configure**.
 ![](../images/configure-gateway.png)
-### Step 5
+### Step 5: Complete the Setup
 
 
 

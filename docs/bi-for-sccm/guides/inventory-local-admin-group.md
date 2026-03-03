@@ -599,63 +599,63 @@ return 2
 
 ## Create the Configuration Baseline
 
-### Step 1
+### Step 1: Create Configuration Item
 
 
 
 
 								In the **Configuration Manager console**, go to the **Assets and Compliance** workspace, expand **Compliance Settings**, and select the **Configuration Items** node.On the **Home** tab of the ribbon, in the **Create group**, select **Create Configuration Item**.
 ![SCCM Config Item Node](../images/cm_config_item_node-1-1024x873.png)
-### Step 2
+### Step 2: Name and Set Type
 
 
 
 
 								On the **General** page of the **Create Configuration Item Wizard**, specify a name for the configuration item.Under **Specify the type of configuration item that you want to create**, select **Windows Desktops and Servers (custom)**.Select **Next**.
 ![SCCM Create Config Item Name](../images/cm_create_config_item_name-1024x985.png)
-### Step 3
+### Step 3: Select Supported Platforms
 
 
 
 
 								On the **Supported Platforms** page of the **Create Configuration Item Wizard**, specify the **applicable platforms** for which the item will be applied.Select **Next**.
 ![SCCM Create Config Item Platforms](../images/cm_create_config_item_platforms-1024x980.png)
-### Step 4
+### Step 4: Add Discovery Script
 
 
 
 
 								On the **Settings** page of the **Create Configuration Item Wizard**, select **New**.On the **General** tab of the **Create Setting** dialog box, provide the following information:**Name**: Enter a unique name for the setting. For example, "**Collect Local Admin Group Members**"**Setting Type**: Script**Data Type**: Integer**Discovery Script**: Paste in the contents of the PowerShell script from above.Select **OK**
 ![SCCM Create Config Item Script](../images/cm_create_config_item_script-1024x935.png)
-### Step 5
+### Step 5: Proceed to Compliance Rules
 
 
 
 
 								On the **Settings** page of the **Create Configuration Item Wizard **select **Next**.
 ![SCCM Create Config Item Next](../images/cm_create_config_item_next-1024x988.png)
-### Step 6
+### Step 6: Create Compliance Rule
 
 
 
 
 								On the **Compliance Rules** page of the **Create Configuration Item Wizard**, select **New**.In the **Create Rule** dialog box, provide the following information:**Name**: Enter a unique name for this rule. For example, "**WMI Class Detected**"**Selected setting**: Select **Browse** to open the **Select Setting** dialog box. Select the setting that you created in Step 4 above and then choose **Select**.**Rule type**: Select **Value**.**Operator**: Select **Equals**.**For the following values**: Enter **0** (zero).Select **OK** to close the **Create Rule** dialog box.
 ![SCCM Create Config Item Compliance Rule](../images/cm_create_config_item_compliance_rule-962x1024.png)
-### Step 7
+### Step 7: Proceed Past Compliance Rules
 
 
 
 
 								On the **Compliance Rules** tab of the **Create Configuration Items Wizard**, select **Next**.
 ![SCCM Create Config Item Compliance Rule Next](../images/cm_create_config_item_compliance_rule_next-1024x992.png)
-### Step 8
+### Step 8: Review Summary
 
 
 
 
 								On the **Summary** tab of the **Create Configuration Items Wizard,** select **Next**.
 ![SCCM Create Config Item Summary](../images/cm_create_config_item_summary-1024x981.png)
-### Step 9
+### Step 9: Close the Wizard
 
 
 
@@ -664,14 +664,14 @@ return 2
 ![SCCM Create Config Item Close](../images/cm_create_config_item_close-1024x985.png)
 ## Deploy The Configuration Baseline
 
-### Step 1
+### Step 1: Deploy the Baseline
 
 
 
 
 								In the **Configuration Manager console**, go to the **Assets and Compliance** workspace, expand **Compliance Settings**, and select the **Configuration Items** node.In the **Configuration Baselines list**, select the configuration baseline that you created, right-click, select **Deploy**.
 ![sccm patch compliance dashboard](../images/deploy_basline_step1.png)
-### Step 2
+### Step 2: Select Target Collection
 
 
 
@@ -682,56 +682,56 @@ return 2
 
 		 You must manually run the PowerShell script or have run the baseline on at least one computer before you can add the local admin data into ConfigMgr hardware inventory.
 
-### Step 1
+### Step 1: Open Default Client Settings
 
 
 
 
 								In the Configuration Manager console, go to the **Administration** workspace.Select the **Client Settings** node.Select the **Default Client Settings.** (**Note**: New classes must be added in the Default Client Settings.)On the **Home** tab, in the **Properties** group, choose **Properties**.
 ![SCCM Default Client Settings](../images/sccm_default_client_settings-887x1024.png)
-### Step 2
+### Step 2: Open Hardware Inventory Classes
 
 
 
 
 								In the **Default Settings** dialog box, choose **Hardware Inventory**.In the **Device Settings** list, select **Set Classes**.
 ![SCCM Default Client Settings Set Classes](../images/sccm_default_client_settings_set_classes-1024x953.png)
-### Step 3
+### Step 3: Add New Inventory Class
 
 
 
 
 								In the **Hardware Inventory Classes** dialog box select **Add**.
 ![SCCM Default Client Settings Set Classes Add](../images/sccm_default_client_settings_set_classes_add.png)
-### Step 4
+### Step 4: Connect to WMI
 
 
 
 
 								In the **Add Hardware Inventory Class** dialog box, select **Connect**.
 ![SCCM Default Client Settings HINV Connect](../images/sccm_default_client_settings_HINV_connect.png)
-### Step 5
+### Step 5: Specify WMI Computer
 
 
 
 
 								In the **Connect to Windows Management Instrumentation (WMI)** dialog box, specify the name a computer that has run the PowerShell script.Do not change the **WMI namespace**, it should be **rootcimv2**.Select **Recursive**.Enter a **username** and **password** if required.Select **Connect**.
 ![SCCM Local Admin Inventory](../images/SCCM-local-admin-hardware-inventory-1.png)
-### Step 6
+### Step 6: Select Local Admins Class
 
 
 
 
 								In the **Add** **Hardware Inventory Class** dialog box, select the** FATSTACKS_LOCAL_ADMINS **inventory classes.Select **OK.**
 ![SCCM Local Admin Hardware Inventory Classes](../images/SCCM-local-admin-hardware-inventory-2.png)
-### Step 7
+### Step 7: Review Inventory Classes
 
 
 
 
 								In the **Hardware Inventory Classes** dialog box, you might want to **deselect** the **FATSTACKS_LOCAL_ADMINS****inventory classes and it to a custom client agent setting instead. Using a custom client agent setting is typically advised, however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **FATSTACKS_LOCAL_ADMINS** inventory class here.Select **OK**.
 ![SCCM Local Admin Hardware Inventory Class](../images/SCCM-local-admin-hardware-inventory-3-1024x883.png)
-### Step 8
+### Step 8: Confirm Default Settings
 
 
 
