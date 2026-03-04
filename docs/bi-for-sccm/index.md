@@ -41,7 +41,11 @@ hide:
 
 ## Comprehensive reporting for Configuration Manager
 
-BI for SCCM is a Power BI template app available on Microsoft AppSource that provides comprehensive reporting for Microsoft Configuration Manager (SCCM/ConfigMgr).
+BI for SCCM is a Power BI template app that connects to your ConfigMgr SQL database through Power BI Gateway. No middleware, no agents — your data stays in your Power BI workspace, governed by your Microsoft 365 tenant policies.
+
+Pre-built dashboards cover software update compliance, hardware inventory, software inventory with license metering, and Active Directory user discovery. Track update group compliance, deployment progress, device models, BIOS versions, and installed applications across your entire fleet.
+
+Extend your reporting with 10+ inventory extension scripts for BitLocker status, local admin group members, Lenovo model names, Microsoft 365 Apps, disk types, antivirus software, monitors, environment variables, USB devices, and warranty information. Optional Azure Maps integration provides geographic visualization of your device fleet.
 
 ---
 
