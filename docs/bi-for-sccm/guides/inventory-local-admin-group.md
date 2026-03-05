@@ -687,7 +687,7 @@ return 2
 
 
 
-								In the Configuration Manager console, go to the **Administration** workspace.Select the **Client Settings** node.Select the **Default Client Settings.** (**Note**: New classes must be added in the Default Client Settings.)On the **Home** tab, in the **Properties** group, choose **Properties**.
+								In the Configuration Manager console, go to the **Administration** workspace.Select the **Client Settings** node.Select the **Default Client Settings**. (**Note**: New classes must be added in the Default Client Settings.)On the **Home** tab, in the **Properties** group, choose **Properties**.
 ![SCCM Default Client Settings](../images/sccm_default_client_settings-887x1024.png)
 ### Step 2: Open Hardware Inventory Classes
 
@@ -722,14 +722,14 @@ return 2
 
 
 
-								In the **Add** **Hardware Inventory Class** dialog box, select the** FATSTACKS_LOCAL_ADMINS **inventory classes.Select **OK.**
+								In the **Add Hardware Inventory Class** dialog box, select the **FATSTACKS_LOCAL_ADMINS** inventory classes. Select **OK**.
 ![SCCM Local Admin Hardware Inventory Classes](../images/SCCM-local-admin-hardware-inventory-2.png)
 ### Step 7: Review Inventory Classes
 
 
 
 
-								In the **Hardware Inventory Classes** dialog box, you might want to **deselect** the **FATSTACKS_LOCAL_ADMINS****inventory classes and it to a custom client agent setting instead. Using a custom client agent setting is typically advised, however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **FATSTACKS_LOCAL_ADMINS** inventory class here.Select **OK**.
+								In the **Hardware Inventory Classes** dialog box, you might want to **deselect** the **FATSTACKS_LOCAL_ADMINS** inventory classes and add it to a custom client agent setting instead. Using a custom client agent setting is typically advised, however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **FATSTACKS_LOCAL_ADMINS** inventory class here. Select **OK**.
 ![SCCM Local Admin Hardware Inventory Class](../images/SCCM-local-admin-hardware-inventory-3-1024x883.png)
 ### Step 8: Confirm Default Settings
 

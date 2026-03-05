@@ -27,7 +27,7 @@ Active Directory User Discovery must be enabled.
 
 
 1. Select the **Active Directory Attributes** tab.
-1. In the list of **Available attributes** locate each of the following, select **Add** to add each to the list of **Selected attributes**.C
+1. In the list of **Available attributes** locate each of the following, select **Add** to add each to the list of **Selected attributes**:
 1. cn
 1. co
 1. department

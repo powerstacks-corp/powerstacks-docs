@@ -32,12 +32,12 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 
 1. Expand **Parameters**.
-1. Enter the **API Key** that you received from us after completing the [**Request a Trail Key**](http://ec2-44-233-150-244.us-west-2.compute.amazonaws.com/wordpress/getting-started/) form.
+1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](http://ec2-44-233-150-244.us-west-2.compute.amazonaws.com/wordpress/getting-started/) form.
 1. The **Computer Network IP Address Enable** fields accepts **TRUE/FALSE** values. This field controls whether or not IP Addresses from ConfigMgr inventory are sync'd to Power BI or not.
 1. Enter the **ConfigMgr database name** in the **DatabaseName** field.
 1. Enter the **Server name** of the SQL Server hosting the ConfigMgr database in the **ServerName** field.
-1. The **Software Is Used Days(s)**value is the number of days that installed software must have been used within for the reports to show Is Used = True.
-1. The **Software Update Not Required Status Enable**field accepts
+1. The **Software Is Used Days(s)** value is the number of days that installed software must have been used within for the reports to show Is Used = True.
+1. The **Software Update Not Required Status Enable** field accepts
 1. **TRUE/FALSE** values. This field controls whether or not software updates required by no computers are displayed in Power BI. It's strongly recommended to leave this value as **FALSE**.
 1. Select **Apply**.
 ![](../images/cm-dataset-parameters-941x1024.png)
@@ -58,12 +58,12 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 
 1. On the **Data Source Settings** page enter the following.
-1. For the **Data Source Name**enter**a meaningful name** to identify this data source.
-1. For the **Data Source Type**select **SQL Server**.
+1. For the **Data Source Name** enter a meaningful name to identify this data source.
+1. For the **Data Source Type** select **SQL Server**.
 1. Enter the **SCCM SQL Server name** in the **Server** field.
-1. Enter the **SCCM SQL database**name in the **Database**field.
+1. Enter the **SCCM SQL database** name in the **Database** field.
 1. Select **Windows** as the **Authentication Method**.
-1. Enter **database reader** user account in the **Username field**. If this is an Active Directory user account you must prefix the username with the domain name and a "". **Do Not** **Use** the "@" sign plus domain name.
+1. Enter **database reader** user account in the **Username field**. If this is an Active Directory user account you must prefix the username with the domain name and a "". **Do Not Use** the "@" sign plus domain name.
 1. Enter the password for the database reader account in the **Password** field.
 1. Select **Add**.
 ![](../images/cm-new-datasource-1024x874.png)
@@ -104,7 +104,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 
 1. Expand **Parameters**.
-1. In the **Maps to** drop-down menu in the **SqlServer** source select the S**QL Server data** source that you created in Step 5.
+1. In the **Maps to** drop-down menu in the **SqlServer** source select the **SQL Server data** source that you created in Step 5.
 1. Ignore the warning that your data source can't be refreshed.
 1. Select **Apply**.
 1. Select Edit credentials.
@@ -115,8 +115,8 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 
 
-1. Select **Anonymous**as the **Authentication Method.**
-1. Select **Organizational**as the **Privacy level setting for this data source**.
+1. Select **Anonymous** as the **Authentication Method**.
+1. Select **Organizational** as the **Privacy level setting for this data source**.
 1. Select **Sign in**.
 ![](../images/cm-powerstacks-data-source.png)
 ### Step 11: Schedule Data Refresh

@@ -50,7 +50,7 @@ Our backup process consists of creating a new workspace by installing a second i
 
 
 
-1. Select I**nstall another copy of the app into a new workspace**.
+1. Select **Install another copy of the app into a new workspace**.
 1. Enter a name for the new workspace.
 1. Select **Install**.
 ![](../images/cm-install-another-coppy-1024x679.png)

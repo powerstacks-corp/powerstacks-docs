@@ -66,8 +66,8 @@ Skipping this step will not generate any errors however, the "Antivirus & Antisp
 
 
 
-1. In the **Add** **Hardware Inventory Class** dialog box, **Select the AntiSpywareProduct**and**AntiVirusProduct** inventory classes.
-1. Select **OK.**
+1. In the **Add Hardware Inventory Class** dialog box, Select the **AntiSpywareProduct** and **AntiVirusProduct** inventory classes.
+1. Select **OK**.
 ![](../images/av_inventory_select_classes.png)
 ### Step 7: Review Inventory Classes
 
@@ -76,7 +76,7 @@ Skipping this step will not generate any errors however, the "Antivirus & Antisp
 
 
 1. In the **Hardware Inventory Classes** dialog box, you might want to **deselect** the
-1. **AntiSpywareProduct**and**AntiVirusProduct** inventory classeses and add them to a custom client agent setting instead. Using a custom client agent setting is typically advised however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **AntiSpywareProduct**and**AntiVirusProduct** inventory classes here.
+1. **AntiSpywareProduct** and **AntiVirusProduct** inventory classeses and add them to a custom client agent setting instead. Using a custom client agent setting is typically advised however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **AntiSpywareProduct** and **AntiVirusProduct** inventory classes here.
 1. Select **OK**.
 ![](../images/av_inventory_deselect_classes.png)
 ### Step 8: Confirm Default Settings
@@ -85,5 +85,5 @@ Skipping this step will not generate any errors however, the "Antivirus & Antisp
 
 
 
-1. In the **Default** **Settings** dialog box, select **OK**.
+1. In the **Default Settings** dialog box, select **OK**.
 ![](../images/sccm_default_client_settings_ok-1024x951.png)

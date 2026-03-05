@@ -517,8 +517,8 @@ if ($WarObj){
 
 
 1. In ConfigMgr open the **Default Client Settings** properties.
-1. Select **Hardware Inventory.**
-1. Add the **RootPowerStack**s WMI class. For more detailed instructions see the official Microsoft guidance **How to Extend Hardware Inventory**, specifically the [Add a Class section](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory#add-a-new-class).
+1. Select **Hardware Inventory**.
+1. Add the **RootPowerStacks** WMI class. For more detailed instructions see the official Microsoft guidance **How to Extend Hardware Inventory**, specifically the [Add a Class section](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory#add-a-new-class).
 1. It is not recommended to modify the Default Client Settings. Instead, deselect the newly added class before closing the Default Client Settings and add the settings to your custom client agent settings.
 ![](../images/cm_warranty_hinv-1024x951.png)
 

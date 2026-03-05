@@ -66,9 +66,9 @@ Skipping this recommended configuration will not generate any errors however, yo
 
 
 
-1. In the **Add** **Hardware Inventory Class** dialog box, use the **Search for inventory classes** field to search for the **WMIMonitorID**class.
-1. Select the **WMIMonitorID**class.
-1. Select **OK.**
+1. In the **Add Hardware Inventory Class** dialog box, use the **Search for inventory classes** field to search for the **WMIMonitorID** class.
+1. Select the **WMIMonitorID** class.
+1. Select **OK**.
 ![SCCM Default Client Settings Search Classes](../images/sccm_default_client_settings_search_classes.png)
 ### Step 7: Review Inventory Classes
 
