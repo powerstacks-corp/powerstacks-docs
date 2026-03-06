@@ -2,7 +2,7 @@
 title: "Inventory Lenovo Model Names"
 ---
 # Inventory Lenovo Model Names
-Lenovo stores its friendly model names in a different WMI class that any other manufacturer. By default, ConfigMgr does not inventory this WMI class. In order to populate the Lenovo model names you must extend hardware inventory to include the ComputerSystemProduct WMI class. Adding this class will ensure that the reports in BI for SCCM contain model names such as, "X1 Carbon" rather than something like "20K3".
+Lenovo stores its friendly model names in a different WMI class that any other manufacturer. By default, ConfigMgr does not inventory this WMI class. To populate the Lenovo model names you must extend hardware inventory to include the ComputerSystemProduct WMI class. Adding this class will ensure that the reports in BI for SCCM contain model names such as, "X1 Carbon" rather than something like "20K3".
 For more information on extending Configuration Manager hardware inventory see [Enable or disable existing classes](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory#enable-or-disable-existing-classes) in the [How to extend hardware inventory](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory) Configuration Manager documentation page.
 **Prerequisites:**
 
@@ -25,7 +25,7 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **client settings** dialog box, choose **Hardware Inventory**.
+1. In the **client settings** dialog, choose **Hardware Inventory**.
 1. In the **Device Settings** list, select **Set Classes**.
 ![](../images/sccm_hinv_set_classes-1024x947.png)
 ### Step 3: Enable ComputerSystemProduct Class
@@ -34,7 +34,7 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **Hardware Inventory Classes** dialog box, use the **Search for inventory classes** field to search for the **ComputerSystemProduct** class.
+1. In the **Hardware Inventory Classes** dialog, use the **Search for inventory classes** field to search for the **ComputerSystemProduct** class.
 1. Select the **ComputerSystemProduct**class.
 1. Select **OK**
 ![](../images/sccm_ComputerSystemProduct-1024x885.png)
@@ -44,5 +44,5 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **client settings** dialog box, select **OK**.
+1. In the **client settings** dialog, select **OK**.
 ![](../images/sccm_client_settings_ok-1024x955.png)

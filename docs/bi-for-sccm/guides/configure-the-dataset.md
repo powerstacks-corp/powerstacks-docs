@@ -2,7 +2,7 @@
 title: "Configure the Dataset"
 ---
 # Configure The Dataset Parameters
-The BI for SCCM dataset contains some parameters that must be configured in order to synchronize data from ConfigMgr to Power BI. Other parameters add additional functionality to BI for SCCM. In this article we will only configure the parameters required for basic functionality. Optional parameters are discussed in other articles within our documentation.
+The BI for SCCM dataset contains some parameters that must be configured to synchronize data from ConfigMgr to Power BI. Other parameters add additional functionality to BI for SCCM. In this article we will only configure the parameters required for basic functionality. Optional parameters are discussed in other articles within our documentation.
 
 ### Step 1: Open the Workspace
 
@@ -102,7 +102,7 @@ The BI for SCCM dataset contains some parameters that must be configured in orde
 
 
 1. Expand **Parameters**.
-1. In the **Maps to** drop-down menu in the **SqlServer** source select the **SQL Server data** source that you created in Step 5.
+1. In the **Maps to** dropdown list in the **SqlServer** source select the **SQL Server data** source that you created in Step 5.
 1. Ignore the warning that your data source can't be refreshed.
 1. Select **Apply**.
 1. Select Edit credentials.

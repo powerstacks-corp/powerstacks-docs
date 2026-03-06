@@ -27,7 +27,7 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **client settings** dialog box, choose **Hardware Inventory**.
+1. In the **client settings** dialog, choose **Hardware Inventory**.
 1. In the **Device Settings** list, select **Set Classes**.
 ![](../images/sccm_hinv_set_classes-1024x947.png)
 ### Step 3: Enable Environment Class
@@ -36,7 +36,7 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **Hardware Inventory Classes** dialog box, use the **Search for inventory classes** field to search for the **Environment**class.
+1. In the **Hardware Inventory Classes** dialog, use the **Search for inventory classes** field to search for the **Environment**class.
 1. Select the **Environment**class.
 1. Select **OK.**
 ![](../images/cm_environment_vars.png)
@@ -46,5 +46,5 @@ Hardware inventory must be enabled.
 
 
 
-1. In the **client settings** dialog box, select **OK**.
+1. In the **client settings** dialog, select **OK**.
 ![](../images/sccm_client_settings_ok-1024x955.png)

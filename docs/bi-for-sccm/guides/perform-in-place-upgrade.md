@@ -3,8 +3,8 @@ title: "Perform-in-place Upgrade"
 ---
 # Perform an In-place Upgrade
 We strongly advise customers to always backup their custom reports before performing any in-place upgrades. Failure to do so could result in the loss of your custom reports!
-Our backup process consists of creating a new workspace by installing a second instance of BI for Intune. There is no need to configure this instance, it's just a place-holder to which our script, documented in our "[Backup Custom Reports](backup-custom-reports.md)" document, copies all of your custom reports in case something goes wrong during the upgrade. In the unlikely even that the upgrade fails it may be necessary to configure the backup workspace and move it to production.
-**Prerequisites:** The user executing these steps should be an administrator of the BI for Intune workspace.
+Our backup process consists of creating a new workspace by installing a second instance of BI for SCCM. There is no need to configure this instance, it's just a place-holder to which our script, documented in our "[Backup Custom Reports](backup-custom-reports.md)" document, copies all of your custom reports in case something goes wrong during the upgrade. In the unlikely even that the upgrade fails it may be necessary to configure the backup workspace and move it to production.
+**Prerequisites:** The user executing these steps should be an administrator of the BI for SCCM workspace.
 
 ### Step 1: Open Power BI Apps
 

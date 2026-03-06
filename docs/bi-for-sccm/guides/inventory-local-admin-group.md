@@ -625,7 +625,7 @@ return 2
 
 
 
-								On the **Settings** page of the **Create Configuration Item Wizard**, select **New**.On the **General** tab of the **Create Setting** dialog box, provide the following information:**Name**: Enter a unique name for the setting. For example, "**Collect Local Admin Group Members**"**Setting Type**: Script**Data Type**: Integer**Discovery Script**: Paste in the contents of the PowerShell script from above.Select **OK**
+								On the **Settings** page of the **Create Configuration Item Wizard**, select **New**.On the **General** tab of the **Create Setting** dialog, provide the following information:**Name**: Enter a unique name for the setting. For example, "**Collect Local Admin Group Members**"**Setting Type**: Script**Data Type**: Integer**Discovery Script**: Paste in the contents of the PowerShell script from above.Select **OK**
 ![SCCM Create Config Item Script](../images/cm_create_config_item_script-1024x935.png)
 ### Step 5: Proceed to Compliance Rules
 
@@ -639,7 +639,7 @@ return 2
 
 
 
-								On the **Compliance Rules** page of the **Create Configuration Item Wizard**, select **New**.In the **Create Rule** dialog box, provide the following information:**Name**: Enter a unique name for this rule. For example, "**WMI Class Detected**"**Selected setting**: Select **Browse** to open the **Select Setting** dialog box. Select the setting that you created in Step 4 above and then choose **Select**.**Rule type**: Select **Value**.**Operator**: Select **Equals**.**For the following values**: Enter **0** (zero).Select **OK** to close the **Create Rule** dialog box.
+								On the **Compliance Rules** page of the **Create Configuration Item Wizard**, select **New**.In the **Create Rule** dialog, provide the following information:**Name**: Enter a unique name for this rule. For example, "**WMI Class Detected**"**Selected setting**: Select **Browse** to open the **Select Setting** dialog. Select the setting that you created in Step 4 above and then choose **Select**.**Rule type**: Select **Value**.**Operator**: Select **Equals**.**For the following values**: Enter **0** (zero).Select **OK** to close the **Create Rule** dialog.
 ![SCCM Create Config Item Compliance Rule](../images/cm_create_config_item_compliance_rule-962x1024.png)
 ### Step 7: Proceed Past Compliance Rules
 
@@ -694,42 +694,42 @@ return 2
 
 
 
-								In the **Default Settings** dialog box, choose **Hardware Inventory**.In the **Device Settings** list, select **Set Classes**.
+								In the **Default Settings** dialog, choose **Hardware Inventory**.In the **Device Settings** list, select **Set Classes**.
 ![SCCM Default Client Settings Set Classes](../images/sccm_default_client_settings_set_classes-1024x953.png)
 ### Step 3: Add New Inventory Class
 
 
 
 
-								In the **Hardware Inventory Classes** dialog box select **Add**.
+								In the **Hardware Inventory Classes** dialog select **Add**.
 ![SCCM Default Client Settings Set Classes Add](../images/sccm_default_client_settings_set_classes_add.png)
 ### Step 4: Connect to WMI
 
 
 
 
-								In the **Add Hardware Inventory Class** dialog box, select **Connect**.
+								In the **Add Hardware Inventory Class** dialog, select **Connect**.
 ![SCCM Default Client Settings HINV Connect](../images/sccm_default_client_settings_HINV_connect.png)
 ### Step 5: Specify WMI Computer
 
 
 
 
-								In the **Connect to Windows Management Instrumentation (WMI)** dialog box, specify the name a computer that has run the PowerShell script.Do not change the **WMI namespace**, it should be **rootcimv2**.Select **Recursive**.Enter a **username** and **password** if required.Select **Connect**.
+								In the **Connect to Windows Management Instrumentation (WMI)** dialog, specify the name a computer that has run the PowerShell script.Do not change the **WMI namespace**, it should be **rootcimv2**.Select **Recursive**.Enter a **username** and **password** if required.Select **Connect**.
 ![SCCM Local Admin Inventory](../images/SCCM-local-admin-hardware-inventory-1.png)
 ### Step 6: Select Local Admins Class
 
 
 
 
-								In the **Add Hardware Inventory Class** dialog box, select the **FATSTACKS_LOCAL_ADMINS** inventory classes. Select **OK**.
+								In the **Add Hardware Inventory Class** dialog, select the **FATSTACKS_LOCAL_ADMINS** inventory classes. Select **OK**.
 ![SCCM Local Admin Hardware Inventory Classes](../images/SCCM-local-admin-hardware-inventory-2.png)
 ### Step 7: Review Inventory Classes
 
 
 
 
-								In the **Hardware Inventory Classes** dialog box, you might want to **deselect** the **FATSTACKS_LOCAL_ADMINS** inventory classes and add it to a custom client agent setting instead. Using a custom client agent setting is typically advised, however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not deselect **FATSTACKS_LOCAL_ADMINS** inventory class here. Select **OK**.
+								In the **Hardware Inventory Classes** dialog, you might want to **clear** the **FATSTACKS_LOCAL_ADMINS** inventory classes and add it to a custom client agent setting instead. Using a custom client agent setting is typically advised, however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not clear **FATSTACKS_LOCAL_ADMINS** inventory class here. Select **OK**.
 ![SCCM Local Admin Hardware Inventory Class](../images/SCCM-local-admin-hardware-inventory-3-1024x883.png)
 ### Step 8: Confirm Default Settings
 
@@ -737,5 +737,5 @@ return 2
 
 
 
-1. In the **Default** **Settings** dialog box, select **OK**.
+1. In the **Default** **Settings** dialog, select **OK**.
 ![SCCM Default Client Settings Ok](../images/sccm_default_client_settings_ok-1024x951.png)

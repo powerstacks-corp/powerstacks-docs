@@ -2,7 +2,7 @@
 title: "AD User Discovery"
 ---
 # Configure AD User Discovery
-Ensure the following items have been added to AD User discovery. Skipping this step will not generate any errors however some report fields will be blank if your organization does not utilize these active directory attributes.
+Ensure the following items have been added to AD User discovery. Skipping this step will not generate any errors however some report fields will be blank if your organization does not use these active directory attributes.
 
 
 
