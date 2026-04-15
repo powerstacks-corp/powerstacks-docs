@@ -6,7 +6,6 @@ title: "Release Notes"
 
 ## Version 18.0 April 5, 2026
 
-# Version 18.0 (AppSource Version 1024)
 **Release Date**: April 5, 2026
 **App Source Version**: 1024
 
@@ -31,7 +30,6 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ## Version 17.0 February 20, 2026
 
-# Version 17.0 (AppSource Version 1023)
 **Release Date**: February 20, 2026
 **App Source Version**: 1023
 
@@ -75,7 +73,6 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ## Version 16.0 June 23, 2025
 
-# Version 16.0 (AppSource Version 1022)
 **Release Date**: June 23, 2025
 **App Source Version**: 1022
 
@@ -115,7 +112,6 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ## Version 15.0 June 15, 2025
 
-# Version 15.0 (AppSource Version 1021)
 **Release Date**: June 11, 2025
 **App Source Version**: 1021
 
@@ -152,7 +148,6 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ## Version 14.0 March 9, 2025
 
-# Version 14.0 (AppSource Version 1020)
 **BI for SCCM Version 14 (March 9, 2025)**
 
 BI for SCCM Version 14.0, shown as version 1020 in AppSource, was released on March 9, 2025. This version brings many new features that have been requested by customers. Please see the full list below.
@@ -203,7 +198,6 @@ Update to the "Package Deployment Details" object in the data model. New field:
 
 ## Version 13.0 Jan. 15, 2025
 
-# Version 13.0 (AppSource Version 1019)
 **BI for SCCM Version 13 (Jan. 14, 2025)**
 
 BI for SCCM Version 13.0, shown as version 1019 in AppSource, was released on Jan. 14, 2025. This version brings many new features that have been requested by customers. Please see the full list below.
@@ -243,7 +237,6 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ## Version 12.0 June 10, 2024
 
-# Version 12.0 (AppSource Version 1018)
 BI for SCCM Version 12.0, shown as version 1018 in AppSource, was released on June, 10, 2024. This version brings a change that allows customers to connect BI for SCCM to BI for Intune and/or BI for Defender for single pane of glass reporting.
 
 - **Features:**Added new "Device USB" category to the data model. This requires "[USB Device - Asset Intelligence (Win32_USBDevice)](inventory-usb-devices.md)" to be added to hardware inventory.
