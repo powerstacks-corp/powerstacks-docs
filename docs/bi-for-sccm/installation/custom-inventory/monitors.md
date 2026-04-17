@@ -78,7 +78,7 @@ Skipping this recommended configuration will not generate any errors however, yo
 
 1. In the **Hardware Inventory Classes** dialog, you might want to clear the WMIMonitorID and add it to a custom client agent setting instead. Using a custom client agent setting is typically advised however it is not covered in this document. If you would like to have the monitor inventory collected using the Default Client Settings do not clear WMIMonitorID here.
 1. Select **OK**.
-![SCCM Default Client Settings Deselect Monitor Class](../../images/sccm_default_client_settings_clear_monitor_class-1024x886.png)
+![SCCM Default Client Settings Deselect Monitor Class](../../images/sccm_default_client_settings_deselect_monitor_class-1024x886.png)
 ### Step 8: Confirm Default Settings
 
 
