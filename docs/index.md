@@ -26,6 +26,23 @@ description: Documentation for PowerStacks BI products — BI for Intune, BI for
   </a>
 </div>
 
+## How the docs are organized
+
+Each product's documentation is organized into four sections:
+
+- **Install Guide** — step-by-step instructions to get the app installed from Microsoft AppSource, create your app registration, configure your semantic model, and start syncing data.
+- **Admin Guide** — day-to-day administration tasks like backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates.
+- **User Guide** — walkthroughs and interactive demos showing how to use the reports, customize visuals, and get the most out of your data.
+- **What's New** — release notes for every version, so you know exactly what changed before upgrading.
+
+Some products have additional sections. BI for Intune includes **Log Analytics** and **Custom Inventory** guides for extended data collection. BI for SCCM includes **Custom Inventory** extensions for BitLocker, monitors, USB devices, and more.
+
+---
+
+## Have a question? Ask Pax.
+
+**Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question about any PowerStacks product — Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
+
 ---
 
 ## Need help?
