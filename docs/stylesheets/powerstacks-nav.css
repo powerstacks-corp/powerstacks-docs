@@ -391,6 +391,16 @@ body {
   border-color: #ffffff;
 }
 
+/* ─── Sidebar width — wider to reduce text wrapping ─────── */
+@media (min-width: 76.25em) {
+  .md-sidebar {
+    width: 14rem !important;      /* Material default: 12.1rem */
+  }
+  .md-sidebar--secondary {
+    width: 14rem !important;
+  }
+}
+
 /* ─── Sidebar positioning ────────────────────────────────── */
 /* The article hero gradient extends from 64px (nav bottom) to ~200px.
    Sidebars must start BELOW the hero so their content doesn't sit

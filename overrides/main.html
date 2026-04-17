@@ -295,11 +295,11 @@
 <script>
   (function() {
     /* Scroll-aware header: transparent over hero, white with shadow after scroll.
-       Also toggle .ps-banner--scrolled on .md-banner parent so the gradient
-       background switches to white in sync with the header text color. */
-    var header = document.getElementById('ps-header');
-    var banner = header ? header.closest('.md-banner') : null;
+       Uses fresh DOM queries each tick (not cached refs) so it survives
+       Material's instant navigation which replaces DOM content via XHR. */
     function updateHeader() {
+      var header = document.getElementById('ps-header');
+      var banner = header ? header.closest('.md-banner') : null;
       if (!header) return;
       var scrolled = window.scrollY > 50;
       header.classList.toggle('ps-header--scrolled', scrolled);
@@ -307,6 +307,10 @@
     }
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();
+    /* Also re-run on instant navigation (Material replaces the DOM) */
+    if (typeof document$ !== 'undefined') {
+      document$.subscribe(function() { updateHeader(); });
+    }
 
     /* Mobile menu toggle */
     var mobileToggle = document.getElementById('ps-mobile-toggle');
