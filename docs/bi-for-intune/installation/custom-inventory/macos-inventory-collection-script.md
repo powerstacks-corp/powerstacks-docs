@@ -1,38 +1,63 @@
 ---
 title: "macOS Inventory Collection Script"
+render_macros: false
 ---
-# macOS Inventory Script
-Many customers have requested the ability to report on things that are either not collected or not accurately collected by Intune. In an effort to fill these gaps in we have implemented a custom solution to collect some of the most commonly requested items. It is highly likely that new features will be added to this script just as they have been added to its Windows counterpart. Keep an eye out for updates in upcoming releases. Currently the script collects:
 
-1. Software installed on macOS devices.
+# macOS Inventory Collection Script
 
-This data is collected via a bash script, sent to a Log Analytics workspace, and then pulled into Power BI.
+The macOS inventory script collects device and application inventory data from macOS endpoints and sends it to your Log Analytics workspace via the Log Ingestion API.
 
-We created this script at the request of a customer. It collects the installed software from macOS and sends that to Log Analytics just like our PowerShell script does on Windows. You can deploy the script as a Shell script from Intune. Ideally the script should be run once per day on each device. This way any changes to the device get captured.
+## Prerequisites
 
-You can copy the bash script from our [GitHub](https://github.com/powerstacks-corp/Mac-Custom-Inventory) repository.
-![github mark](../../images/github-mark-80x80.png)
+Before configuring the script, complete these steps:
 
-### Step 1: Configure the script for Log Ingestion API
+1. [Create an Entra Application](create-inventory-app-registration.md)
+2. [Deploy Azure Resources](deploy-custom-inventory-resources.md)
 
+You should have recorded: Tenant ID, Client ID, Client Secret, DceURI, and DcrImmutableId.
 
+## Configure the script
 
-1. Paste the **script** code into your favorite **script editor**.
-1. Locate the line starting with **LogAPIMode** and ensure it is set to **"LogIngestionAPI"**.
-1. Enter the following values from the [Create Inventory App Registration](create-inventory-app-registration.md) and [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) guides:
-    - **TenantId** — Directory (Tenant) ID from [Create Inventory App Registration](create-inventory-app-registration.md)
-    - **ClientId** — Application (Client) ID from [Create Inventory App Registration](create-inventory-app-registration.md)
-    - **ClientSecret** — Client Secret Value from [Create Inventory App Registration](create-inventory-app-registration.md)
-    - **DceURI** — Data Collection Endpoint URI from [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) Step 2
-    - **DcrImmutableId** — DCR Immutable ID from [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) Step 2
-1. Save the edited script.
-### Step 2: Deploy the script in Intune
+Update the following settings in the macOS inventory script:
 
+| Parameter | Value |
+| --- | --- |
+| `LogAPIMode` | `LogIngestionAPI` |
+| `TenantId` | Your Directory (Tenant) ID |
+| `ClientId` | Your Application (Client) ID |
+| `ClientSecret` | Your Client Secret value |
+| `DceURI` | From deployment outputs |
+| `DcrImmutableId` | From deployment outputs |
 
+## Deploy via Intune
 
+Deploy the macOS inventory script using Intune's **Shell scripts** feature:
 
+1. In the [Intune admin center](https://intune.microsoft.com), go to **Devices** > **macOS** > **Shell scripts**.
+2. Upload the macOS inventory script.
+3. Assign it to your target device groups.
+4. Set the schedule to **run once per day**.
 
-1. Create a **Shell Script** in Intune.
-1. Run script as signed-in user: **No**.
-1. Script frequency: **Every 1 day**.
-![intune shell script](../../images/intune_shell_script-907x1024.png)
+## Data collected
+
+The macOS script sends data to the same custom tables as the Windows script:
+
+- **PowerStacksDeviceInventory_CL** — device hardware, OS version, encryption status
+- **PowerStacksAppInventory_CL** — installed applications and versions
+
+## Verify data ingestion
+
+After the script has run on at least one device:
+
+1. In the Azure Portal, navigate to your **Log Analytics workspace**.
+2. Go to **Logs** and run:
+
+```kusto
+PowerStacksDeviceInventory_CL
+| where DeviceOS_s == "macOS"
+| take 10
+```
+
+If data appears, the macOS pipeline is working.
+
+For troubleshooting, use the **LogIngestionAPI_CheckDCR** script from the [EnhancedInventoryDeploy repository](https://github.com/powerstacks-corp/EnhancedInventoryDeploy).

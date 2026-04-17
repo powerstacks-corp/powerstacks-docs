@@ -138,11 +138,12 @@ nav:
         - Connect Power BI to Log Analytics: bi-for-intune/installation/log-analytics/edit-entra-app-registration.md
         - Semantic Model Settings for Log Analytics: bi-for-intune/installation/log-analytics/semantic-model-settings-for-log-analytics.md
         - WUfB Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
+        - Migrate to Log Ingestion API: bi-for-intune/installation/log-analytics/migrate-to-log-ingestion-api.md
       - Custom Inventory:
-        - Create Inventory App Registration: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
-        - Deploy Custom Inventory Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md
-        - Windows Inventory Collection Script: bi-for-intune/installation/custom-inventory/windows-inventory-collection-script.md
-        - macOS Inventory Collection Script: bi-for-intune/installation/custom-inventory/macos-inventory-collection-script.md
+        - Create Entra Application: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
+        - Deploy Azure Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md
+        - Windows Inventory Script: bi-for-intune/installation/custom-inventory/windows-inventory-collection-script.md
+        - macOS Inventory Script: bi-for-intune/installation/custom-inventory/macos-inventory-collection-script.md
     - Administration:
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md
       - Entra App Permissions: bi-for-intune/administration/entra-app-permissions.md

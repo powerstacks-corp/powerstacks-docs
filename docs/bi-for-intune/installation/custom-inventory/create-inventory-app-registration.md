@@ -1,60 +1,62 @@
 ---
-title: "Create Inventory App Registration"
+title: "Create Entra Application"
+render_macros: false
 ---
-# Create Inventory App Registration
 
-The inventory collection scripts for Windows and macOS use a dedicated App Registration to authenticate and write data to Log Analytics via the Azure Monitor Logs Ingestion API.
+# Create Entra Application for Enhanced Inventory
 
-!!! warning
-    This is a **separate** app registration from the one used by Power BI. Do not reuse your existing BI for Intune app registration for the inventory scripts.
+Enhanced Inventory uses an Entra application to authenticate to Azure and send inventory data via the Log Ingestion API. This page walks through creating the application and recording the credentials needed for deployment.
 
-!!! info "Two App Registrations"
-    BI for Intune uses **two separate App Registrations**:
+!!! warning "Enterprise Application, not App Registration"
+    You must create an **Enterprise Application** first, not a standard App Registration. The ARM deployment template requires the **Enterprise Application Object ID** (the service principal Object ID), which is different from the App Registration Object ID.
 
-    1. **Power BI App Registration** — The app registration created during the [BI for Intune installation](../setup-guide/create-entra-app-registration.md). This is used by Power BI to **read** data from the Log Analytics workspace.
-    2. **Inventory App Registration** — Created in this guide. This is used by the Windows and macOS inventory scripts to **write** data to Log Analytics via the Logs Ingestion API.
+## Prerequisites
 
-**Prerequisites:**
+**Microsoft Entra permissions required:**
 
-- The user performing these steps requires **Application Administrator** or **Global Administrator** rights in Microsoft Entra ID.
+- **Application Administrator** or **Global Administrator**
 
-### Step 1: Register the Application
+**Azure permissions required (for the deployment in the next step):**
 
+- **Contributor** or **Owner** on the target subscription or resource group
+- **User Access Administrator** or **Owner** to assign roles (only required if you want automatic RBAC assignment)
 
+## Step 1: Create the Enterprise Application
 
-1. In the [Azure Portal](https://portal.azure.com), navigate to **Microsoft Entra ID** > **App registrations** > **New registration**.
-1. Enter a **Name** for the application (e.g., `PowerStacks-EnhancedInventory`).
-1. Specify who can use the application as **Accounts in this organizational directory only**.
-1. Select **Register**.
-1. From the App Registration overview, record the following values for later use:
-    - **Application (Client) ID**
+1. In the [Azure Portal](https://portal.azure.com), navigate to **Microsoft Entra ID** > **Enterprise applications**.
+2. Select **New application** > **Create your own application**.
+3. Enter a name (e.g., `PowerStacks-EnhancedInventory`).
+4. Select **Integrate any other application you don't find in the gallery**.
+5. Click **Create**.
+6. From the Enterprise Application overview page, record the **Object ID**.
+
+!!! tip "Why Enterprise Application?"
+    We create it as an Enterprise Application because the Object ID shown there is what the ARM template needs for the `Ingestion Sp Object Id` parameter. The App Registrations blade shows a *different* Object ID that will not work.
+
+## Step 2: Get credentials from App Registrations
+
+After creating the Enterprise Application, switch to the **App Registrations** blade to get the credentials the inventory scripts will use:
+
+1. Navigate to **Microsoft Entra ID** > **App registrations**.
+2. Find the application you just created (search by name).
+3. From the **Overview** page, record:
     - **Directory (Tenant) ID**
-1. Navigate to **Certificates & secrets** > **New client secret**.
-1. Enter a description and select an expiration period.
-1. Select **Add** and record the **Value** (not the Secret ID). This value can only be displayed once.
+    - **Application (Client) ID**
+4. Navigate to **Certificates & secrets** > **New client secret**.
+5. Enter a description and select an expiration period.
+6. Click **Add** and immediately record the **Value** (not the Secret ID). The value is only shown once.
 
-### Step 2: Get the Enterprise Application Object ID
+## Values to record
 
+By the end of this step, you should have:
 
+| Value | Where to find it | Used by |
+| --- | --- | --- |
+| **Enterprise App Object ID** | Enterprise Applications > Overview | ARM deployment template |
+| **Directory (Tenant) ID** | App Registrations > Overview | Inventory scripts |
+| **Application (Client) ID** | App Registrations > Overview | Inventory scripts |
+| **Client Secret Value** | App Registrations > Certificates & secrets | Inventory scripts |
 
-1. In the Azure Portal, navigate to **Microsoft Entra ID** > **Enterprise applications**.
-1. Search for the app you registered in Step 1 (e.g., `PowerStacks-EnhancedInventory`).
-1. Select the application and record the **Object ID** from the Overview page.
+## Next step
 
-!!! warning "Important"
-    The Object ID shown on the **Enterprise Applications** page is different from the one shown on the **App Registrations** page. You need the **Enterprise Application Object ID** (the service principal Object ID), not the App Registration Object ID.
-
-### Values to Record
-
-You should now have the following values ready:
-
-| Value | Where to Find It | Used In |
-|-------|-------------------|---------|
-| **Tenant ID** | App Registration overview | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
-| **Client ID** | App Registration overview | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
-| **Client Secret** | Certificates & secrets | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
-| **Enterprise App Object ID** | Enterprise applications overview | [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) ARM template deployment |
-
-### Next Step
-
-Proceed to [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) to deploy the Azure resources.
+[Deploy Azure Resources](deploy-custom-inventory-resources.md) — use the Deploy to Azure button to create your Log Analytics workspace, custom tables, DCE, and DCR.
