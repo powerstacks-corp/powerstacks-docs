@@ -1,0 +1,298 @@
+/* ───────────────────────────────────────────────────────────────────
+   powerstacks-nav.css
+   ─────────────────────
+   Additions to the global nav beyond what microsoft-learn.css already
+   defines. Adds:
+     - Get Started CTA button in the top-right of the nav
+     - "Learn" dropdown menu
+     - PowerStacks Assistant floating widget
+     - Storylane embed wrapper
+
+   Brand tokens:
+     --ps-navy:       #051441
+     --ps-navy-light: #0A1F5E
+     --ps-blue:       #6EC1E4
+   ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  --ps-navy: #051441;
+  --ps-navy-light: #0A1F5E;
+  --ps-blue: #6EC1E4;
+  --ps-hero-start: #3221AA;
+  --ps-hero-end: #5670F0;
+}
+
+/* ─── Get Started CTA button in the top nav ─────────────────────── */
+
+.ps-global-nav__cta {
+  background: #ffffff;
+  color: var(--ps-navy) !important;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.15s;
+  margin-left: 0.75rem;
+  flex-shrink: 0;
+}
+
+.ps-global-nav__cta:hover {
+  background: var(--ps-blue);
+  color: var(--ps-navy) !important;
+  transform: translateY(-1px);
+}
+
+/* ─── "Learn" dropdown menu ─────────────────────────────────────── */
+
+.ps-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.ps-dropdown__trigger {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.ps-dropdown__trigger:hover,
+.ps-dropdown__trigger:focus,
+.ps-dropdown--open .ps-dropdown__trigger {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.ps-dropdown__chevron {
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.ps-dropdown--open .ps-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.ps-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 200px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(5, 20, 65, 0.18);
+  padding: 0.35rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+  z-index: 200;
+}
+
+.ps-dropdown:hover .ps-dropdown__menu,
+.ps-dropdown:focus-within .ps-dropdown__menu,
+.ps-dropdown--open .ps-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ps-dropdown__menu a {
+  display: block;
+  padding: 0.55rem 1rem;
+  color: #334155 !important;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s;
+}
+
+.ps-dropdown__menu a:hover,
+.ps-dropdown__menu a:focus {
+  background: #f1f5f9;
+  color: var(--ps-navy) !important;
+  outline: none;
+}
+
+/* ─── PowerStacks Assistant floating widget ─────────────────────── */
+
+#ps-assistant-root {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#ps-assistant-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ps-navy);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(5, 20, 65, 0.35);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ps-assistant-toggle:hover {
+  background: var(--ps-navy-light);
+  transform: scale(1.07);
+  box-shadow: 0 6px 20px rgba(5, 20, 65, 0.45);
+}
+
+#ps-assistant-toggle svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+#ps-assistant-panel {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 400px;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(5, 20, 65, 0.18);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.97);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+#ps-assistant-panel.ps-open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+
+#ps-assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(90deg, var(--ps-hero-start), var(--ps-hero-end));
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+#ps-assistant-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#ps-assistant-title svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+#ps-assistant-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+#ps-assistant-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#ps-assistant-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+#ps-assistant-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+#ps-assistant-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Mobile: full-screen panel */
+@media (max-width: 480px) {
+  #ps-assistant-root {
+    bottom: 16px;
+    right: 16px;
+  }
+  #ps-assistant-panel {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 90dvh;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+  }
+}
+
+/* ─── Release notes list styling (from release_archive macro) ──── */
+
+.ps-release-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+}
+
+.ps-release-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ps-release-list li:last-child {
+  border-bottom: none;
+}
+
+.ps-release-list li a {
+  color: #3221AA;
+  text-decoration: none;
+}
+
+.ps-release-list li a:hover {
+  text-decoration: underline;
+}
+
+.ps-release-list__date {
+  color: #64748b;
+  font-size: 0.9em;
+}

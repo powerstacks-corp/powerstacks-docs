@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{# ─────────────────────────────────────────────────────────────────────
+   PowerStacks global nav — always visible at the top of every page,
+   matches the marketing site. "Learn" is a dropdown with the three
+   product docs sites as its items.
+   ───────────────────────────────────────────────────────────────────── #}
+{% block announce %}
+<nav class="ps-global-nav" aria-label="PowerStacks global">
+  <div class="ps-global-nav__inner">
+    <a href="{{ config.extra.marketing_url }}" class="ps-global-nav__brand" title="PowerStacks Home">
+      <img src="{{ 'assets/logo.webp' | url }}" alt="" class="ps-global-nav__logo skip-lightbox" width="24" height="24" />
+      <span class="ps-global-nav__brand-text">PowerStacks</span>
+    </a>
+
+    <div class="ps-global-nav__site-links">
+      <a href="{{ config.extra.marketing_url }}/solutions/endpoint-management-platform/">Solutions</a>
+      <a href="{{ config.extra.marketing_url }}/products/bi-for-intune/">Products</a>
+      <a href="{{ config.extra.marketing_url }}/live-demos/">Live Demos</a>
+      <a href="{{ config.extra.marketing_url }}/blog/">Blog</a>
+
+      {# Learn dropdown — opens on hover/focus, three docs links. #}
+      <div class="ps-dropdown">
+        <button
+          type="button"
+          class="ps-dropdown__trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="ps-learn-menu"
+        >
+          Learn
+          <svg class="ps-dropdown__chevron" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+            <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="ps-learn-menu" class="ps-dropdown__menu" role="menu" aria-label="Learn">
+          <a href="{{ config.site_url }}bi-for-intune/" role="menuitem">BI for Intune Docs</a>
+          <a href="{{ config.site_url }}bi-for-sccm/" role="menuitem">BI for SCCM Docs</a>
+          <a href="{{ config.site_url }}bi-for-defender/" role="menuitem">BI for Defender Docs</a>
+        </div>
+      </div>
+
+      <a href="{{ config.extra.marketing_url }}/pricing/">Pricing</a>
+    </div>
+
+    <a href="{{ config.extra.marketing_url }}/get-started/" class="ps-global-nav__cta">Get Started</a>
+  </div>
+</nav>
+{% endblock %}
+
+{# ─────────────────────────────────────────────────────────────────────
+   Footer
+   ───────────────────────────────────────────────────────────────────── #}
+{% block footer %}
+<footer class="ps-footer">
+  <div class="ps-footer__inner">
+    <div class="ps-footer__columns">
+      <div class="ps-footer__col">
+        <h3 class="ps-footer__heading">Products</h3>
+        <ul class="ps-footer__list">
+          <li><a href="{{ config.extra.marketing_url }}/products/bi-for-intune/">BI for Intune</a></li>
+          <li><a href="{{ config.extra.marketing_url }}/products/bi-for-sccm/">BI for SCCM</a></li>
+          <li><a href="{{ config.extra.marketing_url }}/products/bi-for-defender/">BI for Defender</a></li>
+        </ul>
+      </div>
+      <div class="ps-footer__col">
+        <h3 class="ps-footer__heading">Documentation</h3>
+        <ul class="ps-footer__list">
+          <li><a href="{{ config.site_url }}bi-for-intune/">BI for Intune Docs</a></li>
+          <li><a href="{{ config.site_url }}bi-for-sccm/">BI for SCCM Docs</a></li>
+          <li><a href="{{ config.site_url }}bi-for-defender/">BI for Defender Docs</a></li>
+        </ul>
+      </div>
+      <div class="ps-footer__col">
+        <h3 class="ps-footer__heading">Company</h3>
+        <ul class="ps-footer__list">
+          <li><a href="{{ config.extra.marketing_url }}/about/">About</a></li>
+          <li><a href="{{ config.extra.marketing_url }}/contact/">Contact</a></li>
+          <li><a href="{{ config.extra.marketing_url }}/blog/">Blog</a></li>
+          <li><a href="{{ config.extra.marketing_url }}/pricing/">Pricing</a></li>
+        </ul>
+        <div class="ps-footer__contact">
+          <p><span class="ps-footer__contact-label">Sales:</span> <a href="mailto:sales@powerstacks.com">sales@powerstacks.com</a></p>
+          <p><span class="ps-footer__contact-label">Support:</span> <a href="mailto:support@powerstacks.com">support@powerstacks.com</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="ps-footer__bottom">
+      <p class="ps-footer__copy">{{ config.copyright }}</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+{# ─────────────────────────────────────────────────────────────────────
+   PowerStacks Assistant Widget — floating chat button, same as the
+   marketing site. Reads config.extra.assistant_url which is set via
+   the ASSISTANT_URL env var (defaults to localhost:3000 for dev).
+   ───────────────────────────────────────────────────────────────────── #}
+{% block libs %}
+{{ super() }}
+<div id="ps-assistant-root" aria-label="PowerStacks Assistant">
+  <button
+    id="ps-assistant-toggle"
+    aria-label="Open PowerStacks Assistant"
+    title="PowerStacks Assistant"
+    type="button"
+  >
+    <svg id="ps-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <svg id="ps-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <div id="ps-assistant-panel" aria-hidden="true">
+    <div id="ps-assistant-header">
+      <div id="ps-assistant-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>PowerStacks Assistant</span>
+      </div>
+      <button id="ps-assistant-close" aria-label="Close PowerStacks Assistant" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="ps-assistant-body">
+      <iframe
+        id="ps-assistant-iframe"
+        src="{{ config.extra.assistant_url }}"
+        title="PowerStacks Assistant"
+        allow="clipboard-write"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var toggle = document.getElementById('ps-assistant-toggle');
+    var panel = document.getElementById('ps-assistant-panel');
+    var closeBtn = document.getElementById('ps-assistant-close');
+    var iconChat = document.getElementById('ps-icon-chat');
+    var iconClose = document.getElementById('ps-icon-close');
+    var isOpen = false;
+
+    function openPanel() {
+      isOpen = true;
+      panel.classList.add('ps-open');
+      panel.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-label', 'Close PowerStacks Assistant');
+      iconChat.style.display = 'none';
+      iconClose.style.display = 'block';
+    }
+    function closePanel() {
+      isOpen = false;
+      panel.classList.remove('ps-open');
+      panel.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-label', 'Open PowerStacks Assistant');
+      iconChat.style.display = 'block';
+      iconClose.style.display = 'none';
+    }
+    if (toggle) toggle.addEventListener('click', function() { isOpen ? closePanel() : openPanel(); });
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) closePanel(); });
+
+    /* Learn dropdown — also keyboard accessible. Hover handled in CSS. */
+    var dropdownTriggers = document.querySelectorAll('.ps-dropdown__trigger');
+    dropdownTriggers.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var parent = btn.closest('.ps-dropdown');
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        parent.classList.toggle('ps-dropdown--open', !expanded);
+      });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.closest('.ps-dropdown').classList.remove('ps-dropdown--open');
+        }
+      });
+    });
+    /* Click outside to close */
+    document.addEventListener('click', function(e) {
+      document.querySelectorAll('.ps-dropdown--open').forEach(function(d) {
+        if (!d.contains(e.target)) {
+          d.classList.remove('ps-dropdown--open');
+          d.querySelector('.ps-dropdown__trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  })();
+</script>
+{% endblock %}

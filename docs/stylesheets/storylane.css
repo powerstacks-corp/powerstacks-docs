@@ -1,0 +1,70 @@
+/* ───────────────────────────────────────────────────────────────────
+   storylane.css
+   ─────────────
+   Responsive wrapper for Storylane demo embeds.
+   Used by the storylane() macro in macros.py.
+   ─────────────────────────────────────────────────────────────────── */
+
+.ps-storylane {
+  margin: 1.5rem 0;
+}
+
+.ps-storylane__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ps-storylane__title::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(90deg, #3221AA, #5670F0);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.ps-storylane__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(5, 20, 65, 0.08);
+  background: #f8fafc;
+}
+
+.ps-storylane__embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.ps-storylane__fallback {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.ps-storylane__fallback a {
+  color: #3221AA;
+  text-decoration: underline;
+}
+
+/* Mobile: stack nicer on narrow screens */
+@media (max-width: 600px) {
+  .ps-storylane {
+    margin: 1rem 0;
+  }
+}
