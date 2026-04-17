@@ -353,9 +353,15 @@ body {
 .md-content__inner::before {
   display: none !important;
 }
-.hero-banner,
-.md-typeset h1:first-of-type:not(.hero-banner h1) {
+/* Landing pages (hero-banner) hide toc/navigation so the negative
+   margin closes the gap cleanly. Article pages have sidebars so
+   the hero needs to sit BELOW the nav, not pull up under it. */
+.hero-banner {
   margin-top: -1.5rem !important;
+}
+.md-typeset h1:first-of-type:not(.hero-banner h1) {
+  margin-top: 0 !important;
+  padding-top: 2.5rem !important;
 }
 
 /* ─── Quick-link card icons ─────────────────────────────── */
