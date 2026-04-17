@@ -334,7 +334,29 @@ body {
 /* ─── Hero banner top margin: account for 64px nav ──────── */
 .hero-banner,
 .md-typeset h1:first-of-type:not(.hero-banner h1) {
-  margin-top: 0 !important;
+  margin-top: -0.5rem !important;
+}
+
+/* ─── Alignment: left-align the nav bar to match content flow ──── */
+/* The nav's max-width container is already centered at 1440px.
+   Content below flows left-aligned within Material's .md-content.
+   Ensure the nav items visually align with the content column. */
+.ps-header__nav {
+  justify-content: flex-start;
+}
+.ps-header__links {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ─── Fix navigation tabs (re-enabled for sidebar scoping but hidden) ── */
+/* Material's .md-tabs is re-enabled via navigation.tabs in mkdocs.yml
+   to scope the sidebar to the current product. The tab bar itself is
+   hidden — our header's Learn dropdown handles product switching. */
+.md-tabs {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* ─── Assistant Widget ──────────────────────────────── */

@@ -36,13 +36,13 @@ theme:
     - navigation.tracking
     - navigation.sections         # group pages under section headers
     - navigation.indexes          # section titles can be clickable index pages
+    - navigation.tabs             # scopes sidebar to current product (tab bar hidden via CSS)
     - navigation.top              # back-to-top button
     - search.suggest
     - search.highlight
     - search.share
     - content.code.copy
     - toc.follow
-    # REMOVED: navigation.tabs    — no MkDocs tab bar (unified PowerStacks nav only)
     # REMOVED: navigation.expand  — only expand the active product's section
   palette:
     - scheme: default
