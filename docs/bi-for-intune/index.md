@@ -47,12 +47,13 @@ Extend your reporting with PowerShell-based inventory scripts for BitLocker, loc
 
 **Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question — Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
 
----
 
-<div class="ps-help-block" markdown>
 
-**Need help?** If you can't find what you're looking for in the documentation, reach out to our support team.
-
-[Contact Support](https://powerstacks.com/contact/){ .ps-btn-secondary }
-
+<div class="ps-cta-banner">
+  <h2>Get started with BI for Intune</h2>
+  <p>Try BI for Intune with a free trial license and have your first dashboards running in under an hour.</p>
+  <div class="ps-cta-banner__buttons">
+    <a href="https://powerstacks.com/get-started/" class="ps-cta-banner__btn-primary">Start Free Trial</a>
+    <a href="https://powerstacks.com/contact/" class="ps-cta-banner__btn-secondary">Contact Support</a>
+  </div>
 </div>

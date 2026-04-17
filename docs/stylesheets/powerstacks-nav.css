@@ -329,30 +329,66 @@ body {
   background: #ffffff !important;
 }
 
-/* ─── Help block + Contact Support button ──────────────────── */
-.ps-help-block {
+/* ─── CTA banner (gradient, bottom of product pages) ───────── */
+.ps-cta-banner {
+  background: linear-gradient(135deg, #3221AA 0%, #454ACE 50%, #556DEB 100%);
+  color: #ffffff;
   text-align: center;
-  padding: 2rem 1rem;
-  background: #f8fafc;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  margin: 2rem 0;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin: 3rem 0 1rem;
 }
-.ps-btn-secondary {
+.ps-cta-banner h2 {
+  color: #ffffff !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  border-bottom: none !important;
+}
+.ps-cta-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  margin: 0 0 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ps-cta-banner__buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ps-cta-banner__btn-primary {
   display: inline-block;
-  margin-top: 0.75rem;
-  padding: 0.6rem 1.5rem;
-  border: 2px solid var(--ps-blue);
-  color: var(--ps-blue) !important;
+  background: var(--ps-green);
+  color: #ffffff !important;
+  padding: 0.75rem 1.75rem;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   text-decoration: none !important;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
-.ps-btn-secondary:hover {
-  background: var(--ps-blue);
+.ps-cta-banner__btn-primary:hover {
+  background: var(--ps-green-dark);
+  transform: translateY(-1px);
+}
+.ps-cta-banner__btn-secondary {
+  display: inline-block;
+  background: transparent;
   color: #ffffff !important;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.ps-cta-banner__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
 }
 
 /* ─── Sidebar positioning under new 64px header ─────────── */
