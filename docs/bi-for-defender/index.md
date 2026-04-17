@@ -37,8 +37,8 @@ Pre-built dashboards cover threat detection and response, device security postur
 ## How the docs are organized
 
 - **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, create your Entra app registration, configure your semantic model, and set up data sync.
-- **Admin Guide** — day-to-day administration including backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates and visuals.
-- **User Guide** — walkthroughs and interactive demos showing how to use the reports, customize visuals, and get the most out of your data.
+- **Admin Guide** — administration and troubleshooting: backing up custom reports, performing upgrades, managing workspaces, customizing templates, and resolving common issues.
+- **User Guide** — training materials for the people in your organization who use the reports day to day. Dashboard navigation, drill-throughs, exporting, and interactive walkthroughs.
 - **What's New** — release notes for every version, so you know exactly what changed before upgrading.
 
 ## Have a question? Ask Pax.
