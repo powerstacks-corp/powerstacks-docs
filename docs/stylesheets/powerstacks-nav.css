@@ -381,6 +381,11 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.quick-link-card .card-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
 
 /* ─── Alignment: left-align the nav bar to match content flow ──── */
 /* The nav's max-width container is already centered at 1440px.

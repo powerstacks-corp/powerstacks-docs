@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A5CF5"/>
+      <stop offset="100%" stop-color="#7B8FF7"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Shield -->
+  <path d="M32 10L16 18v12c0 10.5 6.8 20.3 16 24 9.2-3.7 16-13.5 16-24V18L32 10z" fill="white" opacity="0.2"/>
+  <path d="M32 14L19 20.5v10c0 8.7 5.5 16.8 13 19.8 7.5-3 13-11.1 13-19.8v-10L32 14z" fill="none" stroke="white" stroke-width="2" opacity="0.9"/>
+  <!-- Chart line inside shield -->
+  <polyline points="24,36 29,30 34,34 40,24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <circle cx="40" cy="24" r="2" fill="white" opacity="0.9"/>
+</svg>
