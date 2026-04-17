@@ -11,22 +11,19 @@ hide:
 
 <div class="quick-links">
   <a class="quick-link-card" href="installation/getting-started/install-bi-for-intune/">
-    <span class="card-content">
-      <span class="card-label">GETTING STARTED</span>
-      <span class="card-title">Install BI for Intune</span>
-    </span>
+    <span class="card-title">Install Guide</span>
+  </a>
+  <a class="quick-link-card" href="administration/backup-custom-reports/">
+    <span class="card-title">Admin Guide</span>
+  </a>
+  <a class="quick-link-card" href="user-guides/">
+    <span class="card-title">User Guide</span>
   </a>
   <a class="quick-link-card" href="administration/semantic-model-parameters/">
-    <span class="card-content">
-      <span class="card-label">REFERENCE</span>
-      <span class="card-title">Semantic Model Parameters</span>
-    </span>
+    <span class="card-title">References</span>
   </a>
   <a class="quick-link-card" href="release-notes/">
-    <span class="card-content">
-      <span class="card-label">RELEASE NOTES</span>
-      <span class="card-title">What's New</span>
-    </span>
+    <span class="card-title">What's New</span>
   </a>
 </div>
 
