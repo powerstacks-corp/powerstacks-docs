@@ -51,7 +51,7 @@ theme:
 
 extra_css:
   - stylesheets/microsoft-learn.css    # existing hero + content styling
-  - stylesheets/powerstacks-nav.css    # ported marketing-site nav
+  - stylesheets/powerstacks-nav.css?v=2  # ported marketing-site nav (cache-bust)
   - stylesheets/storylane.css          # Storylane embed wrapper
 
 extra_javascript:
