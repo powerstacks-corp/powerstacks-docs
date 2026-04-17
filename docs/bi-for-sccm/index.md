@@ -36,16 +36,13 @@ Pre-built dashboards cover hardware inventory, software deployment, compliance s
 
 ---
 
+<div class="ps-two-col" markdown>
+<div markdown>
+
 ## Getting Started
 
 - [Install BI for SCCM](installation/getting-started/install-bi-for-sccm.md)
 - [Request a License](../shared/request-a-license.md)
-
-## Setup Guide
-
-- [Install Power BI Gateway](installation/setup-guide/install-power-bi-gateway.md)
-- [Configure Database Access](installation/setup-guide/configure-database-access.md)
-- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
 
 ## Administration
 
@@ -53,6 +50,18 @@ Pre-built dashboards cover hardware inventory, software deployment, compliance s
 - [Backup Custom Reports](administration/backup-custom-reports.md)
 - [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
 
+</div>
+<div markdown>
+
+## Setup Guide
+
+- [Install Power BI Gateway](installation/setup-guide/install-power-bi-gateway.md)
+- [Configure Database Access](installation/setup-guide/configure-database-access.md)
+- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
+
 ## Release Notes
 
 - [Latest Releases](release-notes/index.md)
+
+</div>
+</div>

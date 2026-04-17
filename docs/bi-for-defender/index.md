@@ -36,16 +36,13 @@ Pre-built dashboards cover threat detection and response, device security postur
 
 ---
 
+<div class="ps-two-col" markdown>
+<div markdown>
+
 ## Getting Started
 
 - [Install BI for Defender](installation/getting-started/install-bi-for-defender.md)
 - [Request a Trial License](../shared/request-a-license.md)
-
-## Setup Guide
-
-- [Create Entra App Registration](installation/setup-guide/create-entra-app-registration.md)
-- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
-- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
 
 ## Administration
 
@@ -53,6 +50,18 @@ Pre-built dashboards cover threat detection and response, device security postur
 - [Backup Custom Reports](administration/backup-custom-reports.md)
 - [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
 
+</div>
+<div markdown>
+
+## Setup Guide
+
+- [Create Entra App Registration](installation/setup-guide/create-entra-app-registration.md)
+- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
+- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
+
 ## Release Notes
 
 - [Latest Releases](release-notes/index.md)
+
+</div>
+</div>

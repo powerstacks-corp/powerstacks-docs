@@ -510,6 +510,18 @@ body {
 .ps-release-list li a:hover { text-decoration: underline; }
 .ps-release-list__date { color: #64748b; font-size: 0.9em; }
 
+/* ─── Two-column layout for product landing pages ─────────────── */
+.ps-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+}
+@media (max-width: 768px) {
+  .ps-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─── Footer — matches marketing site Footer.astro ──────────────── */
 
 .ps-footer {

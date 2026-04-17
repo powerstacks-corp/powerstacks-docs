@@ -38,10 +38,28 @@ Extend your reporting with PowerShell-based inventory scripts for BitLocker, loc
 
 ---
 
+<div class="ps-two-col" markdown>
+<div markdown>
+
 ## Getting Started
 
 - [Install BI for Intune](installation/getting-started/install-bi-for-intune.md)
 - [Request a Trial License](../shared/request-a-license.md)
+
+## Log Analytics
+
+- [Connect Power BI to Log Analytics](installation/log-analytics/edit-entra-app-registration.md)
+- [Semantic Model Settings](installation/log-analytics/semantic-model-settings-for-log-analytics.md)
+- [WUfB Reports](installation/log-analytics/wufb-reports.md)
+
+## Administration
+
+- [Semantic Model Parameters](administration/semantic-model-parameters.md)
+- [Backup Custom Reports](administration/backup-custom-reports.md)
+- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
+
+</div>
+<div markdown>
 
 ## Setup Guide
 
@@ -50,12 +68,6 @@ Extend your reporting with PowerShell-based inventory scripts for BitLocker, loc
 - [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
 - [Export API Parameter](installation/setup-guide/export-api-parameter.md)
 
-## Log Analytics
-
-- [Connect Power BI to Log Analytics](installation/log-analytics/edit-entra-app-registration.md)
-- [Semantic Model Settings](installation/log-analytics/semantic-model-settings-for-log-analytics.md)
-- [WUfB Reports](installation/log-analytics/wufb-reports.md)
-
 ## Custom Inventory
 
 - [Create Inventory App Registration](installation/custom-inventory/create-inventory-app-registration.md)
@@ -63,12 +75,9 @@ Extend your reporting with PowerShell-based inventory scripts for BitLocker, loc
 - [Windows Inventory Collection Script](installation/custom-inventory/windows-inventory-collection-script.md)
 - [macOS Inventory Collection Script](installation/custom-inventory/macos-inventory-collection-script.md)
 
-## Administration
-
-- [Semantic Model Parameters](administration/semantic-model-parameters.md)
-- [Backup Custom Reports](administration/backup-custom-reports.md)
-- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
-
 ## Release Notes
 
 - [Latest Releases](release-notes/index.md)
+
+</div>
+</div>
