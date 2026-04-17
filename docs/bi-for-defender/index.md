@@ -10,7 +10,7 @@ hide:
 </div>
 
 <div class="quick-links">
-  <a class="quick-link-card" href="guides/install-bi-for-defender/">
+  <a class="quick-link-card" href="installation/getting-started/install-bi-for-defender/">
     <span class="card-icon">
       <img src="images/icon-overview.svg" alt="" class="skip-lightbox">
     </span>
@@ -19,7 +19,7 @@ hide:
       <span class="card-title">Setup Guide</span>
     </span>
   </a>
-  <a class="quick-link-card" href="guides/dataset-parameters/">
+  <a class="quick-link-card" href="administration/semantic-model-parameters/">
     <span class="card-icon">
       <img src="images/icon-how-to-guide.svg" alt="" class="skip-lightbox">
     </span>
@@ -51,20 +51,20 @@ Drill through from fleet-level security summaries to individual devices and aler
 
 ## Getting Started
 
-- [Install BI for Defender](guides/install-bi-for-defender.md)
-- [Request a Trial License](guides/request-a-trial-license.md)
-- [Create Azure AD App Registration](guides/create-azure-ad-app-registration.md)
-- [Configure the Dataset](guides/configure-the-dataset.md)
+- [Install BI for Defender](installation/getting-started/install-bi-for-defender.md)
+- [Request a Trial License](../shared/request-a-license.md)
+- [Create Azure AD App Registration](installation/setup-guide/create-entra-app-registration.md)
+- [Configure the Dataset](installation/setup-guide/configure-the-semantic-model.md)
 
 ## Guides
 
 Step-by-step instructions for configuring and customizing BI for Defender.
 
-- [Dataset Parameters](guides/dataset-parameters.md)
-- [Configure Data Sync](guides/configure-data-sync.md)
-- [Azure AD App Permissions](guides/azure-ad-app-permissions.md)
-- [Application Controls](guides/application-controls.md)
-- [Backup Custom Reports](guides/backup-custom-reports.md)
+- [Dataset Parameters](administration/semantic-model-parameters.md)
+- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
+- [Azure AD App Permissions](administration/entra-app-permissions.md)
+- [Application Controls](installation/setup-guide/application-controls.md)
+- [Backup Custom Reports](administration/backup-custom-reports.md)
 
 ## Release Notes
 

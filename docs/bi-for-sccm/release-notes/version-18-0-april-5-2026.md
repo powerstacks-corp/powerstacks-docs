@@ -1,5 +1,6 @@
 ---
 title: "Version 18.0 April 5, 2026"
+render_macros: false
 ---
 # Version 18.0 (AppSource Version 1024)
 **Release Date**: April 5, 2026
@@ -8,7 +9,7 @@ title: "Version 18.0 April 5, 2026"
 BI for SCCM v18 is a small maintenance release that adds a single semantic model enhancement: support for the **XTS-AES 256 With Diffuser** encryption method. This addresses a gap in encryption data support that was introduced in v17.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 18.0
@@ -20,4 +21,4 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ### Important Notes
 
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

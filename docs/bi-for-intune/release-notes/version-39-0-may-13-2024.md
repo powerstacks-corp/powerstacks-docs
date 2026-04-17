@@ -1,5 +1,6 @@
 ---
 title: "Version 39.0 May 13, 2024"
+render_macros: false
 ---
 # Version 39.0 (AppSource Version 1034)
 BI for Intune Version 39.0, shown as version 1033 in AppSource, was released on May 13, 2024. This version introduces a new Delivery Optimization report, a new Windows 11 Readiness Report, and Windows Firewall status.
@@ -63,7 +64,7 @@ New "Device Firewall" category and fields in the data model. Fields include:
 **Bug Fixes:**
 - N/A
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](backup-custom-reports.md)
+- Always backup your custom reports using our [backup process.](../administration/backup-custom-reports.md)
 
 
 ## New UC Delivery Optimization Page

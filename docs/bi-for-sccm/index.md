@@ -10,7 +10,7 @@ hide:
 </div>
 
 <div class="quick-links">
-  <a class="quick-link-card" href="guides/install-bi-for-sccm/">
+  <a class="quick-link-card" href="installation/getting-started/install-bi-for-sccm/">
     <span class="card-icon">
       <img src="images/icon-overview.svg" alt="" class="skip-lightbox">
     </span>
@@ -19,7 +19,7 @@ hide:
       <span class="card-title">Setup Guide</span>
     </span>
   </a>
-  <a class="quick-link-card" href="guides/dataset-parameters/">
+  <a class="quick-link-card" href="administration/semantic-model-parameters/">
     <span class="card-icon">
       <img src="images/icon-how-to-guide.svg" alt="" class="skip-lightbox">
     </span>
@@ -51,34 +51,34 @@ Extend your reporting with 10+ inventory extension scripts for BitLocker status,
 
 ## Getting Started
 
-- [Install BI for SCCM](guides/install-bi-for-sccm.md)
-- [Request a License Key](guides/request-a-license-key.md)
-- [Install Power BI Gateway](guides/install-power-bi-gateway.md)
-- [Configure Database Access](guides/configure-database-access.md)
-- [Configure the Dataset](guides/configure-the-dataset.md)
+- [Install BI for SCCM](installation/getting-started/install-bi-for-sccm.md)
+- [Request a License Key](../shared/request-a-license.md)
+- [Install Power BI Gateway](installation/setup-guide/install-power-bi-gateway.md)
+- [Configure Database Access](installation/setup-guide/configure-database-access.md)
+- [Configure the Dataset](installation/setup-guide/configure-the-semantic-model.md)
 
 ## Guides
 
 Step-by-step instructions for configuring and customizing BI for SCCM.
 
-- [Dataset Parameters](guides/dataset-parameters.md)
-- [AD User Discovery](guides/ad-user-discovery.md)
-- [Backup Custom Reports](guides/backup-custom-reports.md)
+- [Dataset Parameters](administration/semantic-model-parameters.md)
+- [AD User Discovery](installation/setup-guide/ad-user-discovery.md)
+- [Backup Custom Reports](administration/backup-custom-reports.md)
 
 ### Inventory Extensions
 
 Extend ConfigMgr hardware inventory with custom data collection.
 
-- [Inventory BitLocker](guides/inventory-bitlocker.md)
-- [Inventory Local Admin Group](guides/inventory-local-admin-group.md)
-- [Inventory Lenovo Model Names](guides/inventory-lenovo-model-names.md)
-- [Inventory Microsoft 365 Apps](guides/inventory-microsoft-365-apps.md)
-- [Inventory Disk Types](guides/inventory-disk-types.md)
-- [Inventory Antivirus Software](guides/inventory-antivirus-software.md)
-- [Inventory Monitors](guides/inventory-monitors.md)
-- [Inventory Environment Variables](guides/inventory-environment-variables.md)
-- [Inventory USB Devices](guides/inventory-usb-devices.md)
-- [Collect Warranty Info](guides/collect-warranty-info.md)
+- [Inventory BitLocker](installation/custom-inventory/bitlocker.md)
+- [Inventory Local Admin Group](installation/custom-inventory/local-admin-group.md)
+- [Inventory Lenovo Model Names](installation/custom-inventory/lenovo-model-names.md)
+- [Inventory Microsoft 365 Apps](installation/custom-inventory/microsoft-365-apps.md)
+- [Inventory Disk Types](installation/custom-inventory/disk-types.md)
+- [Inventory Antivirus Software](installation/custom-inventory/antivirus-software.md)
+- [Inventory Monitors](installation/custom-inventory/monitors.md)
+- [Inventory Environment Variables](installation/custom-inventory/environment-variables.md)
+- [Inventory USB Devices](installation/custom-inventory/usb-devices.md)
+- [Collect Warranty Info](installation/custom-inventory/warranty-info.md)
 
 ## Release Notes
 

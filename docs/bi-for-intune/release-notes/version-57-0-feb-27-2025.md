@@ -1,5 +1,6 @@
 ---
 title: "Version 57.0 Feb. 27, 2025"
+render_macros: false
 ---
 # Versions 57.0 (AppSource Versions 1049)
 **BI for Intune Version 57 (February 27, 2025)**
@@ -7,7 +8,7 @@ title: "Version 57.0 Feb. 27, 2025"
 Version 57 resolves an issue in some environments that use Windows 365 (Cloud PC). This version also brings many new features that have been requested by customers. Please see the full list below.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 57.0

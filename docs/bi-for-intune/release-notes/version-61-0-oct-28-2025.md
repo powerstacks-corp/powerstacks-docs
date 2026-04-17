@@ -1,5 +1,6 @@
 ---
 title: "Version 61.0 Oct. 28, 2025"
+render_macros: false
 ---
 # What's New in BI for Intune v61
 **Release Date**: October 27, 2025
@@ -8,7 +9,7 @@ title: "Version 61.0 Oct. 28, 2025"
 Version 61 mainly brings improved stability and better synchronization performance to BI for Intune.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 # Version 61.0 Release Details
@@ -40,4 +41,4 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 - Microsoft Graph API instability (HTTP 503/504) continues to affect some tenants intermittently. The new **"AzureAD Application Assignment Enable"** parameter provides a temporary workaround. Please contact us if you have this issue. We need more support cases opened with Microsoft so they will prioritize resolving this!
 - If you have existing custom reports referencing the renamed object **"User Proxy Addresses"**, you must update them to use **"User Proxy Address"**.
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

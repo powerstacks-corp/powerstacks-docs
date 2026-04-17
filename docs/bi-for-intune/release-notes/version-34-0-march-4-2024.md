@@ -1,5 +1,6 @@
 ---
 title: "Version 34.0 March 4, 2024"
+render_macros: false
 ---
 # Version 34.0 (AppSource Version 1030)
 BI for Intune Version 34.0, shown as version 1030 in AppSource, was released on March 4, 2024.
@@ -16,7 +17,7 @@ This version introduces our custom inventory for macOS.
 **Bug Fixes:**
 - N/A
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](backup-custom-reports.md)
+- Always backup your custom reports using our [backup process.](../administration/backup-custom-reports.md)
 
 
 
@@ -25,7 +26,7 @@ This version introduces our custom inventory for macOS.
 
 We have been using PowerShell to collect information that Intune does not natively collect from Windows devices for quite a while. Most customers using a remediation script as a method to schedule the script to run on a reoccurring basis. We are now doing the same for macOS using a bash script. We created this script at the request of a customer. It collects the installed software from macOS and sends that to Log Analytics just like our PowerShell script does on Windows. You can deploy the script as a Shell script from Intune. Ideally the script should be run once per day on each device. This way any changes to the device get captured.
 
-Below is the inventory script for macOS. Make sure you configure the **CustomerID** and **SharedKey** according to our [documentation here](macos-inventory-collection-script.md).
+Below is the inventory script for macOS. Make sure you configure the **CustomerID** and **SharedKey** according to our [documentation here](../installation/custom-inventory/macos-inventory-collection-script.md).
 
 					Batch
 

@@ -1,5 +1,6 @@
 ---
 title: "Version 14.0 Jan. 23, 2026"
+render_macros: false
 ---
 # What's New in BI for Defender v14
 **Release Date**: January 23, 2026
@@ -12,7 +13,7 @@ This release introduces support for System device tags and updates tagging behav
 These changes improve reporting accuracy and visibility into device security posture.
 
 **Important Notes:**
-As always—before upgrading, [back up your custom reports](create-backup-workspace.md) to prevent data loss.
+As always—before upgrading, [back up your custom reports](../administration/create-backup-workspace.md) to prevent data loss.
 
 
 ## Version 14.0 Release Details

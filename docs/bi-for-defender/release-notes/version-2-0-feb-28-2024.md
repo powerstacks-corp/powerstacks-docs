@@ -1,5 +1,6 @@
 ---
 title: "Version 2.0 Feb. 28, 2024"
+render_macros: false
 ---
 # Version 2.0 (AppSource Version 1001)
 BI for Defender Version 2.0, shown as version 1001 in AppSource, was released on February 28, 2024.
@@ -15,4 +16,4 @@ BI for Defender Version 2.0, shown as version 1001 in AppSource, was released on
 **Bug Fixes:**
 - N/A
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+- Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)

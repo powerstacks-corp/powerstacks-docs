@@ -10,7 +10,7 @@ hide:
 </div>
 
 <div class="quick-links">
-  <a class="quick-link-card" href="guides/install-bi-for-intune/">
+  <a class="quick-link-card" href="installation/getting-started/install-bi-for-intune/">
     <span class="card-icon">
       <img src="images/icon-overview.svg" alt="" class="skip-lightbox">
     </span>
@@ -19,7 +19,7 @@ hide:
       <span class="card-title">Setup Guide</span>
     </span>
   </a>
-  <a class="quick-link-card" href="guides/create-azure-ad-app-registration/">
+  <a class="quick-link-card" href="installation/setup-guide/create-entra-app-registration/">
     <span class="card-icon">
       <img src="images/icon-how-to-guide.svg" alt="" class="skip-lightbox">
     </span>
@@ -51,37 +51,37 @@ Extend your reporting with PowerShell-based inventory scripts for BitLocker, loc
 
 ## Getting Started
 
-- [Install BI for Intune](guides/install-bi-for-intune.md)
-- [Request a Trial License](guides/request-a-trial-license.md)
+- [Install BI for Intune](installation/getting-started/install-bi-for-intune.md)
+- [Request a Trial License](../shared/request-a-license.md)
 
 ## Setup Guide
 
-- [Create App Registration](guides/create-azure-ad-app-registration.md)
-- [Configure the Dataset](guides/configure-the-dataset.md)
-- [Configure Data Sync](guides/configure-data-sync.md)
-- [Export API Parameter](guides/export-api-parameter.md)
+- [Create App Registration](installation/setup-guide/create-entra-app-registration.md)
+- [Configure the Dataset](installation/setup-guide/configure-the-semantic-model.md)
+- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
+- [Export API Parameter](installation/setup-guide/export-api-parameter.md)
 
 ## Log Analytics Setup
 
-- [Connect Power BI to Log Analytics](guides/edit-azure-ad-app-registration.md)
-- [Dataset Settings for Log Analytics](guides/dataset-settings-for-custom-inventory.md)
+- [Connect Power BI to Log Analytics](installation/log-analytics/edit-entra-app-registration.md)
+- [Dataset Settings for Log Analytics](installation/log-analytics/semantic-model-settings-for-log-analytics.md)
 
 ## Custom Inventory
 
-- [Create Inventory App Registration](guides/create-inventory-app-registration.md)
-- [Deploy Custom Inventory Resources](guides/configure-log-analytics.md)
-- [Windows Inventory Collection Script](guides/windows-inventory-collection-script.md)
-- [macOS Inventory Collection Script](guides/macos-inventory-collection-script.md)
+- [Create Inventory App Registration](installation/custom-inventory/create-inventory-app-registration.md)
+- [Deploy Custom Inventory Resources](installation/custom-inventory/deploy-custom-inventory-resources.md)
+- [Windows Inventory Collection Script](installation/custom-inventory/windows-inventory-collection-script.md)
+- [macOS Inventory Collection Script](installation/custom-inventory/macos-inventory-collection-script.md)
 
 ## WUfB Reports
 
-- [Windows Update for Business Reports](guides/wufb-reports.md)
+- [Windows Update for Business Reports](installation/log-analytics/wufb-reports.md)
 
 ## Administration
 
-- [Dataset Parameters](guides/dataset-parameters.md)
-- [Backup Custom Reports](guides/backup-custom-reports.md)
-- [Perform In-place Upgrade](guides/perform-in-place-upgrade.md)
+- [Dataset Parameters](administration/semantic-model-parameters.md)
+- [Backup Custom Reports](administration/backup-custom-reports.md)
+- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
 
 ## Release Notes
 

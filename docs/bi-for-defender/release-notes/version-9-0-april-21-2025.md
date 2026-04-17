@@ -1,11 +1,12 @@
 ---
 title: "Version 9.0 April 21, 2025"
+render_macros: false
 ---
 # Version 9.0 (AppSource Version 1009)
 Version 9.0 introduces powerful new reporting features, including comprehensive browser extension visibility and key enhancements to device and license management. This update also adds a new semantic model parameter and continues to build on highly requested capabilities.
 
 **Important Notes:**
-If you missed version 8.0, please [review the critical change](http://ec2-35-94-201-107.us-west-2.compute.amazonaws.com/wordpress/bi-for-defender-change-log/version-8-0-march-10-2025/) related to vulnerabilities and security update filtering.  And as always—before upgrading, [back up your custom reports](create-backup-workspace.md) to prevent data loss.
+If you missed version 8.0, please [review the critical change](http://ec2-35-94-201-107.us-west-2.compute.amazonaws.com/wordpress/bi-for-defender-change-log/version-8-0-march-10-2025/) related to vulnerabilities and security update filtering.  And as always—before upgrading, [back up your custom reports](../administration/create-backup-workspace.md) to prevent data loss.
 
 
 ## Below are the Changes in Version 9.0

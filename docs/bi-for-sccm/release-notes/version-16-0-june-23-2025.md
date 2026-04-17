@@ -1,5 +1,6 @@
 ---
 title: "Version 16.0 June 23, 2025"
+render_macros: false
 ---
 # Version 16.0 (AppSource Version 1022)
 **Release Date**: June 23, 2025
@@ -8,7 +9,7 @@ title: "Version 16.0 June 23, 2025"
 BI for SCCM Version 16.0, shown as version 1022 in AppSource, was released on June 23, 2025. This is a small maintenance release. Please see the full list below.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 16.0
@@ -35,4 +36,4 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 ### Important Notes
 
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

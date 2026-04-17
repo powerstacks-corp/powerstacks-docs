@@ -1,5 +1,5 @@
 ---
-title: "Create Azure AD App Registration"
+title: "Create Entra App Registration"
 ---
 # Create Azure App Registration
 Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data sources is done using application permissions. Here we are configuring the permissions required for Power BI to connect to the data sources to get the data.
@@ -13,7 +13,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Log in to **portal.azure.com** or **entra.microsoft.com** using a global administrator account.
 1. Search for and select **App registrations**.
 1. Select **New registration**.
-![](../images/New_Registration-1024x491.png)
+![](../../images/New_Registration-1024x491.png)
 ### Step 2: Register a new application
 
 
@@ -21,43 +21,43 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Enter a **Name** for the application. (This will not be seen by anyone other than admins.)
 1. Specify who can use the application as **Accounts in this organizational directory only**.
 1. Select **Register**.
-![](../images/Register_App-788x1024.png)
+![](../../images/Register_App-788x1024.png)
 ### Step 3: Navigate to API Permissions
 
 
 
 1. On the Enterprise App page select **API Permissions**.
-![](../images/API_Permissions-1024x530.png)
+![](../../images/API_Permissions-1024x530.png)
 ### Step 4: Remove the User.Read permission
 
 
 
 1. Remove the **User.Read** permission.
-![](../images/Remove_User_Read-1024x277.png)
+![](../../images/Remove_User_Read-1024x277.png)
 ### Step 5: Confirm permission removal
 
 
 
 1. When prompted to remove the permission, select **Yes, remove**.
-![](../images/yes_remove-1024x185.png)
+![](../../images/yes_remove-1024x185.png)
 ### Step 6: Add a new permission
 
 
 
 1. Select **Add a permission**.
-![](../images/add_permission-1024x425.png)
+![](../../images/add_permission-1024x425.png)
 ### Step 7: Select Microsoft Graph
 
 
 
 1. Select **Microsoft Graph**.
-![](../images/MS_graph-1024x434.png)
+![](../../images/MS_graph-1024x434.png)
 ### Step 8: Select Application permissions
 
 
 
 1. Select **Application permissions**.
-![](../images/application_permissions-1024x403.png)
+![](../../images/application_permissions-1024x403.png)
 ### Step 9: Add DeviceManagement permissions
 
 
@@ -70,7 +70,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
     - **DeviceManagementRBAC.Read.All**
     - **DeviceManagementServiceConfig.Read.All**
 1. Do not select the **Add permissions** button yet — you will do so in a later step.
-![](../images/Device-Management-Permissions-692x1024.png)
+![](../../images/Device-Management-Permissions-692x1024.png)
 ### Step 10: Add Directory.Read.All permission
 
 
@@ -78,7 +78,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Search for **Directory**.
 1. Select **Directory.Read.All**.
 1. Do not select the **Add permissions** button yet — you will do so in a later step.
-![](../images/Directory-Permissions-1024x715.png)
+![](../../images/Directory-Permissions-1024x715.png)
 ### Step 11: Add AuditLog.Read.All permission
 
 
@@ -86,7 +86,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Search for **AuditLog**.
 1. Select **AuditLog.Read.All**.
 1. Do not select the **Add permissions** button yet — you will do so in a later step.
-![](../images/Audit-Log-Permissions-1024x615.png)
+![](../../images/Audit-Log-Permissions-1024x615.png)
 ### Step 12: Add Policy.Read.All permission
 
 
@@ -94,7 +94,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Search for **Policy**.
 1. Select **Policy.Read.All**.
 1. Do not select the **Add permissions** button yet — you will do so in a later step.
-![](../images/Policy-with-CAP-1024x883.png)
+![](../../images/Policy-with-CAP-1024x883.png)
 ### Step 13: Add CloudPC.Read.All permission
 
 !!! note
@@ -103,7 +103,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Search for **CloudPC**.
 1. Select **CloudPC.Read.All**.
 1. Do not select the **Add permissions** button yet — you will do so in the next step.
-![cloudpc readall](../images/cloudpc_readall-1024x774.png)
+![cloudpc readall](../../images/cloudpc_readall-1024x774.png)
 ### Step 14: Add Reports.Read.All and apply
 
 
@@ -111,21 +111,21 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Search for **Reports**.
 1. Select **Reports.Read.All**.
 1. Select **Add permissions**.
-![](../images/Reports-Permissions-plus-add-693x1024.png)
+![](../../images/Reports-Permissions-plus-add-693x1024.png)
 ### Step 15: Add another permission
 
 !!! note
     Skip directly to Step 20 if you do not plan to use the Custom Inventory solution.
 
 1. Select **Add a permission**.
-![](../images/Add-Another-Permission-1024x566.png)
+![](../../images/Add-Another-Permission-1024x566.png)
 ### Step 16: Select organization APIs
 
 !!! note
     Only required for Custom Inventory.
 
 1. Select **APIs my organization uses**.
-![](../images/API-for-My-Org-1024x626.png)
+![](../../images/API-for-My-Org-1024x626.png)
 ### Step 17: Select Log Analytics API
 
 !!! note
@@ -133,14 +133,14 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 
 1. Search for **Log Analytics**.
 1. Select **Log Analytics API**.
-![](../images/Log-Analytics-API-1024x429.png)
+![](../../images/Log-Analytics-API-1024x429.png)
 ### Step 18: Select Application permissions
 
 !!! note
     Only required for Custom Inventory.
 
 1. Select **Application Permissions**.
-![](../images/Log-Analytics-Applicattion-Permissions-1024x359.png)
+![](../../images/Log-Analytics-Applicattion-Permissions-1024x359.png)
 ### Step 19: Add Data.Read permission
 
 !!! note
@@ -148,26 +148,26 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 
 1. Select **Data.Read**.
 1. Select **Add permissions**.
-![](../images/Log-Analytics-Data.Read_-692x1024.png)
+![](../../images/Log-Analytics-Data.Read_-692x1024.png)
 ### Step 20: Grant admin consent
 
 
 
 1. Select **Grant admin consent** for your tenant.
-![](../images/Grant-Admin-Consent-1024x667.png)
+![](../../images/Grant-Admin-Consent-1024x667.png)
 ### Step 21: Confirm admin consent
 
 
 
 1. Select **Yes** at the prompt.
-![](../images/Admin-Consent-Yes-1024x108.png)
+![](../../images/Admin-Consent-Yes-1024x108.png)
 ### Step 22: Create a new client secret
 
 
 
 1. Select **Certificates & secrets**.
 1. Select **New client secret**.
-![](../images/Certificates-and-Secrets-1024x569.png)
+![](../../images/Certificates-and-Secrets-1024x569.png)
 ### Step 23: Configure the client secret
 
 
@@ -175,13 +175,13 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Enter a **Description**.
 1. Select a value for **Expires**.
 1. Select **Add**.
-![](../images/Add-a-client-secret-479x1024.png)
+![](../../images/Add-a-client-secret-479x1024.png)
 ### Step 24: Record the client secret value
 
 
 
 1. Record the **Value** data as the Azure AD Client Secret. This will be used later in the installation process. The value can only be displayed once, if you fail to record it here you will have to create a new one.
-![](../images/Client-Secret-Value-1024x203.png)
+![](../../images/Client-Secret-Value-1024x203.png)
 ### Step 25: Record the application IDs
 
 
@@ -190,4 +190,4 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Record the **Application (client) ID** as the Azure AD Client ID. This will be used later in the installation process.
 1. Record the **Directory (tenant) ID** as the Azure AD Tenant ID. This will be used later in the installation process.
 1. The Azure AD Application registration is now complete.
-![](../images/Overview-1024x228.png)
+![](../../images/Overview-1024x228.png)

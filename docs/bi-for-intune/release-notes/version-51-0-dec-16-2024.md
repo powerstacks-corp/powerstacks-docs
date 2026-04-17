@@ -1,11 +1,12 @@
 ---
 title: "Version 51.0 Dec. 16, 2024"
+render_macros: false
 ---
 # Versions 51.0 (AppSource Versions 1046)
 On December 11, 2024, we released BI for Intune version 51. This update is primarily targeted to GCC and GCC high customers.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 51.0

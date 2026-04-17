@@ -1,12 +1,13 @@
 ---
 title: "Version 45.0 Sept. 15, 2024"
+render_macros: false
 ---
 # Version 45.0 (AppSource Version 1040)
 Version 45 was released to address a very specific edge case that was discovered by one customer.
 
 **Important Notes:**
 
-- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 45.0

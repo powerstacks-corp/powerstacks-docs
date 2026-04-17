@@ -1,5 +1,6 @@
 ---
 title: "Version 36.0 March 22, 2024"
+render_macros: false
 ---
 # Version 36.0 (AppSource Version 1032)
 BI for Intune Version 36.0, shown as version 1032 in AppSource, was released on March 22, 2024.
@@ -14,4 +15,4 @@ BI for Intune Version 36.0, shown as version 1032 in AppSource, was released on 
 **Bug Fixes:**
 - N/a
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](backup-custom-reports.md)
+- Always backup your custom reports using our [backup process.](../administration/backup-custom-reports.md)

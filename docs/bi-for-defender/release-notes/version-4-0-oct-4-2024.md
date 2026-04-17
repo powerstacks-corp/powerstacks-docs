@@ -1,13 +1,14 @@
 ---
 title: "Version 4.0 Oct. 4, 2024"
+render_macros: false
 ---
 # Version 4.0 (AppSource Version 1004)
 BI for Defender Version 4.0, shown as version 1004 in AppSource, was released on October 4, 2024. Version 4 includes many requested improvements.
 
 **Important Notes:**
 
-- New permissions are required on the [App Registration](azure-ad-app-permissions.md) in Azure. Reports will be blank if these are not added.Directory.Read.All
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](create-backup-workspace.md)!
+- New permissions are required on the [App Registration](../administration/entra-app-permissions.md) in Azure. Reports will be blank if these are not added.Directory.Read.All
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/create-backup-workspace.md)!
 
 
 ## Below Are The Changes in Version 4.0
@@ -65,4 +66,4 @@ New fields added to the "Device" entity in the semantic model:
 - Resolved an issue preventing alerts from showing up on the "Incidents & Alerts" page.
 **Important Notes:**
 - New permissions are required on the App Registration in Azure. Reports will be blank if these are not added.Directory.Read.All
-Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)

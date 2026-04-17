@@ -1,8 +1,8 @@
 ---
-title: "Azure AD App Permissions"
+title: "Entra App Permissions"
 ---
-# Azure AD Application Required Permissions
-Below are all of the permissions required to be configured on the Azure AD App Registration. Some are optional depending upon the features of BI for Intune that you intend to enable. See [Create Azure AD App Registration](create-azure-ad-app-registration.md) for more information.
+# Entra Application Required Permissions
+Below are all of the permissions required to be configured on the Azure AD App Registration. Some are optional depending upon the features of BI for Intune that you intend to enable. See [Create Azure AD App Registration](../installation/setup-guide/create-entra-app-registration.md) for more information.
 
 **Prerequisites:**The user configuring these permissions requires Global Admin and Subscription Admin rights.
 

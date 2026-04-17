@@ -1,5 +1,6 @@
 ---
 title: "Version 60.0 June 14, 2025"
+render_macros: false
 ---
 # What's New in BI for Intune v60
 **Release Date**: June 14, 2025
@@ -8,7 +9,7 @@ title: "Version 60.0 June 14, 2025"
 Version 60 brings some very exciting new features. Most notably the ability to track actions over time. We've added measures added new fields and measures for tracking device enrollments, OS installations, and cumulative update installations over time.  This will be very handy for reporting on how many days it takes to reach compliance after updates are released, tracking the progress of migrating to Intune, and/or tracking the progress of migrating to a new OS version.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 # Version 60.0 Release Details
@@ -19,7 +20,7 @@ Several customers have recently reported upgrade failures resulting in the loss 
 - For "**Startup Performance**" data we now use the Export API instead of Graph. This will improve sync performance times.
 - For "**Device Enrollment Failure**" data we now use the Export API instead of Graph. This will improve sync performance times.
 - For "**Proactive Remediation State**" data we now use the Export API instead of Graph. This will improve sync performance times.
-- The [Custom Inventory Script for Windows](windows-inventory-collection-script.md) has been updated to include HP warranty information. (**Note**: In our testing the HP API has shown to be highly unreliable so it might take a while to get inventory data back for all of your HP devices.)
+- The [Custom Inventory Script for Windows](../installation/custom-inventory/windows-inventory-collection-script.md) has been updated to include HP warranty information. (**Note**: In our testing the HP API has shown to be highly unreliable so it might take a while to get inventory data back for all of your HP devices.)
 - The **Custom Inventory Script for Windows** now caches warranty data to a .json file locally on each device so that it is no longer necessary to call the warranty API's monthly.
 
 ### New Features
@@ -53,7 +54,7 @@ Several customers have recently reported upgrade failures resulting in the loss 
 - The OS install date information requires upgrading to the latest version of the Custom Inventory script for Windows.$ComputerOSInstallDate=$ComputerInfo.OsInstallDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ")
 - $Inventory | Add-Member -MemberType NoteProperty -Name "OSInstallDate" -Value "$ComputerOSInstallDate" -Force
 
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!
 
 
 ## Example Report of Cumulative Updates Installed Per Day

@@ -1,5 +1,6 @@
 ---
 title: "Version 14.0 March 9, 2025"
+render_macros: false
 ---
 # Version 14.0 (AppSource Version 1020)
 **BI for SCCM Version 14 (March 9, 2025)**
@@ -7,7 +8,7 @@ title: "Version 14.0 March 9, 2025"
 BI for SCCM Version 14.0, shown as version 1020 in AppSource, was released on March 9, 2025. This version brings many new features that have been requested by customers. Please see the full list below.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 14.0
@@ -46,4 +47,4 @@ Update to the "Package Deployment Details" object in the data model. New field:
 
 **Important Notes:**
 
-- Always backup your custom reports using our [backup process](backup-custom-reports.md).
+- Always backup your custom reports using our [backup process](../administration/backup-custom-reports.md).

@@ -1,5 +1,6 @@
 ---
 title: "Version 53.0 Jan. 7, 2025"
+render_macros: false
 ---
 # Versions 53.0 (AppSource Versions 1047)
 **BI for Intune Version 53 (January 7, 2025)**
@@ -9,7 +10,7 @@ Version 53 resolves a critical issue caused by a recent change to a Microsoft AP
 
 **Important Notes:**
 
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 

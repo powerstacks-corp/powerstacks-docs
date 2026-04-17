@@ -1,5 +1,6 @@
 ---
 title: "Version 65.0 Feb. 21, 2026"
+render_macros: false
 ---
 # What's New in BI for Intune v65
 **Release Date**: February 21, 2026
@@ -25,4 +26,4 @@ These enhancements support improved investigation and reporting of user sign-in 
 
 ### Important Notes
 
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

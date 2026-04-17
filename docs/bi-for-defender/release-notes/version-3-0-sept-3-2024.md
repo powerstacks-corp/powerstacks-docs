@@ -1,15 +1,16 @@
 ---
 title: "Version 3.0 Sept. 3, 2024"
+render_macros: false
 ---
 # Version 3.0 (AppSource Version 1003)
 BI for Defender Version 3.0, shown as version 1001 in AppSource, was released on September 3, 2024. Version 3 includes many requested improvements such as Secure Score and Incidents and Alerts.
 
 **Important Notes:**
 
-- New permissions are required on the [App Registration](azure-ad-app-permissions.md) in Azure. Reports will be blank if these are not added.SecurityEvents.Read.All
+- New permissions are required on the [App Registration](../administration/entra-app-permissions.md) in Azure. Reports will be blank if these are not added.SecurityEvents.Read.All
 - SecurityAlert.Read.All
 - SecurityIncident.Read.All
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](create-backup-workspace.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/create-backup-workspace.md)!
 
 
 ## Below Are The Changes in Version 3.0
@@ -84,7 +85,7 @@ New fields added to the "Device" category in the Semantic Model:
 - New permissions are required on the App Registration in Azure. Reports will be blank if these are not added.SecurityEvents.Read.All
 - SecurityAlert.Read.All
 - SecurityIncident.Read.All
-Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)
 
 ## New Incidents & Alerts Page
 ![defender incident report](../images/defender_incident_report-1024x569.png)

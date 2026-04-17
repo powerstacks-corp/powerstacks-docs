@@ -1,5 +1,6 @@
 ---
 title: "Version 17.0 February 20, 2026"
+render_macros: false
 ---
 # Version 17.0 (AppSource Version 1023)
 **Release Date**: February 20, 2026
@@ -10,7 +11,7 @@ This release introduces the new Computer Network Card object, enhances Logical D
 It also replaces the Is Encrypted field with updated Protection and Conversion status fields for more precise BitLocker state reporting. Review breaking changes if you reference encryption fields in custom reports.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 17.0
@@ -39,4 +40,4 @@ Several customers have recently reported upgrade failures resulting in the loss 
 - A new hardware class must be enabled in SCCM to populate BitLocker-related fields on the **Encryption Status** page.
 - Updated BitLocker status logic to align Encryption Status, Protection Status, and Conversion Status values for clearer reporting states.
 - Encryption Readiness now reflects volume initialization state where IsVolumeInitializedForProtec0 = 0 is reported as Not Ready and 1 is reported as Ready.
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

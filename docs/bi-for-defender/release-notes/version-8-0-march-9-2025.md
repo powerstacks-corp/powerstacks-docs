@@ -1,12 +1,13 @@
 ---
 title: "Version 8.0 March 9, 2025"
+render_macros: false
 ---
 # Version 8.0 (AppSource Version 1008)
 BI for Defender Version 8.0, shown as version 1008 in AppSource, was released on March 09, 2025.
 
 **Important Notes:**
 
-- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](create-backup-workspace.md)!
+- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/create-backup-workspace.md)!
 
 
 ## Below are the Changes in Version 8.0
@@ -44,7 +45,7 @@ The "Summary "page is impacted by updates made in this version.
 - "Vulnerabilities"
 You will need to add the filter "Software Vulnerabilities":"Is Active" = True and the filter "Vulnerability Name" Is Not BLANK on the following visual in your custom reports:
 - "Exposed Devices"
-Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)
 
 ## The New Fixed Vulnerabilities Page
 

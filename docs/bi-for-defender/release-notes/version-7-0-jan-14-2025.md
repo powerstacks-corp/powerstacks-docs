@@ -1,5 +1,6 @@
 ---
 title: "Version 7.0 Jan. 14, 2025"
+render_macros: false
 ---
 # Version 7.0 (AppSource Version 1007)
 BI for Defender Version 7.0, shown as version 1007 in AppSource, was released on January 14, 2025.
@@ -8,7 +9,7 @@ This release introduces multi-cloud support and brings several new features.
 
 **Important Notes:**
 
-- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](create-backup-workspace.md)!
+- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/create-backup-workspace.md)!
 
 
 ## Below are the Changes in Version 7.0
@@ -50,4 +51,4 @@ Renamed the "**AzureAD AdvancedHunting Process Event Day(s)**" dataset parameter
 **Bug Fixes:**
 - Proxy Parameter. When "AzureAD Proxy Enable" = "TRUE" (Default: TRUE)
 
-- **Important Notes:**Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+- **Important Notes:**Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)

@@ -1,5 +1,6 @@
 ---
 title: "Version 13.0 Jan. 15, 2025"
+render_macros: false
 ---
 # Version 13.0 (AppSource Version 1019)
 **BI for SCCM Version 13 (Jan. 14, 2025)**
@@ -7,7 +8,7 @@ title: "Version 13.0 Jan. 15, 2025"
 BI for SCCM Version 13.0, shown as version 1019 in AppSource, was released on Jan. 14, 2025. This version brings many new features that have been requested by customers. Please see the full list below.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 13.0
@@ -35,4 +36,4 @@ Several customers have recently reported upgrade failures resulting in the loss 
 
 **Important Notes:**
 
-- Always backup your custom reports using our [backup process](backup-custom-reports.md).
+- Always backup your custom reports using our [backup process](../administration/backup-custom-reports.md).

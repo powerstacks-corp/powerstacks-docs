@@ -1,5 +1,6 @@
 ---
 title: "Version 12.0 Oct. 12, 2025"
+render_macros: false
 ---
 # What's New in BI for Defender v12
 **Release Date**: October 12, 2025

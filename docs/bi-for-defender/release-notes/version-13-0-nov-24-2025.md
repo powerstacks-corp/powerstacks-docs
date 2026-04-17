@@ -1,5 +1,6 @@
 ---
 title: "Version 13.0 Nov. 24, 2025"
+render_macros: false
 ---
 # What's New in BI for Defender v13
 **Release Date**: November 25, 2025
@@ -8,7 +9,7 @@ title: "Version 13.0 Nov. 24, 2025"
 Version 13 is a small maintenance release to fix some minor bugs that affected a limited number of customers.
 
 **Important Notes:**
-As always—before upgrading, [back up your custom reports](create-backup-workspace.md) to prevent data loss.
+As always—before upgrading, [back up your custom reports](../administration/create-backup-workspace.md) to prevent data loss.
 
 
 ## Version 13.0 Release Details

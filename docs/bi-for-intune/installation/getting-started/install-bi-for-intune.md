@@ -21,7 +21,7 @@ To get started select the **Install Now** button to be directed to Microsoft App
 
 1. Select the **Install Now** button above.
 1. On the **BI for Intune** page in **Microsoft AppSource** select **Get it now**.
-![](../images/Intune_Get_it_now-1024x593.png)
+![](../../images/Intune_Get_it_now-1024x593.png)
 ### Step 2: Sign in with your work email
 
 
@@ -29,7 +29,7 @@ To get started select the **Install Now** button to be directed to Microsoft App
 
 
 1. Enter your **work email address** and select **Sign in**.
-![](../images/Sign-in.png)
+![](../../images/Sign-in.png)
 ### Step 3: Install the app
 
 
@@ -37,15 +37,15 @@ To get started select the **Install Now** button to be directed to Microsoft App
 
 
 1. Select **Install**.
-![](../images/Agree-and-Install-1-1024x447.png)
+![](../../images/Agree-and-Install-1-1024x447.png)
 ### Step 4: Wait for installation to complete
 
 
 
 
 
-1. You will see a notification that BI for Install is installing. Once this has disappeared you have successfully installed BI for Intune. You may now view the app using the sample data provided or you can connect your data by [requesting a trial license key](request-a-trial-license.md).
-![](../images/Installing-App.png)
+1. You will see a notification that BI for Install is installing. Once this has disappeared you have successfully installed BI for Intune. You may now view the app using the sample data provided or you can connect your data by [requesting a trial license key](../../../shared/request-a-license.md).
+![](../../images/Installing-App.png)
 ### Step 5: View the app with sample data
 
 
@@ -53,4 +53,4 @@ To get started select the **Install Now** button to be directed to Microsoft App
 
 
 1. Upon opening the BI for Intune workspace you may notice a banner that says, "**You're viewing this app with sample data. Connect your data**." This can be safely ignored. If you'd like to try BI for Intune before connecting your data it installs with sample data. If you prefer to go ahead and see your own data proceed to the next step in our documentation.
-![](../images/Intune-Connect-Your-Data-1024x282.png)
+![](../../images/Intune-Connect-Your-Data-1024x282.png)

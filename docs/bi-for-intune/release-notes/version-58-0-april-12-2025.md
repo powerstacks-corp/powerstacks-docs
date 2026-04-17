@@ -1,13 +1,14 @@
 ---
 title: "Version 58.0 April 12, 2025"
+render_macros: false
 ---
 # Versions 58.0 (AppSource Versions 1050)
 **BI for Intune Version 58 (April 12, 2025)**
 
-Version 58 is a very large release with many additions to the [custom inventory for Windows process](windows-inventory-collection-script.md). These are some highly requested features. See the details below.
+Version 58 is a very large release with many additions to the [custom inventory for Windows process](../installation/custom-inventory/windows-inventory-collection-script.md). These are some highly requested features. See the details below.
 
 **Important Notes:**
-Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 ## Below Are the Changes in Version 58.0
@@ -103,7 +104,7 @@ Added new parameters:
 **Bug Fixes:**
 - Beginning with version 57 we calculated the value of the “OS” field to display as “Windows 10” or “Windows 11” based upon the third octet of the OS version. This caused issues for customers who manage server OS Defender settings using Intune. In this version we corrected this by only calculating the OS field value for known workstation operating systems. For unknown operating systems you will simply see “Windows”, the default value returned by the Microsoft API, instead of “Windows 10” or “Windows 11”.
 **Important Notes:**
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!
 
 
 ## The New Warranty Status Page

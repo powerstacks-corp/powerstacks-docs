@@ -1,5 +1,6 @@
 ---
 title: "Version 15.0 February 26, 2026"
+render_macros: false
 ---
 # What's New in BI for Defender v15
 **Release Date**: February 26, 2026

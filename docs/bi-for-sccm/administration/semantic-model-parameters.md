@@ -1,7 +1,7 @@
 ---
-title: "Dataset Parameters"
+title: "Semantic Model Parameters"
 ---
-# Dataset Parameters
+# Semantic Model Parameters
 
 ## Configure The Dataset Parameters
 The BI for SCCM dataset contains some parameters that must be configured to synchronize data from ConfigMgr to Power BI. Other parameters add additional functionality to BI for SCCM. In this article we will only configure the parameters required for basic functionality. Optional parameters are discussed in other articles within our documentation.

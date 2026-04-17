@@ -1,8 +1,8 @@
 ---
-title: "Azure AD App Permissions"
+title: "Entra App Permissions"
 ---
-# Azure AD Application Required Permissions
-Below are all of the permissions required to be configured on the BI for Defender Azure AD App Registration. See [Create Azure AD App Registration](create-azure-ad-app-registration.md) for more information.
+# Entra Application Required Permissions
+Below are all of the permissions required to be configured on the BI for Defender Azure AD App Registration. See [Create Azure AD App Registration](../installation/setup-guide/create-entra-app-registration.md) for more information.
 
 **Prerequisites:**The user configuring these permissions requires Global Admin and Subscription Admin rights.
 

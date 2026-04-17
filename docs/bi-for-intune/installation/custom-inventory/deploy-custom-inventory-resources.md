@@ -7,7 +7,7 @@ Log Analytics is a tool in the Azure portal to edit and run log queries. We leve
 Custom inventory data is sent to Log Analytics using the **Azure Monitor Logs Ingestion API**. This requires deploying a set of Azure resources (Data Collection Endpoint, Data Collection Rule, and custom tables) which can be automated using our ARM template.
 
 !!! info "Already have a Log Analytics workspace?"
-    If you previously set up [WUfB Reports](wufb-reports.md) and already have a Log Analytics workspace, select **Use an existing workspace** in Step 1 below and point it to that workspace. Custom inventory and WUfB Reports **must share the same workspace**.
+    If you previously set up [WUfB Reports](../log-analytics/wufb-reports.md) and already have a Log Analytics workspace, select **Use an existing workspace** in Step 1 below and point it to that workspace. Custom inventory and WUfB Reports **must share the same workspace**.
 
 **Prerequisites:**
 
@@ -55,20 +55,20 @@ The deployment creates the following resources:
 In this step you assign the **Log Analytics Reader** role to your **Power BI app registration** so that Power BI can read the custom inventory data from the workspace.
 
 1. In the **Azure portal** search for, and select, **Log Analytics workspaces**.
-![](../images/Search-for-LA-1024x266.png)
+![](../../images/Search-for-LA-1024x266.png)
 1. Select the **Log Analytics workspace** where you deployed the custom inventory resources.
-![](../images/Select-LA-Workspace-1024x267.png)
+![](../../images/Select-LA-Workspace-1024x267.png)
 1. Select **Access control (IAM)**.
-![](../images/IAM-1024x606.png)
+![](../../images/IAM-1024x606.png)
 1. Select **Add** > **Add role assignment**.
-![](../images/Add-Role-Assignment-1024x812.png)
+![](../../images/Add-Role-Assignment-1024x812.png)
 1. Search for and select **Log Analytics Reader**, then select **Next**.
-![](../images/Log-Analytics-Reader-591x1024.png)
+![](../../images/Log-Analytics-Reader-591x1024.png)
 1. Select **Assign access** to: **User, group, or service principal**.
 1. Select **+Select Members**.
 1. Search for and select the name of the **Power BI App Registration** (the one created when you installed BI for Intune — not the inventory app registration).
 1. Select **Next**, then **Review and assign**.
-![](../images/Select-Ent-App-1024x568.png)
+![](../../images/Select-Ent-App-1024x568.png)
 
 ### Step 4: Record the Workspace ID
 
@@ -76,7 +76,7 @@ In this step you assign the **Log Analytics Reader** role to your **Power BI app
 
 1. Open the **Log Analytics workspace** in the Azure portal.
 1. On the **Overview** page (or **Properties**), locate and record the **Workspace ID**.
-1. This value is needed for the [Dataset Settings for Log Analytics](dataset-settings-for-custom-inventory.md).
+1. This value is needed for the [Dataset Settings for Log Analytics](../log-analytics/semantic-model-settings-for-log-analytics.md).
 
 !!! note
     The Workspace Primary Key is no longer needed. The inventory scripts now authenticate using the Logs Ingestion API with the app registration credentials from the [Create Inventory App Registration](create-inventory-app-registration.md) guide.
@@ -92,10 +92,10 @@ You should now have the following values recorded:
 | **Client Secret** | [Inventory App Registration](create-inventory-app-registration.md) | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
 | **DceURI** | Step 2 — Deployment Outputs | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
 | **DcrImmutableId** | Step 2 — Deployment Outputs | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
-| **Workspace ID** | Step 4 — Log Analytics Workspace | [Dataset Settings for Log Analytics](dataset-settings-for-custom-inventory.md) |
+| **Workspace ID** | Step 4 — Log Analytics Workspace | [Dataset Settings for Log Analytics](../log-analytics/semantic-model-settings-for-log-analytics.md) |
 
 ### Next Steps
 
 - **Deploy inventory scripts:** [Windows Inventory Collection Script](windows-inventory-collection-script.md) or [macOS Inventory Collection Script](macos-inventory-collection-script.md)
-- **Connect Power BI to Log Analytics:** If you haven't already, complete the [Log Analytics Setup](edit-azure-ad-app-registration.md) pages to allow Power BI to read data from the workspace.
-- **Also setting up WUfB Reports?** See [WUfB Reports](wufb-reports.md). The workspace you created (or selected) above will be shared.
+- **Connect Power BI to Log Analytics:** If you haven't already, complete the [Log Analytics Setup](../log-analytics/edit-entra-app-registration.md) pages to allow Power BI to read data from the workspace.
+- **Also setting up WUfB Reports?** See [WUfB Reports](../log-analytics/wufb-reports.md). The workspace you created (or selected) above will be shared.

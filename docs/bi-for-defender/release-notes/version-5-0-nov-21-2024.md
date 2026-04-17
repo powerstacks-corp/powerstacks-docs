@@ -1,5 +1,6 @@
 ---
 title: "Version 5.0 Nov. 21, 2024"
+render_macros: false
 ---
 # Version 5.0 (AppSource Version 1005)
 BI for Defender Version 5.0, shown as version 1005 in AppSource, was released on November 21, 2024.
@@ -7,7 +8,7 @@ BI for Defender Version 5.0, shown as version 1005 in AppSource, was released on
 
 
 **Important Notes:**
- 	Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](create-backup-workspace.md)!
+ 	Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/create-backup-workspace.md)!
 
 
 ## Below Are The Changes in Version 5.0
@@ -33,4 +34,4 @@ BI for Defender Version 5.0, shown as version 1005 in AppSource, was released on
 
  	**Important Notes:**
 
-- Always backup your custom reports using our [backup process.](create-backup-workspace.md)
+- Always backup your custom reports using our [backup process.](../administration/create-backup-workspace.md)

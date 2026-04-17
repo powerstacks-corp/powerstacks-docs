@@ -1,7 +1,7 @@
 ---
-title: "Dataset Parameters"
+title: "Semantic Model Parameters"
 ---
-# Dataset Parameters Explained
+# Semantic Model Parameters Explained
 The BI for Defender dataset contains some parameters that must be configured to synchronize data from Defender for Endpoint to Power BI. Other parameters add additional functionality to BI for Defender. This article explains each of the parameters in detail.
 
 ### Step 1: Open the Defender Workspace
@@ -74,7 +74,7 @@ The BI for Defender dataset contains some parameters that must be configured to 
 
 1. Required configuration: **Yes**
 1. Default value: **Blank**
-1. The **Azure AD Client Secret** is the most common mistake that customers make when installing BI for Defender.  It is shown as the "Value" when adding the client secret to the [Azure AD App Registration](create-azure-ad-app-registration.md). The **Client Secret** does not have dashes (-) in it. The **Client Secret** looks similar to this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`
+1. The **Azure AD Client Secret** is the most common mistake that customers make when installing BI for Defender.  It is shown as the "Value" when adding the client secret to the [Azure AD App Registration](../installation/setup-guide/create-entra-app-registration.md). The **Client Secret** does not have dashes (-) in it. The **Client Secret** looks similar to this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`
 ![](../images/client_secret-1.png)
 ### Step 8: Configure AzureAD Pace API
 				AzureAD Pace API (s)

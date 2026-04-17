@@ -1,5 +1,6 @@
 ---
 title: "Version 64.0 Feb. 15, 2026"
+render_macros: false
 ---
 # What's New in BI for Intune v64
 **Release Date**: February 15, 2026
@@ -14,7 +15,7 @@ Improved sync reliability and updated policy reporting ensure more accurate visi
 **Important Notes:**
 
 - [**Action Required**] This version requires an additional Microsoft Graph permission to be added to the app registration in **Microsoft Entra ID**. Please add **Read.All**. Without this permission, the **Risky Users** page and related sync processes will not populate properly. Update your installation documentation to include this permission.
-- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](backup-custom-reports.md)!
+- Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
 
 
 # Version 64.0 Release Details
@@ -51,4 +52,4 @@ Improved sync reliability and updated policy reporting ensure more accurate visi
 - [**Action Required**] This version requires an additional Microsoft Graph permission to be added to the app registration in **Microsoft Entra ID**. Please add **Read.All**. Without this permission, the **Risky Users** page and related sync processes will not populate properly. Update your installation documentation to include this permission.
 - Removed the **Windows Defender ATP** Custom reports referencing ATP fields must be updated to use **Windows Protection** fields.
 - Microsoft Graph API instability (HTTP 503/504) continues to affect some tenants intermittently. The new **"AzureAD Application Assignment Enable"** parameter provides a temporary workaround. Please contact us if you have this issue. We need more support cases opened with Microsoft so they will prioritize resolving this!
-- Always [backup your custom reports](backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](../administration/backup-custom-reports.md) before upgrading!

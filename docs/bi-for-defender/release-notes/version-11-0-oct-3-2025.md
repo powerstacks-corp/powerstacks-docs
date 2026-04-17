@@ -1,5 +1,6 @@
 ---
 title: "Version 11.0 Oct. 3, 2025"
+render_macros: false
 ---
 # What's New in BI for Defender v11
 **Release Date**: October 3, 2025
@@ -8,7 +9,7 @@ title: "Version 11.0 Oct. 3, 2025"
 Version 11 is a very big update. We've added several new report pages and many new data fields.
 
 **Important Notes:**
-[**Action Required!**] This version requires and additional permission to be added to the app registration in Entra ID. Without this new permission the sync will fail! Please add **CloudApp-Discovery.Read.All**to your [app registration](create-azure-ad-app-registration.md). And as always—before upgrading, [back up your custom reports](create-backup-workspace.md) to prevent data loss.
+[**Action Required!**] This version requires and additional permission to be added to the app registration in Entra ID. Without this new permission the sync will fail! Please add **CloudApp-Discovery.Read.All**to your [app registration](../installation/setup-guide/create-entra-app-registration.md). And as always—before upgrading, [back up your custom reports](../administration/create-backup-workspace.md) to prevent data loss.
 
 
 ## Version 11.0 Release Details

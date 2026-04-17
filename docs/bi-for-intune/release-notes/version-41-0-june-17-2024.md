@@ -1,5 +1,6 @@
 ---
 title: "Version 41.0 June 17, 2024"
+render_macros: false
 ---
 # Version 41.0 (AppSource Version 1036)
 BI for Intune Version 41.0, shown as version 1036 in AppSource, was released on June 17, 2024.
@@ -17,4 +18,4 @@ BI for Intune Version 41.0, shown as version 1036 in AppSource, was released on 
 **Bug Fixes:**
 - Fixed an issue that was causing sync failures. Root cause was determined to be inconsistencies in data formatting returned by Microsoft API's in various regions.
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](backup-custom-reports.md)
+- Always backup your custom reports using our [backup process.](../administration/backup-custom-reports.md)

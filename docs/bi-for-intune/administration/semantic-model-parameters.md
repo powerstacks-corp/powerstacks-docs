@@ -1,7 +1,7 @@
 ---
-title: "Dataset Parameters"
+title: "Semantic Model Parameters"
 ---
-# Dataset Parameters Explained
+# Semantic Model Parameters Explained
 The BI for Intune dataset contains some parameters that must be configured to synchronize data from Intune to Power BI. Other parameters add additional functionality to BI for Intune. This article explains each of the parameters in detail.
 
 ### Step 1: Open the BI for Intune workspace
@@ -84,7 +84,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: Yes
 1. Default value: blank
-1. The **Application (client) ID** from the [**Azure AD App Registration**](create-azure-ad-app-registration.md).
+1. The **Application (client) ID** from the [**Azure AD App Registration**](../installation/setup-guide/create-entra-app-registration.md).
 ![](../images/client_id.png)
 ### Step 9: Enter the Client Secret
 				AzureAD ClientSecret
@@ -95,7 +95,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: Yes
 1. Default value: Blank
-1. **The Azure AD Client Secret is the most common mistake that customers make when installing BI for Intune**.  It is shown as the "Value" when adding the client secret to the [**Azure AD App Registration**](create-azure-ad-app-registration.md). The **Client Secret** **does not** have dashes (-) in it. The **Client Secret** **looks similar** to this: aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890
+1. **The Azure AD Client Secret is the most common mistake that customers make when installing BI for Intune**.  It is shown as the "Value" when adding the client secret to the [**Azure AD App Registration**](../installation/setup-guide/create-entra-app-registration.md). The **Client Secret** **does not** have dashes (-) in it. The **Client Secret** **looks similar** to this: aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890
 ![](../images/client_secret-1.png)
 ### Step 10: Configure Sign-Ins Days
 				AzureAD Sign-Ins Day(s)
@@ -179,7 +179,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 1. Default value: Blank
 1. The export URL varies from one Azure tenant to another. If this value is not populated our code will find the correct URL that your Intune environment uses to export data, however, to avoid redirection and improve security it is recommended to set this parameter.
 1. Be sure to also set AzureAD Export URL Enable = TRUE when using this parameter.
-1. To learn more please see our [Configure Intune Export API](export-api-parameter.md) documentation.
+1. To learn more please see our [Configure Intune Export API](../installation/setup-guide/export-api-parameter.md) documentation.
 ![](../images/AzureAD-Export-URL.png)
 ### Step 17: Configure Export URL Timeout
 				AzureAD Export URL Timeout (s)

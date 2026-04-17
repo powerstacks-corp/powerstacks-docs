@@ -1,8 +1,9 @@
 ---
 title: "Version 40.0 June 8, 2024"
+render_macros: false
 ---
 # Version 40.0 (AppSource Version 1035)
-BI for Intune Version 40.0, shown as version 1035 in AppSource, was released on June 8, 2024. This version includes some modifications to our Windows custom inventory script. Customers should update to the latest version of the [custom inventory script](windows-inventory-collection-script.md).
+BI for Intune Version 40.0, shown as version 1035 in AppSource, was released on June 8, 2024. This version includes some modifications to our Windows custom inventory script. Customers should update to the latest version of the [custom inventory script](../installation/custom-inventory/windows-inventory-collection-script.md).
 
 
 ## Below Are the Changes in Version 40.0
@@ -20,4 +21,4 @@ BI for Intune Version 40.0, shown as version 1035 in AppSource, was released on 
 Fixed "Last Logon" being blank.
 - Format in the Microsoft API was changed from EPOCH to Datetime. We had to make changes to accommodate for this.
 **Important Notes:**
-- Always backup your custom reports using our [backup process.](backup-custom-reports.md)
+- Always backup your custom reports using our [backup process.](../administration/backup-custom-reports.md)

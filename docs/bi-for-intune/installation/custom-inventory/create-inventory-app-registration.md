@@ -11,7 +11,7 @@ The inventory collection scripts for Windows and macOS use a dedicated App Regis
 !!! info "Two App Registrations"
     BI for Intune uses **two separate App Registrations**:
 
-    1. **Power BI App Registration** — The app registration created during the [BI for Intune installation](create-azure-ad-app-registration.md). This is used by Power BI to **read** data from the Log Analytics workspace.
+    1. **Power BI App Registration** — The app registration created during the [BI for Intune installation](../setup-guide/create-entra-app-registration.md). This is used by Power BI to **read** data from the Log Analytics workspace.
     2. **Inventory App Registration** — Created in this guide. This is used by the Windows and macOS inventory scripts to **write** data to Log Analytics via the Logs Ingestion API.
 
 **Prerequisites:**
@@ -53,8 +53,8 @@ You should now have the following values ready:
 | **Tenant ID** | App Registration overview | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
 | **Client ID** | App Registration overview | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
 | **Client Secret** | Certificates & secrets | [Windows](windows-inventory-collection-script.md) / [macOS](macos-inventory-collection-script.md) inventory scripts |
-| **Enterprise App Object ID** | Enterprise applications overview | [Deploy Custom Inventory Resources](configure-log-analytics.md) ARM template deployment |
+| **Enterprise App Object ID** | Enterprise applications overview | [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) ARM template deployment |
 
 ### Next Step
 
-Proceed to [Deploy Custom Inventory Resources](configure-log-analytics.md) to deploy the Azure resources.
+Proceed to [Deploy Custom Inventory Resources](deploy-custom-inventory-resources.md) to deploy the Azure resources.
