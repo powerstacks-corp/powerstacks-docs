@@ -294,12 +294,16 @@
 
 <script>
   (function() {
-    /* Scroll-aware header: transparent over hero, white with shadow after scroll */
+    /* Scroll-aware header: transparent over hero, white with shadow after scroll.
+       Also toggle .ps-banner--scrolled on .md-banner parent so the gradient
+       background switches to white in sync with the header text color. */
     var header = document.getElementById('ps-header');
+    var banner = header ? header.closest('.md-banner') : null;
     function updateHeader() {
       if (!header) return;
-      if (window.scrollY > 50) header.classList.add('ps-header--scrolled');
-      else header.classList.remove('ps-header--scrolled');
+      var scrolled = window.scrollY > 50;
+      header.classList.toggle('ps-header--scrolled', scrolled);
+      if (banner) banner.classList.toggle('ps-banner--scrolled', scrolled);
     }
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();

@@ -28,40 +28,29 @@ hide:
   </a>
 </div>
 
-## Comprehensive reporting for Defender for Endpoint
+## About BI for Defender
 
 BI for Defender is a Power BI template app that connects to Microsoft Defender for Endpoint via the Microsoft Graph Security API. No agents on endpoints, no vendor portal — your data stays in your Power BI workspace, governed by your Microsoft 365 tenant policies.
 
-Pre-built dashboards cover threat detection and response, device security posture, application control, and vulnerability management.
+Pre-built dashboards cover threat detection and response, device security posture, application control, and vulnerability management. Track alert severity distribution, detection sources, security configuration scores, exposure levels, and CVE remediation progress across all Defender-managed devices.
+
+## How the docs are organized
+
+- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, create your Entra app registration, configure your semantic model, and set up data sync.
+- **Admin Guide** — day-to-day administration including backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates and visuals.
+- **User Guide** — walkthroughs and interactive demos showing how to use the reports, customize visuals, and get the most out of your data.
+- **What's New** — release notes for every version, so you know exactly what changed before upgrading.
+
+## Have a question? Ask Pax.
+
+**Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question — Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
 
 ---
 
-<div class="ps-two-col" markdown>
-<div markdown>
+<div class="ps-help-block" markdown>
 
-## Getting Started
+**Need help?** If you can't find what you're looking for in the documentation, reach out to our support team.
 
-- [Install BI for Defender](installation/getting-started/install-bi-for-defender.md)
-- [Request a Trial License](../shared/request-a-license.md)
+[Contact Support](https://powerstacks.com/contact/){ .ps-btn-secondary }
 
-## Administration
-
-- [Semantic Model Parameters](administration/semantic-model-parameters.md)
-- [Backup Custom Reports](administration/backup-custom-reports.md)
-- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
-
-</div>
-<div markdown>
-
-## Setup Guide
-
-- [Create Entra App Registration](installation/setup-guide/create-entra-app-registration.md)
-- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
-- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
-
-## Release Notes
-
-- [Latest Releases](release-notes/index.md)
-
-</div>
 </div>

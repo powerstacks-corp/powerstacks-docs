@@ -28,40 +28,29 @@ hide:
   </a>
 </div>
 
-## Comprehensive reporting for Configuration Manager
+## About BI for SCCM
 
 BI for SCCM is a Power BI template app that connects to your ConfigMgr SQL database through Power BI Gateway. No middleware, no agents — your data stays in your Power BI workspace, governed by your Microsoft 365 tenant policies.
 
 Pre-built dashboards cover hardware inventory, software deployment, compliance status, and OS deployment. Extend your reporting with custom inventory extensions for BitLocker, local admin groups, monitors, USB devices, and more.
 
+## How the docs are organized
+
+- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, set up Power BI Gateway, configure database access, and connect your semantic model.
+- **Admin Guide** — day-to-day administration including backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates and visuals.
+- **User Guide** — walkthroughs and interactive demos showing how to use the reports and get the most out of your data.
+- **What's New** — release notes for every version, so you know exactly what changed before upgrading.
+
+## Have a question? Ask Pax.
+
+**Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question — Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
+
 ---
 
-<div class="ps-two-col" markdown>
-<div markdown>
+<div class="ps-help-block" markdown>
 
-## Getting Started
+**Need help?** If you can't find what you're looking for in the documentation, reach out to our support team.
 
-- [Install BI for SCCM](installation/getting-started/install-bi-for-sccm.md)
-- [Request a License](../shared/request-a-license.md)
+[Contact Support](https://powerstacks.com/contact/){ .ps-btn-secondary }
 
-## Administration
-
-- [Semantic Model Parameters](administration/semantic-model-parameters.md)
-- [Backup Custom Reports](administration/backup-custom-reports.md)
-- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
-
-</div>
-<div markdown>
-
-## Setup Guide
-
-- [Install Power BI Gateway](installation/setup-guide/install-power-bi-gateway.md)
-- [Configure Database Access](installation/setup-guide/configure-database-access.md)
-- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
-
-## Release Notes
-
-- [Latest Releases](release-notes/index.md)
-
-</div>
 </div>

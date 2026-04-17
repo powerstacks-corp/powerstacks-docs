@@ -319,9 +319,41 @@ body {
   color: var(--ps-navy);
 }
 
-/* Also apply scrolled state when .md-banner has the class (since md-banner wraps) */
-.md-banner { background: linear-gradient(90deg, var(--ps-hero-start), var(--ps-hero-end)) !important; }
-.md-banner:has(.ps-header--scrolled) { background: #ffffff !important; }
+/* md-banner wraps the header. Background is toggled via JS adding
+   .ps-banner--scrolled to md-banner when the user scrolls. */
+.md-banner {
+  background: linear-gradient(90deg, var(--ps-hero-start), var(--ps-hero-end)) !important;
+  transition: background 0.3s ease !important;
+}
+.md-banner.ps-banner--scrolled {
+  background: #ffffff !important;
+}
+
+/* ─── Help block + Contact Support button ──────────────────── */
+.ps-help-block {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+.ps-btn-secondary {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid var(--ps-blue);
+  color: var(--ps-blue) !important;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ps-btn-secondary:hover {
+  background: var(--ps-blue);
+  color: #ffffff !important;
+}
 
 /* ─── Sidebar positioning under new 64px header ─────────── */
 .md-sidebar--primary,

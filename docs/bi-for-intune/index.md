@@ -28,7 +28,7 @@ hide:
   </a>
 </div>
 
-## Comprehensive reporting for Microsoft Intune
+## About BI for Intune
 
 BI for Intune is a Power BI template app that connects directly to your Intune environment via the Microsoft Graph API. No agents on endpoints, no vendor portal — your data stays in your Power BI workspace, governed by your Microsoft 365 tenant policies.
 
@@ -36,48 +36,23 @@ Pre-built dashboards cover device health, compliance, discovered applications, W
 
 Extend your reporting with PowerShell-based inventory scripts for BitLocker, local admins, monitors, USB devices, and more. Optional Log Analytics integration provides extended data retention and advanced querying capabilities.
 
+## How the docs are organized
+
+- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, create your Entra app registration, configure your semantic model, set up Log Analytics, and deploy custom inventory collection.
+- **Admin Guide** — day-to-day administration including backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates and visuals.
+- **User Guide** — walkthroughs and interactive demos showing how to use the reports, customize visuals, and get the most out of your data.
+- **What's New** — release notes for every version, so you know exactly what changed before upgrading.
+
+## Have a question? Ask Pax.
+
+**Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question — Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
+
 ---
 
-<div class="ps-two-col" markdown>
-<div markdown>
+<div class="ps-help-block" markdown>
 
-## Getting Started
+**Need help?** If you can't find what you're looking for in the documentation, reach out to our support team.
 
-- [Install BI for Intune](installation/getting-started/install-bi-for-intune.md)
-- [Request a Trial License](../shared/request-a-license.md)
+[Contact Support](https://powerstacks.com/contact/){ .ps-btn-secondary }
 
-## Log Analytics
-
-- [Connect Power BI to Log Analytics](installation/log-analytics/edit-entra-app-registration.md)
-- [Semantic Model Settings](installation/log-analytics/semantic-model-settings-for-log-analytics.md)
-- [WUfB Reports](installation/log-analytics/wufb-reports.md)
-
-## Administration
-
-- [Semantic Model Parameters](administration/semantic-model-parameters.md)
-- [Backup Custom Reports](administration/backup-custom-reports.md)
-- [Perform In-place Upgrade](administration/perform-in-place-upgrade.md)
-
-</div>
-<div markdown>
-
-## Setup Guide
-
-- [Create Entra App Registration](installation/setup-guide/create-entra-app-registration.md)
-- [Configure the Semantic Model](installation/setup-guide/configure-the-semantic-model.md)
-- [Configure Data Sync](installation/setup-guide/configure-data-sync.md)
-- [Export API Parameter](installation/setup-guide/export-api-parameter.md)
-
-## Custom Inventory
-
-- [Create Inventory App Registration](installation/custom-inventory/create-inventory-app-registration.md)
-- [Deploy Custom Inventory Resources](installation/custom-inventory/deploy-custom-inventory-resources.md)
-- [Windows Inventory Collection Script](installation/custom-inventory/windows-inventory-collection-script.md)
-- [macOS Inventory Collection Script](installation/custom-inventory/macos-inventory-collection-script.md)
-
-## Release Notes
-
-- [Latest Releases](release-notes/index.md)
-
-</div>
 </div>
