@@ -11,27 +11,18 @@ hide:
 
 <div class="quick-links">
   <a class="quick-link-card" href="installation/getting-started/install-bi-for-intune/">
-    <span class="card-icon">
-      <img src="images/icon-overview.svg" alt="" class="skip-lightbox">
-    </span>
     <span class="card-content">
       <span class="card-label">GETTING STARTED</span>
-      <span class="card-title">Setup Guide</span>
+      <span class="card-title">Install BI for Intune</span>
     </span>
   </a>
-  <a class="quick-link-card" href="installation/setup-guide/create-entra-app-registration/">
-    <span class="card-icon">
-      <img src="images/icon-how-to-guide.svg" alt="" class="skip-lightbox">
-    </span>
+  <a class="quick-link-card" href="administration/semantic-model-parameters/">
     <span class="card-content">
-      <span class="card-label">GUIDES</span>
-      <span class="card-title">Setup Guide</span>
+      <span class="card-label">REFERENCE</span>
+      <span class="card-title">Semantic Model Parameters</span>
     </span>
   </a>
   <a class="quick-link-card" href="release-notes/">
-    <span class="card-icon">
-      <img src="images/icon-whats-new.svg" alt="" class="skip-lightbox">
-    </span>
     <span class="card-content">
       <span class="card-label">RELEASE NOTES</span>
       <span class="card-title">What's New</span>

@@ -936,11 +936,9 @@ html {
    containing block contexts that break position:sticky on .md-banner.
    Fixed positioning bypasses those contexts entirely.
 
-   body gets padding-top: 40px to compensate for the fixed banner's height
-   (matches .md-banner__inner height in the Material theme). */
-body {
-  padding-top: 40px;
-}
+   body gets padding-top to compensate for the fixed banner's height.
+   Now managed by powerstacks-nav.css with --ps-nav-height (64px). */
+/* body { padding-top: handled in powerstacks-nav.css; } */
 
 .md-banner {
   position: fixed !important;
