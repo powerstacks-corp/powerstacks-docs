@@ -331,10 +331,55 @@ body {
   z-index: 5 !important;
 }
 
-/* ─── Hero banner top margin: account for 64px nav ──────── */
+/* ─── Close the gap between fixed nav and content ────────── */
+/* Material's .md-header and .md-tabs are hidden but still in the DOM.
+   The gap comes from Material's default spacing on .md-main + .md-grid.
+   Pull the hero up and ensure zero top spacing on all wrappers. */
+.md-main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.md-main__inner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.md-content {
+  padding-top: 0 !important;
+}
+.md-content__inner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.md-content__inner::before {
+  display: none !important;
+}
 .hero-banner,
 .md-typeset h1:first-of-type:not(.hero-banner h1) {
-  margin-top: -0.5rem !important;
+  margin-top: -1.5rem !important;
+}
+
+/* ─── Quick-link card icons ─────────────────────────────── */
+.quick-link-card {
+  position: relative;
+  padding-left: 3rem !important;
+}
+.quick-link-card .card-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+}
+.quick-link-card .card-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ─── Alignment: left-align the nav bar to match content flow ──── */
