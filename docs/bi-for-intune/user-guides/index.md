@@ -1,17 +1,19 @@
 ---
 title: User Guides
-description: User guides and walkthroughs for BI for Intune.
+description: End-user training guides for BI for Intune — help your team get the most out of their reports.
 hide:
   - toc
 ---
 
 # User Guides
 
-User guides and walkthroughs for **BI for Intune** will appear here as we expand this section.
+Training materials for the people in your organization who use BI for Intune reports day to day. Share these guides with your team to help them navigate dashboards, interpret data, and work with Power BI.
 
-In the meantime:
+Coming soon:
 
-- **[Installation](../installation/getting-started/install-bi-for-intune.md)** — set up the product and connect it to your data
-- **[Administration](../administration/semantic-model-parameters.md)** — day-to-day operational references and customization
+- **Navigating the dashboards** — how to find and use the built-in report pages
+- **Drill-through and filtering** — how to go from fleet-level summaries to individual device details
+- **Exporting and sharing** — how to export reports to PDF, set up email subscriptions, and share with colleagues
+- **Interactive walkthroughs** — step-by-step Storylane demos your team can click through at their own pace
 
-Looking for something specific? Try the search box at the top of any page.
+In the meantime, administrators can find setup, configuration, and troubleshooting guides under **[Admin Guide](../administration/backup-custom-reports.md)**.
