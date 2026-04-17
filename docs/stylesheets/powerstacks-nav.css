@@ -391,12 +391,26 @@ body {
   border-color: #ffffff;
 }
 
-/* ─── Sidebar positioning under new 64px header ─────────── */
+/* ─── Sidebar positioning ────────────────────────────────── */
+/* The article hero gradient extends from 64px (nav bottom) to ~200px.
+   Sidebars must start BELOW the hero so their content doesn't sit
+   inside the gradient area. --ps-sidebar-top accounts for both the
+   nav height and the hero height, with a small cushion.
+
+   On pages that hide navigation (landing pages), sidebars don't render
+   so this only affects article pages. */
+:root {
+  --ps-sidebar-top: 210px;  /* nav (64px) + hero (~133px) + cushion (~13px) */
+}
 .md-sidebar--primary,
 .md-sidebar--secondary {
-  top: var(--ps-nav-height) !important;
-  height: calc(100vh - var(--ps-nav-height)) !important;
+  top: var(--ps-sidebar-top) !important;
+  height: calc(100vh - var(--ps-sidebar-top)) !important;
   z-index: 5 !important;
+  /* Push sidebar content below the hero on initial page load (before scroll).
+     Without this, sticky top only affects the stuck state — the sidebar's
+     natural document-flow position is alongside the hero at 64px. */
+  margin-top: calc(var(--ps-sidebar-top) - var(--ps-nav-height)) !important;
 }
 
 /* ─── Close the gap between fixed nav and content ────────── */
