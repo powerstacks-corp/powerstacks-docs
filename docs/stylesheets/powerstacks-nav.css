@@ -387,15 +387,11 @@ body {
   object-fit: contain;
 }
 
-/* ─── Alignment: left-align the nav bar to match content flow ──── */
-/* The nav's max-width container is already centered at 1440px.
-   Content below flows left-aligned within Material's .md-content.
-   Ensure the nav items visually align with the content column. */
-.ps-header__nav {
-  justify-content: flex-start;
-}
+/* ─── Nav alignment — match marketing site spacing ──────────────── */
+/* Marketing uses justify-between: logo left, nav items center, CTA right.
+   The nav items should have breathing room from the logo, not hard-left. */
 .ps-header__links {
-  margin-left: 0;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -513,3 +509,105 @@ body {
 .ps-release-list li a { color: var(--ps-hero-start); text-decoration: none; }
 .ps-release-list li a:hover { text-decoration: underline; }
 .ps-release-list__date { color: #64748b; font-size: 0.9em; }
+
+/* ─── Footer — matches marketing site Footer.astro ──────────────── */
+
+.ps-footer {
+  background: #EFF2F9;
+  border-top: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.875rem;
+}
+.ps-footer__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4rem 1rem 2rem;
+}
+@media (min-width: 640px) { .ps-footer__inner { padding: 4rem 1.5rem 2rem; } }
+@media (min-width: 1024px) { .ps-footer__inner { padding: 4rem 2rem 2rem; } }
+
+.ps-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .ps-footer__columns { grid-template-columns: repeat(5, 1fr); }
+}
+.ps-footer__heading {
+  color: #1e293b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.ps-footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ps-footer__list li { margin-bottom: 0.5rem; }
+.ps-footer__list a {
+  color: #64748b !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
+}
+.ps-footer__list a:hover { color: var(--ps-blue) !important; }
+
+.ps-footer__contact { margin-top: 1.5rem; }
+.ps-footer__contact p { margin: 0.25rem 0; color: #64748b; }
+.ps-footer__contact-label { font-weight: 500; color: #334155; }
+.ps-footer__contact a { color: #64748b !important; text-decoration: none !important; }
+.ps-footer__contact a:hover { color: var(--ps-blue) !important; }
+
+.ps-footer__bottom {
+  border-top: 1px solid #cbd5e1;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .ps-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.ps-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ps-footer__logo { width: 28px; height: 28px; }
+.ps-footer__brand-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ps-navy);
+}
+.ps-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ps-footer__social a { color: #94a3b8; transition: color 0.15s ease; }
+.ps-footer__social a:hover { color: var(--ps-blue); }
+.ps-footer__social-icon { width: 20px; height: 20px; }
+
+.ps-footer__legal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+}
+.ps-footer__legal a { color: #64748b !important; text-decoration: none !important; }
+.ps-footer__legal a:hover { color: var(--ps-blue) !important; }
+.ps-footer__legal-sep { color: #cbd5e1; }
+
+.ps-footer__copy {
+  color: #64748b;
+  margin: 0;
+}
