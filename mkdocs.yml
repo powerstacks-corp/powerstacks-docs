@@ -156,7 +156,7 @@ nav:
     - User Guides:
       - bi-for-intune/user-guides/index.md
     - Release Notes:
-      - Latest: bi-for-intune/release-notes/index.md
+      - Recent Releases: bi-for-intune/release-notes/latest.md
       - Archive: bi-for-intune/release-notes/archive.md
 
   # ═══════════════════════════════════════════════════════════════
@@ -196,7 +196,7 @@ nav:
     - User Guides:
       - bi-for-sccm/user-guides/index.md
     - Release Notes:
-      - Latest: bi-for-sccm/release-notes/index.md
+      - Recent Releases: bi-for-sccm/release-notes/latest.md
       - Archive: bi-for-sccm/release-notes/archive.md
 
   # ═══════════════════════════════════════════════════════════════
@@ -225,5 +225,5 @@ nav:
     - User Guides:
       - bi-for-defender/user-guides/index.md
     - Release Notes:
-      - Latest: bi-for-defender/release-notes/index.md
+      - Recent Releases: bi-for-defender/release-notes/latest.md
       - Archive: bi-for-defender/release-notes/archive.md

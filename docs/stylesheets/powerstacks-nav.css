@@ -598,6 +598,32 @@ body {
 .ps-release-list li a:hover { text-decoration: underline; }
 .ps-release-list__date { color: #64748b; font-size: 0.9em; }
 
+/* ─── Expanded release entries (latest page) ───────────── */
+.ps-release-entry {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.5rem 0 2rem;
+}
+.ps-release-entry:last-child { border-bottom: none; }
+.ps-release-entry h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+.ps-release-entry h3 a {
+  color: var(--ps-hero-start) !important;
+  text-decoration: none !important;
+}
+.ps-release-entry h3 a:hover { text-decoration: underline !important; }
+.ps-release-entry__date {
+  color: #64748b;
+  font-size: 0.85em;
+  font-weight: 400;
+}
+.ps-release-entry__body {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.65;
+}
+
 /* ─── Two-column layout for product landing pages ─────────────── */
 .ps-two-col {
   display: grid;

@@ -169,14 +169,53 @@ def _release_archive(product, show='latest', count=6, docs_dir=None):
 
 
 def _render_flat_list(entries):
-    out = ['<ul class="ps-release-list">']
+    """Render recent releases with expanded content (body text shown inline)."""
+    out = []
     for e in entries:
         date_str = e['date'].strftime('%B %d, %Y') if e['date'] else ''
-        date_html = f' <span class="ps-release-list__date">— {date_str}</span>' if date_str else ''
-        out.append(
-            f'  <li><a href="{e["url"]}"><strong>{e["title"]}</strong></a>{date_html}</li>'
-        )
-    out.append('</ul>')
+
+        # Read the markdown body (everything after frontmatter)
+        body = ''
+        try:
+            text = e['path'].read_text(encoding='utf-8')
+            # Strip frontmatter
+            if text.startswith('---'):
+                end = text.find('\n---', 3)
+                if end > 0:
+                    body = text[end + 4:].strip()
+                else:
+                    body = text
+            else:
+                body = text.strip()
+
+            # Remove the H1 title (already shown in our heading)
+            lines = body.split('\n')
+            if lines and lines[0].startswith('# '):
+                lines = lines[1:]
+            body = '\n'.join(lines).strip()
+
+            # Truncate very long notes — show first ~30 lines
+            body_lines = body.split('\n')
+            if len(body_lines) > 40:
+                body = '\n'.join(body_lines[:40]) + '\n\n*[Read full release notes...](' + e['url'] + ')*'
+        except Exception:
+            body = ''
+
+        out.append(f'<div class="ps-release-entry">')
+        out.append(f'<h3><a href="{e["url"]}">{e["title"]}</a>')
+        if date_str:
+            out.append(f' <span class="ps-release-entry__date">— {date_str}</span>')
+        out.append(f'</h3>')
+
+        if body:
+            # Convert markdown body to a raw block that MkDocs will render
+            # We use HTML wrapper + the body as-is (macros plugin processes it)
+            out.append(f'<div class="ps-release-entry__body" markdown>')
+            out.append(body)
+            out.append(f'</div>')
+        out.append(f'</div>')
+        out.append('')  # blank line between entries
+
     return '\n'.join(out)
 
 
