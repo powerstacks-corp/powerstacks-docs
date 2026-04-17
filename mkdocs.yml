@@ -1,0 +1,229 @@
+# mkdocs.yml — PowerStacks Docs (consolidated)
+# ────────────────────────────────────────────────────────────────
+# Consolidated documentation site for BI for Intune, BI for SCCM,
+# and BI for Defender. Migrated from three separate repos.
+#
+# Domain: https://docs.powerstacks.com
+# Repo:   powerstacks-corp/powerstacks-docs
+# ────────────────────────────────────────────────────────────────
+
+site_name: PowerStacks Docs
+site_url: https://docs.powerstacks.com/
+site_description: >
+  PowerStacks product documentation — BI for Intune, BI for SCCM,
+  and BI for Defender. Setup guides, administration references,
+  and release notes for Microsoft endpoint-management reporting.
+copyright: Copyright &copy; 2026 PowerStacks
+
+# URLs read by overrides/main.html for the global nav and assistant widget.
+# Override locally with:
+#   MARKETING_URL=http://localhost:4321 ASSISTANT_URL=http://localhost:3000 mkdocs serve
+extra:
+  marketing_url: !ENV [MARKETING_URL, "https://powerstacks.com"]
+  assistant_url: !ENV [ASSISTANT_URL, "http://localhost:3000"]
+
+# ────────────────────────────────────────────────────────────────
+# Theme
+# ────────────────────────────────────────────────────────────────
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/logo.webp
+  favicon: assets/favicon.ico
+  font: false  # Use site-wide fonts from powerstacks-nav.css, not Google Fonts
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections         # group pages under section headers
+    - navigation.indexes          # section titles can be clickable index pages
+    - navigation.top              # back-to-top button
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - toc.follow
+    # REMOVED: navigation.tabs    — no MkDocs tab bar (unified PowerStacks nav only)
+    # REMOVED: navigation.expand  — only expand the active product's section
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+
+extra_css:
+  - stylesheets/microsoft-learn.css    # existing hero + content styling
+  - stylesheets/powerstacks-nav.css    # ported marketing-site nav
+  - stylesheets/storylane.css          # Storylane embed wrapper
+
+extra_javascript:
+  - scripts/powerstacks-nav.js         # scroll-aware nav + mobile menu
+
+# ────────────────────────────────────────────────────────────────
+# Markdown
+# ────────────────────────────────────────────────────────────────
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# ────────────────────────────────────────────────────────────────
+# Plugins
+# ────────────────────────────────────────────────────────────────
+plugins:
+  - search
+  - macros:                        # mkdocs-macros-plugin
+      module_name: macros          # reads ./macros.py
+      # provides: storylane(), release_archive()
+  - glightbox:
+      skip_classes:
+        - skip-lightbox
+  - rss:                           # mkdocs-rss-plugin
+      match_path: "bi-for-.+/release-notes/version-.+"
+      date_from_meta:
+        as_creation: date
+      categories:
+        - tags
+
+# Individual release-notes version pages exist as files (direct URL +
+# search still work) but aren't listed in the sidebar. Latest and Archive
+# pages list them via the release_archive() macro.
+# Pattern matches both `version-` (singular) and `versions-` (plural,
+# used historically for combined multi-version releases).
+not_in_nav: |
+  bi-for-intune/release-notes/version*-*.md
+  bi-for-sccm/release-notes/version*-*.md
+  bi-for-defender/release-notes/version*-*.md
+
+# ────────────────────────────────────────────────────────────────
+# Navigation
+# ────────────────────────────────────────────────────────────────
+nav:
+  - Home: index.md
+
+  # ═══════════════════════════════════════════════════════════════
+  # BI for Intune
+  # ═══════════════════════════════════════════════════════════════
+  - BI for Intune:
+    - bi-for-intune/index.md
+    - Installation:
+      - Getting Started:
+        - Install BI for Intune: bi-for-intune/installation/getting-started/install-bi-for-intune.md
+        - Request a License: shared/request-a-license.md
+      - Setup Guide:
+        - Create Entra App Registration: bi-for-intune/installation/setup-guide/create-entra-app-registration.md
+        - Configure the Semantic Model: bi-for-intune/installation/setup-guide/configure-the-semantic-model.md
+        - Export API Parameter: bi-for-intune/installation/setup-guide/export-api-parameter.md
+        - Cloud PC Export API Parameter: bi-for-intune/installation/setup-guide/cloud-pc-export-api-parameter.md
+        - Configure Data Sync: bi-for-intune/installation/setup-guide/configure-data-sync.md
+        - Enable Maps: bi-for-intune/installation/setup-guide/enable-maps.md
+      - Log Analytics:
+        - Connect Power BI to Log Analytics: bi-for-intune/installation/log-analytics/edit-entra-app-registration.md
+        - Semantic Model Settings for Log Analytics: bi-for-intune/installation/log-analytics/semantic-model-settings-for-log-analytics.md
+        - WUfB Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
+      - Custom Inventory:
+        - Create Inventory App Registration: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
+        - Deploy Custom Inventory Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md
+        - Windows Inventory Collection Script: bi-for-intune/installation/custom-inventory/windows-inventory-collection-script.md
+        - macOS Inventory Collection Script: bi-for-intune/installation/custom-inventory/macos-inventory-collection-script.md
+    - Administration:
+      - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md
+      - Entra App Permissions: bi-for-intune/administration/entra-app-permissions.md
+      - Backup Custom Reports: bi-for-intune/administration/backup-custom-reports.md
+      - Perform In-place Upgrade: bi-for-intune/administration/perform-in-place-upgrade.md
+      - Create Backup Workspace: bi-for-intune/administration/create-backup-workspace.md
+      - Installing a Custom Power BI Template: bi-for-intune/administration/installing-a-custom-power-bi-template.md
+      - How to Edit Reports: bi-for-intune/administration/how-to-edit-bi-for-intune-reports.md
+      - How to Create Popup Box Visuals: bi-for-intune/administration/how-to-create-popup-box-visuals.md
+      - Repair Broken Visuals: bi-for-intune/administration/repair-broken-visuals.md
+    - User Guides:
+      - bi-for-intune/user-guides/index.md
+    - Release Notes:
+      - Latest: bi-for-intune/release-notes/index.md
+      - Archive: bi-for-intune/release-notes/archive.md
+
+  # ═══════════════════════════════════════════════════════════════
+  # BI for SCCM
+  # ═══════════════════════════════════════════════════════════════
+  - BI for SCCM:
+    - bi-for-sccm/index.md
+    - Installation:
+      - Getting Started:
+        - Install BI for SCCM: bi-for-sccm/installation/getting-started/install-bi-for-sccm.md
+        - Request a License: shared/request-a-license.md
+      - Setup Guide:
+        - Install Power BI Gateway: bi-for-sccm/installation/setup-guide/install-power-bi-gateway.md
+        - Configure Database Access: bi-for-sccm/installation/setup-guide/configure-database-access.md
+        - Configure the Semantic Model: bi-for-sccm/installation/setup-guide/configure-the-semantic-model.md
+        - Enable Azure Maps: bi-for-sccm/installation/setup-guide/enable-azure-maps.md
+        - AD User Discovery: bi-for-sccm/installation/setup-guide/ad-user-discovery.md
+      - Custom Inventory:
+        - BitLocker: bi-for-sccm/installation/custom-inventory/bitlocker.md
+        - Local Admin Group: bi-for-sccm/installation/custom-inventory/local-admin-group.md
+        - Lenovo Model Names: bi-for-sccm/installation/custom-inventory/lenovo-model-names.md
+        - Microsoft 365 Apps: bi-for-sccm/installation/custom-inventory/microsoft-365-apps.md
+        - Disk Types: bi-for-sccm/installation/custom-inventory/disk-types.md
+        - Antivirus Software: bi-for-sccm/installation/custom-inventory/antivirus-software.md
+        - Monitors: bi-for-sccm/installation/custom-inventory/monitors.md
+        - Environment Variables: bi-for-sccm/installation/custom-inventory/environment-variables.md
+        - USB Devices: bi-for-sccm/installation/custom-inventory/usb-devices.md
+        - Warranty Info: bi-for-sccm/installation/custom-inventory/warranty-info.md
+    - Administration:
+      - Semantic Model Parameters: bi-for-sccm/administration/semantic-model-parameters.md
+      - Backup Custom Reports: bi-for-sccm/administration/backup-custom-reports.md
+      - Perform In-place Upgrade: bi-for-sccm/administration/perform-in-place-upgrade.md
+      - Create Backup Workspace: bi-for-sccm/administration/create-backup-workspace.md
+      - How to Edit Reports: bi-for-sccm/administration/how-to-edit-bi-for-sccm-reports.md
+      - How to Create Popup Box Visuals: bi-for-sccm/administration/how-to-create-popup-box-visuals.md
+      - Repair Broken Visuals: bi-for-sccm/administration/repair-broken-visuals.md
+    - User Guides:
+      - bi-for-sccm/user-guides/index.md
+    - Release Notes:
+      - Latest: bi-for-sccm/release-notes/index.md
+      - Archive: bi-for-sccm/release-notes/archive.md
+
+  # ═══════════════════════════════════════════════════════════════
+  # BI for Defender
+  # ═══════════════════════════════════════════════════════════════
+  - BI for Defender:
+    - bi-for-defender/index.md
+    - Installation:
+      - Getting Started:
+        - Install BI for Defender: bi-for-defender/installation/getting-started/install-bi-for-defender.md
+        - Request a License: shared/request-a-license.md
+      - Setup Guide:
+        - Create Entra App Registration: bi-for-defender/installation/setup-guide/create-entra-app-registration.md
+        - Configure the Semantic Model: bi-for-defender/installation/setup-guide/configure-the-semantic-model.md
+        - Configure Data Sync: bi-for-defender/installation/setup-guide/configure-data-sync.md
+        - Application Controls: bi-for-defender/installation/setup-guide/application-controls.md
+    - Administration:
+      - Semantic Model Parameters: bi-for-defender/administration/semantic-model-parameters.md
+      - Entra App Permissions: bi-for-defender/administration/entra-app-permissions.md
+      - Backup Custom Reports: bi-for-defender/administration/backup-custom-reports.md
+      - Perform In-place Upgrade: bi-for-defender/administration/perform-in-place-upgrade.md
+      - Create Backup Workspace: bi-for-defender/administration/create-backup-workspace.md
+      - Installing a Custom Power BI Template: bi-for-defender/administration/installing-a-custom-power-bi-template.md
+      - How to Edit Reports: bi-for-defender/administration/how-to-edit-bi-for-defender-reports.md
+      - How to Create Popup Box Visuals: bi-for-defender/administration/how-to-create-popup-box-visuals.md
+    - User Guides:
+      - bi-for-defender/user-guides/index.md
+    - Release Notes:
+      - Latest: bi-for-defender/release-notes/index.md
+      - Archive: bi-for-defender/release-notes/archive.md
