@@ -1,70 +1,164 @@
 /* ───────────────────────────────────────────────────────────────────
    storylane.css
    ─────────────
-   Responsive wrapper for Storylane demo embeds.
-   Used by the storylane() macro in macros.py.
+   Click-to-open card + lightbox modal for Storylane demos.
+   Card shows on the page; clicking opens the demo in a full-screen
+   modal overlay (or new tab as fallback if JS fails).
    ─────────────────────────────────────────────────────────────────── */
 
 .ps-storylane {
   margin: 1.5rem 0;
 }
 
-.ps-storylane__title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 0.75rem;
+/* ─── Demo card (the clickable element on the page) ──────────── */
+
+.ps-storylane__card {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8ecf8 100%);
+  border: 1px solid #c7d2e8;
+  border-radius: 10px;
+  text-decoration: none !important;
+  color: #1e293b !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.ps-storylane__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(50, 33, 170, 0.12);
+  border-color: #8b9dd0;
+}
+
+.ps-storylane__play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3221AA, #5670F0);
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(50, 33, 170, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.ps-storylane__card:hover .ps-storylane__play {
+  transform: scale(1.08);
+}
+
+.ps-storylane__play svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px; /* optical center for play triangle */
+}
+
+.ps-storylane__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ps-storylane__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6366f1;
+}
+
+.ps-storylane__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
 }
 
 .ps-storylane__title::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(90deg, #3221AA, #5670F0);
-  border-radius: 4px;
-  flex-shrink: 0;
+  display: none; /* remove the old gradient square */
 }
 
-.ps-storylane__embed {
+.ps-storylane__cta {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.ps-storylane__card:hover .ps-storylane__cta {
+  color: #3221AA;
+}
+
+/* ─── Lightbox modal ─────────────────────────────────────────── */
+
+.ps-storylane-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.ps-storylane-lightbox.ps-active {
+  opacity: 1;
+}
+
+.ps-storylane-lightbox__inner {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  width: 90vw;
+  height: 85vh;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(5, 20, 65, 0.08);
-  background: #f8fafc;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-.ps-storylane__embed iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.ps-storylane-lightbox__iframe {
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
   display: block;
 }
 
-.ps-storylane__fallback {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: #64748b;
+.ps-storylane-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10001;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
 }
 
-.ps-storylane__fallback a {
-  color: #3221AA;
-  text-decoration: underline;
+.ps-storylane-lightbox__close:hover {
+  background: rgba(0, 0, 0, 0.85);
 }
 
-/* Mobile: stack nicer on narrow screens */
-@media (max-width: 600px) {
-  .ps-storylane {
-    margin: 1rem 0;
+.ps-storylane-lightbox__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Mobile: full-screen lightbox */
+@media (max-width: 768px) {
+  .ps-storylane-lightbox__inner {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
   }
 }

@@ -20,34 +20,30 @@ from pathlib import Path
 
 def _storylane(url, title=None):
     """
-    Embed a Storylane demo in a responsive, branded wrapper.
+    Render a click-to-open card for a Storylane demo.
 
-    Accepts either a share URL (https://powerstacks.storylane.io/share/XXXX)
-    or an already-finalized embed URL. If the URL has no ?embed=inline query
-    parameter, we append it so Storylane renders the inline embed variant.
+    Shows a branded card with a play button. Clicking opens the demo
+    in a lightbox modal overlay (or new tab as fallback). No iframe
+    on the page itself — avoids Storylane's embed wrapper issues.
     """
     if not url:
         return ""
 
-    embed_url = url
-    if "embed=" not in embed_url:
-        sep = "&" if "?" in embed_url else "?"
-        embed_url = f"{embed_url}{sep}embed=inline"
-
-    title_html = (
-        f'<div class="ps-storylane__title">{title}</div>' if title else ""
-    )
+    display_title = title or "Interactive Demo"
 
     return (
         f'<div class="ps-storylane">'
-        f'  {title_html}'
-        f'  <div class="ps-storylane__embed">'
-        f'    <iframe src="{embed_url}" loading="lazy" allow="fullscreen" allowfullscreen '
-        f'            referrerpolicy="no-referrer-when-downgrade" title="Storylane demo"></iframe>'
-        f'  </div>'
-        f'  <p class="ps-storylane__fallback">'
-        f'    Having trouble with the embed? <a href="{url}" target="_blank" rel="noopener">Open the demo in a new tab</a>.'
-        f'  </p>'
+        f'  <a href="{url}" class="ps-storylane__card" target="_blank" rel="noopener" '
+        f'     data-storylane-url="{url}" onclick="return psOpenStorylaneLightbox(this)">'
+        f'    <span class="ps-storylane__play">'
+        f'      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
+        f'    </span>'
+        f'    <span class="ps-storylane__info">'
+        f'      <span class="ps-storylane__label">INTERACTIVE WALKTHROUGH</span>'
+        f'      <span class="ps-storylane__title">{display_title}</span>'
+        f'      <span class="ps-storylane__cta">Click to start demo</span>'
+        f'    </span>'
+        f'  </a>'
         f'</div>'
     )
 

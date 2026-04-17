@@ -255,6 +255,44 @@
 </div>
 
 <script>
+  /* Storylane lightbox — opens demo in a modal overlay instead of inline iframe */
+  function psOpenStorylaneLightbox(el) {
+    var url = el.getAttribute('data-storylane-url');
+    if (!url) return true; /* fallback to normal link */
+
+    /* Create lightbox overlay */
+    var overlay = document.createElement('div');
+    overlay.className = 'ps-storylane-lightbox';
+    overlay.innerHTML =
+      '<div class="ps-storylane-lightbox__inner">' +
+        '<button class="ps-storylane-lightbox__close" aria-label="Close demo">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+            '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>' +
+          '</svg>' +
+        '</button>' +
+        '<iframe class="ps-storylane-lightbox__iframe" src="' + url + '" allow="fullscreen" allowfullscreen loading="eager"></iframe>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+    /* Trigger animation */
+    requestAnimationFrame(function() { overlay.classList.add('ps-active'); });
+
+    /* Close handlers */
+    function close() {
+      overlay.classList.remove('ps-active');
+      setTimeout(function() { overlay.remove(); }, 250);
+    }
+    overlay.querySelector('.ps-storylane-lightbox__close').addEventListener('click', close);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function handler(e) {
+      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', handler); }
+    });
+
+    return false; /* prevent default link navigation */
+  }
+</script>
+
+<script>
   (function() {
     /* Scroll-aware header: transparent over hero, white with shadow after scroll */
     var header = document.getElementById('ps-header');
