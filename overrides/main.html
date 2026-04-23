@@ -222,37 +222,10 @@
 
 {# ─────────────────────────────────────────────────────────────────────
    PowerStacks Assistant Widget + nav JS
+   (disabled until backend is ready)
    ───────────────────────────────────────────────────────────────────── #}
 {% block libs %}
 {{ super() }}
-<div id="ps-assistant-root" aria-label="PowerStacks Assistant">
-  <button id="ps-assistant-toggle" aria-label="Open PowerStacks Assistant" title="PowerStacks Assistant" type="button">
-    <svg id="ps-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
-    <svg id="ps-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
-      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-    </svg>
-  </button>
-  <div id="ps-assistant-panel" aria-hidden="true">
-    <div id="ps-assistant-header">
-      <div id="ps-assistant-title">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-        <span>PowerStacks Assistant</span>
-      </div>
-      <button id="ps-assistant-close" aria-label="Close PowerStacks Assistant" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <div id="ps-assistant-body">
-      <iframe id="ps-assistant-iframe" src="{{ config.extra.assistant_url }}" title="PowerStacks Assistant" allow="clipboard-write" loading="lazy"></iframe>
-    </div>
-  </div>
-</div>
 
 <script>
   /* Storylane lightbox — opens demo in a modal overlay instead of inline iframe */
@@ -356,7 +329,7 @@
       }
     });
 
-    /* Assistant widget */
+    /* Assistant widget (disabled until backend is ready)
     var toggle = document.getElementById('ps-assistant-toggle');
     var panel = document.getElementById('ps-assistant-panel');
     var closeBtn = document.getElementById('ps-assistant-close');
@@ -368,6 +341,7 @@
     if (toggle) toggle.addEventListener('click', function() { isOpen ? closePanel() : openPanel(); });
     if (closeBtn) closeBtn.addEventListener('click', closePanel);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) closePanel(); });
+    */
   })();
 </script>
 {% endblock %}

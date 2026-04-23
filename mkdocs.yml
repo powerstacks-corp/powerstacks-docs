@@ -145,6 +145,7 @@ nav:
         - Windows Inventory Script: bi-for-intune/installation/custom-inventory/windows-inventory-collection-script.md
         - macOS Inventory Script: bi-for-intune/installation/custom-inventory/macos-inventory-collection-script.md
     - Administration:
+      - bi-for-intune/administration/index.md
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md
       - Entra App Permissions: bi-for-intune/administration/entra-app-permissions.md
       - Backup Custom Reports: bi-for-intune/administration/backup-custom-reports.md
@@ -187,6 +188,7 @@ nav:
         - USB Devices: bi-for-sccm/installation/custom-inventory/usb-devices.md
         - Warranty Info: bi-for-sccm/installation/custom-inventory/warranty-info.md
     - Administration:
+      - bi-for-sccm/administration/index.md
       - Semantic Model Parameters: bi-for-sccm/administration/semantic-model-parameters.md
       - Backup Custom Reports: bi-for-sccm/administration/backup-custom-reports.md
       - Perform In-place Upgrade: bi-for-sccm/administration/perform-in-place-upgrade.md
@@ -215,6 +217,7 @@ nav:
         - Configure Data Sync: bi-for-defender/installation/setup-guide/configure-data-sync.md
         - Application Controls: bi-for-defender/installation/setup-guide/application-controls.md
     - Administration:
+      - bi-for-defender/administration/index.md
       - Semantic Model Parameters: bi-for-defender/administration/semantic-model-parameters.md
       - Entra App Permissions: bi-for-defender/administration/entra-app-permissions.md
       - Backup Custom Reports: bi-for-defender/administration/backup-custom-reports.md
