@@ -155,6 +155,7 @@ nav:
       - How to Edit Reports: bi-for-intune/administration/how-to-edit-bi-for-intune-reports.md
       - How to Create Popup Box Visuals: bi-for-intune/administration/how-to-create-popup-box-visuals.md
       - Repair Broken Visuals: bi-for-intune/administration/repair-broken-visuals.md
+      - Troubleshoot Slow or Failing Syncs: bi-for-intune/administration/troubleshoot-slow-syncs.md
     - User Guides:
       - bi-for-intune/user-guides/index.md
     - Release Notes:
