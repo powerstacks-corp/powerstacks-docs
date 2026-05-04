@@ -13,6 +13,40 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import markdown as _md
+
+
+# Extensions used to convert inlined release-notes bodies to HTML inside the
+# release_archive macro. Kept in sync with the mkdocs.yml `markdown_extensions`
+# block so inlined content matches the look of the source pages.
+_INLINE_MD_EXTENSIONS = [
+    'admonition',
+    'pymdownx.details',
+    'pymdownx.superfences',
+    'pymdownx.tabbed',
+    'pymdownx.highlight',
+    'pymdownx.inlinehilite',
+    'pymdownx.snippets',
+    'pymdownx.mark',
+    'attr_list',
+    'md_in_html',
+    'tables',
+    'def_list',
+    'pymdownx.tasklist',
+    'pymdownx.emoji',
+    # Note: omitting 'toc' here so inlined bodies do not generate competing
+    # heading anchors that collide with the page-level toc plugin.
+]
+
+
+def _md_to_html(body):
+    """Convert a markdown body string to HTML using the site's extensions."""
+    return _md.markdown(
+        body,
+        extensions=_INLINE_MD_EXTENSIONS,
+        output_format='html',
+    )
+
 
 # ──────────────────────────────────────────────────────────────────
 # Macro: storylane(url, title=None)
@@ -208,10 +242,15 @@ def _render_flat_list(entries):
         out.append(f'</h3>')
 
         if body:
-            # Convert markdown body to a raw block that MkDocs will render
-            # We use HTML wrapper + the body as-is (macros plugin processes it)
-            out.append(f'<div class="ps-release-entry__body" markdown>')
-            out.append(body)
+            # Convert the inlined body to HTML here. The macros plugin runs
+            # before MkDocs's main markdown pass, but content inside HTML
+            # blocks emitted by macros is not re-processed reliably (md_in_html
+            # only fires on source files, not on macro-generated content).
+            # Rendering once here gives us a stable HTML block we can wrap and
+            # style without depending on a second markdown pass.
+            body_html = _md_to_html(body)
+            out.append(f'<div class="ps-release-entry__body">')
+            out.append(body_html)
             out.append(f'</div>')
         out.append(f'</div>')
         out.append('')  # blank line between entries
