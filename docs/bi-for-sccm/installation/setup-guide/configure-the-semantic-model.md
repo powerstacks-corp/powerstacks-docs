@@ -30,7 +30,7 @@ The BI for SCCM dataset contains some parameters that must be configured to sync
 
 
 1. Expand **Parameters**.
-1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](http://ec2-44-233-150-244.us-west-2.compute.amazonaws.com/wordpress/getting-started/) form.
+1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](https://docs.powerstacks.com/shared/request-a-license/) form.
 1. The **Computer Network IP Address Enable** fields accepts **TRUE/FALSE** values. This field controls whether or not IP Addresses from ConfigMgr inventory are sync'd to Power BI or not.
 1. Enter the **ConfigMgr database name** in the **DatabaseName** field.
 1. Enter the **Server name** of the SQL Server hosting the ConfigMgr database in the **ServerName** field.

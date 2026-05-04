@@ -4,7 +4,7 @@ title: "Inventory Monitors"
 # Inventory Monitors
 BI for SCCM can report on the monitors connected to devices. This information includes the make, model, and manufacture date.
 
-To populate the data required for [reporting on monitors](http://ec2-34-220-217-132.us-west-2.compute.amazonaws.com/wordpress/monitor-windows-update-installation-progression/) you must extend hardware inventory to include the "WMIMonitorID" WMI class from the "rootWMI" namespace. You can only add inventory classes from the hierarchy's top-level server by modifying the default client settings. This option isn't available in custom client settings.
+To populate the data required for [reporting on monitors](https://powerstacks.com/blog/monitor-windows-update-installation-progression/) you must extend hardware inventory to include the "WMIMonitorID" WMI class from the "rootWMI" namespace. You can only add inventory classes from the hierarchy's top-level server by modifying the default client settings. This option isn't available in custom client settings.
 
 For more information about adding a new WMI class to Configuration Manager hardware inventory see the [Add a New Class](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory#add-a-new-class) section in the [How to extend hardware inventory](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/manage/inventory/extend-hardware-inventory) Configuration Manager documentation page.
 
