@@ -63,7 +63,7 @@ The BI for Defender dataset contains some parameters that must be configured to 
 
 1. Required configuration: **Yes**
 1. Default value: **Blank**
-1. The **Application (client) ID** from the [**Azure AD App Registration**](/bi-for-intune/guides/create-azure-ad-app-registration.md).
+1. The **Application (client) ID** from the [**Entra App Registration**](/bi-for-defender/installation/setup-guide/create-entra-app-registration/).
 ![](../images/client_id.png)
 ### Step 7: Configure AzureAD ClientSecret
 				AzureAD ClientSecret

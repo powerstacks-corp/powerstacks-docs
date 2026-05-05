@@ -38,4 +38,4 @@ It also improves performance by optimizing vulnerability-related measures and ad
 
 ### Important Notes
 
-- Always [backup your custom reports](/bi-for-intune/guides/backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](/bi-for-defender/administration/backup-custom-reports/) before upgrading!

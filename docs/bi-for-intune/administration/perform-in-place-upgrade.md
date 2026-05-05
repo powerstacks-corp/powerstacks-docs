@@ -6,7 +6,7 @@ We strongly advise customers to always [backup](backup-custom-reports.md) their 
 
 **Prerequisites:** The user executing these steps should be the owner of the BI for Intune workspace.
 
-### Step 1: Open Power BI AppSource
+### Step 1: Open the Power BI Marketplace
 
 
 

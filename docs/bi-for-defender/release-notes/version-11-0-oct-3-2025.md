@@ -237,7 +237,7 @@ Updated the “**Device AntiVirus**” object. New fields include:
 
 ## Important notes
 
-- Always [backup your custom reports](/bi-for-intune/guides/backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](/bi-for-defender/administration/backup-custom-reports/) before upgrading!
 - **ATTENTION**: Add permission “**CloudApp-Discovery.Read.All**” – **without it, the sync will fail.**
 
 

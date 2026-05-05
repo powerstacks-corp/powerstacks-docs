@@ -41,4 +41,4 @@ It also enhances the Cloud App object with additional activity metrics and renam
 
 - Renamed **Download (MB)** to **Cloud App Download (MB)** on the **Cloud App** This is a breaking change. Custom reports referencing the previous field name must be updated.
 - Renamed **Upload (MB)** to **Cloud App Upload (MB)** on the **Cloud App** This is a breaking change. Custom reports referencing the previous field name must be updated.
-- Always [backup your custom reports](/bi-for-intune/guides/backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](/bi-for-defender/administration/backup-custom-reports/) before upgrading!

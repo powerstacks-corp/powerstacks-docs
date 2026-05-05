@@ -2,7 +2,7 @@
 title: "Install BI for Intune"
 ---
 # Install BI for Intune
-Installing BI for Intune is quite simple. BI for Intune requires no on-premises infrastructure, the app installs from Microsoft AppSource directly into your Power BI tenant. Once installed you can try the application using the supplier sample data or you can chose to request a fully-functional 30-day trial license.
+Installing BI for Intune is quite simple. BI for Intune requires no on-premises infrastructure, the app installs from the Microsoft Marketplace directly into your Power BI tenant. Once installed you can try the application using the supplied sample data or you can choose to request a fully-functional 30-day trial license.
 
 
 **Prerequisites:**
@@ -10,17 +10,17 @@ Installing BI for Intune is quite simple. BI for Intune requires no on-premises 
 1. The user performing this step requires a Power BI Pro license, Power BI Premium Per User license, or the Power BI tenant must be licensed for Power BI Premium. Microsoft offers a free Power BI Pro trial license via self-service sign-up for those who want to [try BI for Intune](https://docs.powerstacks.com/shared/request-a-license/) before purchasing Microsoft licenses.
 1. Permissions to create an App Registration in Azure AD are required to configure the trial.
 
-To get started select the **Install Now** button to be directed to Microsoft App Source.
-[Install Now](https://appsource.microsoft.com/en-US/product/power-bi/powerstackscorporation1641419080242.biforintune?tab=Overview)
+To get started select the **Install Now** button to be directed to the Microsoft Marketplace.
+[Install Now](https://marketplace.microsoft.com/en-us/product/powerstackscorporation1641419080242.biforintune?tab=Overview)
 
-### Step 1: Get the app from AppSource
+### Step 1: Get the app from the Microsoft Marketplace
 
 
 
 
 
 1. Select the **Install Now** button above.
-1. On the **BI for Intune** page in **Microsoft AppSource** select **Get it now**.
+1. On the **BI for Intune** page in the **Microsoft Marketplace** select **Get it now**.
 ![](../../images/Intune_Get_it_now-1024x593.png)
 ### Step 2: Sign in with your work email
 

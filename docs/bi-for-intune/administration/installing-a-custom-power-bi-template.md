@@ -5,7 +5,7 @@ title: "Installing a Custom Power BI Template"
 ### Introduction to BI for Intune Custom Templates
 
 
-Welcome to an exciting addition to the BI for Intune ecosystem! At PowerStacks, we are dedicated to providing innovative solutions that elevate your Microsoft Intune reporting experience. With BI for Intune, our game-changing Power BI template app available on Microsoft AppSource, we’ve made it easier than ever to access, share, and install comprehensive Intune reports.
+Welcome to an exciting addition to the BI for Intune ecosystem! At PowerStacks, we are dedicated to providing innovative solutions that elevate your Microsoft Intune reporting experience. With BI for Intune, our game-changing Power BI template app available on the Microsoft Marketplace, we’ve made it easier than ever to access, share, and install comprehensive Intune reports.
 
 Now, we’re taking things a step further by introducing a GitHub repository to host additional custom report templates. This new initiative is designed to bring you an expanding collection of specialized reports, such as KPI dashboards, support desk analytics, and other purpose-driven insights that go beyond the default templates included with BI for Intune. These templates are crafted to save you time and effort while delivering unique perspectives tailored to your organizational needs.
 

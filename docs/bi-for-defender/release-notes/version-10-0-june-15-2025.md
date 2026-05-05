@@ -36,4 +36,4 @@ If you missed version 8.0, please [review the critical change](https://docs.powe
 
 ### Important Notes
 
-- Always [backup your custom reports](/bi-for-intune/guides/backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](/bi-for-defender/administration/backup-custom-reports/) before upgrading!

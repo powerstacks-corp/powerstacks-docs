@@ -2,22 +2,22 @@
 title: "Install BI for SCCM"
 ---
 # Install BI for SCCM
-Installing BI for SCCM is quite simple. BI for SCCM installs from Microsoft AppSource directly into your Power BI tenant. Once installed you can try the application using the supplier sample data or you can chose to request a fully-functional 30-day trial license to connect your own data to the reports.
+Installing BI for SCCM is quite simple. BI for SCCM installs from the Microsoft Marketplace directly into your Power BI tenant. Once installed you can try the application using the supplied sample data or you can choose to request a fully-functional 30-day trial license to connect your own data to the reports.
 
 
 **Prerequisites:** The user performing this step requires a Power BI Pro license, Power BI Premium Per User license, or the Power BI tenant must be licensed for Power BI Premium. Microsoft offers a free Power BI Pro trial license via self-service sign-up for those who want to try BI for SCCM before purchasing Microsoft licenses.
 
-To get started select the **Install Now** button to be directed to Microsoft App Source.
-[Install Now](https://appsource.microsoft.com/en-US/product/power-bi/powerstackscorporation1641419080242.biforsccm?tab=Overview)
+To get started select the **Install Now** button to be directed to the Microsoft Marketplace.
+[Install Now](https://marketplace.microsoft.com/en-us/product/powerstackscorporation1641419080242.biforsccm?tab=Overview)
 
-### Step 1: Get from AppSource
+### Step 1: Get from the Microsoft Marketplace
 
 
 
 
 
 1. Select the **Install Now** button above.
-1. On the **BI for SCCM** page in **Microsoft AppSource** select **Get it now**.
+1. On the **BI for SCCM** page in the **Microsoft Marketplace** select **Get it now**.
 ![](../../images/sccm-get-it-now-1024x506.png)
 ### Step 2: Sign In with Email
 

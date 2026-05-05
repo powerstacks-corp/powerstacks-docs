@@ -149,17 +149,19 @@ nav:
       - bi-for-intune/administration/index.md
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md
       - Entra App Permissions: bi-for-intune/administration/entra-app-permissions.md
-      - Backup Custom Reports: bi-for-intune/administration/backup-custom-reports.md
-      - Perform In-place Upgrade: bi-for-intune/administration/perform-in-place-upgrade.md
-      - Create Backup Workspace: bi-for-intune/administration/create-backup-workspace.md
+      - How to Perform In-place Upgrade:
+        - Create Backup Workspace: bi-for-intune/administration/create-backup-workspace.md
+        - Backup Custom Reports: bi-for-intune/administration/backup-custom-reports.md
+        - Perform In-place Upgrade: bi-for-intune/administration/perform-in-place-upgrade.md
       - Installing a Custom Power BI Template: bi-for-intune/administration/installing-a-custom-power-bi-template.md
       - Migrate to Log Ingestion API: bi-for-intune/installation/log-analytics/migrate-to-log-ingestion-api.md
-      - How to Edit Reports: bi-for-intune/administration/how-to-edit-bi-for-intune-reports.md
-      - How to Create Popup Box Visuals: bi-for-intune/administration/how-to-create-popup-box-visuals.md
-      - Repair Broken Visuals: bi-for-intune/administration/repair-broken-visuals.md
       - Troubleshoot Slow or Failing Syncs: bi-for-intune/administration/troubleshoot-slow-syncs.md
     - User Guides:
       - bi-for-intune/user-guides/index.md
+      - How to Edit Reports: bi-for-intune/administration/how-to-edit-bi-for-intune-reports.md
+      - How to Create Popup Box Visuals: bi-for-intune/administration/how-to-create-popup-box-visuals.md
+      - Repair Broken Visuals: bi-for-intune/administration/repair-broken-visuals.md
+      - How to Merge Multiple Datasets: bi-for-intune/user-guides/merge-multiple-datasets.md
     - Release Notes:
       - bi-for-intune/release-notes/index.md
       - Recent Releases: bi-for-intune/release-notes/latest.md
@@ -196,14 +198,16 @@ nav:
     - Administration:
       - bi-for-sccm/administration/index.md
       - Semantic Model Parameters: bi-for-sccm/administration/semantic-model-parameters.md
-      - Backup Custom Reports: bi-for-sccm/administration/backup-custom-reports.md
-      - Perform In-place Upgrade: bi-for-sccm/administration/perform-in-place-upgrade.md
-      - Create Backup Workspace: bi-for-sccm/administration/create-backup-workspace.md
+      - How to Perform In-place Upgrade:
+        - Create Backup Workspace: bi-for-sccm/administration/create-backup-workspace.md
+        - Backup Custom Reports: bi-for-sccm/administration/backup-custom-reports.md
+        - Perform In-place Upgrade: bi-for-sccm/administration/perform-in-place-upgrade.md
+    - User Guides:
+      - bi-for-sccm/user-guides/index.md
       - How to Edit Reports: bi-for-sccm/administration/how-to-edit-bi-for-sccm-reports.md
       - How to Create Popup Box Visuals: bi-for-sccm/administration/how-to-create-popup-box-visuals.md
       - Repair Broken Visuals: bi-for-sccm/administration/repair-broken-visuals.md
-    - User Guides:
-      - bi-for-sccm/user-guides/index.md
+      - How to Merge Multiple Datasets: bi-for-sccm/user-guides/merge-multiple-datasets.md
     - Release Notes:
       - bi-for-sccm/release-notes/index.md
       - Recent Releases: bi-for-sccm/release-notes/latest.md
@@ -229,14 +233,16 @@ nav:
       - bi-for-defender/administration/index.md
       - Semantic Model Parameters: bi-for-defender/administration/semantic-model-parameters.md
       - Entra App Permissions: bi-for-defender/administration/entra-app-permissions.md
-      - Backup Custom Reports: bi-for-defender/administration/backup-custom-reports.md
-      - Perform In-place Upgrade: bi-for-defender/administration/perform-in-place-upgrade.md
-      - Create Backup Workspace: bi-for-defender/administration/create-backup-workspace.md
+      - How to Perform In-place Upgrade:
+        - Create Backup Workspace: bi-for-defender/administration/create-backup-workspace.md
+        - Backup Custom Reports: bi-for-defender/administration/backup-custom-reports.md
+        - Perform In-place Upgrade: bi-for-defender/administration/perform-in-place-upgrade.md
       - Installing a Custom Power BI Template: bi-for-defender/administration/installing-a-custom-power-bi-template.md
-      - How to Edit Reports: bi-for-defender/administration/how-to-edit-bi-for-defender-reports.md
-      - How to Create Popup Box Visuals: bi-for-defender/administration/how-to-create-popup-box-visuals.md
     - User Guides:
       - bi-for-defender/user-guides/index.md
+      - How to Edit Reports: bi-for-defender/administration/how-to-edit-bi-for-defender-reports.md
+      - How to Create Popup Box Visuals: bi-for-defender/administration/how-to-create-popup-box-visuals.md
+      - How to Merge Multiple Datasets: bi-for-defender/user-guides/merge-multiple-datasets.md
     - Release Notes:
       - bi-for-defender/release-notes/index.md
       - Recent Releases: bi-for-defender/release-notes/latest.md

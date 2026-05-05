@@ -8,7 +8,7 @@ Our backup process consists of creating a new workspace by installing a second i
 
 **Prerequisites:** The user executing these steps should be an administrator of the BI for Intune workspace.
 
-### Step 1: Open Power BI AppSource
+### Step 1: Open the Power BI Marketplace
 
 
 

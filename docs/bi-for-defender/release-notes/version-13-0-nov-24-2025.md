@@ -33,4 +33,4 @@ As always—before upgrading, [back up your custom reports](../administration/cr
 
 ### Important Notes
 
-- Always [backup your custom reports](/bi-for-intune/guides/backup-custom-reports.md) before upgrading!
+- Always [backup your custom reports](/bi-for-defender/administration/backup-custom-reports/) before upgrading!

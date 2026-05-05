@@ -52,34 +52,46 @@ def _md_to_html(body):
 # Macro: storylane(url, title=None)
 # ──────────────────────────────────────────────────────────────────
 
+_STORYLANE_URL_RE = re.compile(
+    r'^https?://(?:[\w-]+\.)?storylane\.io/(?:share|demo)/([a-zA-Z0-9]+)',
+    re.IGNORECASE,
+)
+
+
 def _storylane(url, title=None):
     """
-    Render a click-to-open card for a Storylane demo.
+    Render a Storylane demo as an inline iframe styled to match the
+    site-wide video embed treatment (rounded corners, ring, shadow).
 
-    Shows a branded card with a play button. Clicking opens the demo
-    in a lightbox modal overlay (or new tab as fallback). No iframe
-    on the page itself — avoids Storylane's embed wrapper issues.
+    Accepts either the public /share/{id} URL or the /demo/{id} URL —
+    both forms are normalized to the embed URL. The aspect ratio is
+    Storylane's recommended ~54.36% padding-bottom, which approximates
+    16:9 plus the demo's own header chrome.
     """
     if not url:
         return ""
 
+    match = _STORYLANE_URL_RE.match(url.strip())
+    if not match:
+        # Unknown URL shape — fall back to a plain link rather than an iframe
+        # whose src we can't trust.
+        return f'<p><a href="{url}" target="_blank" rel="noopener">Open interactive demo</a></p>'
+
+    demo_id = match.group(1)
+    embed_url = f'https://powerstacks.storylane.io/demo/{demo_id}?embed=inline'
     display_title = title or "Interactive Demo"
 
-    return (
-        f'<div class="ps-storylane">'
-        f'  <a href="{url}" class="ps-storylane__card" target="_blank" rel="noopener" '
-        f'     data-storylane-url="{url}" onclick="return psOpenStorylaneLightbox(this)">'
-        f'    <span class="ps-storylane__play">'
-        f'      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
-        f'    </span>'
-        f'    <span class="ps-storylane__info">'
-        f'      <span class="ps-storylane__label">INTERACTIVE WALKTHROUGH</span>'
-        f'      <span class="ps-storylane__title">{display_title}</span>'
-        f'      <span class="ps-storylane__cta">Click to start demo</span>'
-        f'    </span>'
-        f'  </a>'
-        f'</div>'
-    )
+    parts = ['<div class="ps-storylane">']
+    if title:
+        parts.append(f'  <p class="ps-storylane__title">{title}</p>')
+    parts.extend([
+        '  <div class="ps-storylane__embed">',
+        f'    <iframe src="{embed_url}" loading="lazy" allow="fullscreen" '
+        f'allowfullscreen title="{display_title}"></iframe>',
+        '  </div>',
+        '</div>',
+    ])
+    return '\n'.join(parts)
 
 
 # ──────────────────────────────────────────────────────────────────

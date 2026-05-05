@@ -30,7 +30,7 @@ description: Documentation for PowerStacks BI products — BI for Intune, BI for
 
 Each product's documentation is organized into four sections:
 
-- **Install Guide** — step-by-step instructions to get the app installed from Microsoft AppSource, create your app registration, configure your semantic model, and start syncing data.
+- **Install Guide** — step-by-step instructions to get the app installed from the Microsoft Marketplace, create your app registration, configure your semantic model, and start syncing data.
 - **Admin Guide** — day-to-day administration tasks like backing up custom reports, performing in-place upgrades, managing workspaces, and customizing Power BI templates.
 - **User Guide** — walkthroughs and interactive demos showing how to use the reports, customize visuals, and get the most out of your data.
 - **What's New** — release notes for every version, so you know exactly what changed before upgrading.
