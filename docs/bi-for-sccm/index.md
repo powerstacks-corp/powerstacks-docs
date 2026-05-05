@@ -32,11 +32,12 @@ hide:
 
 BI for SCCM is a Power BI template app that connects to your ConfigMgr SQL database through Power BI Gateway. No middleware, no agents — your data stays in your Power BI workspace, governed by your Microsoft 365 tenant policies.
 
-Pre-built dashboards cover hardware inventory, software deployment, compliance status, and OS deployment. Extend your reporting with custom inventory extensions for BitLocker, local admin groups, monitors, USB devices, and more.
+Pre-built dashboards cover hardware inventory, software deployment, compliance status, and OS deployment. Extend your reporting with optional Custom Inventory extensions covered under [Advanced Configuration](advanced-configuration.md) — BitLocker, local admin groups, monitors, USB devices, warranty info, and more. ConfigMgr does not collect these by default; once you import the corresponding hardware inventory extensions, BI for SCCM picks them up automatically.
 
 ## How the docs are organized
 
-- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, set up Power BI Gateway, configure database access, and connect your semantic model.
+- **Install Guide** — required for every customer. Install the app from the Microsoft Marketplace, set up Power BI Gateway, configure database access, and connect your semantic model. Once the Setup Guide is done, you have a working set of dashboards built on the data ConfigMgr already collects.
+- **Advanced Configuration** — optional. Custom Inventory extensions that unlock additional dashboards (BitLocker, monitors, USB devices, and more). The product works fine without these — the dashboards that depend on them simply show no data until you enable the matching hardware inventory class in ConfigMgr.
 - **Admin Guide** — administration and troubleshooting: backing up custom reports, performing upgrades, managing workspaces, customizing templates, and resolving common issues.
 - **User Guide** — training materials for the people in your organization who use the reports day to day. Dashboard navigation, drill-throughs, exporting, and interactive walkthroughs.
 - **What's New** — release notes for every version, so you know exactly what changed before upgrading.

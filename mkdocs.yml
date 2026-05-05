@@ -134,11 +134,12 @@ nav:
         - Cloud PC Export API Parameter: bi-for-intune/installation/setup-guide/cloud-pc-export-api-parameter.md
         - Configure Data Sync: bi-for-intune/installation/setup-guide/configure-data-sync.md
         - Enable Maps: bi-for-intune/installation/setup-guide/enable-maps.md
+    - Advanced Configuration:
+      - bi-for-intune/advanced-configuration.md
       - Log Analytics:
         - Connect Power BI to Log Analytics: bi-for-intune/installation/log-analytics/edit-entra-app-registration.md
         - Semantic Model Settings for Log Analytics: bi-for-intune/installation/log-analytics/semantic-model-settings-for-log-analytics.md
         - WUfB Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
-        - Migrate to Log Ingestion API: bi-for-intune/installation/log-analytics/migrate-to-log-ingestion-api.md
       - Custom Inventory:
         - Create Entra Application: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
         - Deploy Azure Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md
@@ -152,6 +153,7 @@ nav:
       - Perform In-place Upgrade: bi-for-intune/administration/perform-in-place-upgrade.md
       - Create Backup Workspace: bi-for-intune/administration/create-backup-workspace.md
       - Installing a Custom Power BI Template: bi-for-intune/administration/installing-a-custom-power-bi-template.md
+      - Migrate to Log Ingestion API: bi-for-intune/installation/log-analytics/migrate-to-log-ingestion-api.md
       - How to Edit Reports: bi-for-intune/administration/how-to-edit-bi-for-intune-reports.md
       - How to Create Popup Box Visuals: bi-for-intune/administration/how-to-create-popup-box-visuals.md
       - Repair Broken Visuals: bi-for-intune/administration/repair-broken-visuals.md
@@ -178,6 +180,8 @@ nav:
         - Configure the Semantic Model: bi-for-sccm/installation/setup-guide/configure-the-semantic-model.md
         - Enable Azure Maps: bi-for-sccm/installation/setup-guide/enable-azure-maps.md
         - AD User Discovery: bi-for-sccm/installation/setup-guide/ad-user-discovery.md
+    - Advanced Configuration:
+      - bi-for-sccm/advanced-configuration.md
       - Custom Inventory:
         - BitLocker: bi-for-sccm/installation/custom-inventory/bitlocker.md
         - Local Admin Group: bi-for-sccm/installation/custom-inventory/local-admin-group.md
@@ -219,6 +223,8 @@ nav:
         - Configure the Semantic Model: bi-for-defender/installation/setup-guide/configure-the-semantic-model.md
         - Configure Data Sync: bi-for-defender/installation/setup-guide/configure-data-sync.md
         - Application Controls: bi-for-defender/installation/setup-guide/application-controls.md
+    - Advanced Configuration:
+      - bi-for-defender/advanced-configuration.md
     - Administration:
       - bi-for-defender/administration/index.md
       - Semantic Model Parameters: bi-for-defender/administration/semantic-model-parameters.md

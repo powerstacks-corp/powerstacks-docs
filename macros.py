@@ -160,10 +160,12 @@ def _version_pages(product_slug, docs_dir):
                     except ValueError:
                         date = None
 
-        # Generate the URL relative to the doc being rendered.
-        # Since the release_archive is called from .../release-notes/index.md
-        # or archive.md, we want "version-XX.../" as a relative link.
-        url = md.stem + '/'
+        # Use a site-root-relative URL so the link resolves correctly from both
+        # release-notes/index.md (rendered at release-notes/) and
+        # release-notes/archive.md (rendered at release-notes/archive/).
+        # A bare "version-XX/" works from index.md but produces 404s from
+        # archive.md because the browser resolves it against release-notes/archive/.
+        url = f'/{product_slug}/release-notes/{md.stem}/'
 
         entries.append({
             'path': md,

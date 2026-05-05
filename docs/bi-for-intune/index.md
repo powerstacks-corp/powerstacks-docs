@@ -34,12 +34,13 @@ BI for Intune is a Power BI template app that connects directly to your Intune e
 
 Pre-built dashboards cover device health, compliance, discovered applications, Windows Update for Business, and custom inventory collection. Drill through from fleet-level summaries to individual devices, track OS versions, hardware models, encryption status, and Autopilot enrollment — all with automatic refresh on your schedule.
 
-Extend your reporting with PowerShell-based inventory scripts for BitLocker, local admins, monitors, USB devices, and more. Optional Log Analytics integration provides extended data retention and advanced querying capabilities.
+Extend your reporting with optional add-ons covered under [Advanced Configuration](advanced-configuration.md): a Log Analytics integration to populate the Windows Update for Business Reports dashboards, and PowerShell-based Custom Inventory to collect device facts Microsoft does not surface through Graph (BitLocker, local admins, monitors, USB devices, warranty, and more).
 
 ## How the docs are organized
 
-- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, create your Entra app registration, configure your semantic model, set up Log Analytics, and deploy custom inventory collection.
-- **Admin Guide** — administration and troubleshooting: backing up custom reports, performing upgrades, managing workspaces, customizing templates, and resolving common issues.
+- **Install Guide** — required for every customer. Install the app from the Microsoft Marketplace, create your Entra app registration, and configure your semantic model. Once the Setup Guide is done, you have a working set of dashboards.
+- **Advanced Configuration** — optional. Connecting Log Analytics or deploying Custom Inventory unlocks additional dashboards (WUfB Reports, BitLocker, monitors, USB devices, and more). The product works fine without these — dashboards that depend on them will simply show no data until you set them up.
+- **Admin Guide** — administration and troubleshooting: backing up custom reports, performing upgrades, managing workspaces, customizing templates, migrating between API versions, and resolving common issues.
 - **User Guide** — training materials for the people in your organization who use the reports day to day. Dashboard navigation, drill-throughs, exporting, and interactive walkthroughs.
 - **What's New** — release notes for every version, so you know exactly what changed before upgrading.
 

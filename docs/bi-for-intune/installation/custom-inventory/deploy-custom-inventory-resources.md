@@ -1,11 +1,15 @@
 ---
 title: "Deploy Enhanced Inventory Resources"
-render_macros: false
 ---
 
 # Deploy Enhanced Inventory Azure Resources
 
 This step uses a one-click Azure deployment to create all the infrastructure needed for Enhanced Inventory. The ARM template sets up (or reuses) a Log Analytics Workspace, configures custom tables, and creates the Data Collection Endpoint (DCE) and Data Collection Rule (DCR).
+
+!!! tip "Prefer to watch a walkthrough first?"
+    The interactive demo below is an optional supplement to the written steps on this page — not a replacement. The written instructions remain the canonical source of truth.
+
+{{ storylane("https://powerstacks.storylane.io/share/btzozkmur3l9", title="Walkthrough: Deploy Enhanced Inventory (Azure Monitor)") }}
 
 ## What the deployment creates
 

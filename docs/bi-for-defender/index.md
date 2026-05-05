@@ -36,7 +36,8 @@ Pre-built dashboards cover threat detection and response, device security postur
 
 ## How the docs are organized
 
-- **Install Guide** — step-by-step instructions to install the app from Microsoft AppSource, create your Entra app registration, configure your semantic model, and set up data sync.
+- **Install Guide** — required for every customer. Install the app from the Microsoft Marketplace, create your Entra app registration, configure your semantic model, and set up data sync. Once the Setup Guide is done, you have a working set of dashboards.
+- **Advanced Configuration** — optional. Notes on Microsoft licensing prerequisites that affect specific dashboards (notably, Browser Extension Inventory requires the Microsoft Defender Vulnerability Management add-on). The product works fine without these — affected dashboards simply show no data until the matching Microsoft entitlement is in place.
 - **Admin Guide** — administration and troubleshooting: backing up custom reports, performing upgrades, managing workspaces, customizing templates, and resolving common issues.
 - **User Guide** — training materials for the people in your organization who use the reports day to day. Dashboard navigation, drill-throughs, exporting, and interactive walkthroughs.
 - **What's New** — release notes for every version, so you know exactly what changed before upgrading.
