@@ -1,4 +1,5 @@
 ---
+title: BI for Defender
 hide:
   - toc
   - navigation

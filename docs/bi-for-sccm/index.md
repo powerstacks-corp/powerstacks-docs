@@ -1,4 +1,5 @@
 ---
+title: BI for SCCM
 hide:
   - toc
   - navigation

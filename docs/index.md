@@ -2,7 +2,7 @@
 hide:
   - toc
   - navigation
-title: PowerStacks Documentation
+title: Documentation
 description: Documentation for PowerStacks BI products — BI for Intune, BI for SCCM, and BI for Defender.
 ---
 

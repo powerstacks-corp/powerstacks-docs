@@ -1,4 +1,5 @@
 ---
+title: BI for Intune
 hide:
   - toc
   - navigation

@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {# ─────────────────────────────────────────────────────────────────────
+   Browser tab title — match the marketing site's "{title} | PowerStacks"
+   pattern (src/layouts/BaseLayout.astro on powerstacks-website) instead
+   of MkDocs Material's default "{title} - {site_name}". Keeps the tab
+   bar visually consistent across powerstacks.com and docs.powerstacks.com.
+   ───────────────────────────────────────────────────────────────────── #}
+{% block htmltitle %}
+  {% if page and page.meta and page.meta.title %}
+    <title>{{ page.meta.title | striptags }} | PowerStacks</title>
+  {% elif page and page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} | PowerStacks</title>
+  {% else %}
+    <title>{{ config.site_name }} | PowerStacks</title>
+  {% endif %}
+{% endblock %}
+
+{# ─────────────────────────────────────────────────────────────────────
    PowerStacks global nav — full visual parity with the marketing site
    (src/components/Header.astro on powerstacks-website). Structure,
    dropdowns, scroll behavior, and CTA styling all match. The Learn
