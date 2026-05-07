@@ -359,6 +359,18 @@ html {
   max-width: none;
 }
 
+/* ── Wider docs grid (2026-05-07) ──
+   Material's default .md-grid caps at 61rem (~976px), which leaves a lot
+   of unused whitespace on wider displays — Storylane embeds and code
+   blocks felt cramped. Bumping to 80rem (~1280px) gives the content
+   column ~30% more room while still keeping comfortable line lengths
+   for body text. The left nav and right TOC scale proportionally because
+   the grid wraps all three columns, so this widening does not shift or
+   collide with the navigation. */
+.md-grid {
+  max-width: 80rem;
+}
+
 .md-typeset h1 {
   font-weight: 600;
   font-size: 2rem;
