@@ -1,6 +1,6 @@
 ---
 title: "Modern UI Templates"
-description: "Light- and dark-mode Modern UI templates that redesign every page of the BI for Intune reports."
+description: "Light-mode and dark-mode Modern UI templates that redesign every page of the BI for Intune reports."
 ---
 
 # Modern UI Templates for BI for Intune

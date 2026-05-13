@@ -15,7 +15,8 @@ Training materials for the people in your organization who use BI for Intune rep
 | [How to Create Popup Box Visuals](../administration/how-to-create-popup-box-visuals.md) | Add a popup-style detail visual that appears on click or hover |
 | [Repair Broken Visuals](../administration/repair-broken-visuals.md) | Fix visuals that appear broken after a Power BI service update or report customization |
 | [How to Merge Multiple Datasets](merge-multiple-datasets.md) | Combine multiple PowerStacks semantic models in a single Power BI report for cross-product reporting |
-| [Modern UI Templates](modern-ui-templates.md) | Light- and dark-mode templates that redesign every page of the BI for Intune reports |
+| [Installing a Custom Power BI Template](../administration/installing-a-custom-power-bi-template.md) | Install any of the additional templates from the BI for Intune GitHub repository into your Power BI workspace |
+| [Modern UI Templates](modern-ui-templates.md) | Light-mode and dark-mode templates that redesign every page of the BI for Intune reports |
 
 More guides — dashboard-by-dashboard reference pages, drill-through tutorials, and exporting / sharing workflows — are on the roadmap.
 
