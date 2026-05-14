@@ -249,3 +249,46 @@ nav:
       - bi-for-defender/release-notes/index.md
       - Recent Releases: bi-for-defender/release-notes/latest.md
       - Archive: bi-for-defender/release-notes/archive.md
+
+  # ═══════════════════════════════════════════════════════════════
+  # App Store for Intune
+  # ═══════════════════════════════════════════════════════════════
+  - App Store for Intune:
+    - app-store-for-intune/index.md
+    - Installation:
+      - Getting Started:
+        - Install App Store for Intune: app-store-for-intune/installation/getting-started/install-app-store-for-intune.md
+      - Setup Guide:
+        - Create Entra App Registrations: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
+        - Configure Application Settings: app-store-for-intune/installation/setup-guide/configure-application-settings.md
+        - Database Setup: app-store-for-intune/installation/setup-guide/database-setup.md
+        - Configure Admin Access: app-store-for-intune/installation/setup-guide/configure-admin-access.md
+        - Deploy to Azure: app-store-for-intune/installation/setup-guide/deploy-to-azure.md
+        - Configure Email Notifications: app-store-for-intune/installation/setup-guide/configure-email-notifications.md
+        - Configure Teams Bot: app-store-for-intune/installation/setup-guide/configure-teams-bot.md
+        - Configure Application Insights: app-store-for-intune/installation/setup-guide/configure-application-insights.md
+      - Custom Domains: app-store-for-intune/administration/custom-domains.md
+    - Administration:
+      - app-store-for-intune/administration/index.md
+      - Getting Started: app-store-for-intune/administration/getting-started.md
+      - Portal Settings: app-store-for-intune/administration/portal-settings.md
+      - Communications: app-store-for-intune/administration/communications.md
+      - App Management: app-store-for-intune/administration/app-management.md
+      - App Catalog and Cloud Packaging: app-store-for-intune/administration/app-catalog-cloud-packaging.md
+      - Approval Workflows: app-store-for-intune/administration/approval-workflows.md
+      - Pending Approvals: app-store-for-intune/administration/pending-approvals.md
+      - User Experience: app-store-for-intune/administration/user-experience.md
+      - Reports and Analytics: app-store-for-intune/administration/reports-analytics.md
+      - Best Practices: app-store-for-intune/administration/best-practices.md
+      - Database Maintenance: app-store-for-intune/administration/database-maintenance.md
+      - Disaster Recovery: app-store-for-intune/administration/disaster-recovery.md
+      - Security Overview: app-store-for-intune/administration/security.md
+      - Troubleshooting: app-store-for-intune/administration/troubleshooting.md
+      - Architecture: app-store-for-intune/administration/architecture.md
+    - User Guides:
+      - app-store-for-intune/user-guides/index.md
+    - API Reference:
+      - app-store-for-intune/api/index.md
+      - Authentication: app-store-for-intune/api/authentication.md
+      - PowerShell Examples: app-store-for-intune/api/examples.md
+    - Roadmap: app-store-for-intune/roadmap.md
