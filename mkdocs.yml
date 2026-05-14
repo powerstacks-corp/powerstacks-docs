@@ -260,13 +260,12 @@ nav:
         - Install App Store for Intune: app-store-for-intune/installation/getting-started/install-app-store-for-intune.md
       - Setup Guide:
         - Create Entra App Registrations: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
-        - Configure Application Settings: app-store-for-intune/installation/setup-guide/configure-application-settings.md
-        - Database Setup: app-store-for-intune/installation/setup-guide/database-setup.md
         - Configure Admin Access: app-store-for-intune/installation/setup-guide/configure-admin-access.md
         - Deploy to Azure: app-store-for-intune/installation/setup-guide/deploy-to-azure.md
         - Configure Email Notifications: app-store-for-intune/installation/setup-guide/configure-email-notifications.md
         - Configure Teams Bot: app-store-for-intune/installation/setup-guide/configure-teams-bot.md
         - Configure Application Insights: app-store-for-intune/installation/setup-guide/configure-application-insights.md
+        - Rotate the API client secret: app-store-for-intune/installation/setup-guide/rotate-api-client-secret.md
       - Custom Domains: app-store-for-intune/administration/custom-domains.md
     - Administration:
       - app-store-for-intune/administration/index.md
