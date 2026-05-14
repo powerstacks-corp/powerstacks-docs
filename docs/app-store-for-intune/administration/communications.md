@@ -117,7 +117,7 @@ When enabled, approval notification emails include **Approve** and **Reject** bu
 4. The API validates the request using a secure action token and processes the approval
 5. **Fallback behavior**: If Outlook doesn't support Actionable Messages, or if the provider is not registered, or if the Originator ID is not configured, the email falls back to the standard HTML body with a "Review Request" link to the portal. Emails are **always sent** regardless of registration status, only the action buttons are affected.
 
-**Registering with Microsoft (Required for Action Buttons):**
+#### Registering with Microsoft (Required for Action Buttons)
 
 Outlook Actionable Messages require a one-time provider registration with Microsoft. Without this registration, Outlook will silently ignore the action buttons and only show the HTML fallback with a "Review Request" link.
 

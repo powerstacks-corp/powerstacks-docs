@@ -11,7 +11,7 @@ This document provides full security documentation for the App Store for Intune,
 
 1. [Azure Resources Created](#azure-resources-created)
 2. [Identity and Access Management](#identity-and-access-management)
-3. [Entra ID App Registrations](#azure-ad-app-registrations)
+3. [Entra ID App Registrations](#entra-id-app-registrations)
 4. [Managed Identity Configuration](#managed-identity-configuration)
 5. [Network Security](#network-security)
 6. [Data Protection](#data-protection)
