@@ -23,5 +23,6 @@ Operational reference for App Store for Intune administrators. Configure the por
 | [Database Maintenance](database-maintenance.md) | Backups, retention, cleanup |
 | [Disaster Recovery](disaster-recovery.md) | Backup and recovery procedures |
 | [Security Overview](security.md) | Security model and compliance |
+| [Configure PSADT via Intune ADMX](psadt-configuration-via-intune-admx.md) | Standardize PSADT v4 behavior across your fleet via an Intune Configuration Profile, plus a recommended baseline |
 | [Troubleshooting](troubleshooting.md) | Common issues and solutions |
 | [Architecture](architecture.md) | System architecture and data flows |
