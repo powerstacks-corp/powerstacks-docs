@@ -578,7 +578,7 @@ To close that gap, the App Store can verify each package against Microsoft's sig
 
 **What this does not yet protect against (v1 limitations):**
 
-- The full chain described in [`docs/DESIGN-WINGET-MANIFEST-VERIFICATION.md`](DESIGN-WINGET-MANIFEST-VERIFICATION.md) calls for fetching the version data manifest from the Azure CDN by content-addressed URL and verifying its hash against the SQLite value, then doing the same for each per-version merged manifest. v1 implements only the index lookup gate; the hash-of-manifest comparison is a planned v2 enhancement.
+- The full design (documented internally as the WinGet manifest verification specification) calls for fetching the version data manifest from the Azure CDN by content-addressed URL and verifying its hash against the SQLite value, then doing the same for each per-version merged manifest. v1 implements only the index lookup gate; the hash-of-manifest comparison is a planned v2 enhancement.
 - MSIX signature validation against Microsoft's certificate chain (Authenticode-on-MSIX via WinTrust). v1 relies on HTTPS + DNS to `cdn.winget.microsoft.com` as the trust root. A compromised CDN is out of scope for v1; v2 will add full signature validation.
 
 **Configuration:** Admin → Settings → "Verify manifest integrity against Microsoft's signed index". Default is **off** in this release while we soak the feature; once validated in production it will flip to default-on. Admins running internal hardened mirrors of the WinGet repo can leave it off and rely on their mirror's own integrity controls.

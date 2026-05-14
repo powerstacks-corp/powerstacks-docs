@@ -981,7 +981,7 @@ The system checks for the API key in the following order:
 
 ### Database Tables
 
-For a complete map of the SQL data model, every table, what it stores, the relationships between them, and how the portal tracks Win32 apps in Intune, see [Data Model](DATA-MODEL.md). Column-level detail lives in the EF entity classes under `src/AppRequestPortal.Core/Models/` and the migrations under `src/AppRequestPortal.Infrastructure/Migrations/`; the EF source is the schema authority.
+For column-level detail of the SQL data model, see the EF entity classes under `src/AppRequestPortal.Core/Models/` and the migrations under `src/AppRequestPortal.Infrastructure/Migrations/` in the App Store source repository; the EF source is the schema authority.
 
 ## Future Enhancements
 
