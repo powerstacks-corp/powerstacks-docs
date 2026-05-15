@@ -1,37 +1,38 @@
 ---
 title: "Install App Store for Intune"
-description: "What you need before installing App Store for Intune, what the Deploy to Azure button does for you, and what you still do by hand."
+description: "What App Store for Intune is, what the install provisions, and the order of pages to follow for a fresh deployment."
 ---
 
 # Install App Store for Intune
 
-App Store for Intune is a self-service application portal that runs entirely inside your Azure tenant. The fastest way to install it is the **Deploy to Azure** button: one ARM template provisions the App Service, the Azure SQL Database, the Key Vault, the storage account, the (optional) Azure Bot resource and its user-assigned managed identity, and the networking between them. Migrations apply on first start. There is no separate database setup step, no manual configuration of app settings, and no developer tooling to install.
+App Store for Intune is a full-lifecycle application management platform for Microsoft Intune environments. It deploys into your own Azure tenant — no vendor-hosted cloud, no shared credentials, no external processor of your data — and gives end users a branded self-service catalog where they can request the applications they need. Admins get a packaging pipeline that pulls WinGet-sourced installers, hash-verifies them, wraps them with PSADT v4, converts to `.intunewin`, and deploys through Intune's standard Win32 app pipeline. Custom MSI upload covers anything outside the WinGet catalog. Per-app approval workflows, Autopatch ring integration, version-rollback, programmatic API access, and Microsoft Teams notifications are included.
 
-The only things you do by hand are the two Entra ID app registrations (the API and the SPA), creating two security groups (admins and approvers), clicking the button, and running a single PowerShell snippet after the deploy to grant Microsoft Graph permissions to the App Service's managed identity.
-
-!!! tip "No client secret"
-    As of v1.30.0, the portal uses managed identities for all outbound auth — Microsoft Graph, the Teams bot, and Key Vault access. There is no client secret anywhere in the install. The deploy form does not ask for one, the Key Vault does not store one, and there is nothing to rotate when an expiry date passes.
+The install provisions an App Service, an Azure SQL database, a Key Vault, a storage account, an Application Insights workspace, and — when Teams notifications are enabled — an Azure Bot resource and a user-assigned managed identity for the bot. Database migrations apply on first start. After deploy, a one-time PowerShell snippet grants Microsoft Graph application permissions to the App Service's managed identity, and a first-run setup wizard inside the portal walks you through admin group selection, license activation, and the first Intune sync.
 
 ## Prerequisites
 
-- An **Azure subscription** with permission to create resource groups and resources (Contributor on the target subscription or resource group).
-- **Microsoft Entra ID** Global Administrator or Application Administrator role, used to create the two app registrations and grant the Graph API permissions the portal needs.
-
-That's it. You do not need .NET, Node.js, Visual Studio, the Azure CLI, NuGet, or the EF Core CLI to install the product. Those are only useful if you're building from source.
-
-You do not need a local SQL Server. Azure SQL is provisioned by the deploy template.
+- An **Azure subscription** with Contributor permission on the target subscription or resource group.
+- A **Microsoft Entra ID** Global Administrator or Application Administrator role, used to create the app registrations and to grant Microsoft Graph application permissions to the managed identity post-deploy.
 
 ## Setup steps in order
 
-1. [Create Entra App Registrations](../setup-guide/create-entra-app-registrations.md) — two registrations: the backend API (with Microsoft Graph application-permission declarations and an `access_as_user` scope) and the frontend SPA (client ID only). No client secret required on either.
-2. [Configure Admin Access](../setup-guide/configure-admin-access.md) — create the admin and approver security groups in Entra ID and copy their Object IDs. The portal fails closed until an admin group is set, so this is required, not optional.
-3. [Deploy to Azure](../setup-guide/deploy-to-azure.md) — click the button, fill the parameter form, wait 10-15 minutes, then run the post-deploy PowerShell snippet shown in the **Outputs** tab to grant Graph permissions to the App Service's managed identity. This is the install.
-4. [Configure Email Notifications](../setup-guide/configure-email-notifications.md) — optional. Email notifications for approvers and requestors.
-5. [Configure Microsoft Teams Bot](../setup-guide/configure-teams-bot.md) — optional. If you set `enableTeamsBot=true` in step 3, the Azure Bot resource is already registered for you; this page covers the Teams app manifest upload that still has to happen in the Teams admin center.
-6. [Configure Application Insights](../setup-guide/configure-application-insights.md) — optional. Application logging and telemetry.
+1. [Create Entra app registrations](../setup-guide/create-entra-app-registrations.md) — two registrations: the backend (validates incoming user tokens and exposes the `access_as_user` scope) and the frontend (handles user sign-in in the browser).
+2. [Deploy to Azure](../setup-guide/deploy-to-azure.md) — run the custom-deployment wizard.
+3. [Grant Microsoft Graph permissions to the App Service](../setup-guide/grant-graph-permissions.md) — one-time post-deploy PowerShell snippet that assigns the required Graph application roles to the App Service's managed identity.
+4. [Add the production redirect URI](../setup-guide/add-redirect-uri.md) — add the App Service URL to the frontend app registration's SPA platform so sign-in succeeds.
+5. [Sign in and verify](../setup-guide/sign-in.md) — confirm the portal is healthy and complete the in-portal Setup Wizard (admin group, license activation, first Intune sync).
 
-After the deploy completes, the [Admin Guide](../../administration/index.md) is where the ongoing configuration lives — portal settings, approval workflows, the app catalog, PSADT configuration via Intune ADMX, and so on.
+## Optional post-deploy configuration
+
+The portal is fully functional after step 5. The following are optional and can be configured at any time from the admin UI:
+
+- [Configure email notifications](../setup-guide/configure-email-notifications.md)
+- [Configure Microsoft Teams Bot](../setup-guide/configure-teams-bot.md)
+- [Configure Application Insights](../setup-guide/configure-application-insights.md)
+- [Configure a custom domain](../../administration/custom-domains.md)
+
+For ongoing operations after install, see the [Admin Guide](../../administration/index.md).
 
 ## Next step
 
-Start with [Create Entra App Registrations](../setup-guide/create-entra-app-registrations.md).
+Continue to [Create Entra app registrations](../setup-guide/create-entra-app-registrations.md).

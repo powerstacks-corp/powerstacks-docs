@@ -259,11 +259,15 @@ nav:
       - Getting Started:
         - Install App Store for Intune: app-store-for-intune/installation/getting-started/install-app-store-for-intune.md
       - Setup Guide:
-        - Create Entra App Registrations: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
-        - Configure Admin Access: app-store-for-intune/installation/setup-guide/configure-admin-access.md
+        - Create Entra app registrations: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
         - Deploy to Azure: app-store-for-intune/installation/setup-guide/deploy-to-azure.md
-        - Configure Email Notifications: app-store-for-intune/installation/setup-guide/configure-email-notifications.md
-        - Configure Teams Bot: app-store-for-intune/installation/setup-guide/configure-teams-bot.md
+        - Grant Microsoft Graph permissions: app-store-for-intune/installation/setup-guide/grant-graph-permissions.md
+        - Add the production redirect URI: app-store-for-intune/installation/setup-guide/add-redirect-uri.md
+        - Sign in and verify: app-store-for-intune/installation/setup-guide/sign-in.md
+        - Troubleshooting the install: app-store-for-intune/installation/setup-guide/troubleshooting.md
+      - Optional configuration:
+        - Configure email notifications: app-store-for-intune/installation/setup-guide/configure-email-notifications.md
+        - Configure Microsoft Teams Bot: app-store-for-intune/installation/setup-guide/configure-teams-bot.md
         - Configure Application Insights: app-store-for-intune/installation/setup-guide/configure-application-insights.md
       - Custom Domains: app-store-for-intune/administration/custom-domains.md
     - Administration:

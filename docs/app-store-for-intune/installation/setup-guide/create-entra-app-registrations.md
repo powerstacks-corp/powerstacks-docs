@@ -1,105 +1,60 @@
 ---
-title: "Create Entra App Registrations"
-description: "Create the backend API and frontend SPA app registrations in Microsoft Entra ID, grant Microsoft Graph permissions, and capture the values you'll paste into the Deploy to Azure form."
+title: "Create Entra app registrations"
+description: "Create the backend and frontend Entra ID app registrations and record the values you'll supply to the Deploy to Azure wizard."
 ---
 
-# Create Entra App Registrations
+# Create Entra app registrations
 
-App Store for Intune needs two app registrations in your tenant:
+App Store for Intune uses two app registrations in your tenant:
 
-- The **backend API** — receives signed-in users' tokens and validates them as Bearer tokens on every `/api/*` call. Also carries the Microsoft Graph application-permission declarations the App Service will use at runtime via its managed identity.
-- The **frontend SPA** — handles user sign-in and calls the backend API. Client ID only.
+- The **backend** validates the user tokens that arrive on every `/api/*` call and exposes the `access_as_user` scope that the frontend asks the user to consent to.
+- The **frontend** handles user sign-in in the browser and requests the backend's `access_as_user` scope.
 
-You create both before clicking **Deploy to Azure**, because the deploy form asks for their client IDs.
+Microsoft Graph application permissions live on the App Service's managed identity, not on either app registration. You assign those permissions to the managed identity after the deploy completes by running a single PowerShell snippet — see [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md). The app registrations themselves carry no client secret and no Graph application permissions.
 
-!!! tip "No client secret required"
-    The portal authenticates to Microsoft Graph and the Bot Framework using managed identities provisioned by the deploy template. No password lives in the install. There is nothing to paste, nothing to store in Key Vault, and nothing to rotate.
+## Backend app registration
 
-## Backend API app registration
+1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
+2. Select **New registration**.
+3. **Name**: `App Store for Intune - Backend`.
+4. **Supported account types**: **Single tenant only**.
+5. **Redirect URI**: leave empty.
+6. Select **Register**.
+7. Record the **Application (client) ID** — you'll supply this to the Deploy to Azure wizard.
 
-1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**
-2. Click **New registration**
-3. Name: `App Store for Intune - API`
-4. Supported account types: **Accounts in this organizational directory only**
-5. Redirect URI: leave empty
-6. Click **Register**
-7. Note the **Application (client) ID** and **Directory (tenant) ID** — you'll paste both into the Deploy to Azure form.
+8. Expose an API scope so the frontend can call the backend on behalf of the signed-in user:
+    - Select **Expose an API** > **Add a scope**.
+    - **Application ID URI**: accept the default (`api://<client-id>`).
+    - Select **Save and continue**.
+    - **Scope name**: `access_as_user`
+    - **Who can consent**: **Admins and users**
+    - **Admin consent display name**: `Access App Store for Intune`
+    - **Admin consent description**: `Allows the app to access the App Store for Intune backend as the signed-in user.`
+    - **User consent display name**: `Access App Store for Intune`
+    - **User consent description**: `Allows the app to access the App Store for Intune backend on your behalf.`
+    - **State**: **Enabled**
+    - Select **Add scope**.
+
+## Frontend app registration
+
+1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
+2. Select **New registration**.
+3. **Name**: `App Store for Intune - Frontend`.
+4. **Supported account types**: **Single tenant only**.
+5. **Redirect URI**: leave empty for now. After the deploy completes you'll add the App Service URL — see [Add the production redirect URI](add-redirect-uri.md).
+6. Select **Register**.
+7. Record the **Application (client) ID** — you'll supply this to the Deploy to Azure wizard.
 
 8. Configure API permissions:
-    - Click **API permissions** > **Add a permission**
-    - Select **Microsoft Graph** > **Application permissions**
-    - Add the following permissions:
-        - `DeviceManagementApps.Read.All` — read Intune apps
-        - `DeviceManagementApps.ReadWrite.All` — manage Intune apps and create assignments
-        - `DeviceManagementConfiguration.Read.All` — read Intune assignment filters (used by ring deployment settings)
-        - `DeviceManagementManagedDevices.Read.All` — read user devices
-        - `Group.ReadWrite.All` — create and manage security groups
-        - `User.Read.All` — read user profiles, managers, and group memberships
-        - `Directory.Read.All` — read directory data
-        - `Mail.Send` — send email notifications (optional, see [Configure Email Notifications](configure-email-notifications.md))
-    - Click **Grant admin consent**
-
-    !!! note "Why these permissions"
-        `DeviceManagementApps.ReadWrite.All` is what lets the portal create Intune app assignments when an app is made visible. `DeviceManagementConfiguration.Read.All` is what populates the assignment-filter picker used by ring deployment settings — without it, the filter dropdown is empty even if your tenant has filters configured.
-
-    !!! note "How these permissions reach the runtime"
-        You declare the permissions here on the app registration. After deploy, you also assign them to the App Service's managed identity using a copy-paste PowerShell snippet that the deploy form prints. See [Deploy to Azure: Grant Microsoft Graph permissions to the App Service](deploy-to-azure.md#grant-microsoft-graph-permissions-to-the-app-service).
-
-9. Expose an API (so the frontend can call the backend on behalf of the signed-in user):
-    - Click **Expose an API** > **Add a scope**
-    - Application ID URI: accept the default or use `api://your-api-client-id`
-    - Scope name: `access_as_user`
-    - Who can consent: **Admins and users**
-    - Display name: `Access API as user`
-    - Description: `Allow the application to access the API as the signed-in user`
-    - Click **Add scope**
-
-## Frontend SPA app registration
-
-1. Back at **Azure Portal** > **Microsoft Entra ID** > **App registrations**, click **New registration**
-2. Name: `App Store for Intune - Frontend`
-3. Supported account types: **Accounts in this organizational directory only**
-4. Redirect URI:
-    - Type: **Single-page application (SPA)**
-    - URI: leave this for now. You'll come back after the deploy completes and add the App Service URL.
-
-5. Click **Register**
-6. Note the **Application (client) ID** — you'll paste it into the Deploy to Azure form.
-
-7. Configure API permissions:
-    - Click **API permissions** > **Add a permission**
-    - Select **APIs my organization uses** > select your backend API app
-    - Check `access_as_user`
-    - Click **Add permissions**
-    - Add **Microsoft Graph** > **Delegated permissions** > `User.Read` (used to fetch the signed-in user's profile photo)
-    - Click **Grant admin consent**
-
-    !!! note "Auth flow"
-        The frontend uses MSAL.js with the authorization-code flow plus PKCE. You do not need to enable any of the **Implicit grant and hybrid flows** checkboxes (Access tokens, ID tokens) on the **Authentication** blade — those are for the legacy implicit flow. Leave them off.
-
-## What to do after the deploy completes
-
-Once [Deploy to Azure](deploy-to-azure.md) finishes, you must add the App Service URL as the SPA redirect URI **before anyone tries to sign in to the portal**. Sign-in will fail until this is done.
-
-The App Service URL is one of the outputs the Deploy to Azure wizard shows on the deployment completion page. It looks like `https://<sitename>.azurewebsites.net`. You can also find it later under **Azure Portal** > **App Services** > select your App Store App Service > **Overview** > **Default domain**.
-
-To add it:
-
-1. Return to **Microsoft Entra ID** > **App registrations** > select your frontend SPA app registration.
-2. Open the **Authentication** blade.
-3. Click **Add a platform** > **Single-page application** (or, if a SPA platform already exists, click **Add URI** under it).
-4. Enter the App Service URL with a trailing slash, for example:
-
-    ```
-    https://appstore-contoso.azurewebsites.net/
-    ```
-
-5. Click **Configure** (or **Save**).
-
-If you plan to access the portal via a custom domain instead of the default `*.azurewebsites.net` URL, configure the custom domain first per [Custom Domains](../../administration/custom-domains.md), then add the custom domain URL as the SPA redirect URI instead of (or in addition to) the App Service URL.
-
-If you build the portal from source for local development, you can keep `http://localhost:3000` as an additional redirect URI on the same app registration. Production and dev URIs coexist.
+    - Select **API permissions** > **Add a permission**.
+    - Select **APIs my organization uses** > select your backend app registration.
+    - Check `access_as_user`.
+    - Select **Add permissions**.
+    - Select **Add a permission** again.
+    - Select **Microsoft Graph** > **Delegated permissions** > `User.Read`. This permission reads the signed-in user's profile and is used to display the profile photo in the portal header.
+    - Select **Add permissions**.
+    - Select **Grant admin consent**.
 
 ## Next step
 
-Continue to [Configure Admin Access](configure-admin-access.md) — create the admin and approver security groups before you deploy, because their Object IDs go into the deploy form.
+Continue to [Deploy to Azure](deploy-to-azure.md).
