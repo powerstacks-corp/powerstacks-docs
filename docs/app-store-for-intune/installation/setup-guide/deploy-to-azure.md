@@ -11,12 +11,15 @@ This is the install. You click the **Deploy to Azure** button, fill the paramete
 
 You should already have:
 
-- Backend API app registration **client ID**, **client secret**, and the **tenant ID** ([Create Entra App Registrations](create-entra-app-registrations.md))
+- Backend API app registration **client ID** and the **tenant ID** ([Create Entra App Registrations](create-entra-app-registrations.md))
 - Frontend SPA app registration **client ID** ([Create Entra App Registrations](create-entra-app-registrations.md))
 - Admin security group **Object ID** ([Configure Admin Access](configure-admin-access.md))
 - Approver security group **Object ID** ([Configure Admin Access](configure-admin-access.md))
 
-If you don't have all six, go back and finish those pages first. The deploy form will reject empty values.
+If you don't have all five, go back and finish those pages first. The deploy form will reject empty values.
+
+!!! tip "No client secret in this list"
+    Earlier releases required pasting an API client secret into the deploy form. That is gone. The portal authenticates to Microsoft Graph using the App Service's system-assigned managed identity, and the Teams bot uses a user-assigned managed identity that the template provisions for you. No password lives in the install. The post-deploy step below ([Grant Microsoft Graph permissions to the App Service](#grant-microsoft-graph-permissions-to-the-app-service)) is the one piece that still requires a single PowerShell command — a copy-paste snippet that the deploy form prints for you.
 
 ## Launch the deploy
 
@@ -34,7 +37,6 @@ Click the **Deploy to Azure** button on the [App Store for Intune GitHub reposit
 | **Region** | The Azure region for all resources. Pick something close to your users. |
 | **Site name** | The App Service name. This becomes `https://<sitename>.azurewebsites.net`. Must be globally unique in Azure. |
 | **API client ID** | Backend API app registration's client ID. |
-| **API client secret** | Backend API app registration's client secret (the value you copied once). |
 | **Frontend client ID** | Frontend SPA app registration's client ID. |
 | **Tenant ID** | Your Entra tenant's directory ID. |
 | **Admin group ID** | The Object ID of the admin security group. |
@@ -47,26 +49,94 @@ Click **Review + create**, then **Create**. The deploy takes 10-15 minutes.
 
 ## What the template provisions
 
-- **Azure App Service Plan** (B2 tier by default — you can scale up or down post-install) and the **App Service** itself with system-assigned managed identity enabled.
+- **Azure App Service Plan** (B2 tier by default — you can scale up or down post-install) and the **App Service** itself with **system-assigned managed identity** enabled. This identity is the one that calls Microsoft Graph at runtime.
+- **A user-assigned managed identity (UAMI)** dedicated to the Teams bot, attached to the App Service alongside the system-assigned MI. The Azure Bot resource is configured with `msaAppType = "UserAssignedMSI"` so its outbound calls to the Bot Connector authenticate without a password.
 - **Azure SQL Server** plus the **App Store database**, firewalled to allow only Azure services by default. Database migrations apply automatically on first start, so there is no separate database setup step.
-- **Azure Key Vault** containing the API client secret, the SQL connection string, and the storage connection string. The App Service's managed identity is granted **Get** and **List** permissions on the vault so it can read these at runtime — the secrets never appear in App Service configuration.
+- **Azure Key Vault** containing the SQL connection string and the storage connection string. The App Service's system-assigned managed identity is granted **Get** and **List** permissions on the vault so it can read these at runtime. The vault holds no application secrets — every credential the runtime uses is a managed identity, not a stored value.
 - **Azure Storage account** used by the packaging pipeline.
 - **Azure Bot** resource and Teams channel registration (if `enableTeamsBot=true`).
 - **Application settings** on the App Service, pre-populated with every value the API needs. You do not need to configure anything else in the App Service Configuration blade after deploy.
 
 ## After the deploy completes
 
-1. **Wait 10-15 minutes for managed identity propagation.** Even after the deploy reports success, the App Service's managed identity may not yet be able to read from Key Vault. See [Key Vault reference failures](#key-vault-reference-failures-red-x-marks) below if you see red X marks on Key Vault references in the Configuration blade.
+1. **Wait 10-15 minutes for managed identity propagation.** Even after the deploy reports success, the App Service's managed identity may not yet be readable across Azure AD. See [Key Vault reference failures](#key-vault-reference-failures-red-x-marks) below if you see red X marks on Key Vault references in the Configuration blade.
 
-2. **Add the production redirect URI to the frontend SPA app registration before anyone tries to sign in.** The App Service URL is one of the outputs shown on the deployment completion page — it looks like `https://<sitename>.azurewebsites.net`. Step-by-step instructions are at [Create Entra App Registrations: What to do after the deploy completes](create-entra-app-registrations.md#what-to-do-after-the-deploy-completes). If you want to use a custom domain instead, set it up per [Custom Domains](../../administration/custom-domains.md) first and use that URL as the redirect URI.
+2. **Grant Microsoft Graph permissions to the App Service managed identity** (see the next section). Until you do this, the portal will sign you in but every Graph-backed operation (Intune sync, app deploy, group creation, etc.) will fail with a 403 from Graph.
 
-3. **Verify the portal is healthy.** Visit:
+3. **Add the production redirect URI to the frontend SPA app registration before anyone tries to sign in.** The App Service URL is one of the outputs shown on the deployment completion page — it looks like `https://<sitename>.azurewebsites.net`. Step-by-step instructions are at [Create Entra App Registrations: What to do after the deploy completes](create-entra-app-registrations.md#what-to-do-after-the-deploy-completes). If you want to use a custom domain instead, set it up per [Custom Domains](../../administration/custom-domains.md) first and use that URL as the redirect URI.
+
+4. **Verify the portal is healthy.** Visit:
     - `https://<sitename>.azurewebsites.net/health` — should return `200 OK`
     - `https://<sitename>.azurewebsites.net/health/migrations` — should return `"pendingCount": 0`
 
-4. **Sign in.** Open the portal in a browser. You'll be redirected to Entra ID sign-in. After signing in as a member of the admin group, you should land on the admin tab. If you get a 403, your account isn't in the admin group or the admin group Object ID supplied at deploy was wrong.
+5. **Sign in.** Open the portal in a browser. You'll be redirected to Entra ID sign-in. After signing in as a member of the admin group, you should land on the admin tab. If you get a 403, your account isn't in the admin group or the admin group Object ID supplied at deploy was wrong.
 
-5. **Configure optional features.** Continue to [Configure Email Notifications](configure-email-notifications.md), [Configure Microsoft Teams Bot](configure-teams-bot.md), or [Configure Application Insights](configure-application-insights.md) as needed. None are required for the portal to function.
+6. **Configure optional features.** Continue to [Configure Email Notifications](configure-email-notifications.md), [Configure Microsoft Teams Bot](configure-teams-bot.md), or [Configure Application Insights](configure-application-insights.md) as needed. None are required for the portal to function.
+
+## Grant Microsoft Graph permissions to the App Service
+
+This is the one piece of the install that the deploy template cannot do for you. The Azure portal does not have a UI for assigning Microsoft Graph application permissions to a managed identity, so you do it once with a short PowerShell snippet that the deploy form printed for you in the **Outputs** tab.
+
+The snippet runs against the **Microsoft Graph PowerShell SDK** under your own admin identity (the same role you used to create the app registrations). It looks up the App Service's managed identity service principal in your tenant, then assigns each Graph application role to it — exactly the same set you declared on the backend API app registration, just attached to the runtime identity instead of an app secret.
+
+### Where to find the principal ID
+
+The deploy emits two outputs you need:
+
+- **`appServicePrincipalId`** — the object (principal) ID of the App Service's system-assigned managed identity. The snippet below references this.
+- **`appUrl`** — the App Service URL.
+
+Both are visible on the **Outputs** tab of the deployment in Azure Portal: open your resource group → **Deployments** → the deployment that just completed → **Outputs**.
+
+### Run the snippet
+
+Open a PowerShell session — Azure Cloud Shell or a local install of [Microsoft Graph PowerShell](https://learn.microsoft.com/powershell/microsoftgraph/installation) (`Install-Module Microsoft.Graph -Scope CurrentUser`). Paste the principal ID into the first line, then run the rest:
+
+```powershell
+# Paste the appServicePrincipalId from the deploy output here
+$AppServicePrincipalId = "<paste-the-principal-id-from-deploy-output>"
+
+Connect-MgGraph -Scopes "AppRoleAssignment.ReadWrite.All","Application.Read.All"
+
+$GraphSp = Get-MgServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'"
+
+$Permissions = @(
+    "DeviceManagementApps.Read.All",
+    "DeviceManagementApps.ReadWrite.All",
+    "DeviceManagementConfiguration.Read.All",
+    "DeviceManagementManagedDevices.Read.All",
+    "Group.ReadWrite.All",
+    "User.Read.All",
+    "Directory.Read.All",
+    "Mail.Send"
+)
+
+foreach ($p in $Permissions) {
+    $role = $GraphSp.AppRoles | Where-Object { $_.Value -eq $p }
+    if (-not $role) {
+        Write-Warning "App role $p not found on Microsoft Graph"
+        continue
+    }
+    New-MgServicePrincipalAppRoleAssignment `
+        -ServicePrincipalId $AppServicePrincipalId `
+        -PrincipalId $AppServicePrincipalId `
+        -ResourceId $GraphSp.Id `
+        -AppRoleId $role.Id `
+        -ErrorAction SilentlyContinue
+    Write-Host "Granted $p"
+}
+```
+
+That's it. The script takes about 10 seconds. When it finishes, the App Service can call Graph as itself, using its managed identity. No secret was created, no password is stored anywhere.
+
+### Verify the grant
+
+In Azure Portal, open the App Service > **Identity** > **System assigned** > **Azure role assignments**. Switch the scope to **Microsoft Entra role assignments** (or check **Enterprise applications** > find your App Service by name > **Permissions**). You should see the eight Graph application permissions listed, each with admin consent granted.
+
+You can also test it from the portal once everything else is up: sign in as an admin → **Admin** > **App Catalog** > click **Sync from Intune**. If apps appear, the grant is in place. If you get a 403, re-run the snippet or check the verification step above.
+
+!!! note "Rerunning the snippet is safe"
+    The script uses `ErrorAction SilentlyContinue` so re-running it after a partial failure (or after Microsoft adds a new required permission in a future release) is idempotent — already-granted roles are skipped, missing roles are added.
 
 ## Troubleshooting
 

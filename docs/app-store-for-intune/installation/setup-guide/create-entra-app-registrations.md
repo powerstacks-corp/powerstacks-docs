@@ -7,10 +7,13 @@ description: "Create the backend API and frontend SPA app registrations in Micro
 
 App Store for Intune needs two app registrations in your tenant:
 
-- The **backend API** — calls Microsoft Graph on behalf of the portal to read your Intune apps and create assignments. Holds the Graph permissions and a client secret.
+- The **backend API** — receives signed-in users' tokens and validates them as Bearer tokens on every `/api/*` call. Also carries the Microsoft Graph application-permission declarations the App Service will use at runtime via its managed identity.
 - The **frontend SPA** — handles user sign-in and calls the backend API. Client ID only.
 
-You create both before clicking **Deploy to Azure**, because the deploy form asks for their client IDs and the API's secret.
+You create both before clicking **Deploy to Azure**, because the deploy form asks for their client IDs.
+
+!!! tip "No client secret required"
+    The portal authenticates to Microsoft Graph and the Bot Framework using managed identities provisioned by the deploy template. No password lives in the install. There is nothing to paste, nothing to store in Key Vault, and nothing to rotate.
 
 ## Backend API app registration
 
@@ -39,17 +42,10 @@ You create both before clicking **Deploy to Azure**, because the deploy form ask
     !!! note "Why these permissions"
         `DeviceManagementApps.ReadWrite.All` is what lets the portal create Intune app assignments when an app is made visible. `DeviceManagementConfiguration.Read.All` is what populates the assignment-filter picker used by ring deployment settings — without it, the filter dropdown is empty even if your tenant has filters configured.
 
-9. Create a client secret:
-    - Click **Certificates & secrets** > **New client secret**
-    - Description: `API Secret`
-    - Expires: pick an expiration that matches your secret-rotation policy. 24 months is a reasonable default.
-    - Click **Add**
-    - **Copy the secret value immediately** — you won't be able to see it again.
+    !!! note "How these permissions reach the runtime"
+        You declare the permissions here on the app registration. After deploy, you also assign them to the App Service's managed identity using a copy-paste PowerShell snippet that the deploy form prints. See [Deploy to Azure: Grant Microsoft Graph permissions to the App Service](deploy-to-azure.md#grant-microsoft-graph-permissions-to-the-app-service).
 
-    !!! tip "Where this secret lives after the install"
-        You'll paste this value into the Deploy to Azure form once. The deploy template writes it to Azure Key Vault and the App Service reads it from there at runtime using its system-assigned managed identity. After install, you do not need to keep a copy of the secret value — and you should delete any local copies (Notepad, OneNote, password managers) once the deploy completes. When the secret expires, follow [Rotate the API client secret](rotate-api-client-secret.md) to issue a new one without touching the rest of the install.
-
-10. Expose an API (so the frontend can call the backend on behalf of the signed-in user):
+9. Expose an API (so the frontend can call the backend on behalf of the signed-in user):
     - Click **Expose an API** > **Add a scope**
     - Application ID URI: accept the default or use `api://your-api-client-id`
     - Scope name: `access_as_user`
