@@ -17,12 +17,12 @@ The bot is registered and the Teams channel is enabled. Skip straight to [Upload
 
 Use this path only if you initially deployed with the bot disabled and want to add it later, or if your organization requires the bot to live in a separate resource group.
 
-1. Create a **user-assigned managed identity** in your App Store resource group (Azure Portal > **Create a resource** > **User Assigned Managed Identity**). Name it something like `uami-bot-apprequest`. Note its **Client ID** and **Resource ID** from the Overview blade.
+1. Create a **user-assigned managed identity** in your App Store resource group (Azure Portal > **Create a resource** > **User Assigned Managed Identity**). Name it something like `uami-bot-apprequest`. Note its **Client ID** and **Resource ID** from the Overview page.
 2. Attach the UAMI to your App Service: App Service > **Identity** > **User assigned** tab > **Add** > select the UAMI you just created.
 3. Add a new app setting on the App Service called `Bot__UamiClientId` set to the UAMI's Client ID, then restart the App Service.
-4. Navigate to **Azure Portal** > **Create a resource** > search for **Azure Bot**.
-5. Click **Create** and fill in:
-    - **Bot handle**: a unique name (e.g., `AppRequestPortalBot`)
+4. Go to **Azure Portal** > **Create a resource** > search for **Azure Bot**.
+5. Select **Create** and fill in:
+    - **Bot handle**: a unique name (for example, `AppRequestPortalBot`)
     - **Subscription / Resource group**: your existing App Store resource group is fine
     - **Pricing tier**: Free (F0) is sufficient
     - **Type of App**: **User-Assigned Managed Identity**
@@ -31,7 +31,7 @@ Use this path only if you initially deployed with the bot disabled and want to a
     - **User-Assigned Managed Identity**: pick the UAMI you created in step 1
 6. After creation, open the Bot resource > **Configuration**.
 7. Set **Messaging endpoint** to: `https://<your-app-service-url>/api/messages`.
-8. In **Channels**, click **Microsoft Teams** > **Apply**.
+8. In **Channels**, select **Microsoft Teams** > **Apply**.
 
 !!! note "Why a UAMI, not the API app registration"
     Earlier releases of App Store for Intune used the backend API's app registration and a client secret for the bot's outbound calls to the Bot Connector. As of v1.30.0, the bot uses a dedicated user-assigned managed identity instead — no client secret involved. The deploy template provisions and wires this up automatically when `enableTeamsBot=true`; this manual flow only matters if you skip that and add the bot later.
@@ -40,13 +40,13 @@ Use this path only if you initially deployed with the bot disabled and want to a
 
 For proactive messaging to work, the bot must be installed for each user. The repository ships a ready-to-use Teams app manifest in the `teams-bot-manifest/` folder.
 
-1. Edit `teams-bot-manifest/manifest.json`. Replace `{{BOT_APP_ID}}` with the **Bot UAMI Client ID** (visible in the deploy outputs as `teamsBotAppId`, or on the user-assigned managed identity resource's Overview blade) and update the URLs to point at your App Service.
+1. Edit `teams-bot-manifest/manifest.json`. Replace `{{BOT_APP_ID}}` with the **Bot UAMI Client ID** (visible in the deploy outputs as `teamsBotAppId`, or on the user-assigned managed identity resource's Overview page) and update the URLs to point at your App Service.
 2. Optionally replace the placeholder icons (`color.png`, `outline.png`) with your organization's branding.
 3. Zip the three files (`manifest.json`, `color.png`, `outline.png`) into a single `.zip`.
 4. Open **Teams Admin Center** > **Teams apps** > **Manage apps** > **Upload new app**, and upload the zip.
 5. Go to **Teams apps** > **Setup policies** and edit **Global (Org-wide default)** — or create a custom policy targeted at the users who should receive notifications.
-6. Under **Installed apps**, click **Add apps**, search for "App Store for Intune", and add it.
-7. Click **Save**.
+6. Under **Installed apps**, select **Add apps**, search for "App Store for Intune", and add it.
+7. Select **Save**.
 
 The bot is now scheduled to install for every user in scope. When it installs, it stores a conversation reference for that user, which is what makes proactive messaging work.
 
@@ -55,17 +55,17 @@ The bot is now scheduled to install for every user in scope. When it installs, i
 
 ## Enable notifications in the portal
 
-1. Navigate to **Admin** > **Communications** tab
+1. Go to **Admin** > **Communications** tab.
 2. Under **Microsoft Teams Bot Notifications**:
-    - Toggle **Enable Teams bot notifications** on
-    - Enter the **Bot App ID** (the Bot UAMI's Client ID — visible in the deploy outputs as `teamsBotAppId`)
-    - Click **Test** to send a test notification to yourself
-    - Select which events should trigger notifications
-3. Click **Save Settings**
+    - Toggle **Enable Teams bot notifications** on.
+    - Enter the **Bot App ID** (the Bot UAMI's Client ID — visible in the deploy outputs as `teamsBotAppId`).
+    - Select **Test** to send a test notification to yourself.
+    - Select which events should trigger notifications.
+3. Select **Save Settings**.
 
 ## What gets notified
 
-| Event | Recipient | Card Content |
+| Event | Recipient | Card content |
 |---|---|---|
 | Approval Required | Approvers | Requestor, app name, publisher, justification, link to review |
 | Request Approved | Requestor | App name, who approved, link to portal |

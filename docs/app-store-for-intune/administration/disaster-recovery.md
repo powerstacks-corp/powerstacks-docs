@@ -11,7 +11,7 @@ This document provides disaster recovery procedures for the App Store for Intune
 
 ---
 
-## Table of Contents
+## Table of contents
 
 1. [Recovery Objectives](#recovery-objectives)
 2. [Built-in Protection (Tier 2)](#built-in-protection-tier-2)
@@ -22,9 +22,9 @@ This document provides disaster recovery procedures for the App Store for Intune
 
 ---
 
-## Recovery Objectives
+## Recovery objectives
 
-### Tier 2 (Default Deployment)
+### Tier 2 (default deployment)
 
 | Metric | Target |
 |--------|--------|
@@ -32,7 +32,7 @@ This document provides disaster recovery procedures for the App Store for Intune
 | **RPO (Recovery Point Objective)** | 5 minutes (SQL), 0 minutes (Storage with GRS) |
 | **Data Loss Risk** | Minimal, geo-redundant backups |
 
-### Tier 3 (High Availability)
+### Tier 3 (high availability)
 
 | Metric | Target |
 |--------|--------|
@@ -42,11 +42,11 @@ This document provides disaster recovery procedures for the App Store for Intune
 
 ---
 
-## Built-in Protection (Tier 2)
+## Built-in protection (Tier 2)
 
 The default ARM template deployment includes these disaster recovery features:
 
-### SQL Database Backups
+### SQL Database backups
 
 | Feature | Configuration |
 |---------|---------------|
@@ -57,12 +57,12 @@ The default ARM template deployment includes these disaster recovery features:
 | **Differential Backups** | Every 12-24 hours |
 | **Transaction Log Backups** | Every 5-10 minutes |
 
-**What's Protected:**
+**What's protected:**
 - All application data (apps, requests, settings)
 - User configurations and branding
 - Audit logs and history
 
-### Storage Account (GRS)
+### Storage account (GRS)
 
 | Feature | Configuration |
 |---------|---------------|
@@ -70,8 +70,8 @@ The default ARM template deployment includes these disaster recovery features:
 | **Replication** | 6 copies (3 primary + 3 secondary region) |
 | **Failover** | Automatic with RA-GRS or manual |
 
-**What's Protected:**
-- Winget packaging queue messages
+**What's protected:**
+- WinGet packaging queue messages
 - Package blobs (temporary)
 
 ### Key Vault
@@ -81,12 +81,12 @@ The default ARM template deployment includes these disaster recovery features:
 | **Soft Delete** | Enabled (7-day retention) |
 | **Purge Protection** | Optional (prevents permanent deletion) |
 
-**What's Protected:**
+**What's protected:**
 - Entra ID client secret
 - SQL connection string
 - Storage connection string
 
-### Application Code
+### Application code
 
 | Feature | Protection |
 |---------|------------|
@@ -98,13 +98,13 @@ The default ARM template deployment includes these disaster recovery features:
 
 ---
 
-## Recovery Procedures
+## Recovery procedures
 
-### Scenario 1: Accidental Data Deletion
+### Scenario 1: Accidental data deletion
 
 **Symptoms:** User accidentally deleted requests, apps, or settings.
 
-**Recovery Steps:**
+**Recovery steps:**
 
 1. **Identify the deletion time** from audit logs or user report
 
@@ -139,15 +139,15 @@ The default ARM template deployment includes these disaster recovery features:
    az webapp restart --resource-group <rg> --name <app-name>
    ```
 
-**Estimated Recovery Time:** 30-60 minutes
+**Estimated recovery time:** 30-60 minutes
 
 ---
 
-### Scenario 2: Key Vault Secret Deleted
+### Scenario 2: Key Vault secret deleted
 
 **Symptoms:** Application fails to start, "Key Vault reference failed" errors.
 
-**Recovery Steps:**
+**Recovery steps:**
 
 1. **Check if secret is soft-deleted:**
    ```bash
@@ -175,15 +175,15 @@ The default ARM template deployment includes these disaster recovery features:
    az webapp restart --resource-group <rg> --name <app-name>
    ```
 
-**Estimated Recovery Time:** 15-30 minutes
+**Estimated recovery time:** 15-30 minutes
 
 ---
 
-### Scenario 3: Complete Region Failure
+### Scenario 3: Complete region failure
 
 **Symptoms:** All Azure services in primary region unavailable.
 
-**Recovery Steps:**
+**Recovery steps:**
 
 1. **Create new resource group in secondary region:**
    ```bash
@@ -228,15 +228,15 @@ The default ARM template deployment includes these disaster recovery features:
 
 6. **Verify application functionality**
 
-**Estimated Recovery Time:** 2-4 hours
+**Estimated recovery time:** 2-4 hours
 
 ---
 
-### Scenario 4: Storage Account Failure
+### Scenario 4: Storage account failure
 
-**Symptoms:** Winget packaging jobs fail, queue errors.
+**Symptoms:** WinGet packaging jobs fail, queue errors.
 
-**Recovery Steps:**
+**Recovery steps:**
 
 1. **For GRS accounts, initiate failover:**
    ```bash
@@ -272,15 +272,15 @@ The default ARM template deployment includes these disaster recovery features:
    az webapp restart --resource-group <rg> --name <app-name>
    ```
 
-**Estimated Recovery Time:** 1-2 hours
+**Estimated recovery time:** 1-2 hours
 
 ---
 
-### Scenario 5: Application Corruption / Bad Deployment
+### Scenario 5: Application corruption / bad deployment
 
 **Symptoms:** Application crashes, unexpected behavior after update.
 
-**Recovery Steps:**
+**Recovery steps:**
 
 1. **Rollback to previous version:**
    ```bash
@@ -299,15 +299,15 @@ The default ARM template deployment includes these disaster recovery features:
 
 3. **Verify rollback successful**
 
-**Estimated Recovery Time:** 5-15 minutes
+**Estimated recovery time:** 5-15 minutes
 
 ---
 
-## High Availability Setup (Tier 3)
+## High availability setup (Tier 3)
 
 For organizations requiring higher availability, implement these additional measures manually.
 
-### SQL Active Geo-Replication
+### SQL active geo-replication
 
 Creates a readable secondary database in another region with continuous replication.
 
@@ -342,7 +342,7 @@ Creates a readable secondary database in another region with continuous replicat
 
 **Cost:** ~$5/month additional (Basic tier replica)
 
-**Recovery Time:** Automatic failover in 1-2 minutes
+**Recovery time:** Automatic failover in 1-2 minutes
 
 ### Traffic Manager / Front Door
 
@@ -384,7 +384,7 @@ Distributes traffic across multiple App Service instances.
 
 **Cost:** ~$0.75/million queries + secondary App Service (~$55/month)
 
-### Storage RA-GRS with Manual Failover
+### Storage RA-GRS with manual failover
 
 Enables read access to secondary region for faster failover decisions.
 
@@ -399,9 +399,9 @@ Change storage redundancy parameter during deployment:
 
 ---
 
-## Backup Verification
+## Backup verification
 
-### Monthly Backup Test Checklist
+### Monthly backup test checklist
 
 - [ ] **SQL Point-in-Time Restore Test**
   - Restore database to 24 hours ago
@@ -422,7 +422,7 @@ Change storage redundancy parameter during deployment:
   - Record actual time for each recovery step
   - Update estimates if needed
 
-### Automated Monitoring
+### Automated monitoring
 
 Configure Azure Monitor alerts for:
 
@@ -435,7 +435,7 @@ Configure Azure Monitor alerts for:
 
 ---
 
-## Emergency Contacts
+## Emergency contacts
 
 | Role | Contact | Responsibility |
 |------|---------|----------------|
@@ -443,7 +443,7 @@ Configure Azure Monitor alerts for:
 | **Azure Support** | https://portal.azure.com/#blade/Microsoft_Azure_Support | Severity A for production down |
 | **Security Team** | [Security contact] | Data breach or security incidents |
 
-### Azure Support Plans
+### Azure support plans
 
 | Plan | Response Time (Sev A) | Cost |
 |------|----------------------|------|
@@ -456,11 +456,11 @@ Configure Azure Monitor alerts for:
 
 ---
 
-## Recovery Decision Tree
+## Recovery decision tree
 
 ```
 Is the application accessible?
-├── YES: Can users log in?
+├── YES: Can users sign in?
 │   ├── YES: Is data correct?
 │   │   ├── YES: No DR needed
 │   │   └── NO: → Scenario 1 (Data Deletion)
@@ -476,7 +476,7 @@ Is the application accessible?
 
 ---
 
-## Appendix: Resource IDs Quick Reference
+## Appendix: Resource IDs quick reference
 
 After deployment, record these values for emergency use:
 

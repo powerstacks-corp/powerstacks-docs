@@ -7,7 +7,7 @@ description: "Azure SQL Database automatic maintenance, backups, scaling guidanc
 
 The App Store for Intune uses Azure SQL Database Basic tier, which includes built-in automatic maintenance features. **No manual database maintenance is required.**
 
-### Why No Manual Maintenance is Needed
+### Why no manual maintenance is needed
 
 Azure SQL Database handles all maintenance tasks automatically, including:
 
@@ -20,7 +20,7 @@ Azure SQL Database handles all maintenance tasks automatically, including:
 | **Automatic Updates** | Database engine patches and security updates applied automatically with no downtime |
 | **Automatic Statistics** | Query statistics are automatically updated to ensure optimal query plans |
 
-### What About Maintenance Scripts?
+### What about maintenance scripts?
 
 You may be familiar with on-premises SQL Server maintenance solutions like [Ola Hallengren's Maintenance Solution](https://ola.hallengren.com/) that schedule index rebuilds, integrity checks, and backup jobs. **These are not needed for Azure SQL Database** because:
 
@@ -32,7 +32,7 @@ You may be familiar with on-premises SQL Server maintenance solutions like [Ola 
 
 4. **Statistics Updates**: Azure automatically updates statistics as needed. Manual `UPDATE STATISTICS` commands are rarely necessary.
 
-### Backup and Recovery
+### Backup and recovery
 
 Azure SQL Database provides built-in backup and recovery capabilities:
 
@@ -45,13 +45,13 @@ Azure SQL Database provides built-in backup and recovery capabilities:
 **To restore your database:**
 
 1. Go to **Azure Portal** > **SQL databases** > your database
-2. Click **Restore** in the toolbar
+2. Select **Restore** in the toolbar
 3. Select a restore point (any time within retention period)
 4. Azure creates a new database with data as of that point in time
 
 > **Note:** Restoring creates a *new* database, it does not overwrite the existing one. You would rename databases after verifying the restore if needed.
 
-### When to Consider Scaling Up
+### When to consider scaling up
 
 The Basic tier (2GB, 5 DTUs) is suitable for the App Store for Intune's typical workload. Consider scaling up if you observe:
 
@@ -62,11 +62,11 @@ The Basic tier (2GB, 5 DTUs) is suitable for the App Store for Intune's typical 
 To scale up:
 
 1. Go to **Azure Portal** > **SQL databases** > your database
-2. Click **Compute + storage**
+2. Select **Compute + storage**
 3. Select a higher tier (Standard, Premium) or increase DTUs
 4. Changes take effect within minutes with minimal downtime
 
-### Manual Maintenance (If Ever Needed)
+### Manual maintenance (if ever needed)
 
 In rare cases where you need to manually optimize, you can:
 

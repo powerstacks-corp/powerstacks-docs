@@ -46,7 +46,7 @@ Underneath, every package goes through the same flow: a hash-verified WinGet man
 
 ## Have a question? Ask Pax.
 
-**Pax** is our AI-powered documentation assistant. Click the chat icon in the bottom-right corner to ask a question. Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
+**Pax** is our AI-powered documentation assistant. Select the chat icon in the bottom-right corner to ask a question. Pax can help you find the right guide, troubleshoot setup issues, or explain how a feature works.
 
 <div class="ps-cta-banner">
   <h2>Get started with App Store for Intune</h2>

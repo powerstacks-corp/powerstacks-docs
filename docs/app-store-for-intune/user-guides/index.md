@@ -7,36 +7,36 @@ description: "How employees browse, request, and track application installations
 
 This guide helps employees use the App Store for Intune to browse, request, and track application installations for their devices.
 
-**Last Updated:** February 2026
+**Last updated:** February 2026
 
 ---
 
-## Table of Contents
+## Table of contents
 
-1. [Getting Started](#getting-started)
-2. [Browsing Apps](#browsing-apps)
-3. [Requesting an App](#requesting-an-app)
-4. [Requesting a New App](#requesting-a-new-app)
-5. [Tracking Your Requests](#tracking-your-requests)
-6. [Install Status](#install-status)
-7. [Request on Behalf of Another User](#request-on-behalf-of-another-user)
-8. [Settings and Preferences](#settings-and-preferences)
+1. [Getting started](#getting-started)
+2. [Browsing apps](#browsing-apps)
+3. [Requesting an app](#requesting-an-app)
+4. [Requesting a new app](#requesting-a-new-app)
+5. [Tracking your requests](#tracking-your-requests)
+6. [Install status](#install-status)
+7. [Request on behalf of another user](#request-on-behalf-of-another-user)
+8. [Settings and preferences](#settings-and-preferences)
 9. [FAQ](#faq)
 
 ---
 
-## Getting Started
+## Getting started
 
-### Signing In
+### Signing in
 
-1. Navigate to your organization's App Store for Intune URL
-2. Click **Sign in with Microsoft**
-3. Enter your work email and password
-4. Complete any MFA (multi-factor authentication) prompts if required
+1. Go to your organization's App Store for Intune URL.
+2. Select **Sign in with Microsoft**.
+3. Enter your work email and password.
+4. Complete any multi-factor authentication (MFA) prompts if required.
 
-Once signed in, you'll see the home page with featured apps and categories.
+After signing in, you'll see the home page with featured apps and categories.
 
-### First-Time Users
+### First-time users
 
 On your first visit, you may be asked to:
 - Accept the **Terms of Service** (if configured by your admin)
@@ -44,9 +44,9 @@ On your first visit, you may be asked to:
 
 ---
 
-## Browsing Apps
+## Browsing apps
 
-### Home Page
+### Home page
 
 The home page displays:
 - **Hero App**: A featured application highlighted by your admin
@@ -56,21 +56,21 @@ The home page displays:
 ![Home page](../images/user-guide-home.png)
 *The home page showing featured apps and hero app*
 
-### Browse Apps Page
+### Browse apps page
 
-Click **Browse Apps** in the navigation to see all available applications.
+Select **Browse Apps** in the navigation to see all available applications.
 
 ![Browse apps page](../images/user-guide-browse.png)
 *The browse apps page with search and filters*
 
-#### Filtering and Search
+#### Filtering and search
 
-- **Search Box**: Type to search by app name, publisher, or description
+- **Search Box**: Enter app name, publisher, or description to search
 - **Platform Filter**: Filter by Windows, iOS, Android, macOS, or Web
 - **Category Filter**: Filter by app category
 - **Show Requested**: Toggle to see only apps you've already requested
 
-#### App Cards
+#### App cards
 
 Each app card shows:
 - App icon
@@ -83,28 +83,28 @@ Each app card shows:
 
 ---
 
-## Requesting an App
+## Requesting an app
 
-### Basic Request
+### Basic request
 
-1. Find the app you want to install
-2. Click the **Request** button on the app card
+1. Find the app you want to install.
+2. Select **Request** on the app card.
 3. Fill out the request form:
    - **Justification** (required): Explain why you need this app
    - **Device** (for device-targeted apps): Select which device should receive the app
-4. Click **Submit Request**
+4. Select **Submit Request**.
 
 ![Request modal](../images/user-guide-request-modal.png)
 *The app request form with justification field*
 
-### Device Selection
+### Device selection
 
 Some apps are deployed to specific devices rather than your user account. For these apps:
 - You'll see a **Select Device** dropdown
 - Choose from your enrolled Intune-managed devices
 - The app will be installed only on the selected device
 
-### Approval Requirements
+### Approval requirements
 
 Apps may have different approval requirements:
 - **No Approval Required**: Automatically approved and deployed
@@ -116,14 +116,14 @@ You'll see the approval requirements before submitting.
 
 ---
 
-## Requesting a New App
+## Requesting a new app
 
 If the app you need isn't in the catalog, you can submit a request to have it added.
 
-### How to Request a New App
+### How to request a new app
 
-1. Go to the **Browse Apps** page
-2. Click the **+ Request New App** button in the top-right corner
+1. Go to the **Browse Apps** page.
+2. Select **+ Request new app** in the top-right corner.
 3. Fill out the request form:
 
 | Field | Required | Description |
@@ -133,16 +133,16 @@ If the app you need isn't in the catalog, you can submit a request to have it ad
 | **Why do you need this app?** | No | Your business justification for needing this app |
 | **Download URL** | No | A link to where the app can be downloaded |
 
-4. Click **Submit Request**
+4. Select **Submit Request**.
 
-### What Happens Next
+### What happens next
 
-1. Your request is emailed to the IT administrators
-2. An administrator reviews your request
-3. If approved, they add the app to the portal
-4. You'll be able to request the app through the normal process
+1. Your request is emailed to the IT administrators.
+2. An administrator reviews your request.
+3. If approved, they add the app to the portal.
+4. You'll be able to request the app through the normal process.
 
-### Tips for Getting Your Request Approved
+### Tips for getting your request approved
 
 - **Be specific**: Include the exact app name and version if known
 - **Explain the business need**: How will this app help you do your job?
@@ -151,16 +151,16 @@ If the app you need isn't in the catalog, you can submit a request to have it ad
 
 ---
 
-## Tracking Your Requests
+## Tracking your requests
 
-### My Requests Page
+### My requests page
 
-Click **My Requests** in the navigation to see all your app requests.
+Select **My Requests** in the navigation to see all your app requests.
 
 ![My requests page](../images/user-guide-my-requests.png)
 *The My Requests page showing request history and status*
 
-#### Request Status
+#### Request status
 
 | Status | Meaning |
 |--------|---------|
@@ -170,16 +170,16 @@ Click **My Requests** in the navigation to see all your app requests.
 | **Completed** | App deployed successfully |
 | **Failed** | Installation failed (contact support) |
 
-#### Request Details
+#### Request details
 
-Click on any request to see:
+Select any request to see:
 - Request date and time
 - Current status
 - Approval history (who approved/rejected and when)
 - Rejection reason (if applicable)
 - Installation status
 
-### Email Notifications
+### Email notifications
 
 You'll receive email notifications when:
 - Your request is submitted (confirmation)
@@ -187,17 +187,17 @@ You'll receive email notifications when:
 - Your request is rejected
 - Your app is installed (completion)
 
-### Teams Notifications
+### Teams notifications
 
 If configured by your admin, you'll also receive Microsoft Teams direct chat notifications for request updates.
 
 ---
 
-## Install Status
+## Install status
 
 After your request is approved, you can track the installation progress.
 
-### Install Status Indicators
+### Install status indicators
 
 | Status | Meaning |
 |--------|---------|
@@ -207,35 +207,35 @@ After your request is approved, you can track the installation progress.
 | **Install Failed** | Installation encountered an error |
 | **Not Applicable** | User-targeted app (no device-specific status) |
 
-Install status is visible on the My Requests page (see [Tracking Your Requests](#tracking-your-requests) above).
+Install status is visible on the My Requests page (see [Tracking your requests](#tracking-your-requests) above).
 
-### How Long Does Installation Take?
+### How long does installation take?
 
 - **User-targeted apps**: Install at next device sync (typically within 8 hours)
-- **Device-targeted apps**: Install within 15-30 minutes for online devices
+- **Device-targeted apps**: Install within 15–30 minutes for online devices
 - **Mobile devices (iOS/Android)**: May require Company Portal app update
 
-### Installation Not Working?
+### Installation not working?
 
 If your app shows "Pending Install" for more than 24 hours:
-1. Make sure your device is connected to the internet
-2. Open the Company Portal app and check for updates
-3. Restart your device to trigger a sync
-4. Contact IT support if the issue persists
+1. Make sure your device is connected to the internet.
+2. Open the Company Portal app and check for updates.
+3. Restart your device to trigger a sync.
+4. Contact IT support if the issue persists.
 
 ---
 
-## Request on Behalf of Another User
+## Request on behalf of another user
 
 If you're a manager, IT help desk member, or in a designated group, you may be able to request apps for other users.
 
-### How to Request on Behalf
+### How to request on behalf
 
-1. Click **Request** on the app you want to request
-2. In the request form, look for **Request for another user** option
-3. Search for and select the user
-4. Enter justification explaining why this user needs the app
-5. Submit the request
+1. Select **Request** on the app you want to request.
+2. In the request form, look for **Request for another user** option.
+3. Search for and select the user.
+4. Enter justification explaining why this user needs the app.
+5. Submit the request.
 
 ### Visibility
 
@@ -245,15 +245,15 @@ If you're a manager, IT help desk member, or in a designated group, you may be a
 
 ---
 
-## Settings and Preferences
+## Settings and preferences
 
-### User Profile
+### User profile
 
-Click your profile picture or name in the top-right corner to:
+Select your profile picture or name in the top-right corner to:
 - View your profile information
 - Sign out
 
-### Dark Mode
+### Dark mode
 
 Toggle dark mode from:
 - The settings gear icon in the header
@@ -302,14 +302,14 @@ Yes, you can submit a new request. Consider:
 
 Use the **Request New App** feature:
 
-1. Go to the **Browse Apps** page
-2. Click the **+ Request New App** button in the top-right corner
+1. Go to the **Browse Apps** page.
+2. Select **+ Request new app** in the top-right corner.
 3. Fill out the form:
    - **App Name** (required): The name of the application you need
    - **Publisher**: The company that makes the app
    - **Why do you need this app?**: Explain your business justification
    - **Download URL** (optional): Link to where the app can be downloaded
-4. Click **Submit Request**
+4. Select **Submit Request**.
 
 Your request is sent directly to the IT administrators, who will review it and may add the app to the portal.
 
@@ -327,7 +327,7 @@ It depends on the app configuration:
 
 ### Can I install apps on my personal device?
 
-The App Store for Intune only deploys to Intune-enrolled devices. Personal devices are typically not eligible unless your organization has a BYOD (Bring Your Own Device) policy.
+The App Store for Intune only deploys to Intune-enrolled devices. Personal devices are typically not eligible unless your organization has a bring your own device (BYOD) policy.
 
 ### I'm getting "Access Denied" - what do I do?
 
@@ -335,12 +335,12 @@ Your organization may restrict portal access to specific groups. Contact your IT
 
 ---
 
-## Getting Help
+## Getting help
 
 If you need assistance:
-1. Check this user guide first
-2. Contact your IT help desk
-3. Email your IT administrator
+1. Check this user guide first.
+2. Contact your IT help desk.
+3. Email your IT administrator.
 
 ---
 

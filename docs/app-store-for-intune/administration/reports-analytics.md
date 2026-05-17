@@ -7,9 +7,9 @@ description: "Built-in dashboards, install status tracking, by-person reports, a
 
 The Admin Dashboard includes built-in reporting capabilities to help you understand app request patterns and deployment status.
 
-### Accessing Reports
+### Accessing reports
 
-1. Navigate to **Admin** in the navigation menu
+1. Go to **Admin** in the navigation menu
 2. The dashboard displays summary tiles at the top
 3. Use the tabs to navigate between report views:
    - **Summary** - Overview statistics with install status
@@ -17,7 +17,7 @@ The Admin Dashboard includes built-in reporting capabilities to help you underst
    - **By Person** - Detailed request history by user
    - **Install Status** - Deployment status for approved requests
 
-### Summary Dashboard
+### Summary dashboard
 
 The Summary view shows key metrics as clickable tiles:
 
@@ -39,11 +39,11 @@ The install status tiles (Pending Install, Installing, Installed, Install Failed
 - **Installed** (green) - Successfully deployed
 - **Install Failed** (red) - Deployment failed
 
-### Trends Tab
+### Trends tab
 
 The Trends tab provides visual analytics to help identify patterns and popular applications.
 
-#### Request Trends Chart
+#### Request trends chart
 
 The main trends chart shows:
 
@@ -58,7 +58,7 @@ Use the time range dropdown to view:
 - Last 30 days
 - Last 90 days
 
-#### Top Requested Apps
+#### Top requested apps
 
 A horizontal bar chart showing the most frequently requested applications, helping you identify:
 
@@ -66,7 +66,7 @@ A horizontal bar chart showing the most frequently requested applications, helpi
 - Apps that may need better visibility or promotion
 - Patterns in user requests
 
-#### Status Distribution
+#### Status distribution
 
 A breakdown showing the distribution of request statuses:
 
@@ -74,38 +74,38 @@ A breakdown showing the distribution of request statuses:
 - Visual progress bars for comparison
 - Separate sections for request status and install status
 
-### Install Status Tracking
+### Install status tracking
 
 The portal automatically tracks the deployment status of approved requests for Intune apps.
 
-#### How It Works
+#### How it works
 
-1. **Initial Status**: When a request is approved for an Intune-managed app, the install status is set to "Pending Install"
-2. **Background Polling**: A background service checks Intune for deployment status every 15 minutes
-3. **Status Updates**: The portal updates the install status based on Intune's reported deployment state
-4. **Final Status**: Once installed (or failed), the status stops being polled
+1. **Initial status**: When a request is approved for an Intune-managed app, the install status is set to "Pending Install"
+2. **Background polling**: A background service checks Intune for deployment status every 15 minutes
+3. **Status updates**: The portal updates the install status based on Intune's reported deployment state
+4. **Final status**: Once installed (or failed), the status stops being polled
 
-#### Install Status Values
+#### Install status values
 
 | Status | Description |
 |--------|-------------|
-| **Not Applicable** | App is not tracked for install status (e.g., Winget apps) |
+| **Not Applicable** | App is not tracked for install status (e.g., WinGet apps) |
 | **Pending Install** | Request approved, waiting for Intune to begin deployment |
 | **Installing** | Intune is actively installing the app on the device |
 | **Installed** | App successfully installed and detected on the device |
 | **Install Failed** | Installation failed - check the error message for details |
 | **Uninstalled** | App was installed but has since been removed |
 
-#### Viewing Install Status
+#### Viewing install status
 
 **Admin Dashboard:**
 
 1. Go to **Admin** > Reports section
 2. View install status counts in the summary tiles
-3. Click on any status tile to filter by that status
+3. Select any status tile to filter by that status
 4. Use the **Install Status** tab for detailed view
 
-**Install Status Tab:**
+**Install Status tab:**
 
 The dedicated Install Status tab shows:
 
@@ -114,12 +114,12 @@ The dedicated Install Status tab shows:
 - Last checked timestamp for each request
 - Error messages for failed installations
 
-#### Troubleshooting Install Status
+#### Troubleshooting install status
 
 **Status stuck on "Pending Install":**
 
 - Verify the device is online and connected to Intune
-- Check that the user/device is correctly added to the target AAD group
+- Check that the user/device is correctly added to the target Microsoft Entra ID group
 - Review Intune device sync status in the Intune admin center
 
 **Status shows "Install Failed":**
@@ -128,7 +128,7 @@ The dedicated Install Status tab shows:
 - Common issues:
   - Disk space insufficient
   - App dependencies not met
-  - User cancelled the installation
+  - User canceled the installation
   - Device compliance issues blocking deployment
 
 **Status not updating:**
@@ -137,7 +137,7 @@ The dedicated Install Status tab shows:
 - Check API logs for any errors in the InstallStatusPollingService
 - Verify the app registration has `DeviceManagementApps.Read.All` permission
 
-### By Person Report
+### By person report
 
 The **By Person** tab lets you search for a specific user and view all their app requests:
 
@@ -146,17 +146,17 @@ The **By Person** tab lets you search for a specific user and view all their app
 3. See status, install status, and timestamps for each request
 4. Use the **Retry** button on failed requests to re-attempt group membership
 
-### Audit Trail
+### Audit trail
 
 The **Audit Trail** tab provides a full log of all portal activity for compliance and security monitoring.
 
-#### Accessing the Audit Trail
+#### Accessing the audit trail
 
 1. Go to **Admin** > **Reports** section
-2. Click the **Audit Trail** button in the report navigation
+2. Select the **Audit Trail** button in the report navigation
 3. Use filters to narrow down results
 
-#### Available Filters
+#### Available filters
 
 | Filter | Description |
 |--------|-------------|
@@ -166,7 +166,7 @@ The **Audit Trail** tab provides a full log of all portal activity for complianc
 | **Start Date** | Show events from this date onwards |
 | **End Date** | Show events up to this date |
 
-#### Audit Log Information
+#### Audit log information
 
 Each audit entry includes:
 
@@ -180,7 +180,7 @@ Each audit entry includes:
 | **Details** | Additional context (varies by action type) |
 | **IP Address** | The IP address of the user |
 
-#### Common Actions Logged
+#### Common actions logged
 
 | Action | Description |
 |--------|-------------|
@@ -192,14 +192,14 @@ Each audit entry includes:
 | `Settings.Updated` | Admin changed portal settings |
 | `Apps.Synced` | Admin synced apps from Intune |
 
-#### Exporting Audit Logs
+#### Exporting audit logs
 
 1. Apply any desired filters
-2. Click the **Export CSV** button
+2. Select the **Export CSV** button
 3. A CSV file downloads with all matching audit entries
 4. Use this for compliance reporting or external analysis
 
-#### Audit Log Retention
+#### Audit log retention
 
 Audit logs are stored indefinitely in the SQL database. There is no automatic purge. For organizations with high volume, consider:
 

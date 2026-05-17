@@ -5,11 +5,11 @@ description: "How end users browse the app catalog, request apps, track status, 
 
 # User Experience
 
-### Browsing Apps
+### Browsing apps
 
 The portal provides a Microsoft Store-style browsing experience:
 
-**Home Page:**
+**Home page:**
 
 - Hero section featuring a prominently displayed app
 - Featured apps carousel with navigation controls
@@ -18,7 +18,7 @@ The portal provides a Microsoft Store-style browsing experience:
 - Platform badges (Windows, iOS, Android, macOS, Web) on app cards
 - "New" badges on apps added within the last 14 days
 
-**Browse Apps Page:**
+**Browse Apps page:**
 
 - Search apps by name, publisher, or description
 - Filter apps by category using the dropdown
@@ -26,16 +26,16 @@ The portal provides a Microsoft Store-style browsing experience:
 - Featured apps section at the top
 - Apps organized by category with platform badges
 
-**Visual Indicators:**
+**Visual indicators:**
 
 - **Platform badges** - Show the app's target platform with icons (Windows, iOS, Android, macOS, Web)
 - **"New" badge** - Green badge on apps added within the last 14 days
 - **"Featured" badge** - Gold badge on featured apps
 - **Price indicator** - Shows cost or "Free" label
 
-**App Detail Page:**
+**App Detail page:**
 
-When users click on any app card, they see a detailed view including:
+When users select any app card, they see a detailed view including:
 
 - Large hero banner with app icon and blurred background
 - App name, publisher, and category badges
@@ -45,45 +45,45 @@ When users click on any app card, they see a detailed view including:
 - Full description
 - App information (Publisher, Version, Category, Platform, Approval status)
 
-### How Users Request Apps
+### How users request apps
 
 Users can request apps in two ways:
 
 **Quick Request (Get button):**
 
-1. Click the **Get** button on any app card (Home, Browse Apps, or App Detail page)
+1. Select the **Get** button on any app card (Home, Browse Apps, or App Detail page)
 2. The request modal opens directly
 3. If Device assignment, select the target device
 4. Enter optional justification
-5. Click **Submit Request**
+5. Select **Submit Request**
 
-**From App Detail Page:**
+**From App Detail page:**
 
-1. Click on an app card to open the App Detail page
+1. Select an app card to open the App Detail page
 2. Review the app description and information
-3. Click the **Get** button
+3. Select the **Get** button
 4. Complete the request form and submit
 
-### Request Status Flow
+### Request status flow
 
 | Status | Description |
 |--------|-------------|
 | **Pending** | Request is awaiting approval |
 | **Approved** | All approvals complete, processing assignment |
 | **Rejected** | Request was rejected by an approver |
-| **Processing** | System is adding user/device to AAD group |
+| **Processing** | System is adding user/device to Microsoft Entra ID group |
 | **Completed** | User/device successfully added to group |
 | **Failed** | Error occurred during processing |
 
 ### My Requests
 
-Users can view their request history by clicking **My Requests** in the navigation. This shows all requests they've submitted with current status.
+Users can view their request history by selecting **My Requests** in the navigation. This shows all requests they've submitted with current status.
 
 ### Request New App
 
-Users can request apps that aren't in the catalog by clicking the **+ Request New App** button on the Browse Apps page.
+Users can request apps that aren't in the catalog by selecting the **+ Request New App** button on the Browse Apps page.
 
-#### How It Works
+#### How it works
 
 1. User fills out the form with app name, publisher, description, and optional download URL
 2. The portal sends an email notification to **all members of the Admin Group**
@@ -92,10 +92,10 @@ Users can request apps that aren't in the catalog by clicking the **+ Request Ne
    - App name and publisher
    - Business justification provided by the user
    - Download URL (if provided)
-   - Suggestions for how to add the app (Winget catalog or manual upload)
+   - Suggestions for how to add the app (WinGet catalog or manual upload)
 4. The request is logged in the audit trail
 
-#### Admin Actions
+#### Admin actions
 
 When you receive a new app request email:
 

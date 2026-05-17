@@ -5,14 +5,14 @@ description: "Operational guidance for app visibility strategy, approval configu
 
 # Best Practices
 
-### App Visibility Strategy
+### App visibility strategy
 
 1. **Sync all apps** to get your full Intune catalog
 2. **Keep system apps hidden** (dependencies, frameworks, required apps)
 3. **Make user-requestable apps visible** (productivity tools, optional software)
 4. **Use categories** from Intune to help users find apps
 
-### Approval Configuration Strategy
+### Approval configuration strategy
 
 | App Type | Recommended Setting |
 |----------|---------------------|
@@ -21,7 +21,7 @@ description: "Operational guidance for app visibility strategy, approval configu
 | Admin/privileged tools | Multi-stage with IT Security |
 | Developer tools | Manager + IT approval |
 
-### Group Management
+### Group management
 
 With automatic group and assignment creation, the portal handles most group management for you:
 
@@ -32,9 +32,9 @@ With automatic group and assignment creation, the portal handles most group mana
 
 > **Tip:** To use existing groups instead of auto-created ones, set the Target Group before making the app visible.
 
-### Email Notifications
+### Email notifications
 
 1. Create a dedicated shared mailbox for notifications
 2. Grant the app `Mail.Send` permission on that mailbox
 3. Use a recognizable From address like `apprequest@company.com`
-4. Include your portal URL so users can click through to view status
+4. Include your portal URL so users can open it to view status

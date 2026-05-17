@@ -25,7 +25,7 @@ https://apps.yourdomain.com
 - Access to your domain's DNS management
 - Admin access to your Entra ID App Registration
 
-## Configuration Order
+## Configuration order
 
 DNS records have to be in place **before** Azure validates the domain (Azure reads the TXT and CNAME you create at registration time). The portal's in-product Settings tab guides admins through these steps in this order, and so does this reference doc:
 
@@ -34,9 +34,9 @@ DNS records have to be in place **before** Azure validates the domain (Azure rea
 3. Update Entra ID redirect URIs
 4. Update the portal's Portal URL setting
 
-## Step 1: Configure DNS Records
+## Step 1: Configure DNS records
 
-### For Subdomains (Recommended)
+### For subdomains (recommended)
 
 If using a subdomain like `apps.yourdomain.com`:
 
@@ -47,7 +47,7 @@ If using a subdomain like `apps.yourdomain.com`:
 
 The **Custom Domain Verification ID** comes from Azure Portal → App Service → **Settings** → **Custom domains** → **+ Add custom domain** (it's shown in the dialog before you commit, even though you'll come back to actually save in Step 2).
 
-### For Apex/Root Domains
+### For apex/root domains
 
 If using your root domain (e.g., `yourdomain.com`):
 
@@ -58,16 +58,16 @@ If using your root domain (e.g., `yourdomain.com`):
 
 **Note:** Get the App Service IP address from **Settings** → **Custom domains** → **IP address** in Azure Portal.
 
-### DNS Propagation
+### DNS propagation
 
 DNS changes can take anywhere from a few minutes to 48 hours to propagate globally. You can verify propagation using:
 - [dnschecker.org](https://dnschecker.org)
 - `nslookup apps.yourdomain.com`
 - `dig apps.yourdomain.com`
 
-## Step 2: Add Custom Domain + SSL Certificate to Azure
+## Step 2: Add custom domain + SSL certificate to Azure
 
-### Option A: One-Click Deployment (Recommended)
+### Option A: One-click deployment (recommended)
 
 The portal ships an ARM template that adds the custom domain hostname binding **and** provisions a free Azure-managed SSL certificate in a single deployment. From the portal: **Admin → Settings → Custom Domain Setup → Configure Custom Domain in Azure**.
 
@@ -79,21 +79,21 @@ https://raw.githubusercontent.com/powerstacks-corp/app-store-for-intune/main/azu
 
 DNS records (Step 1) must already be propagated, otherwise Azure's domain validation will fail at deployment time.
 
-### Option B: Manual Configuration
+### Option B: Manual configuration
 
 Microsoft's official tutorial is the canonical reference: [Tutorial: Map custom domain to App Service (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain?tabs=root%2Cazurecli#configure-a-custom-domain).
 
 Quick summary:
 
-1. Navigate to **Azure Portal** → **App Services** → your App Service
+1. Go to **Azure Portal** → **App Services** → your App Service
 2. Go to **Settings** → **Custom domains**
-3. Click **+ Add custom domain**
+3. Select **+ Add custom domain**
 4. Enter your custom domain (e.g., `apps.yourdomain.com`)
-5. Click **Validate**. This succeeds because DNS from Step 1 is in place.
-6. Click **Add**
+5. Select **Validate**. This succeeds because DNS from Step 1 is in place.
+6. Select **Add**
 7. Go to **Settings** → **Certificates** → **+ Add certificate** → **App Service Managed Certificate**
 8. Select your custom domain → **Create**
-9. Return to **Settings** → **Custom domains** → click your domain → **Add binding** → choose the managed certificate with **SNI SSL**
+9. Return to **Settings** → **Custom domains** → select your domain → **Add binding** → choose the managed certificate with **SNI SSL**
 
 ### Other certificate options (manual only)
 
@@ -122,11 +122,11 @@ If your scenario requires a different certificate path, replace step 7 above wit
 5. Upload your PFX/PEM file
 6. Bind to your custom domain
 
-## Step 3: Update Entra ID Redirect URIs (Frontend SPA App Registration)
+## Step 3: Update Microsoft Entra ID redirect URIs (frontend SPA app registration)
 
 Redirect URIs need to be added to the **Frontend SPA** app registration only. The Backend API app is a confidential client that receives tokens from the SPA, so it doesn't use redirect URIs and doesn't need any change here.
 
-1. Navigate to **Microsoft Entra admin center** → **App registrations**
+1. Go to **Microsoft Entra admin center** → **App registrations**
 2. Select your **Frontend SPA** app registration (commonly named *App Store for Intune - Frontend* or similar; if unsure, check `src/AppRequestPortal.Web/src/authConfig.ts`. The `clientId` it imports identifies the SPA app.)
 3. Go to **Authentication** → **Platform configurations** → **Single-page application**
 4. Add the following redirect URIs:
@@ -143,13 +143,13 @@ Redirect URIs need to be added to the **Frontend SPA** app registration only. Th
    https://your-app.azurewebsites.net/auth/callback
    ```
 
-6. Click **Save**
+6. Select **Save**
 
-## Step 4: Update Application Configuration
+## Step 4: Update application configuration
 
-### Update Portal URL Setting
+### Update Portal URL setting
 
-1. Log into your portal as an admin
+1. Sign in to your portal as an admin
 2. Go to **Admin** → **Settings**
 3. On the **Communications** tab, update the **Portal URL** to your custom domain:
 
@@ -157,11 +157,11 @@ Redirect URIs need to be added to the **Frontend SPA** app registration only. Th
    https://apps.yourdomain.com
    ```
 
-4. Click **Save Settings**
+4. Select **Save Settings**
 
 This controls the base URL used in email notifications and Teams bot notification links.
 
-### Update Frontend Configuration (if needed)
+### Update frontend configuration (if needed)
 
 If you're using environment variables for the API URL, update `REACT_APP_API_URL`:
 
@@ -169,22 +169,22 @@ If you're using environment variables for the API URL, update `REACT_APP_API_URL
 REACT_APP_API_URL=https://apps.yourdomain.com/api
 ```
 
-## Step 5: Force HTTPS (Recommended)
+## Step 5: Force HTTPS (recommended)
 
 Ensure all traffic uses HTTPS:
 
 1. In Azure Portal → App Service → **Settings** → **Configuration**
 2. Go to **General settings**
 3. Set **HTTPS Only** to **On**
-4. Click **Save**
+4. Select **Save**
 
-## Step 7: Update Teams Bot Configuration (if enabled)
+## Step 6: Update Teams bot configuration (if enabled)
 
 If you have the Teams Bot enabled for proactive notifications, two things need updating:
 
-### Update Azure Bot Messaging Endpoint
+### Update Azure Bot messaging endpoint
 
-1. Navigate to **Azure Portal** → **Azure Bot** resource → **Configuration**
+1. Go to **Azure Portal** → **Azure Bot** resource → **Configuration**
 2. Change **Messaging endpoint** from:
    ```
    https://your-app.azurewebsites.net/api/messages
@@ -193,9 +193,9 @@ If you have the Teams Bot enabled for proactive notifications, two things need u
    ```
    https://apps.yourdomain.com/api/messages
    ```
-3. Click **Apply**
+3. Select **Apply**
 
-### Update Teams App Manifest
+### Update Teams app manifest
 
 1. Edit `manifest.json` and add your custom domain to `validDomains`:
    ```json
@@ -206,18 +206,18 @@ If you have the Teams Bot enabled for proactive notifications, two things need u
    ```
 2. Optionally update the `developer` URLs (`websiteUrl`, `privacyUrl`, `termsOfUseUrl`) to use the custom domain
 3. Re-zip the manifest files (`manifest.json`, `color.png`, `outline.png`)
-4. In **Teams Admin Center** → **Teams apps** → **Manage apps**, find the existing App Store for Intune bot, click it, and upload the updated package
+4. In **Teams Admin Center** → **Teams apps** → **Manage apps**, find the existing App Store for Intune bot, select it, and upload the updated package
 
 > **Note:** Keeping both domains in `validDomains` ensures the bot continues to work during the transition. You can remove the `.azurewebsites.net` entry later once the custom domain is fully verified.
 
-## Verification Checklist
+## Verification checklist
 
 After configuration, verify:
 
 - [ ] DNS resolves correctly (`nslookup apps.yourdomain.com`)
 - [ ] HTTPS works without certificate warnings
 - [ ] Portal loads at custom domain
-- [ ] Login/authentication works
+- [ ] Sign-in/authentication works
 - [ ] All navigation links use the custom domain
 - [ ] Email notifications contain correct URLs
 - [ ] Teams bot notifications still arrive (if enabled)
@@ -238,7 +238,7 @@ After configuration, verify:
 
 ### "Authentication failed" after domain change
 
-- Verify redirect URIs are updated in Entra ID
+- Verify redirect URIs are updated in Microsoft Entra ID
 - Clear browser cookies and cache
 - Check both old and new URLs are in redirect URIs during transition
 
@@ -247,7 +247,7 @@ After configuration, verify:
 - Ensure all API calls use HTTPS
 - Update any hardcoded HTTP URLs in configuration
 
-## Multiple Environments
+## Multiple environments
 
 If you have multiple environments (dev, staging, production), configure separate custom domains:
 
@@ -260,11 +260,11 @@ If you have multiple environments (dev, staging, production), configure separate
 Each requires its own:
 - DNS records
 - SSL certificate
-- Entra ID redirect URIs
+- Microsoft Entra ID redirect URIs
 - Portal URL setting
 
-## Related Documentation
+## Related documentation
 
 - [Azure App Service Custom Domains](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Azure App Service SSL Certificates](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate)
-- [Entra ID Redirect URIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url)
+- [Microsoft Entra ID Redirect URIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url)

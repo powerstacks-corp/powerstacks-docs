@@ -7,7 +7,7 @@ description: "System architecture, components, data model, and data flows for th
 
 This document provides a detailed overview of the App Store for Intune architecture.
 
-## System Architecture
+## System architecture
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -43,33 +43,33 @@ This document provides a detailed overview of the App Store for Intune architect
 
 ### 1. Frontend (React SPA)
 
-**Technology Stack**:
+**Technology stack**:
 - React 18
 - TypeScript
 - Azure MSAL for authentication
 - Axios for HTTP requests
 - React Router for navigation
 
-**Key Features**:
+**Key features**:
 - Single-page application for optimal performance
-- Entra ID authentication with SSO
+- Microsoft Entra ID authentication with SSO
 - Responsive design for desktop and mobile
 - Real-time status updates for app requests
 
-**Key Files**:
+**Key files**:
 - `src/AppRequestPortal.Web/src/App.tsx`
 - `src/AppRequestPortal.Web/src/authConfig.ts`
 - `src/AppRequestPortal.Web/src/services/apiClient.ts`
 
 ### 2. Backend API (ASP.NET Core)
 
-**Technology Stack**:
+**Technology stack**:
 - ASP.NET Core 8.0
 - Entity Framework Core
 - Microsoft.Identity.Web
 - Microsoft Graph SDK
 
-**Architecture Pattern**: Clean Architecture / Layered Architecture
+**Architecture pattern**: Clean Architecture / Layered Architecture
 
 **Layers**:
 1. **API Layer** (`AppRequestPortal.API`)
@@ -92,7 +92,7 @@ This document provides a detailed overview of the App Store for Intune architect
 
 The database is managed by Entity Framework Core with automatic migrations applied on startup. The schema contains **19 tables** organized into the following categories:
 
-#### Table Summary
+#### Table summary
 
 | Table | Purpose | Type |
 |-------|---------|------|
@@ -116,7 +116,7 @@ The database is managed by Entity Framework Core with automatic migrations appli
 | `AppVersionHistories` | App version tracking for updates | Updates |
 | `BotConversationReferences` | Teams bot conversation references for proactive messaging | Notifications |
 
-#### Core Tables
+#### Core tables
 
 ```sql
 -- Apps: Intune application catalog
@@ -244,7 +244,7 @@ CREATE TABLE AuditLogs (
 );
 ```
 
-#### Approval Workflow Tables
+#### Approval workflow tables
 
 ```sql
 -- ApprovalWorkflows: Per-app workflow configuration
@@ -313,7 +313,7 @@ CREATE TABLE RequestApprovals (
 );
 ```
 
-#### Configuration Tables (Singletons)
+#### Configuration tables (singletons)
 
 ```sql
 -- PortalSettings: Global portal configuration (always Id=1)
@@ -469,7 +469,7 @@ CREATE TABLE CategorySettings (
 );
 ```
 
-#### Compliance Tables
+#### Compliance tables
 
 ```sql
 -- TermsOfService: TOS versions
@@ -503,7 +503,7 @@ CREATE TABLE TermsAcceptances (
 );
 ```
 
-#### Packaging & Update Tables
+#### Packaging & update tables
 
 ```sql
 -- PackagingJobs: WinGet-to-Intune packaging pipeline
@@ -575,13 +575,13 @@ CREATE TABLE AppVersionHistories (
 );
 ```
 
-#### Notification Tables
+#### Notification tables
 
 ```sql
 -- BotConversationReferences: Teams bot proactive messaging references
 CREATE TABLE BotConversationReferences (
     Id INT PRIMARY KEY IDENTITY,
-    UserId NVARCHAR(100) NOT NULL UNIQUE,    -- Entra ID object ID
+    UserId NVARCHAR(100) NOT NULL UNIQUE,    -- Microsoft Entra ID object ID
     UserEmail NVARCHAR(255),
     ConversationId NVARCHAR(255) NOT NULL,
     ServiceUrl NVARCHAR(500) NOT NULL,
@@ -591,15 +591,15 @@ CREATE TABLE BotConversationReferences (
 );
 ```
 
-### 4. Microsoft Graph API Integration
+### 4. Microsoft Graph API integration
 
 **Purpose**:
 - Retrieve apps from Intune
-- Manage Entra ID groups
+- Manage Microsoft Entra ID groups
 - Add/remove users and devices from groups
 - Get user information and manager hierarchy
 
-**Permissions Required**:
+**Permissions required**:
 - `DeviceManagementApps.Read.All`
 - `DeviceManagementApps.ReadWrite.All`
 - `DeviceManagementConfiguration.Read.All` (for the assignment-filter picker in ring deployment settings)
@@ -609,12 +609,12 @@ CREATE TABLE BotConversationReferences (
 - `Directory.Read.All`
 - `Mail.Send` (optional, for email notifications)
 
-**Key Operations**:
+**Key operations**:
 ```csharp
 // Get Intune apps
 GET /deviceAppManagement/mobileApps
 
-// Create AD group
+// Create Microsoft Entra ID group
 POST /groups
 
 // Add user to group
@@ -631,39 +631,39 @@ GET /users/{user-id}/managedDevices
 
 **Purpose**: Secure storage for application secrets
 
-**Secrets Stored**:
-- `AzureAdClientSecret`: Entra ID client secret
+**Secrets stored**:
+- `AzureAdClientSecret`: Microsoft Entra ID client secret
 - `SqlConnectionString`: SQL Database connection string
 - `StorageConnectionString`: Azure Storage connection string
 
 **Access**: App Service Managed Identity with Get and List permissions only. Secrets are referenced via Key Vault references in App Settings (e.g., `@Microsoft.KeyVault(SecretUri=...)`).
 
-### 6. Azure Storage Account
+### 6. Azure Storage account
 
 **Purpose**: Queue and blob storage for the cloud packaging pipeline
 
-**Containers/Queues**:
+**Containers/queues**:
 - `packaging-jobs` queue: Job messages for the packaging agent
 - `intunewin-packages` blob container: Packaged `.intunewin` files and PSADT templates
 
-### 7. Azure Bot (Optional)
+### 7. Azure Bot (optional)
 
 **Purpose**: Send personal Teams notifications to users via Bot Framework proactive messaging
 
 **Configuration**:
-- Reuses the Backend API Entra ID app registration (same Client ID/Secret)
+- Reuses the Backend API Microsoft Entra ID app registration (same Client ID/Secret)
 - Messaging endpoint: `https://{app-url}/api/messages`
 - SingleTenant, Teams channel enabled
 - No additional Microsoft Graph permissions required
 
-**Key Files**:
+**Key files**:
 - `src/AppRequestPortal.API/Bot/AppRequestBot.cs`: Handles install/uninstall events
 - `src/AppRequestPortal.API/Controllers/BotController.cs`: Bot messaging endpoint
 - `src/AppRequestPortal.Infrastructure/Services/TeamsBotService.cs`: Proactive notification service
 
-## Data Flow
+## Data flow
 
-### User Request Flow
+### User request flow
 
 ```
 1. User browses apps
@@ -680,7 +680,7 @@ GET /users/{user-id}/managedDevices
                   → Teams bot (notify users)
 
 4. System processes approved request
-   API → Graph API (create/get AD group)
+   API → Graph API (create/get Microsoft Entra ID group)
        → Graph API (add user/device to group)
        → Intune (app deployment triggered automatically)
        → Database (update request status)
@@ -688,7 +688,7 @@ GET /users/{user-id}/managedDevices
        → Teams bot (notify users)
 ```
 
-### Notification Services
+### Notification services
 
 The portal uses two notification channels:
 
@@ -699,7 +699,7 @@ The portal uses two notification channels:
 
 Both services are optional and can be enabled/disabled independently in the Admin Communications tab. The Teams Bot sends personal 1:1 messages to users via stored conversation references (the bot must be pre-installed for users via Teams Admin Center setup policies).
 
-### App Sync Flow
+### App sync flow
 
 ```
 1. Admin triggers sync
@@ -715,46 +715,46 @@ Both services are optional and can be enabled/disabled independently in the Admi
                      → Database (update apps, device count, license info)
 ```
 
-## Security Architecture
+## Security architecture
 
-### Authentication Flow
+### Authentication flow
 
 ```
 1. User visits frontend
-2. MSAL redirects to Entra ID login
+2. MSAL redirects to Microsoft Entra ID sign-in
 3. User authenticates
-4. Entra ID returns ID token and access token
+4. Microsoft Entra ID returns ID token and access token
 5. Frontend stores tokens in session storage
 6. Frontend includes access token in API requests
 7. API validates JWT token
 8. API authorizes based on user roles/claims
 ```
 
-### Authorization Levels
+### Authorization levels
 
 - **User**: Can browse apps and submit requests
 - **Approver**: Can approve/reject requests for assigned apps
 - **Admin**: Can manage apps, approvers, and view all requests
 
-### Security Features
+### Security features
 
 1. **HTTPS Only**: All communication encrypted in transit
-2. **JWT Authentication**: Stateless authentication with Entra ID
+2. **JWT Authentication**: Stateless authentication with Microsoft Entra ID
 3. **RBAC**: Role-based access control for granular permissions
-4. **Conditional Access**: Integration with Entra ID Conditional Access policies
+4. **Conditional Access**: Integration with Microsoft Entra ID Conditional Access policies
 5. **Managed Identity**: Service-to-service authentication without secrets
 6. **Key Vault**: Secure storage of secrets and certificates
 7. **Audit Logging**: Complete audit trail of all actions
 
-## Scalability Considerations
+## Scalability considerations
 
-### Horizontal Scaling
+### Horizontal scaling
 
 - **App Services**: Scale out to multiple instances
 - **Database**: Use Azure SQL elastic pools or scale up tiers
 - **Frontend**: Served via CDN for global distribution
 
-### Caching Strategy
+### Caching strategy
 
 ```csharp
 // Cache app list (1 hour TTL)
@@ -766,17 +766,17 @@ public async Task<IActionResult> GetApps()
 public async Task<IActionResult> GetUserDevices(string userId)
 ```
 
-### Performance Optimizations
+### Performance optimizations
 
-1. **Database Indexing**: Indexes on frequently queried columns
-2. **Connection Pooling**: Efficient database connection management
-3. **Async/Await**: Non-blocking I/O operations
-4. **Lazy Loading**: Load data only when needed
+1. **Database indexing**: Indexes on frequently queried columns
+2. **Connection pooling**: Efficient database connection management
+3. **Async/await**: Non-blocking I/O operations
+4. **Lazy loading**: Load data only when needed
 5. **Pagination**: Limit result sets for large queries
 
-## Monitoring and Observability
+## Monitoring and observability
 
-### Application Insights Integration
+### Application Insights integration
 
 ```csharp
 // Custom telemetry
@@ -791,7 +791,7 @@ telemetryClient.TrackEvent("AppRequestApproved", new Dictionary<string, string>
 telemetryClient.TrackDependency("GraphAPI", "GetIntuneApps", startTime, duration, success);
 ```
 
-### Key Metrics
+### Key metrics
 
 - Request rate and response times
 - Failure rates and error types
@@ -816,11 +816,11 @@ _logger.LogError(
 );
 ```
 
-## Disaster Recovery
+## Disaster recovery
 
 The default deployment includes Tier 2 disaster recovery capabilities with geo-redundant backups across Azure regions.
 
-### Built-in Protection (Default)
+### Built-in protection (default)
 
 | Component | Protection | RPO | RTO |
 |-----------|------------|-----|-----|
@@ -829,14 +829,14 @@ The default deployment includes Tier 2 disaster recovery capabilities with geo-r
 | **Key Vault** | Soft delete (7-day recovery window) | 0 | 15 min |
 | **Application** | GitHub releases + ARM template | 0 | 30 min |
 
-### Backup Details
+### Backup details
 
 - **SQL Point-in-Time Restore**: 7 days (Basic tier), up to 35 days (Standard+)
 - **SQL Geo-Backup**: Cross-region backup for regional disaster recovery
 - **Storage GRS**: Synchronous replication to paired Azure region
 - **Key Vault Soft Delete**: 7-day retention for accidental deletion recovery
 
-### High Availability Options (Tier 3)
+### High availability options (Tier 3)
 
 For organizations requiring higher uptime, these can be configured manually:
 
@@ -863,7 +863,7 @@ For organizations requiring higher uptime, these can be configured manually:
 - **Traffic Manager**: ~$0.75/million queries
 - **Secondary App Service**: ~$55/month (B2)
 
-### Recovery Procedures
+### Recovery procedures
 
 See the [Disaster Recovery Guide](disaster-recovery.md) for detailed runbooks covering:
 - Accidental data deletion recovery
@@ -871,102 +871,102 @@ See the [Disaster Recovery Guide](disaster-recovery.md) for detailed runbooks co
 - Complete region failure recovery
 - Application rollback procedures
 
-## Admin Features
+## Admin features
 
 ### Setup Wizard
 A guided setup wizard helps administrators configure the portal on first use:
 1. **License** - Enter and validate PowerStacks license key
-2. **Access Groups** - Configure admin and approver Entra ID groups
+2. **Access Groups** - Configure admin and approver Microsoft Entra ID groups
 3. **Email Notifications** - Set up email sender identity and notification preferences
 4. **Sync Apps** - Import apps from Intune catalog
 
-### Branding Customization
+### Branding customization
 Administrators can fully customize the portal appearance:
 - **Logo & Favicon** - Upload custom images (PNG, JPG, SVG, ICO)
 - **Colors** - Primary color, hover color, secondary color, header text color, background color, card background
 - **Text** - Portal title, tagline, welcome message, footer text, support contact info
 
-### Dark Mode
+### Dark mode
 - Admin-controlled default dark mode setting
 - User toggle to override admin preference (persisted in localStorage)
 - Respects system preference when user hasn't set a preference
 - Full dark mode styling for all components
 
-### App Categories
+### App categories
 Apps can be organized into categories for easier browsing:
 - Categories are synced from Intune app metadata
 - Apps display their category on the Browse Apps page
 - Filter apps by category
 
-### Multi-Stage Approval Workflows
+### Multi-stage approval workflows
 Custom approval workflows can be configured per app:
 - **Multiple stages** - Define sequential approval stages
 - **Stage types** - Manager approval, specific user approval, or group approval
 - **Notifications** - Email notifications at each stage
 - **Tracking** - View current approval stage in pending approvals list
 
-### App Catalog Integration
-Import apps from the Windows Package Manager (Winget) repository:
-- Search the Winget catalog by name
+### App catalog integration
+Import apps from the Windows Package Manager (WinGet) repository:
+- Search the WinGet catalog by name
 - View app details including publisher, version, and description
-- Create Intune Win32 apps from Winget packages (requires packaging service)
+- Create Intune Win32 apps from WinGet packages (requires packaging service)
 
-## Reports & Analytics
+## Reports & analytics
 
 The portal includes a full Reports tab for administrators with the following capabilities:
 
-### ROI Calculator
+### ROI calculator
 - Calculates cost savings based on completed app requests
 - Formula: `completedRequests × costPerTicket = totalSavings`
 - Default help desk cost: $22/ticket (industry benchmark for Tier 1 support)
 - Configurable currency (USD, EUR, GBP, CAD, AUD, JPY, CHF, INR)
 - Time period filters: Last 30 days, 90 days, Year, All time
 
-### App-Based Reports
+### App-based reports
 - View total requests per app
 - Breakdown by status (completed, pending, rejected)
 - User history for each app
 
-### Person-Based Reports
+### Person-based reports
 - Search users who have made requests
 - View all apps requested by a specific user
 - Request dates and status tracking
 
-### Approval Analytics
+### Approval analytics
 - Top 10 approvers by approval count
 - Pending approvals count
 - Average approval time (hours)
 - Common rejection reasons
 
-## Licensing System
+## Licensing system
 
 The portal integrates with PowerStacks License API for device-based licensing:
 
-### License Validation
+### License validation
 - API endpoint: `https://api.powerstacks.com/powerbi-app/auth`
 - Validates license status, device count limits, and tenant authorization
 - Auto-validates every 24 hours or on-demand via admin panel
 
-### Device Count Enforcement
+### Device count enforcement
 - Counts managed devices from Intune that have checked in within last 30 days
 - Device count is updated during each app sync
-- **3% Grace Period**: If device count exceeds the licensed limit by up to 3%, the portal remains operational but displays a warning banner to users
+- **3% grace period**: If device count exceeds the licensed limit by up to 3%, the portal remains operational but displays a warning banner to users
 - If device count exceeds the licensed limit plus the 3% grace period, new app requests are blocked
 
-### Security Measures
+### Security measures
 - License validation forces API check for critical operations (not just cached data)
 - Prevents database tampering from bypassing license enforcement
 - Displays warning banners to end users when license issues occur
 
-### License Configuration
+### License configuration
 
 The license API key can be configured in two ways:
 
-1. **Via Admin Dashboard** (Recommended): Navigate to Admin Dashboard → License tab and enter the API key in the "License Key" field. This stores the key in the database.
+1. **Via Admin Dashboard** (recommended): Go to Admin Dashboard → License tab and enter the API key in the "License Key" field. This stores the key in the database.
 
 2. **Via Setup Wizard**: During initial setup, enter the API key in the License step of the Setup Wizard.
 
-3. **Via `appsettings.json`** (Fallback): Add to your configuration file:
+3. **Via `appsettings.json`** (fallback): Add to your configuration file:
 ```json
 {
   "License": {
@@ -979,19 +979,19 @@ The system checks for the API key in the following order:
 1. Database (LicenseInfo.ApiKey)
 2. Configuration file (License:ApiKey)
 
-### Database Tables
+### Database tables
 
 For column-level detail of the SQL data model, see the EF entity classes under `src/AppRequestPortal.Core/Models/` and the migrations under `src/AppRequestPortal.Infrastructure/Migrations/` in the App Store source repository; the EF source is the schema authority.
 
-## Future Enhancements
+## Future enhancements
 
-1. **Power Automate Integration**: Visual workflow designer for approvals
-2. **Real-time Notifications**: SignalR for live updates
-3. ~~**Advanced Analytics**: Usage reports and insights dashboard~~ Implemented
-4. **Mobile App**: Native mobile app for iOS/Android
-5. **Self-Service Group Management**: Let users manage their own app groups
-6. ~~**App Categories**: Organize apps by category/department~~ Implemented
-7. **Scheduled Deployments**: Schedule app installations for specific times
-8. **Multi-language Support**: Internationalization (i18n)
-9. ~~**Teams Notifications**: Notify Teams channels on request events~~ Implemented
-10. **Teams Approvals**: Approve/reject directly from Teams Adaptive Cards
+1. **Power Automate integration**: Visual workflow designer for approvals
+2. **Real-time notifications**: SignalR for live updates
+3. ~~**Advanced analytics**: Usage reports and insights dashboard~~ Implemented
+4. **Mobile app**: Native mobile app for iOS/Android
+5. **Self-service group management**: Let users manage their own app groups
+6. ~~**App categories**: Organize apps by category/department~~ Implemented
+7. **Scheduled deployments**: Schedule app installations for specific times
+8. **Multi-language support**: Internationalization (i18n)
+9. ~~**Teams notifications**: Notify Teams channels on request events~~ Implemented
+10. **Teams approvals**: Approve/reject directly from Teams Adaptive Cards

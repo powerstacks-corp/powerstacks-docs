@@ -11,7 +11,7 @@ Before anyone can sign in to the portal, the frontend app registration needs to 
 
 The deploy output includes the App Service URL. To retrieve it:
 
-1. Navigate to **Azure Portal** > your resource group > **Deployments**.
+1. Go to **Azure Portal** > your resource group > **Deployments**.
 2. Select the deployment that just completed.
 3. Select **Outputs** in the left navigation.
 4. Copy the value of **appUrl**. It looks like `https://<sitename>.azurewebsites.net`.
@@ -20,7 +20,7 @@ You can also retrieve it later from **App Service** > **Overview** > **Default d
 
 ## Add the redirect URI
 
-1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
+1. Go to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
 2. Select your frontend app registration.
 3. Select **Authentication**.
 4. Select **Add a platform** > **Single-page application**.

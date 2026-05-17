@@ -14,7 +14,7 @@ Microsoft Graph application permissions live on the App Service's managed identi
 
 ## Backend app registration
 
-1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
+1. Go to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
 2. Select **New registration**.
 3. **Name**: `App Store for Intune - Backend`.
 4. **Supported account types**: **Single tenant only**.
@@ -37,7 +37,7 @@ Microsoft Graph application permissions live on the App Service's managed identi
 
 ## Frontend app registration
 
-1. Navigate to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
+1. Go to **Azure Portal** > **Microsoft Entra ID** > **App registrations**.
 2. Select **New registration**.
 3. **Name**: `App Store for Intune - Frontend`.
 4. **Supported account types**: **Single tenant only**.

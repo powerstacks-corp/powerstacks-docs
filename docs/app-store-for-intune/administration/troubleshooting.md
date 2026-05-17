@@ -9,34 +9,34 @@ This guide helps you diagnose and resolve common issues with the App Store for I
 
 ---
 
-## Table of Contents
+## Table of contents
 
-- [How to View Logs](#how-to-view-logs)
-  - [Application Insights (Recommended)](#application-insights-recommended)
-  - [App Service Log Stream](#app-service-log-stream)
-  - [Packaging Job Status](#packaging-job-status)
-  - [Background Service Logs](#background-service-logs)
-- [Common Issues](#common-issues)
-  - [All Admin Pages Return 403 Forbidden](#all-admin-pages-return-403-forbidden)
-  - [WinGet Package Publishing Errors](#winget-package-publishing-errors)
-  - [Assignment Filter Dropdown Is Empty](#assignment-filter-dropdown-is-empty)
-  - [Migration Issues](#migration-issues)
+- [How to view logs](#how-to-view-logs)
+  - [Application Insights (recommended)](#application-insights-recommended)
+  - [App Service log stream](#app-service-log-stream)
+  - [Packaging job status](#packaging-job-status)
+  - [Background service logs](#background-service-logs)
+- [Common issues](#common-issues)
+  - [All admin pages return 403 Forbidden](#all-admin-pages-return-403-forbidden)
+  - [WinGet package publishing errors](#winget-package-publishing-errors)
+  - [Assignment filter dropdown is empty](#assignment-filter-dropdown-is-empty)
+  - [Migration issues](#migration-issues)
 
 ---
 
-## How to View Logs
+## How to view logs
 
 The App Store for Intune uses multiple logging destinations. Each serves a different purpose.
 
-### Application Insights (Recommended)
+### Application Insights (recommended)
 
 **Best for:** Detailed error traces, background service logs, performance monitoring
 
 **Location:** Azure Portal → Your App Service → Application Insights → Logs
 
-**Common Queries:**
+**Common queries:**
 
-**1. View Recent Errors (Last 1 Hour)**
+**1. View recent errors (last 1 hour)**
 ```kusto
 traces
 | where severityLevel >= 3  // Warning, Error, Critical
@@ -46,7 +46,7 @@ traces
 | take 100
 ```
 
-**2. Packaging Service Logs**
+**2. Packaging service logs**
 ```kusto
 traces
 | where message contains "PackagingQueueService"
@@ -54,7 +54,7 @@ traces
 | take 100
 ```
 
-**3. Search for Specific Package Errors**
+**3. Search for specific package errors**
 Replace `Google.GoogleDrive` with your package ID:
 ```kusto
 traces
@@ -63,7 +63,7 @@ traces
 | take 50
 ```
 
-**4. View All Logs for a Specific Job ID**
+**4. View all logs for a specific job ID**
 Replace `abc123` with your job ID:
 ```kusto
 traces
@@ -72,7 +72,7 @@ traces
 | take 100
 ```
 
-**5. WinGet Cache Background Service**
+**5. WinGet cache background service**
 ```kusto
 traces
 | where message contains "WingetCacheStreamingService"
@@ -80,7 +80,7 @@ traces
 | take 100
 ```
 
-**6. Failed Requests (500 errors)**
+**6. Failed requests (500 errors)**
 ```kusto
 requests
 | where resultCode >= 500
@@ -91,7 +91,7 @@ requests
 
 ---
 
-### App Service Log Stream
+### App Service log stream
 
 **Best for:** Real-time monitoring, startup issues, general web app logs
 
@@ -119,7 +119,7 @@ az webapp log tail \
 
 ---
 
-### Packaging Job Status
+### Packaging job status
 
 **Best for:** Quick status check, user-facing error messages
 
@@ -137,7 +137,7 @@ az webapp log tail \
 - Detailed stack traces not shown
 - For full error details, use Application Insights
 
-**Example Job Statuses:**
+**Example job statuses:**
 
 | Status | Description |
 |--------|-------------|
@@ -150,7 +150,7 @@ az webapp log tail \
 
 ---
 
-### Background Service Logs
+### Background service logs
 
 Background services run independently of HTTP requests. Their logs appear in Application Insights, not the live log stream.
 
@@ -187,17 +187,17 @@ traces
 
 ---
 
-### Verifying Application Insights is Enabled
+### Verifying Application Insights is enabled
 
 Application Insights is critical for monitoring and troubleshooting. Follow these steps to verify it's enabled and working:
 
-**1. Check if Application Insights Resource Exists**
+**1. Check if Application Insights resource exists**
 
 Azure Portal → Resource Group → Look for resource named like `apprequest-insights-{uniqueId}`
 
 If missing, the ARM template deployment may have failed. Redeploy using the latest template.
 
-**2. Verify Connection String is Set**
+**2. Verify connection string is set**
 
 Azure CLI:
 ```bash
@@ -216,18 +216,18 @@ Azure Portal:
 
 **If missing:** The ARM template sets this automatically. If deploying manually, copy the connection string from the Application Insights resource.
 
-**3. Verify Application Insights is Not Disabled**
+**3. Verify Application Insights is not disabled**
 
 Azure Portal:
 1. Go to your App Service
 2. Settings → Application Insights
 3. Ensure it shows "Connected" or "Enabled"
 4. If it says "Disabled":
-   - Click "Turn on Application Insights"
+   - Select "Turn on Application Insights"
    - Select your existing Application Insights resource
-   - Click "Apply"
+   - Select "Apply"
 
-**4. Test if Logs are Flowing**
+**4. Test if logs are flowing**
 
 **A. Check startup logs:**
 ```kusto
@@ -244,7 +244,7 @@ Application Insights is configured with connection string: InstrumentationKey=..
 
 **B. Generate test traffic:**
 1. Visit your portal homepage
-2. Navigate to a few pages
+2. Go to a few pages
 3. Wait 2-3 minutes for logs to appear
 
 **C. Query for recent activity:**
@@ -257,7 +257,7 @@ requests
 
 If you see results, Application Insights is working correctly.
 
-**5. Common Issues**
+**5. Common issues**
 
 **No logs appearing:**
 - **Wait 2-5 minutes** - There's a delay before logs appear
@@ -275,7 +275,7 @@ If you see results, Application Insights is working correctly.
 - Check if the Application Insights resource has any data (Portal → Application Insights → Logs)
 - Restart the App Service
 
-**6. Manual Configuration (if needed)**
+**6. Manual configuration (if needed)**
 
 If Application Insights isn't working after deployment:
 
@@ -300,27 +300,27 @@ az webapp restart \
 
 ---
 
-## Common Issues
+## Common issues
 
-### All Admin Pages Return 403 Forbidden
+### All admin pages return 403 Forbidden
 
 **Cause (v1.10.6+):** The portal requires `AdminGroupId` to be configured. If no Admin Group ID is set in either portal settings (database) or `appsettings.json` / environment variables, all admin endpoints return 403 Forbidden.
 
 **Fix:**
 
 1. Set the `AdminGroupId` via environment variable and restart:
-   - **Azure App Service:** Go to Configuration → Application Settings → Add `AppSettings__AdminGroupId` with the Entra ID group Object ID → Save → Restart
+   - **Azure App Service:** Go to Configuration → Application Settings → Add `AppSettings__AdminGroupId` with the Microsoft Entra ID group Object ID → Save → Restart
    - **Local/IIS:** Set `AppSettings__AdminGroupId` environment variable, or add to `appsettings.json`:
      ```json
      { "AppSettings": { "AdminGroupId": "your-group-object-id" } }
      ```
 2. Restart the application
 3. Sign in with an account that is a member of that group
-4. Navigate to Admin → Settings and save the Admin Group ID in portal settings
+4. Go to Admin → Settings and save the Admin Group ID in portal settings
 
 **Prevention:** Always keep `AdminGroupId` set in `appsettings.json` or environment variables as a fallback, even after configuring it in the portal UI.
 
-### WinGet Package Publishing Errors
+### WinGet package publishing errors
 
 #### Error: "Failed to download installer manifest from GitHub: NotFound"
 
@@ -346,7 +346,7 @@ az webapp restart \
 
 ---
 
-#### Error: 404 When Packaging WinGet Apps with Nested Package IDs
+#### Error: 404 when packaging WinGet apps with nested package IDs
 
 **Cause (fixed in v1.11.31):** Some WinGet packages use numeric sub-directories that are part of the package ID rather than version numbers. For example, `Microsoft.SQLServerManagementStudio` has a sub-directory `22/` which is part of the full package ID `Microsoft.SQLServerManagementStudio.22`. Prior to v1.11.31, the system mistakenly treated `22/` as a version directory, then failed to find the manifest file because the actual filename includes the full package ID (e.g., `Microsoft.SQLServerManagementStudio.22.installer.yaml` rather than `Microsoft.SQLServerManagementStudio.installer.yaml`).
 
@@ -379,7 +379,7 @@ az webapp restart \
    - "File verified: {FilePath} exists" - file validation passed
    - Any errors between these log entries
 
-**Possible Causes:**
+**Possible causes:**
 - Download failed (network issue, installer URL invalid)
 - File was downloaded but is 0 bytes
 - Path or filename too long (Windows 260 character limit)
@@ -408,7 +408,7 @@ az webapp restart \
 
 2. Look for the error message from the packager
 
-**Common Causes:**
+**Common causes:**
 - Installer file doesn't exist (see previous section)
 - Installer file is corrupted or 0 bytes
 - Insufficient disk space
@@ -421,9 +421,9 @@ az webapp restart \
 
 ---
 
-### Install Status Issues
+### Install status issues
 
-#### Install Status Stuck on "Pending Install": Graph API URL Issue
+#### Install status stuck on "Pending Install": Graph API URL issue
 
 **Cause (fixed in v1.11.10):** Prior to v1.11.10, the Intune `retrieveDeviceAppInstallationStatusReport` API was called without the required `microsoft.graph.` namespace prefix. The Graph beta endpoint silently returned empty data instead of erroring, so the polling service saw no install data for any app/user and statuses remained stuck at PendingInstall or NotApplicable.
 
@@ -431,7 +431,7 @@ az webapp restart \
 
 ---
 
-#### Install Status Stuck on "Pending Install": General
+#### Install status stuck on "Pending Install": general
 
 **Cause:** The Intune install status polling service hasn't detected a status change yet, or the device hasn't checked in with Intune.
 
@@ -444,11 +444,11 @@ az webapp restart \
    | take 10
    ```
 
-2. Verify the user/device is in the correct deployment group in Entra ID
+2. Verify the user/device is in the correct deployment group in Microsoft Entra ID
 
 3. Check if the device is online and syncing with Intune
 
-**Common Causes:**
+**Common causes:**
 - Device hasn't synced with Intune since the assignment was created (can take up to 8 hours)
 - User/device was not successfully added to the deployment group
 - App assignment filter is excluding the device
@@ -456,12 +456,12 @@ az webapp restart \
 
 **Solution:**
 - On the target device, open Company Portal and trigger a sync
-- Verify group membership in Entra ID
+- Verify group membership in Microsoft Entra ID
 - Check the Intune device status report for the specific app
 
 ---
 
-#### Install Status Shows "Pending Install" but Intune Shows "Failed"
+#### Install status shows "Pending Install" but Intune shows "Failed"
 
 **Cause (fixed in v1.11.4):** Prior to v1.11.4, the install status parser had incorrect numeric mappings. Intune's `resultantAppState` value `"2"` (Failed) was mapped to Installing, and `"5"` (PendingInstall) was mapped to Failed. This caused failures to be displayed as "Installing" or to remain stuck at "Pending Install".
 
@@ -469,7 +469,7 @@ az webapp restart \
 
 ---
 
-#### Install Status Stuck at "Not Applicable" / Deployment Status Shows All Zeros
+#### Install status stuck at "Not Applicable" / deployment status shows all zeros
 
 **Cause (fixed in v1.11.9):** Prior to v1.11.9, requests that were auto-approved (apps without an approval workflow) never initialized `InstallStatus` to `PendingInstall`. The status defaulted to `NotApplicable`, so the install status polling service never tracked their deployment progress. This only affected auto-approved requests. Manually-approved requests via the approval workflow were set correctly.
 
@@ -491,7 +491,7 @@ The polling service will then pick up these requests and check Intune for their 
 
 ---
 
-#### PSADT-Wrapped App Fails to Install (Error 0x8007EA68)
+#### PSADT-wrapped app fails to install (error 0x8007EA68)
 
 **Cause (fixed in v1.11.5):** Prior to v1.11.5, the generated `Deploy-Application.ps1` for MSI installers passed `-Parameters '/qn /norestart'` to `Execute-MSI`. PSADT v4 renamed this parameter and already applies `/qn /norestart` automatically in Silent deploy mode, causing a parameter conflict.
 
@@ -500,7 +500,7 @@ The polling service will then pick up these requests and check Intune for their 
 2. Check PSADT logs on the target device: `C:\Windows\Logs\Software\`
 3. Error codes in the 60000 range indicate PSADT framework errors
 
-**PSADT Error Codes:**
+**PSADT error codes:**
 
 | Exit Code | Hex Code | Description |
 |-----------|----------|-------------|
@@ -513,7 +513,7 @@ The polling service will then pick up these requests and check Intune for their 
 
 ---
 
-### Assignment Filter Dropdown Is Empty
+### Assignment filter dropdown is empty
 
 **Symptom:** When configuring per-ring deployment settings (Update Ring Templates, or per-app Custom rings), the Intune assignment filter dropdown shows "No filters available" or a blank list, even though your tenant has filters configured.
 
@@ -538,14 +538,14 @@ A 403 from Graph or "Forbidden" message confirms the missing permission.
 2. Open the portal's API app registration (named `App Store for Intune - API` or similar)
 3. **API permissions** → **Add a permission** → **Microsoft Graph** → **Application permissions**
 4. Add `DeviceManagementConfiguration.Read.All`
-5. Click **Grant admin consent**
+5. Select **Grant admin consent**
 6. Refresh the App Updates page in the portal. Filters should populate immediately (no portal restart needed; results aren't cached server-side).
 
 **Why this is needed:** Intune assignment filters live under a different Graph permission scope than Intune apps. `DeviceManagementApps.*` only covers the apps endpoints; reading filters requires `DeviceManagementConfiguration.Read.All` separately.
 
 ---
 
-### Migration Issues
+### Migration issues
 
 #### Error: "Invalid column name 'PopularityRank'"
 
@@ -579,7 +579,7 @@ Migrations run automatically on startup. Restarting may trigger the migration.
 
 ---
 
-## Getting Help
+## Getting help
 
 If you can't resolve an issue:
 
@@ -599,9 +599,9 @@ If you can't resolve an issue:
 
 ---
 
-## Useful Azure CLI Commands
+## Useful Azure CLI commands
 
-**View App Service Configuration**
+**View App Service configuration**
 ```bash
 az webapp config show \
   --name <your-app-name> \
@@ -615,21 +615,21 @@ az webapp restart \
   --resource-group <your-resource-group>
 ```
 
-**View Environment Variables**
+**View environment variables**
 ```bash
 az webapp config appsettings list \
   --name <your-app-name> \
   --resource-group <your-resource-group>
 ```
 
-**View Connection Strings**
+**View connection strings**
 ```bash
 az webapp config connection-string list \
   --name <your-app-name> \
   --resource-group <your-resource-group>
 ```
 
-**Check App Service Health**
+**Check App Service health**
 ```bash
 az webapp show \
   --name <your-app-name> \
@@ -639,7 +639,7 @@ az webapp show \
 
 ---
 
-## Additional Resources
+## Additional resources
 
 - [Administration guide](../administration/) - Complete administration documentation
 - [Setup guide](../installation/setup-guide/) - Deployment and configuration

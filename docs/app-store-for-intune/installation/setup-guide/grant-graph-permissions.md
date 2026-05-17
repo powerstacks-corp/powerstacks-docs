@@ -8,13 +8,13 @@ description: "Run a one-time PowerShell snippet that assigns the required Micros
 The App Service authenticates to Microsoft Graph using its system-assigned managed identity. Azure Portal does not have a UI for assigning Microsoft Graph application permissions to a managed identity, so this step is a single PowerShell snippet you run once against Microsoft Graph PowerShell. After it completes, the App Service can call Graph as itself — no client secret, no stored credential.
 
 !!! tip "Wait 10 to 15 minutes after the deploy reports success"
-    The App Service's system-assigned managed identity takes 10 to 15 minutes to propagate across Azure AD. Run this snippet only after that window has elapsed. Running it earlier returns a "service principal not found" error.
+    The App Service's system-assigned managed identity takes 10 to 15 minutes to propagate across Microsoft Entra ID. Run this snippet only after that window has elapsed. Running it earlier returns a "service principal not found" error.
 
 ## Find the App Service principal ID
 
 The deploy output includes the App Service's managed identity principal ID. To retrieve it:
 
-1. Navigate to **Azure Portal** > your resource group > **Deployments**.
+1. Go to **Azure Portal** > your resource group > **Deployments**.
 2. Select the deployment that just completed.
 3. Select **Outputs** in the left navigation.
 4. Copy the value of **appServicePrincipalId**.
@@ -77,7 +77,7 @@ The snippet takes about 10 seconds.
 
 ## Verify the grant
 
-In Azure Portal, navigate to **Microsoft Entra ID** > **Enterprise applications** > **All applications**. Change the **Application type** filter to **Managed Identities** and find the App Service by name. Select it, then select **Permissions** in the left navigation. You should see all seven Graph application permissions listed with admin consent granted.
+In Azure Portal, go to **Microsoft Entra ID** > **Enterprise applications** > **All applications**. Change the **Application type** filter to **Managed Identities** and find the App Service by name. Select it, then select **Permissions** in the left navigation. You should see all seven Graph application permissions listed with admin consent granted.
 
 You can also verify by signing in to the portal and selecting **Admin** > **App Catalog** > **Sync from Intune**. If apps appear, the permissions are in place.
 

@@ -10,7 +10,7 @@ After initial deployment and Entra ID configuration (see [Setup Guide](../instal
 ### Accessing the Admin Dashboard
 
 1. Sign in to the portal with an account that is a member of the Admin Group
-2. Click **Admin** in the navigation menu
+2. Select **Admin** in the navigation menu
 3. The admin portal uses an Intune-style left-rail navigation (v1.28.0+) grouped into four sections that mirror the Microsoft Intune admin center layout. If you've used Intune, the structure should already feel familiar:
 
    **Apps**
@@ -38,7 +38,7 @@ After initial deployment and Entra ID configuration (see [Setup Guide](../instal
 For first-time setup or to reconfigure the portal, use the **Setup Wizard**:
 
 1. Go to **Admin** > **Settings** tab
-2. Click the **Setup Wizard** button
+2. Select the **Setup Wizard** button
 3. Follow the guided steps:
    - **Welcome** - Overview of setup steps
    - **License** - Enter and validate your PowerStacks license key
@@ -50,7 +50,7 @@ The wizard saves your settings as you progress through each step. You can skip t
 
 > **Note:** The License step is required for the portal to be fully operational. Without a valid license, users will see warning banners and some features may be restricted.
 
-**Quick Reference Commands** (shown in wizard completion):
+**Quick reference commands** (shown in wizard completion):
 
 | Component | Command |
 |-----------|---------|

@@ -7,7 +7,7 @@ description: "Review and approve or reject app requests waiting in the approval 
 
 The Pending Approvals tab shows all requests waiting for your approval.
 
-### Viewing Requests
+### Viewing requests
 
 Each request shows:
 
@@ -17,14 +17,14 @@ Each request shows:
 - **Stage**: Current approval stage number
 - **Justification**: Reason provided by the requestor (if any)
 
-### Approving Requests
+### Approving requests
 
 1. Review the request details
-2. Click **Approve** to advance the request
+2. Select **Approve** to advance the request
 3. The request moves to the next approval stage (or completes if this was the final stage)
 
-### Rejecting Requests
+### Rejecting requests
 
-1. Click **Reject**
+1. Select **Reject**
 2. Enter a reason for rejection (required)
 3. The requestor is notified of the rejection with your reason

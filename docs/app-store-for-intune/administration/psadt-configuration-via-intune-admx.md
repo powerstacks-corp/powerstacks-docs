@@ -56,11 +56,11 @@ Keep both files handy. You'll upload them in Step 2.
 5. From the template list, pick **Imported Administrative templates (Preview)**.
    !!! note "Why this profile type"
        Intune supports several ADMX-flavored profile types. "Imported Administrative templates" is the one that lets you bring your own third-party ADMX. The "Administrative templates" type (without "Imported") is for Microsoft's pre-loaded set and won't let you upload PSADT's.
-6. Click **Create**.
-7. On the **Basics** page, give the policy a name like `PSADT Configuration - Baseline` and an optional description. Click **Next**.
-8. On the **Configuration settings** page, click **Add** and upload the `PSAppDeployToolkit.admx` file from Step 1.
+6. Select **Create**.
+7. On the **Basics** page, give the policy a name like `PSADT Configuration - Baseline` and an optional description. Select **Next**.
+8. On the **Configuration settings** page, select **Add** and upload the `PSAppDeployToolkit.admx` file from Step 1.
 9. When prompted, also upload `PSAppDeployToolkit.adml` from the `en-US` folder.
-10. Click **Next** to continue once the upload completes. The PSADT settings tree appears in the left-side tree view of the Configuration settings page.
+10. Select **Next** to continue once the upload completes. The PSADT settings tree appears in the left-side tree view of the Configuration settings page.
 
 ## Step 3: Configure the recommended baseline
 
@@ -82,17 +82,17 @@ The following baseline is the set we recommend starting with. Every setting has 
 
 Set each one to **Enabled** and enter the recommended value (or the equivalent toggle, depending on the setting type). Leave any setting you're not sure about as **Not configured**; PSADT's bundled default applies.
 
-When you're done, click **Next** to continue.
+When you're done, select **Next** to continue.
 
 ## Step 4: Scope tags (optional)
 
-If you use scope tags, apply them now. Otherwise click **Next** to skip.
+If you use scope tags, apply them now. Otherwise select **Next** to skip.
 
 ## Step 5: Assign to devices
 
 1. On the **Assignments** page, choose **+ Add groups** and target the device group(s) you want the policy applied to. For a first rollout, target a pilot group (a handful of devices) so you can verify behavior before going broader.
 2. After validating with the pilot, edit the assignment and switch the target to your full Windows estate or whichever scope matches your deployment-ring strategy.
-3. Click **Next**, review the policy summary, and **Create** to finalize.
+3. Select **Next**, review the policy summary, and **Create** to finalize.
 
 Intune syncs the policy to assigned devices on the next check-in (typically within 8 hours; a manual `Sync` from the Company Portal or device settings forces it immediately).
 

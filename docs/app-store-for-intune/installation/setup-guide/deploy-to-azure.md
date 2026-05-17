@@ -72,7 +72,7 @@ Review the deployment summary, then select **Create**. The deploy takes 10 to 15
 
 ## After the deploy completes
 
-After the wizard reports a successful deployment, wait 10 to 15 minutes for the App Service's managed identity to propagate across Azure AD before continuing. Then work through these pages in order:
+After the wizard reports a successful deployment, wait 10 to 15 minutes for the App Service's managed identity to propagate across Microsoft Entra ID before continuing. Then work through these pages in order:
 
 1. [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md)
 2. [Add the production redirect URI](add-redirect-uri.md)

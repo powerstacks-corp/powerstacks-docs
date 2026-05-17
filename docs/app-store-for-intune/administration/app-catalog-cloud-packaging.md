@@ -9,7 +9,7 @@ The **App Catalog** tab in the Admin Dashboard lets you browse over 9,000 apps f
 
 ### Browsing the App Catalog
 
-1. Navigate to **Admin** > **App Catalog** tab
+1. Go to **Admin** > **App Catalog** tab
 2. Popular packages are displayed 24 per page with pagination controls
 3. Use the search box to find specific apps (search uses "Load More" infinite scroll)
 4. Each package shows: name, publisher, version, and description
@@ -23,11 +23,11 @@ The **App Catalog** tab in the Admin Dashboard lets you browse over 9,000 apps f
    - If multiple options are available, they appear as dropdown selectors
    - If only one option is available, it appears as a label showing what will be published
    - Default selections: x64 for architecture, en-US for locale
-3. Click **Publish to Intune** button on the package card
+3. Select the **Publish to Intune** button on the package card
 4. A packaging job is created with your selected architecture and locale
 5. Monitor job status in the **Packaging Jobs** section below the catalog
 
-**Architecture, Locale, and Version Tracking:**
+**Architecture, locale, and version tracking:**
 
 When apps are published from the WinGet catalog:
 
@@ -37,7 +37,7 @@ When apps are published from the WinGet catalog:
 - Dots in version numbers are replaced with dashes (e.g., `25.10.186.0` becomes `v25-10-186-0`)
 - This helps identify which variant and version of multi-architecture apps is deployed, and prevents duplicate deployments of the same version
 
-### Packaging Jobs
+### Packaging jobs
 
 The Packaging Jobs section shows all queued and completed packaging operations:
 
@@ -49,20 +49,20 @@ The Packaging Jobs section shows all queued and completed packaging operations:
 | **Uploading** | Uploading package to Intune via Graph API |
 | **Creating** | Creating Win32LobApp in Intune |
 | **Completed** | App successfully created in Intune |
-| **Failed** | Error occurred - click Retry to requeue |
+| **Failed** | Error occurred - select Retry to requeue |
 
-### Packaging Architecture
+### Packaging architecture
 
 The packaging process runs in-process on the App Service, no separate containers, agents, or functions needed:
 
-1. **Queue Message**: When you click "Publish to Intune", a job is added to Azure Storage Queue
-2. **Background Service**: The in-process `PackagingQueueService` picks up the job
+1. **Queue message**: When you select "Publish to Intune", a job is added to Azure Storage Queue
+2. **Background service**: The in-process `PackagingQueueService` picks up the job
 3. **Download**: Installer is downloaded from the URL in the WinGet manifest
 4. **Wrapping** (PSADT mode only): Installer is wrapped in PSAppDeployToolkit v4 for standardized deployment
-5. **Package Creation**: `.intunewin` package is created using the cross-platform SvRooij.ContentPrep library
-6. **Intune Upload**: The package is uploaded and a Win32LobApp is created via Graph API
+5. **Package creation**: `.intunewin` package is created using the cross-platform SvRooij.ContentPrep library
+6. **Intune upload**: The package is uploaded and a Win32LobApp is created via Graph API
 
-### Packaging Methods: Raw vs PSADT
+### Packaging methods: Raw vs PSADT
 
 When publishing an app from the App Catalog, you can choose between two packaging methods using the dropdown on each package card:
 
@@ -83,7 +83,7 @@ When publishing an app from the App Catalog, you can choose between two packagin
 - Package size matters (PSADT adds ~5 MB of framework files)
 - The app's native installer already handles silent installation well
 
-#### Raw Packaging Details
+#### Raw packaging details
 
 In Raw mode, the installer is packaged directly into the `.intunewin` file. The install and uninstall commands sent to Intune depend on the installer type:
 
@@ -97,7 +97,7 @@ In Raw mode, the installer is packaged directly into the `.intunewin` file. The 
 
 **Registry-based uninstall (for non-MSI):** For EXE and other non-MSI installers, the uninstall command searches the Windows registry (`HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall` and the `Wow6432Node` equivalent) for an entry matching the app's display name. It uses the `QuietUninstallString` if available, otherwise appends `/S /silent /quiet` to the `UninstallString`.
 
-#### PSADT Packaging Details
+#### PSADT packaging details
 
 In PSADT mode, the installer is placed inside a PSAppDeployToolkit v4 folder structure. The PSADT framework provides a standardized wrapper around the installer with logging, error handling, and consistent exit codes.
 
@@ -124,8 +124,8 @@ Package/
 
 | Variable | Value |
 |----------|-------|
-| `$appVendor` | Publisher name from the Winget manifest |
-| `$appName` | Package name from the Winget manifest |
+| `$appVendor` | Publisher name from the WinGet manifest |
+| `$appName` | Package name from the WinGet manifest |
 | `$appVersion` | (empty, version tracked via Intune metadata) |
 | `$appLang` | `EN` |
 | `$appRevision` | `01` |
@@ -195,12 +195,12 @@ These are registered in the Intune Win32 app return code mappings so that PSADT 
 
 **PSADT template caching:** The PSADT v4 template is downloaded once from the [official GitHub releases](https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases) and cached in Azure Blob Storage (`psadt-template/PSAppDeployToolkit_Template_v4.zip`). Subsequent packaging jobs reuse the cached template.
 
-#### Silent Switches
+#### Silent switches
 
 Silent switches tell the installer to run without displaying any UI. The portal resolves the silent switch in this order:
 
-1. **Winget manifest value**, if the manifest specifies `InstallerSwitches.Silent`, that value is used
-2. **Installer type default**, based on the `InstallerType` field in the Winget manifest
+1. **WinGet manifest value**, if the manifest specifies `InstallerSwitches.Silent`, that value is used
+2. **Installer type default**, based on the `InstallerType` field in the WinGet manifest
 3. **File extension fallback**, based on the installer's file extension
 4. **Last resort**, `/S /silent`
 
@@ -216,17 +216,17 @@ Silent switches tell the installer to run without displaying any UI. The portal 
 
 These defaults are applied in both Raw and PSADT modes.
 
-#### Detection Scripts
+#### Detection scripts
 
 Every app published to Intune includes an auto-generated PowerShell detection script. Intune runs this script on target devices to determine whether the app is already installed.
 
 **Detection strategy (in order of preference):**
 
-1. **ProductCode detection (most reliable)**, if the Winget manifest includes `AppsAndFeaturesEntries` with a `ProductCode` (MSI GUID), the script checks for that exact GUID in the registry uninstall paths. This is the most precise detection method.
+1. **ProductCode detection (most reliable)**, if the WinGet manifest includes `AppsAndFeaturesEntries` with a `ProductCode` (MSI GUID), the script checks for that exact GUID in the registry uninstall paths. This is the most precise detection method.
 
 2. **DisplayName detection (fallback)**, if no ProductCode is available, the script searches the registry for an entry where `DisplayName` matches the app name (using wildcard matching). Publisher name is also checked if available in the manifest.
 
-**Version checking:** When a version number is available from the Winget manifest (via `AppsAndFeaturesEntries.DisplayVersion` or the package version), the detection script compares the installed version against the required minimum version. Apps with older versions are reported as "Not Installed" so Intune will upgrade them.
+**Version checking:** When a version number is available from the WinGet manifest (via `AppsAndFeaturesEntries.DisplayVersion` or the package version), the detection script compares the installed version against the required minimum version. Apps with older versions are reported as "Not Installed" so Intune will upgrade them.
 
 **Registry paths checked:**
 
@@ -235,7 +235,7 @@ Every app published to Intune includes an auto-generated PowerShell detection sc
 
 **Script execution context:** Detection scripts run as 64-bit PowerShell (`runAs32Bit: false`) without signature enforcement (`enforceSignatureCheck: false`). The script exits with code `0` if the app is detected, or `1` if not installed.
 
-#### Intune Win32 App Configuration
+#### Intune Win32 app configuration
 
 When the app is created in Intune via the Graph API, the following settings are applied:
 
@@ -258,11 +258,11 @@ When the app is created in Intune via the Graph API, the following settings are 
 
 **App icon:** If available, the app icon is fetched automatically (via Google S2 Favicon API or GitHub publisher avatar) and included as a PNG or JPEG in the Intune app metadata.
 
-### Setting Up Packaging
+### Setting up packaging
 
 Packaging works out of the box with the default deployment. No additional setup is required beyond:
 
-1. **Azure Storage Account** (deployed by default via Bicep template)
+1. **Azure Storage account** (deployed by default via Bicep template)
 2. **Graph API permissions** for Intune app management (see Prerequisites)
 3. **Verify connectivity**:
    - Go to Admin > App Catalog
@@ -271,7 +271,7 @@ Packaging works out of the box with the default deployment. No additional setup 
 
 The PSADT v4 template is automatically downloaded from the [official GitHub repository](https://github.com/PSAppDeployToolkit/PSAppDeployToolkit) on first use and cached in Azure Blob Storage.
 
-### Manifest Integrity Verification
+### Manifest integrity verification
 
 By default, the packaging pipeline trusts WinGet manifests fetched from `raw.githubusercontent.com`. Each manifest declares a SHA256 for its installer, and the pipeline verifies the downloaded installer matches before publishing to Intune. That defends against a tampered installer at the publisher's download server, but it does not defend against a tampered *manifest* on the GitHub fetch path.
 
@@ -292,11 +292,11 @@ When the setting is enabled:
 
 For the full security chain and v2 roadmap (per-version manifest hash comparison, MSIX signature validation), see [Security Overview](security.md).
 
-### App Updates
+### App updates
 
 The **App Updates** tab in the Admin Dashboard shows all apps that have been published from WinGet and are being tracked for version updates.
 
-**Tracked Apps Table:**
+**Tracked apps table:**
 
 | Column | Description |
 |--------|-------------|
@@ -311,7 +311,7 @@ The **App Updates** tab in the Admin Dashboard shows all apps that have been pub
 
 Select any row in the table to open a per-app detail view where you can configure ring deployment, set the auto-deploy override, and run an immediate update check (**Check Now**) just for that app, useful when you want to confirm a single app's status without waiting for the next scheduled run.
 
-**Automatic Tracking:**
+**Automatic tracking:**
 
 - Apps published from the WinGet catalog are automatically tracked for updates
 - The `SourceWingetPackageId` is backfilled automatically by the background service (no manual Intune sync required)
@@ -325,13 +325,13 @@ Select any row in the table to open a per-app detail view where you can configur
 - **Deploy Update**: Opens a confirmation wizard (v1.24.0+) showing the deployment summary, app, version transition, ring mode (template/custom rings/ringless), ring breakdown or ringless target+filter, and the per-app auto-deploy override. Once you select **Deploy** in the wizard, a packaging job is queued that downloads the new version from WinGet, wraps it in PSADT, archives the `.intunewin` to blob storage for rollback, creates a new Install Win32 app in Intune (advancing the portal's version pointer) and a paired Update Win32 app with a requirement script that targets only devices already running the app. Watch the activity bell at top-right for in-flight progress.
 - **Dismiss**: Hides the update notification for that app
 
-**Activity Bell (v1.24.0+):**
+**Activity bell (v1.24.0+):**
 
-The bell icon at the top-right of every admin page is an Intune-style task tracker. The badge shows the count of in-flight deploys plus any sticky-failed entries; click the bell to open a drawer listing recent activity with each entry's current state, age, and any error or pause message. Adaptive polling: 15 seconds while at least one task is in-flight, 60 seconds otherwise to keep the badge accurate; stops entirely when nothing's happening and the drawer is closed (so you're not burning API calls just to show a zero badge). Use this when you need to know *what's happening right now* across all your deploys; use the App Updates Status column when you need to know *what state each app is in*; use the **Activity tab** (below) when you need the full historical timeline.
+The bell icon at the top-right of every admin page is an Intune-style task tracker. The badge shows the count of in-flight deploys plus any sticky-failed entries; select the bell to open a drawer listing recent activity with each entry's current state, age, and any error or pause message. Adaptive polling: 15 seconds while at least one task is in-flight, 60 seconds otherwise to keep the badge accurate; stops entirely when nothing's happening and the drawer is closed (so you're not burning API calls just to show a zero badge). Use this when you need to know *what's happening right now* across all your deploys; use the App Updates Status column when you need to know *what state each app is in*; use the **Activity tab** (below) when you need the full historical timeline.
 
 **Dismissing sticky failures (v1.27.0+):**
 
-Each terminal entry in the bell drawer (Up-to-Date, Packaging Failed, Assignment Failed) has a × dismiss button. Dismissing removes the entry from the drawer's default view and from the Activity Log tab's default view. Active entries, Queued, Packaging, Assigning, Paused, can't be dismissed; they're still moving and would just reappear on the next poll. A new failure for the same app is a distinct row, so a re-failure shows up regardless of whether you dismissed the prior one. Dismissals persist per-browser via `localStorage`. To restore everything you've dismissed, open the **Activity** tab and click *Restore dismissed*.
+Each terminal entry in the bell drawer (Up-to-Date, Packaging Failed, Assignment Failed) has a × dismiss button. Dismissing removes the entry from the drawer's default view and from the Activity Log tab's default view. Active entries, Queued, Packaging, Assigning, Paused, can't be dismissed; they're still moving and would just reappear on the next poll. A new failure for the same app is a distinct row, so a re-failure shows up regardless of whether you dismissed the prior one. Dismissals persist per-browser via `localStorage`. To restore everything you've dismissed, open the **Activity** tab and select *Restore dismissed*.
 
 **Activity tab (v1.27.0+):**
 
@@ -346,7 +346,7 @@ The filter bar above the activity table:
 
 Filters compose. The table paginates at 25 rows per page so a long history doesn't bog the page down. Each row has its own *Dismiss* button mirroring the bell drawer's behaviour, plus the standard state badge, started/finished timestamps, and the deploy's error or pause message.
 
-The **Run cleanup** button on this tab runs both retention sweeps in one click:
+The **Run cleanup** button on this tab runs both retention sweeps in one action:
 
 - Packaging jobs older than 30 days (keeping the 100 most-recent)
 - Update deployments older than 90 days (keeping the 100 most-recent)
@@ -362,26 +362,26 @@ If a deploy gets stuck (e.g., App Service restart killed the worker mid-packagin
 - **Packaging Jobs table** surfaces **Cancel and Cleanup** for in-flight stuck jobs and **Cleanup orphaned deploy** for completed jobs whose linked deployment is still on Packaging.
 - **Update Deployments table** (v1.26.0+) surfaces a parallel **Cancel and Cleanup** for deployments stuck on Packaging.
 
-Both routes call the same `cancel-and-cleanup` endpoint: one click marks the packaging job Failed for audit, marks the linked deployment Failed, and deletes the per-job blob folder to free storage. The Cleanup actions are time-gated to deployments that have been stuck for more than 10 minutes, brand-new deployments legitimately sit at Packaging for a few minutes while the Update-app handler runs, so the button is hidden until the threshold is exceeded. Re-trigger the deploy from **App Updates → Deploy Update** when ready, the new attempt starts clean.
+Both routes call the same `cancel-and-cleanup` endpoint: one action marks the packaging job Failed for audit, marks the linked deployment Failed, and deletes the per-job blob folder to free storage. The Cleanup actions are time-gated to deployments that have been stuck for more than 10 minutes, brand-new deployments legitimately sit at Packaging for a few minutes while the Update-app handler runs, so the button is hidden until the threshold is exceeded. Re-trigger the deploy from **App Updates → Deploy Update** when ready, the new attempt starts clean.
 
 ### Update Ring Templates
 
 Ring templates define a staged deployment strategy for app updates. Instead of deploying an update to all devices at once, rings let you roll out to a pilot group first, wait a configurable number of days, then expand to broader groups.
 
-**Managing Templates:**
+**Managing templates:**
 
 In **Admin** > **Settings**, scroll to the **Update Ring Templates** section:
 
-- Click **Create Template** to define a new ring template
+- Select **Create Template** to define a new ring template
 - Each template has a name and one or more rings (up to 10)
-- Each ring has a name (e.g., "IT Pilot"), a delay in days, and one or more Entra ID security groups
+- Each ring has a name (e.g., "IT Pilot"), a delay in days, and one or more Microsoft Entra ID security groups
 - Each ring has its own deployment settings: available/deadline timing, install behavior, restart settings, notifications, and delivery optimization
-- Click **Show Deployment Settings** on any ring to configure available time (days + time of day), deadline time, restart grace period, snooze settings, and more
+- Select **Show Deployment Settings** on any ring to configure available time (days + time of day), deadline time, restart grace period, snooze settings, and more
 - Ring 1 typically has a 0-day delay (deploys immediately); subsequent rings deploy after their configured delay
 - Set one template as the **default** to auto-assign it to new apps
-- Click **Import from Autopatch** to discover Windows Autopatch ring groups from your Entra ID and pre-populate rings with those groups
+- Select **Import from Autopatch** to discover Windows Autopatch ring groups from your Microsoft Entra ID and pre-populate rings with those groups
 
-**Example Configuration:**
+**Example configuration:**
 
 | Ring | Name | Delay | Groups |
 |------|------|-------|--------|
@@ -391,9 +391,9 @@ In **Admin** > **Settings**, scroll to the **Update Ring Templates** section:
 
 This means Ring 1 deploys immediately, Ring 2 deploys 3 days later, and Ring 3 deploys 7 days after Ring 2, a total rollout of 10 days.
 
-**Per-App Configuration:**
+**Per-app configuration:**
 
-For apps published from the Winget catalog, select the app's row on the **App Updates** tab to open its detail view. The detail view includes an **Update Rings** section with three deployment styles:
+For apps published from the WinGet catalog, select the app's row on the **App Updates** tab to open its detail view. The detail view includes an **Update Rings** section with three deployment styles:
 
 - **Ringless**, updates deploy immediately to a single Intune assignment with no staged rollout. Pick **All Devices** or **All Users** as the target (default: All Devices), and optionally apply an Intune assignment filter to narrow the audience (e.g. limit by OS version or department). Ringless still creates the same two-app Install/Update pair as ringed mode (so rollback, install/update telemetry, and the lifecycle Status column work identically), it just collapses the rollout to a single ring targeting the chosen built-in audience.
 - **Use a template**, apply a reusable ring template defined under **Update Ring Templates**. If a default template is set, it is preselected.
@@ -405,9 +405,9 @@ The detail view also has an **Auto-Deploy Updates** section to set the per-app o
 
 > **Note (v1.20.0):** The Update Rings and Auto-Deploy controls used to live on the App Management tab's app detail view. They have moved to the App Updates tab because not every app under App Management is tracked for updates, only apps published from the WinGet catalog are.
 
-### Ring-Based Deployments
+### Ring-based deployments
 
-When you click **Deploy Update** for an app with ring-based updates enabled, the system:
+When you select **Deploy Update** for an app with ring-based updates enabled, the system:
 
 1. Creates a packaging job for the new version (same as non-ringed updates)
 2. When packaging completes, creates a new "Update" Win32 app in Intune
@@ -416,20 +416,20 @@ When you click **Deploy Update** for an app with ring-based updates enabled, the
 5. A background service checks every 15 minutes for rings that are ready to activate
 6. When each ring's delay expires, its groups receive the Required assignment
 
-**Deployment Dashboard:**
+**Deployment dashboard:**
 
 The **App Updates** tab shows active and recent deployments below the updates table:
 
 - **Ring progress indicator**, colored circles show which ring is active
-- Click a deployment row to expand and see detailed ring status, schedule dates, and group assignments
+- Select a deployment row to expand and see detailed ring status, schedule dates, and group assignments
 - **Pause**, stops ring progression (active ring stays deployed, next ring is held)
 - **Resume**, restarts ring progression after a pause
 - **Advance**, manually skip the delay for the next ring (useful for accelerating after pilot validation)
 - **Halt rollout**, removes active ring assignments and marks the deployment rolled back. Devices that already updated keep the new version; future rings are stopped. (Renamed from *Rollback* in v1.26.0 to disambiguate from the App-level rollback that swaps the Install app back to the prior version on all devices.)
-- **Cancel**, removes all assignments and marks the deployment as cancelled
+- **Cancel**, removes all assignments and marks the deployment as canceled
 - **Cancel and Cleanup**, for deployments stuck on Packaging for more than 10 minutes. Marks the deployment Failed, marks the linked packaging job Failed, and deletes the blob folder for that job in one atomic action. Mirrors the *Cancel and Cleanup* button on the Packaging Jobs table.
 
-**Two-App Model:**
+**Two-app model:**
 
 When you deploy an update, **ringed *or* ringless** (v1.23.0+), the system creates two separate Win32 apps in Intune:
 
@@ -444,7 +444,7 @@ This separation ensures:
 - Updates to existing devices are controlled separately from new installs (and, in ringed mode, gated through rings with health checks)
 - User-targeted and device-targeted assignments don't conflict
 
-**Per-Ring Assignment Settings:**
+**Per-ring assignment settings:**
 
 When a ring activates, the per-ring deployment settings configured on the template are applied to the Intune assignment. Each ring's assignment includes:
 
@@ -458,21 +458,21 @@ When a ring activates, the per-ring deployment settings configured on the templa
 
 Settings are read from the deployment-time snapshot on the ring, so changes to the template after a deployment starts do not affect rings already in flight.
 
-**Per-Ring Assignment Filters:**
+**Per-ring assignment filters:**
 
 Each ring in a template can target an Intune assignment filter. Open the ring's "Show Deployment Settings" panel and pick a filter from the list (Windows-platform filters from your tenant). Choose **Include matching devices** or **Exclude matching devices**, or clear the filter to assign without one. The filter is snapshotted onto the deployment ring at deploy time alongside the other ring settings.
 
-**Install App Rollback:**
+**Install app rollback:**
 
-If a new version has installation issues, you can roll back the Install app to the previous version with one click. In the app detail view, the **Version and Rollback** section card (top of the Properties view, v1.26.0+) has a primary **Roll back to previous version** button. This swaps the Install app back to the previous version's Intune app (which still exists in Intune), so new installs receive the older working version. No re-packaging is needed.
+If a new version has installation issues, you can roll back the Install app to the previous version in one action. In the app detail view, the **Version and Rollback** section card (top of the Properties view, v1.26.0+) has a primary **Roll back to previous version** button. This swaps the Install app back to the previous version's Intune app (which still exists in Intune), so new installs receive the older working version. No re-packaging is needed.
 
 To pick a specific historical version (rather than the immediate predecessor), select **View full history…** in the same section card. The version history modal lists every published version with archive status and a per-version Rollback button.
 
-**Update App Rollback:**
+**Update app rollback:**
 
 Rolling back a ring-based deployment removes the Intune assignments from active rings so no additional devices receive the update. Devices that already installed the update retain the new version -- Intune does not uninstall it.
 
-### Signal-Based Ring Progression
+### Signal-based ring progression
 
 Ring advancement is not just delay-based -- the system checks device install health from Intune before advancing to the next ring. This prevents a failed update from rolling out broadly.
 
@@ -496,9 +496,9 @@ After a ring's delay expires, the progression service queries Intune for device 
 
 Set the minimum success rate to 0% to advance based on delay only (disables health checks).
 
-### Auto-Deploy Updates
+### Auto-deploy updates
 
-Updates can be deployed automatically when detected, eliminating the need to click "Deploy Update" for each app.
+Updates can be deployed automatically when detected, eliminating the need to select "Deploy Update" for each app.
 
 **Global setting (Admin > Settings):**
 
@@ -512,19 +512,19 @@ Updates can be deployed automatically when detected, eliminating the need to cli
 
 **Safety requirements:**
 
-- Auto-deploy only works for apps with ring-based updates enabled. Apps without rings configured will still require manual "Deploy Update" clicks, even if auto-deploy is on. This ensures all auto-deployed updates go through staged rings.
+- Auto-deploy only works for apps with ring-based updates enabled. Apps without rings configured will still require manual "Deploy Update" actions, even if auto-deploy is on. This ensures all auto-deployed updates go through staged rings.
 - The "Deploy Update" button on the Updates tab always works for manual one-off deployments regardless of auto-deploy settings.
 
-### Winget Integration Settings
+### WinGet integration settings
 
-In **Admin** > **Settings** > **Winget Integration**:
+In **Admin** > **Settings** > **WinGet Integration**:
 
 | Setting | Description |
 |---------|-------------|
 | **WinGet Repository URL** | GitHub repository URL for WinGet packages. Default: `https://github.com/microsoft/winget-pkgs` (Microsoft's official repository). Format: `https://github.com/owner/repo` or `owner/repo`. Organizations with custom/private WinGet repositories can point to their internal GitLab/GitHub mirror. **Warning**: Changing this will clear the entire package cache. |
 | **GitHub Personal Access Token** | Recommended. Required for the "Show More Results" live search feature (GitHub's Code Search API requires authentication). Also increases API rate limits from 60/hour to 5,000/hour for faster cache syncs. Create a classic token at [https://github.com/settings/tokens](https://github.com/settings/tokens) with `public_repo` scope. |
 
-#### Why Use a GitHub Token?
+#### Why use a GitHub token?
 
 **Without token** (unauthenticated):
 
@@ -540,20 +540,20 @@ In **Admin** > **Settings** > **Winget Integration**:
 - Reliable operation even with many users
 - **Full live search**, "Show More Results" queries the entire WinGet repository in real time via GitHub Code Search, finding packages that may not yet be in the local cache
 
-**Creating a GitHub Personal Access Token:**
+**Creating a GitHub personal access token:**
 
 1. Go to [GitHub Settings → Personal Access Tokens → Tokens (classic)](https://github.com/settings/tokens)
-2. Click "Generate new token" → "Generate new token (classic)"
+2. Select "Generate new token" → "Generate new token (classic)"
 3. Give it a descriptive name: "App Store for Intune WinGet Integration"
 4. Select scope: **public_repo** (Access public repositories)
-5. Click "Generate token"
+5. Select "Generate token"
 6. Copy the token (starts with `ghp_...`)
 7. Paste into Admin Settings → WinGet Integration → GitHub Personal Access Token
-8. Click Save Settings
+8. Select Save Settings
 
 **Note**: Tokens are stored securely in Azure Key Vault and never exposed in logs or UI.
 
-### Local Development Testing
+### Local development testing
 
 For developers testing the packaging feature locally:
 
@@ -573,9 +573,9 @@ For developers testing the packaging feature locally:
    cd src/AppRequestPortal.Web && npm start
    ```
 
-4. **Test**: Go to Admin > App Catalog, search for an app, click "Publish to Intune". The in-process background service will pick up the job and process it.
+4. **Test**: Go to Admin > App Catalog, search for an app, select "Publish to Intune". The in-process background service will pick up the job and process it.
 
-### Troubleshooting Packaging
+### Troubleshooting packaging
 
 **Jobs stuck in Pending:**
 

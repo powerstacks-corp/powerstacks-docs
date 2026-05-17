@@ -22,9 +22,9 @@ The full endpoint catalog is generated from the running API as an OpenAPI spec. 
 
 ## Where reporting lives
 
-App Store's API covers **operational** integrations: managing apps, triggering deployments, reading approval state. Anything that's a **reporting** or **data export** workload (BI dashboards, data warehouse loads, ad-hoc analytics) lives in [BI for Intune](https://docs.powerstacks.com/bi-for-intune/), not App Store. BI for Intune publishes a Power BI semantic model that you can query through Power BI's native XMLA endpoint, the Power BI REST API, dataflows, or direct export. Microsoft already built the reporting API; we don't duplicate it.
+App Store's API covers operational integrations: managing apps, triggering deployments, reading approval state. Anything that's a reporting or data export workload (BI dashboards, data warehouse loads, ad-hoc analytics) lives in [BI for Intune](https://docs.powerstacks.com/bi-for-intune/), not App Store. BI for Intune publishes a Power BI semantic model that you can query through Power BI's native XMLA endpoint, the Power BI REST API, dataflows, or direct export. Microsoft already built the reporting API; App Store doesn't duplicate it.
 
 ## What's next
 
 - **[Authentication](authentication.md)** — register an Entra app, grant it API access, request a JWT.
-- **[PowerShell Examples](examples.md)** — copy-paste-runnable scripts for the three most common automation use cases: CI/CD app uploads, CVE-driven update triggering, and deployment status monitoring.
+- **[PowerShell examples](examples.md)** — copy-paste-runnable scripts for the three most common automation use cases: CI/CD app uploads, CVE-driven update triggering, and deployment status monitoring.

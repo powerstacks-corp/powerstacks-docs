@@ -7,7 +7,7 @@ description: "Common issues that surface during or after the App Store for Intun
 
 ## Key Vault reference failures (red X marks)
 
-After the deploy completes, the App Service's Configuration blade may show red X marks next to Key Vault references, and `https://<sitename>.azurewebsites.net/health` may return `503 Service Unavailable`. This is an Azure AD identity propagation delay, not a configuration error.
+After the deploy completes, the App Service's Configuration page may show red X marks next to Key Vault references, and `https://<sitename>.azurewebsites.net/health` may return `503 Service Unavailable`. This is a Microsoft Entra ID identity propagation delay, not a configuration error.
 
 **Symptoms**
 
@@ -18,7 +18,7 @@ After the deploy completes, the App Service's Configuration blade may show red X
 
 **Root cause**
 
-When the App Service's system-assigned managed identity is created during deploy, it takes 5 to 15 minutes to propagate across Azure AD. During that window the App Service cannot resolve its Key Vault references.
+When the App Service's system-assigned managed identity is created during deploy, it takes 5 to 15 minutes to propagate across Microsoft Entra ID. During that window the App Service cannot resolve its Key Vault references.
 
 **Fix**
 

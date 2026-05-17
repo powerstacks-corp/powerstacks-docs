@@ -13,7 +13,7 @@ Working scripts for the three automation patterns App Store for Intune is most o
 
 Every example assumes you've already followed [Authentication](authentication.md) to get a token, and that you have `$accessToken` and `$appStoreHost` set. A reusable token-fetching helper is at the bottom of this page.
 
-## Example 1: CI/CD upload of a custom MSI
+## CI/CD upload of a custom MSI
 
 The end-to-end flow for adding a custom in-house MSI to your App Store catalog from a build pipeline. Two calls: `inspect` reads the MSI's Property table and extracts metadata, then `publish` confirms the metadata and pushes the app through the packaging queue.
 
@@ -58,7 +58,7 @@ Write-Host "App queued for packaging. Job ID: $($publishResult.packagingJobId)"
 
 Drop this in your build pipeline after the MSI artifact step. The packaging job flows through the same queue WinGet apps use; the app appears in App Management once packaging completes.
 
-## Example 2: CVE-driven update trigger
+## CVE-driven update trigger
 
 When your security tooling flags a vulnerable application version, this script tells App Store to refresh its WinGet update cache, look at what's available, and (if there's an update for the affected app) report it. You can extend it to auto-deploy by calling the deployment endpoints.
 
@@ -98,7 +98,7 @@ if ($relevant) {
 
 Schedule this hourly from your CVE pipeline or trigger it from a webhook on each new CVE notification.
 
-## Example 3: Deployment status monitoring
+## Deployment status monitoring
 
 Pull the active update deployments and their status into a CSV your monitoring system can ingest.
 
@@ -152,5 +152,5 @@ Set the four environment variables once in your CI runner (or in your local prof
 
 ## What's next
 
-- The full endpoint catalog (request bodies, response shapes, error codes) is in the OpenAPI spec at `https://<your-app-store-host>/swagger`. See the [API Reference overview](index.md) for the link.
-- BI for Intune via Power BI is the right place for **reporting** data export (XMLA endpoint, Power BI REST API, dataflows). See the [BI for Intune docs](https://docs.powerstacks.com/bi-for-intune/) for those patterns.
+- The full endpoint catalog (request bodies, response shapes, error codes) is in the OpenAPI spec at `https://<your-app-store-host>/swagger`. See the [API reference overview](index.md) for the link.
+- BI for Intune via Power BI is the right place for reporting data export (XMLA endpoint, Power BI REST API, dataflows). See the [BI for Intune docs](https://docs.powerstacks.com/bi-for-intune/) for those patterns.

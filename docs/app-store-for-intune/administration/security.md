@@ -7,23 +7,23 @@ description: "Security model, Azure resources, permissions, and compliance detai
 
 This document provides full security documentation for the App Store for Intune, including all Azure resources created, permissions granted, and security configurations. It is intended to assist security teams with reviews and compliance requirements.
 
-## Table of Contents
+## Table of contents
 
-1. [Azure Resources Created](#azure-resources-created)
-2. [Identity and Access Management](#identity-and-access-management)
-3. [Entra ID App Registrations](#entra-id-app-registrations)
-4. [Managed Identity Configuration](#managed-identity-configuration)
-5. [Network Security](#network-security)
-6. [Data Protection](#data-protection)
-7. [Authentication Flow](#authentication-flow)
-8. [Authorization Model](#authorization-model)
-9. [Audit Logging](#audit-logging)
-10. [Security Checklist](#security-checklist)
-11. [Package Verification](#package-verification)
+1. [Azure resources created](#azure-resources-created)
+2. [Identity and access management](#identity-and-access-management)
+3. [Microsoft Entra ID app registrations](#microsoft-entra-id-app-registrations)
+4. [Managed identity configuration](#managed-identity-configuration)
+5. [Network security](#network-security)
+6. [Data protection](#data-protection)
+7. [Authentication flow](#authentication-flow)
+8. [Authorization model](#authorization-model)
+9. [Audit logging](#audit-logging)
+10. [Security checklist](#security-checklist)
+11. [Package verification](#package-verification)
 
 ---
 
-## Azure Resources Created
+## Azure resources created
 
 The ARM template deploys the following resources:
 
@@ -40,7 +40,7 @@ The ARM template deploys the following resources:
 | Azure Bot | `bot-apprequest-{env}-{unique}` | Teams proactive messaging (optional) |
 | Bot Teams Channel | `{bot}/MsTeamsChannel` | Enables Teams communication (optional) |
 
-### Resource Configuration Details
+### Resource configuration details
 
 #### App Service
 - **Runtime**: .NET 8.0 on Linux
@@ -55,11 +55,11 @@ The ARM template deploys the following resources:
 - **Firewall**: Only Azure services allowed (0.0.0.0-0.0.0.0)
 - **Authentication**: SQL authentication (username/password)
 
-#### Azure Bot (Optional)
+#### Azure Bot (optional)
 - **SKU**: F0 (Free)
 - **Location**: Global
 - **App Type**: SingleTenant
-- **Microsoft App ID**: Reuses the Backend API Entra ID App Registration (`AzureAd:ClientId`)
+- **Microsoft App ID**: Reuses the Backend API Microsoft Entra ID App Registration (`AzureAd:ClientId`)
 - **Messaging Endpoint**: `https://{app-url}/api/messages`
 - **Channels**: Microsoft Teams only
 - **Authentication**: Bot Framework handles its own authentication via `ConfigurationBotFrameworkAuthentication` using the same Entra ID client credentials as the API
@@ -70,17 +70,17 @@ The ARM template deploys the following resources:
 - Proactive messages are sent via `BotAdapter.ContinueConversationAsync` or `CreateConversationAsync`, authenticated with the same credentials
 - No additional Microsoft Graph API permissions are required for Teams bot notifications. Bot Framework handles its own auth channel.
 
-**Data Stored:**
+**Data stored:**
 - `BotConversationReferences` table stores per-user conversation references for proactive messaging
-- Contains: User ID (Entra object ID), Conversation ID, Service URL, serialized ConversationReference JSON
+- Contains: User ID (Microsoft Entra ID object ID), Conversation ID, Service URL, serialized ConversationReference JSON
 - Conversation references are encrypted/signed by Bot Framework and tied to the bot credentials that created them
 - If bot credentials change, existing conversation references become invalid and must be cleared
 
 ---
 
-## Identity and Access Management
+## Identity and access management
 
-### System-Assigned Managed Identity
+### System-assigned managed identity
 
 The App Service is configured with a **System-Assigned Managed Identity**. This identity is automatically created and managed by Azure.
 
@@ -92,7 +92,7 @@ The App Service is configured with a **System-Assigned Managed Identity**. This 
 
 **Purpose**: The Managed Identity allows the application to authenticate to Azure services without storing credentials in code or configuration.
 
-### Role Assignments
+### Role assignments
 
 The following permissions are granted to the Managed Identity:
 
@@ -107,9 +107,9 @@ The in-app update feature allows administrators to update the application from w
 
 **Why Key Vault Access?**
 
-All sensitive secrets (Entra ID client secret, SQL connection string, storage connection string) are stored in Azure Key Vault. The Managed Identity needs read access to retrieve these secrets at runtime.
+All sensitive secrets (Microsoft Entra ID client secret, SQL connection string, storage connection string) are stored in Azure Key Vault. The Managed Identity needs read access to retrieve these secrets at runtime.
 
-**Scope Limitation**: All permissions are scoped to the minimum required resources (not the resource group or subscription), following the principle of least privilege.
+**Scope limitation**: All permissions are scoped to the minimum required resources (not the resource group or subscription), following the principle of least privilege.
 
 ```json
 {
@@ -125,19 +125,19 @@ All sensitive secrets (Entra ID client secret, SQL connection string, storage co
 
 ---
 
-## Entra ID App Registrations
+## Microsoft Entra ID app registrations
 
-Two Entra ID App Registrations are required:
+Two Microsoft Entra ID App Registrations are required:
 
-### 1. Backend API Application (Confidential Client)
+### 1. Backend API application (confidential client)
 
-**Application Type**: Web application / API
+**Application type**: Web application / API
 
 **Authentication**:
 - Client ID (stored in App Settings)
 - Client Secret (stored in App Settings)
 
-**API Permissions (Application Permissions)**:
+**API permissions (application permissions)**:
 
 | API | Permission | Type | Purpose |
 |-----|-----------|------|---------|
@@ -145,28 +145,28 @@ Two Entra ID App Registrations are required:
 | Microsoft Graph | `DeviceManagementApps.ReadWrite.All` | Application | Create/update Intune apps |
 | Microsoft Graph | `DeviceManagementConfiguration.Read.All` | Application | Read Intune assignment filters (used by ring deployment settings, required for the filter picker) |
 | Microsoft Graph | `DeviceManagementManagedDevices.Read.All` | Application | Count managed devices for licensing |
-| Microsoft Graph | `Group.ReadWrite.All` | Application | Create and manage Entra ID groups |
+| Microsoft Graph | `Group.ReadWrite.All` | Application | Create and manage Microsoft Entra ID groups |
 | Microsoft Graph | `User.Read.All` | Application | Read user profiles, managers, and group memberships |
 | Microsoft Graph | `Directory.Read.All` | Application | Read directory data |
 | Microsoft Graph | `Mail.Send` | Application | Send email notifications (optional) |
 
-**Teams Bot Note**: No additional Microsoft Graph permissions are required for Teams bot notifications. Bot Framework handles its own authentication channel separately from Graph. Do **not** add `TeamsActivity.Send` or similar permissions; they are not used by this application.
+**Teams bot note**: No additional Microsoft Graph permissions are required for Teams bot notifications. Bot Framework handles its own authentication channel separately from Graph. Do *not* add `TeamsActivity.Send` or similar permissions; they are not used by this application.
 
-**Admin Consent**: Required for all application permissions.
+**Admin consent**: Required for all application permissions.
 
-**Token Configuration**:
+**Token configuration**:
 - Access tokens issued for: `api://{client-id}`
 - Scopes exposed: `access_as_user`
 
-### 2. Frontend SPA Application (Public Client)
+### 2. Frontend SPA application (public client)
 
-**Application Type**: Single-page application (SPA)
+**Application type**: Single-page application (SPA)
 
 **Authentication**:
 - Client ID only (no secret - public client)
 - MSAL.js with PKCE flow
 
-**API Permissions (Delegated Permissions)**:
+**API permissions (delegated permissions)**:
 
 | API | Permission | Type | Purpose |
 |-----|-----------|------|---------|
@@ -179,20 +179,20 @@ Two Entra ID App Registrations are required:
 
 ---
 
-## Managed Identity Configuration
+## Managed identity configuration
 
-### How the Managed Identity Works
+### How the managed identity works
 
-1. **Creation**: When the ARM template deploys, Azure automatically creates a service principal in Entra ID for the App Service.
+1. **Creation**: When the ARM template deploys, Azure automatically creates a service principal in Microsoft Entra ID for the App Service.
 
-2. **Environment Variables**: Azure injects these environment variables into the application:
+2. **Environment variables**: Azure injects these environment variables into the application:
    - `MSI_ENDPOINT` or `IDENTITY_ENDPOINT`: Token endpoint URL
    - `IDENTITY_HEADER`: Secret header for authentication
    - `WEBSITE_SITE_NAME`: App Service name
    - `WEBSITE_RESOURCE_GROUP`: Resource group name
    - `WEBSITE_OWNER_NAME`: Subscription ID
 
-3. **Token Acquisition**: The application uses `DefaultAzureCredential` from Azure.Identity SDK to acquire tokens:
+3. **Token acquisition**: The application uses `DefaultAzureCredential` from Azure.Identity SDK to acquire tokens:
    ```csharp
    var credential = new DefaultAzureCredential();
    var armClient = new ArmClient(credential);
@@ -200,14 +200,14 @@ Two Entra ID App Registrations are required:
 
 4. **Authorization**: The Managed Identity authenticates to Azure Resource Manager and is authorized via the Website Contributor role assignment.
 
-### What the Managed Identity CAN Do
+### What the managed identity can do
 
 - Read and update the App Service's own configuration settings
 - Read the App Service's properties
 - Restart the App Service
 - Read secrets from the provisioned Key Vault (Get, List permissions only)
 
-### What the Managed Identity CANNOT Do
+### What the managed identity can't do
 
 - Access other resources in the subscription
 - Modify other App Services
@@ -217,9 +217,9 @@ Two Entra ID App Registrations are required:
 
 ---
 
-## Network Security
+## Network security
 
-### Inbound Traffic
+### Inbound traffic
 
 | Protocol | Port | Source | Destination | Purpose |
 |----------|------|--------|-------------|---------|
@@ -229,14 +229,14 @@ Two Entra ID App Registrations are required:
 | HTTPS | 443 | Bot Framework Service | App Service | Teams bot messages (`/api/messages`) |
 | HTTPS | 443 | App Service | Bot Framework Service | Proactive bot notifications |
 
-### App Service Network Configuration
+### App Service network configuration
 
 - **Public Access**: Enabled (internet-accessible)
 - **TLS 1.2**: Minimum version enforced
 - **HTTPS Only**: HTTP requests redirected to HTTPS
 - **IP Restrictions**: None by default (can be configured)
 
-### SQL Server Firewall
+### SQL Server firewall
 
 The SQL Server is configured with the following security controls:
 
@@ -244,11 +244,12 @@ The SQL Server is configured with the following security controls:
   - This allows the App Service to connect to the database
   - Other Azure services in the subscription cannot access unless explicitly allowed
 - **Public IP Access**: Denied by default
-  - No client IP addresses are whitelisted
+  - No client IP addresses are on the allowlist
   - Database is not accessible from the internet
 - **Private Endpoint**: Not configured by default (can be added for enhanced security)
 
-**Important:** The database is NOT accessible from the public internet. Only Azure services (like the App Service) can connect.
+!!! important
+    The database is not accessible from the public internet. Only Azure services (such as the App Service) can connect.
 
 To verify SQL firewall rules:
 ```bash
@@ -263,18 +264,18 @@ az sql server firewall-rule create --server <server-name> --resource-group <rg-n
 
 **Remember to remove temporary rules after use.**
 
-### Recommendations for Enhanced Security
+### Recommendations for enhanced security
 
-#### Conditional Access Policies
+#### Conditional Access policies
 
-We strongly recommend configuring the following Entra ID Conditional Access policies for the App Store for Intune. Target these policies at the **Backend API** and **Frontend SPA** app registrations.
+We strongly recommend configuring the following Microsoft Entra ID Conditional Access policies for the App Store for Intune. Target these policies at the **Backend API** and **Frontend SPA** app registrations.
 
 | Policy | Description | Why It Matters |
 |--------|-------------|----------------|
 | **Require MFA** | Require multifactor authentication for all users accessing the portal | Prevents unauthorized access from compromised credentials |
 | **Require compliant device** | Only allow access from Intune-compliant devices | Since this portal manages Intune apps, ensuring the requesting device meets compliance is a natural fit |
-| **Require managed device** | Only allow access from Entra ID joined or hybrid joined devices | Prevents access from personal/unmanaged devices |
-| **Block risky sign-ins** | Block sign-ins flagged as medium or high risk by Entra ID Identity Protection | Automatically blocks access when suspicious activity is detected (requires Entra ID P2) |
+| **Require managed device** | Only allow access from Microsoft Entra ID joined or hybrid joined devices | Prevents access from personal/unmanaged devices |
+| **Block risky sign-ins** | Block sign-ins flagged as medium or high risk by Microsoft Entra ID Identity Protection | Automatically blocks access when suspicious activity is detected (requires Microsoft Entra ID P2) |
 | **Restrict by location** | Only allow access from trusted named locations (office IPs, VPN ranges) | Limits exposure to known network boundaries |
 | **Sign-in frequency** | Require re-authentication every 8-12 hours | Limits the window of exposure from a stolen session token |
 
@@ -284,18 +285,18 @@ We strongly recommend configuring the following Entra ID Conditional Access poli
 !!! note "Admin vs User policies"
     Consider creating a stricter policy for the **Admin Group** (e.g., require phishing-resistant MFA, restrict to trusted locations) since admins can modify portal settings, manage apps, and approve requests.
 
-#### Network Security Enhancements
+#### Network security enhancements
 
-1. **Virtual Network Integration**: Deploy App Service into a VNet
-2. **Private Endpoints**: Use private endpoints for SQL and storage
-3. **IP Restrictions**: Limit access to known IP ranges
+1. **Virtual network integration**: Deploy App Service into a VNet
+2. **Private endpoints**: Use private endpoints for SQL and storage
+3. **IP restrictions**: Limit access to known IP ranges
 4. **Azure Front Door**: Add WAF protection
 
 ---
 
-## Data Protection
+## Data protection
 
-### Data at Rest
+### Data at rest
 
 | Data Type | Storage Location | Encryption |
 |-----------|-----------------|------------|
@@ -305,17 +306,17 @@ We strongly recommend configuring the following Entra ID Conditional Access poli
 | Bot conversation references | Azure SQL Database | TDE |
 | Logs | Log Analytics | Azure-managed encryption |
 
-### Data in Transit
+### Data in transit
 
 - All communication uses TLS 1.2+
 - HTTPS enforced at App Service level
 - SQL connections use encrypted connections
 
-### Sensitive Data Handling
+### Sensitive data handling
 
 | Data | Storage Method | Notes |
 |------|---------------|-------|
-| Entra ID Client Secret | Azure Key Vault | Referenced via Key Vault reference in App Settings |
+| Microsoft Entra ID Client Secret | Azure Key Vault | Referenced via Key Vault reference in App Settings |
 | SQL Connection String | Azure Key Vault | Referenced via Key Vault reference in App Settings |
 | Storage Connection String | Azure Key Vault | Referenced via Key Vault reference in App Settings |
 | User tokens | Session storage (browser) | Not persisted server-side |
@@ -323,7 +324,7 @@ We strongly recommend configuring the following Entra ID Conditional Access poli
 | Bot conversation references | SQL Database | Conversation IDs and service URLs for Teams proactive messaging |
 | Audit logs | SQL Database | Retained indefinitely |
 
-### Secrets Management
+### Secrets management
 
 All sensitive secrets are stored in Azure Key Vault and accessed via Key Vault references:
 
@@ -333,20 +334,20 @@ ConnectionStrings__DefaultConnection = @Microsoft.KeyVault(SecretUri=https://{va
 AzureStorage__ConnectionString = @Microsoft.KeyVault(SecretUri=https://{vault}.vault.azure.net/secrets/StorageConnectionString/)
 ```
 
-**Key Vault Security Features:**
+**Key Vault security features:**
 - Secrets encrypted at rest with Azure-managed keys
 - Soft delete enabled (7-day retention for accidental deletion recovery)
 - Access restricted to the App Service's Managed Identity only
 - No direct secret access for users or administrators (must use Azure Portal/CLI with appropriate permissions)
 - All secret access is logged in Key Vault diagnostic logs
 
-### Secret and Key Rotation
+### Secret and key rotation
 
-**Entra ID Client Secret Rotation:**
+**Microsoft Entra ID client secret rotation:**
 
-The Entra ID client secret has an expiration date (typically 1-2 years). To rotate:
+The Microsoft Entra ID client secret has an expiration date (typically 1-2 years). To rotate:
 
-1. **Create new secret** in Azure Portal → Entra ID → App Registrations → Your API App → Certificates & secrets
+1. **Create new secret** in Azure Portal → Microsoft Entra ID → App Registrations → Your API App → Certificates & secrets
 2. **Update Key Vault secret**:
    ```bash
    az keyvault secret set --vault-name <vault-name> --name AzureAdClientSecret --value "<new-secret>"
@@ -355,9 +356,9 @@ The Entra ID client secret has an expiration date (typically 1-2 years). To rota
    ```bash
    az webapp restart --name <app-name> --resource-group <rg-name>
    ```
-4. **Delete old secret** from Entra ID after confirming the app works
+4. **Delete old secret** from Microsoft Entra ID after confirming the app works
 
-**SQL Password Rotation:**
+**SQL password rotation:**
 
 1. **Reset password** in Azure Portal → SQL Server → Reset admin password
 2. **Update connection string** in Key Vault:
@@ -366,7 +367,7 @@ The Entra ID client secret has an expiration date (typically 1-2 years). To rota
    ```
 3. **Restart App Service**
 
-**Emergency Key Rotation:**
+**Emergency key rotation:**
 
 If you suspect a secret has been compromised:
 1. Immediately rotate the affected secret using the steps above
@@ -374,9 +375,9 @@ If you suspect a secret has been compromised:
 3. Review App Service logs for unusual activity
 4. Consider rotating all secrets if compromise scope is unknown
 
-### Certificate Management
+### Certificate management
 
-**SSL Certificates:**
+**SSL certificates:**
 
 | Certificate Type | Management | Renewal |
 |-----------------|------------|---------|
@@ -384,18 +385,18 @@ If you suspect a secret has been compromised:
 | Custom domain with Azure certificate | Automatic | Auto-renewed by Azure |
 | Custom uploaded certificate | Manual | Upload new certificate before expiration |
 
-**Entra ID App Certificates (Optional):**
+**Microsoft Entra ID app certificates (optional):**
 
 If using certificate authentication instead of client secrets:
-- Monitor expiration dates in Entra ID → App Registrations → Certificates & secrets
+- Monitor expiration dates in Microsoft Entra ID → App Registrations → Certificates & secrets
 - Upload new certificate before expiration
 - Update Key Vault with new certificate thumbprint
 
-**Monitoring Expiration:**
+**Monitoring expiration:**
 
 Set up Azure Monitor alerts for:
 - Key Vault secret expiration (90 days before)
-- Entra ID client secret expiration
+- Microsoft Entra ID client secret expiration
 - SSL certificate expiration (if custom)
 
 ```bash
@@ -405,7 +406,7 @@ az keyvault secret list --vault-name <vault-name> --query "[].{name:name, expire
 
 ---
 
-## Authentication Flow
+## Authentication flow
 
 ```
 ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
@@ -415,7 +416,7 @@ az keyvault secret list --vault-name <vault-name> --query "[].{name:name, expire
        │  1. Navigate to app    │                        │
        │───────────────────────────────────────────────>│
        │                        │                        │
-       │  2. Redirect to login  │                        │
+       │  2. Redirect to sign-in│                        │
        │<───────────────────────────────────────────────│
        │                        │                        │
        │  3. User authenticates │                        │
@@ -437,39 +438,39 @@ az keyvault secret list --vault-name <vault-name> --query "[].{name:name, expire
        │<───────────────────────────────────────────────│
 ```
 
-### Token Validation
+### Token validation
 
-The API validates JWT tokens from Entra ID:
+The API validates JWT tokens from Microsoft Entra ID:
 
-1. **Issuer**: Must match Entra ID tenant
+1. **Issuer**: Must match Microsoft Entra ID tenant
 2. **Audience**: Must match API Client ID
-3. **Signature**: Validated using Entra ID public keys
+3. **Signature**: Validated using Microsoft Entra ID public keys
 4. **Expiration**: Token must not be expired
 5. **Claims**: User identity extracted from token
 
 ---
 
-## Authorization Model
+## Authorization model
 
-### Role-Based Access Control
+### Role-based access control
 
 | Role | How Assigned | Capabilities |
 |------|--------------|--------------|
 | User | Any authenticated user | Browse apps, submit requests, view own requests |
-| Approver | Member of Approver Entra ID Group | Approve/reject requests, view pending approvals |
-| Admin | Member of Admin Entra ID Group | Full access, manage apps, settings, users |
+| Approver | Member of Approver Microsoft Entra ID Group | Approve/reject requests, view pending approvals |
+| Admin | Member of Admin Microsoft Entra ID Group | Full access, manage apps, settings, users |
 
-### Group-Based Authorization
+### Group-based authorization
 
 Authorization groups are configured in the database (`PortalSettings` table):
 
 ```sql
-AdminGroupId      -- Entra ID Group Object ID for admins
-ApproverGroupId   -- Entra ID Group Object ID for approvers
+AdminGroupId      -- Microsoft Entra ID Group Object ID for admins
+ApproverGroupId   -- Microsoft Entra ID Group Object ID for approvers
 UserAccessGroupId -- (Optional) Restrict access to specific group
 ```
 
-### Authorization Check Flow
+### Authorization check flow
 
 ```csharp
 // Check if user is admin
@@ -479,9 +480,9 @@ var isAdmin = await _azureADService.IsUserInGroupAsync(userId, adminGroupId);
 
 ---
 
-## Audit Logging
+## Audit logging
 
-### What is Logged
+### What is logged
 
 | Event | Data Captured |
 |-------|--------------|
@@ -489,15 +490,15 @@ var isAdmin = await _azureADService.IsUserInGroupAsync(userId, adminGroupId);
 | Request approved/rejected | Reviewer ID, Decision, Comments, Timestamp |
 | Settings changed | User ID, Setting changed, Old/New values |
 | App sync | User ID, Apps added/updated, Timestamp |
-| User login | User ID, IP address, Timestamp |
+| User sign-in | User ID, IP address, Timestamp |
 
-### Audit Log Storage
+### Audit log storage
 
 - **Location**: SQL Database (`AuditLogs` table)
 - **Retention**: Indefinite (no automatic purge)
 - **Access**: Admin-only via Reports section
 
-### Log Schema
+### Log schema
 
 ```sql
 CREATE TABLE AuditLogs (
@@ -515,38 +516,38 @@ CREATE TABLE AuditLogs (
 
 ---
 
-## Security Checklist
+## Security checklist
 
-### Pre-Deployment
+### Pre-deployment
 
-- [ ] Entra ID App Registrations created with minimum required permissions
+- [ ] Microsoft Entra ID App Registrations created with minimum required permissions
 - [ ] Admin consent granted for application permissions
 - [ ] Strong SQL administrator password configured
 - [ ] Admin Group ID configured (**required**, admin access is denied without it)
 - [ ] Approver Group ID configured (restricts approver access)
 
-### Post-Deployment
+### Post-deployment
 
 - [ ] Verify HTTPS-only access working
 - [ ] Test authentication flow
 - [ ] Verify role-based access (admin vs. user)
-- [ ] Review Entra ID sign-in logs
+- [ ] Review Microsoft Entra ID sign-in logs
 - [ ] Enable Azure Security Center recommendations
 - [ ] If Teams bot enabled: verify Azure Bot App ID matches `AzureAd:ClientId`
 - [ ] If Teams bot enabled: test bot notification delivery
 
-### Ongoing Operations
+### Ongoing operations
 
-- [ ] Rotate Entra ID client secret annually
+- [ ] Rotate Microsoft Entra ID client secret annually
 - [ ] Review audit logs regularly
 - [ ] Monitor failed authentication attempts
 - [ ] Update application when security patches released
 - [ ] Review and remove unused app permissions
 
-### Optional Enhancements
+### Optional enhancements
 
-- [ ] Enable Entra ID Conditional Access policies (see [Recommended Policies](#conditional-access-policies))
-- [ ] Configure Entra ID Identity Protection (required for risk-based CA policies)
+- [ ] Enable Microsoft Entra ID Conditional Access policies (see [Recommended Policies](#conditional-access-policies))
+- [ ] Configure Microsoft Entra ID Identity Protection (required for risk-based CA policies)
 - [ ] Implement Private Endpoints for SQL and Key Vault
 - [ ] Add Azure Front Door with WAF
 - [ ] Enable Azure Defender for App Service
@@ -554,7 +555,7 @@ CREATE TABLE AuditLogs (
 
 ---
 
-## Package Verification
+## Package verification
 
 Apps deployed to Intune via the App Store originate as YAML manifests in the [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) community repository. Each manifest declares an installer URL and the SHA256 hash that installer must match. The packaging pipeline verifies the downloaded installer against that hash before wrapping it for Intune (`PackagingQueueService.DownloadFromGitHubAsync`).
 
@@ -587,43 +588,43 @@ To close that gap, the App Store can verify each package against Microsoft's sig
 
 ---
 
-## Compliance Considerations
+## Compliance considerations
 
-### Data Residency
+### Data residency
 
 - All data stored in the Azure region selected during deployment
 - No cross-region data replication by default
 
-### Data Retention
+### Data retention
 
 - Audit logs: Retained indefinitely
 - Application data: Retained until manually deleted
 - App Insights logs: 90 days default (configurable)
 
-### GDPR Considerations
+### GDPR considerations
 
-- User data limited to: Name, Email, User ID (from Entra ID)
+- User data limited to: Name, Email, User ID (from Microsoft Entra ID)
 - No sensitive personal data stored
 - Data can be exported/deleted upon request via database access
 
 ---
 
-## Incident Response
+## Incident response
 
-### Security Event Indicators
+### Security event indicators
 
-Monitor for these events in Entra ID and App Insights:
+Monitor for these events in Microsoft Entra ID and App Insights:
 
-1. **Multiple failed logins** from same IP
+1. **Multiple failed sign-ins** from same IP
 2. **Unusual geographic access** patterns
 3. **Bulk data access** (many API calls in short time)
 4. **Privilege escalation** attempts
 5. **Configuration changes** outside business hours
 
-### Response Actions
+### Response actions
 
 1. **Disable App Service** if compromise suspected
-2. **Rotate secrets** (Entra ID client secret, SQL password)
+2. **Rotate secrets** (Microsoft Entra ID client secret, SQL password)
 3. **Review audit logs** for unauthorized access
 4. **Revoke user access** if account compromised
 5. **Contact Azure Support** for assistance
