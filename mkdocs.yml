@@ -138,11 +138,7 @@ nav:
     - Advanced Configuration:
       - bi-for-intune/advanced-configuration.md
       - Windows Update for Business Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
-      - Custom Inventory:
-        - Create Entra Application: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
-        - Deploy Azure Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md
-        - Windows Inventory Script: bi-for-intune/installation/custom-inventory/windows-inventory-collection-script.md
-        - macOS Inventory Script: bi-for-intune/installation/custom-inventory/macos-inventory-collection-script.md
+      - Custom Inventory: bi-for-intune/installation/custom-inventory/index.md
     - Administration:
       - bi-for-intune/administration/index.md
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md

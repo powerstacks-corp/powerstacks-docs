@@ -7,7 +7,7 @@ render_macros: false
 
 If you previously set up Custom Inventory using the older Log Analytics HTTP Data Collector API, you need to migrate to the new **Azure Monitor Logs Ingestion API**. Microsoft is deprecating the legacy API in favor of the newer DCR-based ingestion pattern.
 
-This guide walks existing customers through the migration. New customers should skip this page and go directly to the [Enhanced Inventory setup guide](../custom-inventory/create-inventory-app-registration.md).
+This guide walks existing customers through the migration. New customers should skip this page and go directly to the [Custom Inventory setup guide](../custom-inventory/index.md).
 
 ## What changed
 
@@ -40,11 +40,11 @@ Before making changes, record your current inventory script settings:
 
 ### Step 2: Deploy the new infrastructure
 
-Follow the standard Enhanced Inventory setup. You will create new resources but keep your existing workspace:
+Follow the [Custom Inventory setup guide](../custom-inventory/index.md). You will create new resources but keep your existing workspace:
 
-1. [Create an Entra Application](../custom-inventory/create-inventory-app-registration.md) — create the Enterprise Application and record credentials
-2. [Deploy Azure Resources](../custom-inventory/deploy-custom-inventory-resources.md) — use your **existing** Log Analytics workspace
-3. Record the deployment outputs (DceURI, DcrImmutableId)
+1. Create the Enterprise Application and record credentials (Step 1 of the setup guide).
+2. Deploy the Azure resources, selecting **Use an existing workspace** and providing your current Log Analytics workspace details (Step 2 of the setup guide).
+3. Record the deployment outputs (DceURI, DcrImmutableId).
 
 !!! tip "Use your existing workspace"
     During the Azure deployment, select **Use an existing workspace** and provide your current Log Analytics workspace details. This ensures the new tables are created in the same workspace your BI for Intune semantic model already connects to.
@@ -64,7 +64,7 @@ Update your Windows and/or macOS inventory scripts with the new parameters:
 | `WorkspaceId` | Your old Workspace ID | *(no longer used)* |
 | `SharedKey` | Your old Workspace Key | *(no longer used)* |
 
-See [Windows Inventory Script](../custom-inventory/windows-inventory-collection-script.md) and [macOS Inventory Script](../custom-inventory/macos-inventory-collection-script.md) for full configuration details.
+See the [Custom Inventory setup guide](../custom-inventory/index.md) (Steps 3 and 4) for full configuration details.
 
 ### Step 4: Redeploy the script via Intune
 

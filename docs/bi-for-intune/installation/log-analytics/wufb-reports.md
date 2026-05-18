@@ -37,10 +37,8 @@ Microsoft's recommended enrollment method is the Azure Workbook. It creates the 
 1. For **Azure Log Analytics Workspace**, select **Create new workspace**, give it a name, and pick a supported region.
 1. Select **Save settings** to enroll the tenant.
 
-The initial enrollment takes up to 24 hours.
-
 !!! tip "One workspace for both add-ons"
-    If you also plan to set up [Custom Inventory](../custom-inventory/create-inventory-app-registration.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
+    If you also plan to set up [Custom Inventory](../custom-inventory/index.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
 
 ## Step 3: Deploy the Intune configuration profile to your devices
 
@@ -62,6 +60,9 @@ Windows Update for Business reports requires devices to send the diagnostic data
 
 1. On **Assignments**, assign the profile to the device group you want reported on.
 1. Select **Create** to save and assign the profile.
+
+!!! tip "Set telemetry higher for complete data"
+    **Basic** (renamed **Required**) is Microsoft's minimum requirement, but some data points in Windows Update for Business reports are only populated at higher diagnostic levels. For complete reporting, Microsoft recommends **Enhanced** for Windows 10 devices and **Optional** (previously **Full**) for Windows 11 devices.
 
 Devices that are active and connected daily typically appear in Windows Update for Business reports within 72 hours. Less active devices may take up to two weeks.
 
@@ -87,7 +88,8 @@ After data starts flowing, the following BI for Intune dashboards populate:
 - WUfB Delivery Optimization
 - WUfB Windows Readiness
 
-If you don't see data after two weeks, see [Troubleshoot slow syncs](../../administration/troubleshoot-slow-syncs.md).
+!!! info "Data takes up to 72 hours to appear"
+    Devices that are active and connected daily typically appear in Windows Update for Business reports within 72 hours. Less active devices may take longer.
 
 ## Microsoft references
 

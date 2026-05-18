@@ -3,7 +3,7 @@ title: "Version 40.0 June 8, 2024"
 render_macros: false
 ---
 # Version 40.0 (AppSource Version 1035)
-BI for Intune Version 40.0, shown as version 1035 in AppSource, was released on June 8, 2024. This version includes some modifications to our Windows custom inventory script. Customers should update to the latest version of the [custom inventory script](../installation/custom-inventory/windows-inventory-collection-script.md).
+BI for Intune Version 40.0, shown as version 1035 in AppSource, was released on June 8, 2024. This version includes some modifications to our Windows custom inventory script. Customers should update to the latest version of the [custom inventory script](../installation/custom-inventory/index.md).
 
 
 ## Below Are the Changes in Version 40.0
