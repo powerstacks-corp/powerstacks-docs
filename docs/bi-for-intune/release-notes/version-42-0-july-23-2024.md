@@ -48,69 +48,19 @@ This version introduces several new features and enhancements, focusing on Cloud
 
 		For the new Windows 365 (Cloud PC) pages we must add a new permission to the Enterprise App Registration that was configured when BI for Intune was installed. For reference, please see the documentation on [creating the app registration](../installation/setup-guide/create-entra-app-registration.md). **Prerequisites:  **The user performing this step requires Global Admin and Subscription Admin rights.
 
-### Step 1
-
-
-
-
-								Login to **portal.azure.com **or **entra.microsoft.com** using a global administrator account.Search for and select App used for BI for Intune.**
-![](../images/New_Registration-1024x491.png)
-### Step 2
-
-
-
-
-
+1. Sign in to **portal.azure.com** or **entra.microsoft.com** using a global administrator account. Search for and select the app used for BI for Intune.
+   ![](../images/New_Registration-1024x491.png)
 1. On the Enterprise App page select **API Permissions**.
-![](../images/API_Permissions-1024x530.png)
-### Step 3
-
-
-
-
-
+   ![](../images/API_Permissions-1024x530.png)
 1. Select **Add a permission**.
-![](../images/add_permission-1024x425.png)
-### Step 4
-
-
-
-
-
-1. Select **Microsoft Graph**.
-![](../images/MS_graph-1024x434.png)
-### Step 5
-
-
-
-
-
+   ![](../images/add_permission-1024x425.png)
+1. Select **Microsoft Graph**.
+   ![](../images/MS_graph-1024x434.png)
 1. Select **Application permissions**.
-![](../images/application_permissions-1024x403.png)
-### Step 6
-
-
-
-
-
-1. Search for **Cloud PC**.
-1. Select the following permissions:**CloudPC.Read.All**
-Select **Add permissions**.
-![cpc read all](../images/cpc_read_all-677x1024.png)
-### Step 7
-
-
-
-
-
-1. Select **Grant admin consent for **.
-![cpc consent](../images/cpc_consent-1024x728.png)
-### Step 8
-
-
-
-
-
-1. Select **Yes**at the prompt.
-1. You've completed all required steps for adding the new permission to the app registration.
-![](../images/Admin-Consent-Yes-1024x108.png)
+   ![](../images/application_permissions-1024x403.png)
+1. Search for **Cloud PC** and select **CloudPC.Read.All**, then select **Add permissions**.
+   ![cpc read all](../images/cpc_read_all-677x1024.png)
+1. Select **Grant admin consent**.
+   ![cpc consent](../images/cpc_consent-1024x728.png)
+1. Select **Yes** at the prompt. You've completed all required steps for adding the new permission to the app registration.
+   ![](../images/Admin-Consent-Yes-1024x108.png)

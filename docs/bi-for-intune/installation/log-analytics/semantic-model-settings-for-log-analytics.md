@@ -1,7 +1,7 @@
 ---
-title: "Semantic Model Settings for Log Analytics"
+title: "Semantic model settings for Log Analytics"
 ---
-# Semantic Model Settings for Log Analytics
+# Semantic model settings for Log Analytics
 The BI for Intune dataset contains some parameters that must be configured to synchronize data from Intune to Power BI. Other parameters, such as this one, add additional functionality to BI for Intune. In this article we configure the parameters required for **Log Analytics integration** (used by both [Custom Inventory](../custom-inventory/deploy-custom-inventory-resources.md) and [WUfB Reports](wufb-reports.md)).
 
 ### Step 1: Open the BI for Intune workspace
@@ -15,8 +15,8 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 
-1. Hover over the bi_for_intune **Semantic model** to reveal a **kebab menu** (three vertical dots).
-1. Select the **kebab menu**.
+1. Point to the bi_for_intune **Semantic model** to reveal a **More options menu** (three vertical dots).
+1. Select the **More options menu**.
 1. Select **Settings**.
 ![intune model settings](../../images/intune_model_settings-1024x1013.png)
 ### Step 3: Enable Log Analytics parameters
@@ -24,8 +24,8 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 1. Expand **Parameters**.
-1. Locate the **AzureAD LogAnalytics Enable** field and change the value from FALSE to **TRUE**.
-1. Locate the **AzureAD LogAnalytics WorkspaceID** field and enter the **Log Analytics Workspace ID** recorded during [Deploy Custom Inventory Resources](../custom-inventory/deploy-custom-inventory-resources.md) Step 4, or from the workspace **Overview** page in the Azure portal.
+1. Find the **AzureAD LogAnalytics Enable** field and change the value from FALSE to **TRUE**.
+1. Find the **AzureAD LogAnalytics WorkspaceID** field and enter the **Log Analytics Workspace ID** recorded during [Deploy Custom Inventory Resources](../custom-inventory/deploy-custom-inventory-resources.md) Step 4, or from the workspace **Overview** page in the Azure portal.
 1. Select **Apply**.
 ![](../../images/Intune_Enable_Log_Analytics-538x1024.png)
 ### Step 4: Edit gateway source credentials

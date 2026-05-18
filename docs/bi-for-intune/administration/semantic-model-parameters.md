@@ -61,7 +61,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: Yes
 1. Default value: Blank
-1. This should be the API Key that you received from us after completing the [**Request a Trial Key**](https://docs.powerstacks.com/shared/request-a-license/) form.
+1. This should be the API Key that you received from us after completing the [**Request a Trial Key**](../installation/getting-started/request-a-license.md) form.
 ![](../images/api_key.png)
 ### Step 7: Enter the Tenant ID
 				AzureAD TenantID
@@ -212,7 +212,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: None
 1. Default value: TRUE
-1. This parameter disables the synchronization of Configuration Profiles of the Settings Catalog type. It is TRUE, meaning that the results of those profiles are sync'd to Power BI. This was parameter was added due to periodic issues in a small number of Azure data centers that caused synchronization failures. Leave at the default value unless instructed otherwise by PowerStacks support.
+1. This parameter disables the synchronization of Configuration Profiles of the Settings Catalog type. It is TRUE, meaning that the results of those profiles are sync'd to Power BI. This parameter was added due to periodic issues in a small number of Azure data centers that caused synchronization failures. Leave at the default value unless instructed otherwise by PowerStacks support.
 ![](../images/compliance_policy_settings.png)
 ### Step 20: Configure Group Dynamic Members
 				AzureAD Group Dynamic Members Only
@@ -288,9 +288,9 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 
-1. Required configuration:
-1. Default value:
-1.
+1. Required configuration: None
+1. Default value: Refer to product defaults
+1. Controls batching behavior for Intune Export API requests. Do not change this value unless instructed to do so by PowerStacks support.
 ![azuread export url batch](../images/azuread-export-url-batch.png)
 ### Step 27: Configure Application State Enable
 				AzureAD Application State Enable
@@ -299,9 +299,9 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 
-1. Required configuration:
-1. Default value:
-1. This parameter
+1. Required configuration: None
+1. Default value: TRUE
+1. Determines whether application state data is included in the synchronization. Leave at the default value unless instructed otherwise by PowerStacks support.
 ![azuread script state enable](../images/azuread-script-state-enable.png)
 ### Step 28: Configure App Inventory Page Size
 				AzureAD LogAnalytics App Inventory PageSize API
@@ -310,9 +310,9 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 
-1. Required configuration:
-1. Default value:
-1. Used to .
+1. Required configuration: None
+1. Default value: 10000
+1. Determines the page size for Log Analytics app inventory queries. Do not change this value unless instructed to do so by PowerStacks support.
 ![azuread loganalytics app inventory pagesize api](../images/azuread-loganalytics-app-inventory-pagesize-api.png)
 ### Step 29: Configure Script State Enable
 				AzureAD Script State Enable
@@ -323,7 +323,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: None
 1. Default value: TRUE
-1. This parameter disables the synchronization of Configuration Profiles of the Settings Catalog type. It is TRUE, meaning that the results of those profiles are sync'd to Power BI. This was parameter was added due to periodic issues in a small number of Azure data centers that caused synchronization failures. Leave at the default value unless instructed otherwise by PowerStacks support.
+1. This parameter disables the synchronization of Configuration Profiles of the Settings Catalog type. It is TRUE, meaning that the results of those profiles are sync'd to Power BI. This parameter was added due to periodic issues in a small number of Azure data centers that caused synchronization failures. Leave at the default value unless instructed otherwise by PowerStacks support.
 ![azuread script state enable](../images/azuread-script-state-enable.png)
 ### Step 30: Configure Export URL for Cloud PC
 				AzureAD Export URL CloudPC
@@ -345,7 +345,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 1. Required configuration: None
 1. Default value: TRUE
-1. This parameter disables the synchronization of driver information from Windows Driver update management in Microsoft Intune. Default value is TRUE, meaning that the Windows Driver Updates information is sync'd to Power BI. This was parameter was added because the driver data has caused timeout issues for several customers. For best results be selective about the drivers which you approve and keep them to a minimum.
+1. This parameter disables the synchronization of driver information from Windows Driver update management in Microsoft Intune. Default value is TRUE, meaning that the Windows Driver Updates information is sync'd to Power BI. This parameter was added because the driver data has caused timeout issues for several customers. For best results be selective about the drivers which you approve and keep them to a minimum.
 ![azuread driver updates enable](../images/azuread-driver-updates-enable.png)
 ### Step 32: Configure the Login URL
 				AzureAD Login URL
@@ -355,7 +355,7 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 1. Required configuration: None
-1. Default value: [https://api.loganalytics.io](https://login.microsoftonline.com)
+1. Default value: [https://login.microsoftonline.com](https://login.microsoftonline.com)
 1. This parameter is only used in multi-cloud environments. For example, if you have some things in the Gov cloud and other things in the public cloud.
 ![azuread login url](../images/azuread-login-url.png)
 ### Step 33: Configure the Graph URL

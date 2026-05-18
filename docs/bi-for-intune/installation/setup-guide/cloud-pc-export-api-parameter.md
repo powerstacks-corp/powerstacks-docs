@@ -1,7 +1,7 @@
 ---
-title: "Cloud PC Export API Parameter"
+title: "Cloud PC export API parameter"
 ---
-# Configure Cloud PC Export API
+# Configure Cloud PC export API
 This is only required for customers who want to use the Cloud PC report pages.
 
 ### Step 1: Open Cloud PC utilization report
@@ -10,7 +10,7 @@ This is only required for customers who want to use the Cloud PC report pages.
 
 
 
-1. In the **Intune console** select the **Reports** pane.
+1. In the **Intune admin center** select the **Reports** pane.
 1. Select **Cloud PC overview**.
 1. Select **Cloud PC utilization**.
 ![cpc utilization](../../images/cpc_utilization-1024x435.png)
@@ -20,8 +20,8 @@ This is only required for customers who want to use the Cloud PC report pages.
 
 
 
-1. Press **F12** to open the **developer pane** in your browser.
-1. Select the **Network tab** in the **developer pane**.
+1. Press **F12** to open the **developer tools** in your browser.
+1. Select the **Network tab** in the **developer tools**.
 1. Select **Export**.
 ![cpc export](../../images/cpc_export-1-1024x256.png)
 ### Step 3: Download the export file
@@ -32,7 +32,7 @@ This is only required for customers who want to use the Cloud PC report pages.
 
 1. Select **Download**.
 ![cpc download](../../images/cpc_download-1024x323.png)
-### Step 4: Copy the export Request URL
+### Step 4: Copy the export request URL
 
 
 

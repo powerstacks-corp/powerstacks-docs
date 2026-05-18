@@ -2,7 +2,7 @@
 title: "Repair Broken Visuals"
 ---
 # Repair Broken Visuals
-When building our data model, we try very hard to ensure that each field name is unique, and it is simple for our customers to understand the purpose of each field by its name. Of course, sometimes a field name may have made sense when it was created but as we bring new features to the model the name is no longer unique, self-explanatory, nor makes sense. On these rare occasions we rename existing fields. Unfortunately, when this happens any visualization containing a field that has been renamed will be broken after the upgrade contain the new field name. For the reason we recommend that customers always review our release notes prior to upgrading and test each page in their custom reports after each upgrade.
+When building our data model, we try very hard to ensure that each field name is unique, and it is simple for our customers to understand the purpose of each field by its name. Of course, sometimes a field name may have made sense when it was created but as we bring new features to the model the name is no longer unique, self-explanatory, nor makes sense. On these rare occasions we rename existing fields. Unfortunately, when this happens, any visualization containing a renamed field will be broken after the upgrade because it no longer contains the new field name. For this reason we recommend that customers always review our release notes before upgrading and test each page in their custom reports after each upgrade.
 
 Correcting a visualization that contains a field which has been renamed is quite simple. Just follow the steps within this guide.
 

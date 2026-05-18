@@ -40,7 +40,7 @@ The BI for Defender dataset contains some parameters that must be configured to 
 
 1. Required configuration: Yes
 1. Default value: Blank
-1. This should be the API Key that you received from us after completing the [**Request a Trial Key**](https://docs.powerstacks.com/shared/request-a-license/) form.
+1. This should be the API Key that you received from us after completing the [**Request a Trial Key**](../installation/getting-started/request-a-license.md) form.
 ![](../images/api_key.png)
 ### Step 5: Configure AzureAD TenantID
 				AzureAD TenantID

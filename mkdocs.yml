@@ -126,7 +126,7 @@ nav:
     - Installation:
       - Getting Started:
         - Install BI for Intune: bi-for-intune/installation/getting-started/install-bi-for-intune.md
-        - Request a License: shared/request-a-license.md
+        - Request a License: bi-for-intune/installation/getting-started/request-a-license.md
       - Setup Guide:
         - Create Entra App Registration: bi-for-intune/installation/setup-guide/create-entra-app-registration.md
         - Configure the Semantic Model: bi-for-intune/installation/setup-guide/configure-the-semantic-model.md
@@ -177,7 +177,7 @@ nav:
     - Installation:
       - Getting Started:
         - Install BI for SCCM: bi-for-sccm/installation/getting-started/install-bi-for-sccm.md
-        - Request a License: shared/request-a-license.md
+        - Request a License: bi-for-sccm/installation/getting-started/request-a-license.md
       - Setup Guide:
         - Install Power BI Gateway: bi-for-sccm/installation/setup-guide/install-power-bi-gateway.md
         - Configure Database Access: bi-for-sccm/installation/setup-guide/configure-database-access.md
@@ -223,7 +223,7 @@ nav:
     - Installation:
       - Getting Started:
         - Install BI for Defender: bi-for-defender/installation/getting-started/install-bi-for-defender.md
-        - Request a License: shared/request-a-license.md
+        - Request a License: bi-for-defender/installation/getting-started/request-a-license.md
       - Setup Guide:
         - Create Entra App Registration: bi-for-defender/installation/setup-guide/create-entra-app-registration.md
         - Configure the Semantic Model: bi-for-defender/installation/setup-guide/configure-the-semantic-model.md

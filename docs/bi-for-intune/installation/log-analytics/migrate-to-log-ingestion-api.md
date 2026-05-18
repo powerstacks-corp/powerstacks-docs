@@ -25,7 +25,7 @@ This guide walks existing customers through the migration. New customers should 
 
 Your existing Custom Inventory data in Log Analytics is **not affected** by this migration. The new setup creates new custom tables alongside any existing ones. Historical data remains queryable in the old tables.
 
-Once the new pipeline is verified and BI for Intune is configured to use the new tables, you can optionally delete the old tables to stop incurring storage costs.
+After the new pipeline is verified and BI for Intune is configured to use the new tables, you can optionally delete the old tables to stop incurring storage costs.
 
 ## Migration steps
 
@@ -89,7 +89,7 @@ If BI for Intune needs to be pointed at the new table names, update the semantic
 
 ### Step 7: Retire the old configuration (optional)
 
-Once you have confirmed the new pipeline is working and BI for Intune is using the new tables:
+After you have confirmed the new pipeline is working and BI for Intune is using the new tables:
 
 1. Remove the old remediation/script assignment from Intune
 2. Revoke or delete the old Workspace Shared Key (if no other services use it)
@@ -111,4 +111,4 @@ Once you have confirmed the new pipeline is working and BI for Intune is using t
 
 If you run into issues during migration, use the **LogIngestionAPI_CheckDCR** validation script from the [EnhancedInventoryDeploy repository](https://github.com/powerstacks-corp/EnhancedInventoryDeploy) to diagnose DCR configuration problems.
 
-You can also click the **Pax** chat icon in the bottom-right corner to ask for help with your migration.
+You can also select the **Pax** chat icon in the bottom-right corner to ask for help with your migration.

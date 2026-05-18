@@ -10,12 +10,7 @@ Below are all of the permissions required to be configured on the Azure AD App R
 
 
 
-### 1
-
-
-
-
-								**Required for basic functionality:**
+**Required for basic functionality:**
 
 
 

@@ -8,22 +8,24 @@ Before Power BI can read data from the Log Analytics workspace, you must add the
     This step is needed whenever Power BI reads data from a Log Analytics workspace, whether for [Custom Inventory](../custom-inventory/deploy-custom-inventory-resources.md) data, [WUfB Reports](wufb-reports.md) data, or both.
 
 !!! note
-    These steps may have been performed when originally creating the app registration (Steps 15-19 of [Create Azure AD App Registration](../setup-guide/create-entra-app-registration.md)). If so, you can skip this page.
+    These steps may have been performed when originally creating the app registration (Steps 15-19 of [Create Microsoft Entra app registration](../setup-guide/create-entra-app-registration.md)). If so, you can skip this page.
 
 !!! info
     This is for the **Power BI app registration** only. The [inventory app registration](../custom-inventory/create-inventory-app-registration.md) (used by the collection scripts) does not need this permission.
 
-**Prerequisites:** The user performing this step requires Global Admin and Subscription Admin rights.
+### Prerequisites
+
+The user performing this step requires Global Admin and Subscription Admin rights.
 
 ### Step 1: Open App registrations in Azure
 
 
 
-1. Log in to **entra.microsoft.com** or **portal.azure.com** using a global administrator account.
+1. Sign in to **entra.microsoft.com** or **portal.azure.com** using a global administrator account.
 1. Search for and select **App registrations**.
-1. Select your **Power BI app registration** for BI for Intune. (**Note:** The name may vary from what is shown in this doc.)
+1. Select your **Power BI app registration** for BI for Intune. The name may vary from what is shown in this doc.
 ![](../../images/Edit-App-Registration-1024x421.png)
-### Step 2: Navigate to API Permissions
+### Step 2: Navigate to API permissions
 
 
 

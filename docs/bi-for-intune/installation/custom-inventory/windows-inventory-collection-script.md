@@ -1,9 +1,9 @@
 ---
-title: "Windows Inventory Collection Script"
+title: "Windows inventory collection script"
 render_macros: false
 ---
 
-# Windows Inventory Collection Script
+# Windows inventory collection script
 
 Many customers have asked for reporting on properties that Intune either doesn't collect or doesn't surface accurately. The Windows inventory collection script fills those gaps by gathering hardware, software, driver, monitor, disk, battery, Microsoft 365, and warranty data from each Windows endpoint and sending it to your Azure Log Analytics workspace via the Log Ingestion API. From there, the data flows into the BI for Intune Power BI reports.
 
@@ -97,7 +97,7 @@ The script writes to three custom tables in Log Analytics. The tables are create
 
 One row per device per run. Includes a flat envelope (`ComputerName`, `ManagedDeviceID`) and a `DeviceDetails` payload that holds the nested hardware inventory.
 
-**Hardware**
+#### Hardware
 
 | Field | Source | Notes |
 | --- | --- | --- |
@@ -124,7 +124,7 @@ One row per device per run. Includes a flat envelope (`ComputerName`, `ManagedDe
 
 **`Chassis[]` per-entry fields:** `ChassisTypeCode` (numeric SMBIOS code) and `ChassisTag` (SMBIOS asset tag).
 
-**Microsoft 365** (when `CollectMicrosoft365` is `$true`)
+#### Microsoft 365 (when `CollectMicrosoft365` is `$true`)
 
 A nested `Microsoft365` object containing:
 
@@ -138,7 +138,7 @@ A nested `Microsoft365` object containing:
 | `ReleaseDate` | Release date of the latest version on the device's channel |
 | `ReleaseID` | Office release identifier |
 
-**Warranty** (when `CollectWarranty` is `$true` and a credential is configured for the device's vendor)
+#### Warranty (when `CollectWarranty` is `$true` and a credential is configured for the device's vendor)
 
 A nested `Warranty` object containing:
 
@@ -157,7 +157,7 @@ Warranty data is cached locally per device for `WarrantyMaxCacheAgeDays` (defaul
 
 One row per device per run. Includes the `ComputerName`/`ManagedDeviceID` envelope and an `InstalledApps` payload listing every detected application.
 
-**Per-application fields**
+#### Per-application fields
 
 | Field | Notes |
 | --- | --- |
@@ -175,7 +175,7 @@ Both 32-bit and 64-bit Win32 application registry hives are read. User-scope ins
 
 One row per device per run. Includes the `ComputerName`/`ManagedDeviceID` envelope and a `ListedDrivers` payload listing both installed drivers and (when `MatchDrivers` is enabled) optional drivers available from Windows Update.
 
-**Per-driver fields**
+#### Per-driver fields
 
 | Field | Notes |
 | --- | --- |
@@ -200,7 +200,7 @@ Microsoft-provided drivers are filtered out so the inventory focuses on third-pa
 
 After the script has run on at least one device, verify data is flowing:
 
-1. In the Azure Portal, navigate to your **Log Analytics workspace**.
+1. In the Azure portal, go to your **Log Analytics workspace**.
 2. Go to **Logs** and run a query against one of the custom tables:
 
 ```kusto

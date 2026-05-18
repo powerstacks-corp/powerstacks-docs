@@ -1,7 +1,7 @@
 ---
-title: "Configure the Semantic Model"
+title: "Configure the semantic model"
 ---
-# Configure The Semantic Model Parameters
+# Configure the semantic model parameters
 The BI for Intune dataset contains some parameters that must be configured to synchronize data from Intune to Power BI. Other parameters add additional functionality to BI for Intune. In this article we will only configure the parameters required for basic functionality. For a full list of dataset parameters please see the [Dataset Parameters Explained](../../administration/semantic-model-parameters.md) document.
 
 ### Step 1: Open the BI for Intune workspace
@@ -16,8 +16,8 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 1. Select **Datasets + dataflows**.
-1. Hover over the **bi_for_intune** dataset to reveal a **kebab menu** (three vertical dots).
-1. Select the **kebab menu**.
+1. Point to the **bi_for_intune** dataset to reveal a **More options menu** (three vertical dots).
+1. Select the **More options menu**.
 1. Select **Settings**.
 ![](../../images/BI-for-Intune-Dataset-settings-1024x830.png)
 ### Step 3: Enter required dataset parameters
@@ -25,17 +25,17 @@ The BI for Intune dataset contains some parameters that must be configured to sy
 
 
 1. Expand **Parameters**.
-1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](../../../shared/request-a-license.md) form.
-1. Enter your **Azure AD tenant ID** that you recorded during the configuration of the [Azure AD App Registration](create-entra-app-registration.md).
-1. Enter the **Azure AD Client ID** that you recorded during the configuration of the [Azure AD App Registration](create-entra-app-registration.md).
-1. Enter the **Azure AD Client Secret** that you recorded during the configuration of the [Azure AD App Registration](create-entra-app-registration.md). The client secret does not have dashes (-) in it. It looks similar to this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`
+1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](../getting-started/request-a-license.md) form.
+1. Enter your **Microsoft Entra ID tenant ID** that you recorded during the configuration of the [Microsoft Entra app registration](create-entra-app-registration.md).
+1. Enter the **Microsoft Entra ID Client ID** that you recorded during the configuration of the [Microsoft Entra app registration](create-entra-app-registration.md).
+1. Enter the **Microsoft Entra ID Client Secret** that you recorded during the configuration of the [Microsoft Entra app registration](create-entra-app-registration.md). The client secret does not have dashes (-) in it. It looks similar to this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`
 
     !!! warning
         The most common mistake made when installing BI for Intune is on this step! The client secret does **not** look like this: `2f51572d-24ac-43bb-a73a-d3c346b69a45` — it **does** look like this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`.
 
 1. Select **Apply**.
 ![all parameters](../../images/all_parameters-152x1024.png)
-### Step 4: Expand Data Source Credentials
+### Step 4: Expand data source credentials
 
 
 

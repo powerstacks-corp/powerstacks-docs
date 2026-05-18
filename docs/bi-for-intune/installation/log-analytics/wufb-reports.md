@@ -1,12 +1,12 @@
 ---
-title: "WUfB Reports"
+title: "WUfB reports"
 ---
-# Windows Update for Business Reports
-Microsoft recommends that customers using Intune should onboard devices to [Windows Update for Business reports](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/public-preview-of-azure-workbooks-for-update-compliance/ba-p/3601310) (formerly named "Azure Update Compliance") to monitor Windows Updates and patch compliance. We have made this data available in BI for Intune and have included Update Compliance Quality Updates and Update Compliance Feature Updates reports right out of the box. In order to populate the data for those reports you must onboard your devices to the new Windows Update for Business reports service.
+# Windows Update for Business reports
+Microsoft recommends that customers using Intune should onboard devices to [Windows Update for Business reports](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/public-preview-of-azure-workbooks-for-update-compliance/ba-p/3601310) (formerly named "Azure Update Compliance") to monitor Windows Updates and patch compliance. We have made this data available in BI for Intune and have included Update Compliance Quality Updates and Update Compliance Feature Updates reports right out of the box. To populate the data for those reports you must onboard your devices to the new Windows Update for Business reports service.
 
-Below are the high-level steps required to onboard devices to the service. I won't go into great details here because Microsoft has good documentation on this, but it is easy to overlook some of the steps so I will point them out here.
+The following high-level steps are required to onboard devices to the service. I won't go into great details here because Microsoft has good documentation on this, but it is easy to overlook some of the steps so I will point them out here.
 
-### Before You Begin
+### Before you begin
 
 Choose the tab that matches your situation:
 
@@ -61,5 +61,5 @@ According to Microsoft you will start seeing data in about 24 hours however, we'
 
 
 
-1. Once the initial Windows Update for Business Reports data processing has completed you will see data in our "UC Quality Updates" and "UC Feature Updates" pages.
+1. After the initial Windows Update for Business Reports data processing has completed you will see data in our "UC Quality Updates" and "UC Feature Updates" pages.
 ![Intune Windows Update for Business Reports](../../images/intune_uc_quality_updates-1024x582.png)

@@ -1,16 +1,18 @@
 ---
-title: "Create Entra App Registration"
+title: "Create Entra app registration"
 ---
-# Create Azure App Registration
-Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data sources is done using application permissions. Here we are configuring the permissions required for Power BI to connect to the data sources to get the data.
+# Create Azure app registration
+Synchronizing data from Intune, Microsoft Entra ID, Log Analytics, and other cloud data sources is done using application permissions. Here we are configuring the permissions required for Power BI to connect to the data sources to get the data.
 
-**Prerequisites:** The user performing this step requires Global Admin and Subscription Admin rights.
+### Prerequisites
+
+The user performing this step requires Global Admin and Subscription Admin rights.
 
 ### Step 1: Open App registrations in Azure
 
 
 
-1. Log in to **portal.azure.com** or **entra.microsoft.com** using a global administrator account.
+1. Sign in to **portal.azure.com** or **entra.microsoft.com** using a global administrator account.
 1. Search for and select **App registrations**.
 1. Select **New registration**.
 ![](../../images/New_Registration-1024x491.png)
@@ -22,7 +24,7 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 1. Specify who can use the application as **Accounts in this organizational directory only**.
 1. Select **Register**.
 ![](../../images/Register_App-788x1024.png)
-### Step 3: Navigate to API Permissions
+### Step 3: Navigate to API permissions
 
 
 
@@ -180,14 +182,14 @@ Synchronizing data from Intune, Azure AD, Log Analytics, and other cloud data so
 
 
 
-1. Record the **Value** data as the Azure AD Client Secret. This will be used later in the installation process. The value can only be displayed once, if you fail to record it here you will have to create a new one.
+1. Record the **Value** data as the Microsoft Entra ID Client Secret. This will be used later in the installation process. The value can only be displayed once, if you fail to record it here you will have to create a new one.
 ![](../../images/Client-Secret-Value-1024x203.png)
 ### Step 25: Record the application IDs
 
 
 
 1. Select **Overview**.
-1. Record the **Application (client) ID** as the Azure AD Client ID. This will be used later in the installation process.
-1. Record the **Directory (tenant) ID** as the Azure AD Tenant ID. This will be used later in the installation process.
-1. The Azure AD Application registration is now complete.
+1. Record the **Application (client) ID** as the Microsoft Entra ID Client ID. This will be used later in the installation process.
+1. Record the **Directory (tenant) ID** as the Microsoft Entra ID Tenant ID. This will be used later in the installation process.
+1. The Microsoft Entra app registration is now complete.
 ![](../../images/Overview-1024x228.png)

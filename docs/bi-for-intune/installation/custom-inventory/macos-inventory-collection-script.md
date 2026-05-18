@@ -1,9 +1,9 @@
 ---
-title: "macOS Inventory Collection Script"
+title: "macOS inventory collection script"
 render_macros: false
 ---
 
-# macOS Inventory Collection Script
+# macOS inventory collection script
 
 The macOS inventory collection script extends the same custom-inventory pattern to Mac endpoints managed by Intune. It uses native macOS tools to gather hardware specifications, disk and battery health, and the installed application list, then sends the data to your Azure Log Analytics workspace via the Log Ingestion API. From there, the data flows into the BI for Intune Power BI reports alongside Windows inventory.
 
@@ -90,7 +90,7 @@ One row per device per run. Includes a flat envelope (`ComputerName`, `ManagedDe
 
 One row per device per run. Includes the `ComputerName`/`ManagedDeviceID` envelope and an `InstalledApps` payload listing every detected application.
 
-**Per-application fields**
+#### Per-application fields
 
 | Field | Source |
 | --- | --- |
@@ -107,7 +107,7 @@ The macOS script does not currently collect drivers (macOS has no equivalent of 
 
 After the script has run on at least one device:
 
-1. In the Azure Portal, navigate to your **Log Analytics workspace**.
+1. In the Azure portal, go to your **Log Analytics workspace**.
 2. Go to **Logs** and run:
 
 ```kusto

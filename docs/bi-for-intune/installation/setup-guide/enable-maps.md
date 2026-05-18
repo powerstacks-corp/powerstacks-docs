@@ -4,7 +4,7 @@ title: "Enable Maps"
 # Enable Azure Maps in Power BI
 Several of the pages in the out-of-the-box reports contain the map visual. If the map visuals do not display in your environment they might be disabled. To ensure that the maps visual is enabled follow this guide.
 
-### Step 1: Open the Power BI Admin portal
+### Step 1: Open the Power BI admin portal
 
 
 

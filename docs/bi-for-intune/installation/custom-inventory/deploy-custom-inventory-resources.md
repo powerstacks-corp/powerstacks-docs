@@ -1,8 +1,8 @@
 ---
-title: "Deploy Enhanced Inventory Resources"
+title: "Deploy Enhanced Inventory resources"
 ---
 
-# Deploy Enhanced Inventory Azure Resources
+# Deploy Enhanced Inventory Azure resources
 
 This step uses a one-click Azure deployment to create all the infrastructure needed for Enhanced Inventory. The ARM template sets up (or reuses) a Log Analytics Workspace, configures custom tables, and creates the Data Collection Endpoint (DCE) and Data Collection Rule (DCR).
 
@@ -24,7 +24,7 @@ This step uses a one-click Azure deployment to create all the infrastructure nee
 
 ## Step 1: Deploy to Azure
 
-Click the button below to deploy the required Azure resources:
+Select the button below to deploy the required Azure resources:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPowerStacks-BI%2FEnhancedInventoryDeploy%2Fmain%2Finfra%2Fmain.json)
 
@@ -43,7 +43,7 @@ If the Enterprise Application Object ID was provided during deployment, the temp
 
 If you left the field blank, you must manually assign the role:
 
-1. Navigate to the deployed **Data Collection Rule** in the Azure Portal.
+1. Go to the deployed **Data Collection Rule** in the Azure portal.
 2. Go to **Access control (IAM)** > **Add role assignment**.
 3. Select **Monitoring Metrics Publisher**.
 4. Assign it to the Enterprise Application you created earlier.
@@ -52,8 +52,8 @@ If you left the field blank, you must manually assign the role:
 
 After deployment completes:
 
-1. Go to the deployment in the Azure Portal (Resource Group > Deployments).
-2. Click on the deployment name.
+1. Go to the deployment in the Azure portal (Resource Group > Deployments).
+2. Select the deployment name.
 3. Select the **Outputs** tab.
 4. Record the following values:
 

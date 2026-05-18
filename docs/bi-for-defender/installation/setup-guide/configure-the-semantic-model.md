@@ -30,7 +30,7 @@ The BI for Defender dataset contains some parameters that must be configured to 
 
 
 1. Expand **Parameters**.
-1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](https://docs.powerstacks.com/shared/request-a-license/) form.
+1. Enter the **API Key** that you received from us after completing the [Request a Trial Key](../getting-started/request-a-license.md) form.
 1. Enter the **Azure AD Client ID** that you recorded during the configuration of the [Azure AD App Registration](create-entra-app-registration.md).
 1. Enter the **Azure AD Client Secret** that you recorded during the configuration of the [**Azure AD App Registration**](https://docs.powerstacks.com/bi-for-defender/installation/setup-guide/create-entra-app-registration/). As mentioned in the previous article the **Client Secret** does not have dashes (-) in it. The **Client Secret** looks similar to this: `aBcDE~fGh.I.JKlmnopqRsTuVwXyZ1234567890`
 1. Enter you **Azure AD tenant ID** that you recorded during the configuration of the [**Azure AD App Registration**](https://docs.powerstacks.com/bi-for-defender/installation/setup-guide/create-entra-app-registration/).

@@ -44,7 +44,7 @@ To get started select the **Install Now** button to be directed to the Microsoft
 
 
 
-1. You will see a notification that BI for Defender is installing. Once this has disappeared you have successfully installed BI for Defender. You may now view the app using the sample data provided or you can connect your data by [requesting a trial license key](/shared/request-a-license/).
+1. You will see a notification that BI for Defender is installing. Once this has disappeared you have successfully installed BI for Defender. You may now view the app using the sample data provided or you can connect your data by [requesting a trial license key](request-a-license.md).
 ![](../../images/Installing-App.png)
 ### Step 5: View the App with Sample Data
 
