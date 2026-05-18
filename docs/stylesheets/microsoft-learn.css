@@ -938,7 +938,11 @@ html {
 .md-typeset h2:hover .headerlink,
 .md-typeset h3:hover .headerlink,
 .md-typeset h4:hover .headerlink {
-  opacity: 0.5;
+  opacity: 1;
+}
+
+.md-typeset .headerlink:hover {
+  opacity: 1 !important;
 }
 
 /* ── Issue fixes (Apr 15 2026) — REVISED Apr 16 ───────────────────── */
