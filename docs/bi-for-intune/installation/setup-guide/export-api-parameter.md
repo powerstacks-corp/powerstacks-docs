@@ -59,14 +59,14 @@ Microsoft has migrated some of the data that BI for Intune uses to the new Intun
 1. Select the line starting with **WindowsUpdatePerPolicyPerDeviceStatus**, this will contain the **Request URL**.
 1. Copy the **Request URL** and save it for use later. It should look something like this: `https://amsua0401repexpstorage.blob.core.windows.net`.
 ![](../../images/Request-URL-1024x855.png)
-### Step 7: Open dataset settings in Power BI
+### Step 7: Open the semantic model settings
 
 
 
 
 
 1. In **Power BI** go to the **BI for Intune workspace**.
-1. Select the **dataset settings**.
+1. Open the **semantic model settings**.
 ![](../../images/Dataset-settings-1024x765.png)
 ### Step 8: Enter the export URL parameters
 

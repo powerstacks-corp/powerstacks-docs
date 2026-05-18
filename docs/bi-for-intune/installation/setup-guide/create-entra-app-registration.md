@@ -42,6 +42,7 @@ The user performing these steps requires Global Admin and Subscription Admin rig
     - **DeviceManagementServiceConfig.Read.All**
 
     ![](../../images/Device-Management-Permissions-692x1024.png)
+
 1. Search for **Directory** and select **Directory.Read.All**.
    ![](../../images/Directory-Permissions-1024x715.png)
 1. Search for **AuditLog** and select **AuditLog.Read.All**.
