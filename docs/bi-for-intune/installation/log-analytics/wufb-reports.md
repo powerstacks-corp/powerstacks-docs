@@ -1,65 +1,99 @@
 ---
-title: "WUfB reports"
+title: "Set up Windows Update for Business reports"
+description: "Configure Windows Update for Business reports to populate Windows update compliance dashboards in BI for Intune."
 ---
-# Windows Update for Business reports
-Microsoft recommends that customers using Intune should onboard devices to [Windows Update for Business reports](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/public-preview-of-azure-workbooks-for-update-compliance/ba-p/3601310) (formerly named "Azure Update Compliance") to monitor Windows Updates and patch compliance. We have made this data available in BI for Intune and have included Update Compliance Quality Updates and Update Compliance Feature Updates reports right out of the box. To populate the data for those reports you must onboard your devices to the new Windows Update for Business reports service.
+# Set up Windows Update for Business reports
 
-The following high-level steps are required to onboard devices to the service. I won't go into great details here because Microsoft has good documentation on this, but it is easy to overlook some of the steps so I will point them out here.
+[Windows Update for Business reports](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-overview) is a Microsoft cloud service that surfaces Windows update compliance for Microsoft Entra joined devices. Microsoft routes the data into a Log Analytics workspace that you own; BI for Intune reads from that workspace to populate the WUfB Quality Updates, WUfB Feature Updates, WUfB Driver Updates, WUfB Delivery Optimization, and WUfB Windows Readiness dashboards.
 
-### Before you begin
+This page walks through the recommended setup using Microsoft's Azure Workbook enrollment method.
 
-Choose the tab that matches your situation:
+!!! info "Last reviewed against Microsoft's docs: 2026-05-17"
 
-=== "Fresh start (no Log Analytics workspace)"
+## Step 1: Verify prerequisites
 
-    You will need to:
+Before you start, confirm the following:
 
-    1. Complete **Steps 1 and 2** on this page to enable WUfB Reports in Azure and deploy the configuration profile. Microsoft's onboarding process will create the Log Analytics workspace.
-    2. [Connect Power BI to Log Analytics](edit-entra-app-registration.md) — Add the Log Analytics API permission to the Power BI app registration.
-    3. [Dataset Settings for Log Analytics](semantic-model-settings-for-log-analytics.md) — Enable Log Analytics and enter the Workspace ID in the Power BI dataset.
+- An Azure subscription with Microsoft Entra ID.
+- Devices are Microsoft Entra joined or Microsoft Entra Hybrid joined. (Entra registered alone is not supported.)
+- Devices are running Windows 10 or Windows 11 — Pro, Education, Enterprise, or Enterprise multi-session editions.
+- Devices have the February 2023 cumulative update or later.
+- Devices send diagnostic data at the **Required** level or higher. Step 3 deploys an Intune configuration profile that sets this.
+- The user enrolling has one of these roles: **Intune Administrator**, **Windows Update deployment administrator**, or **Policy and profile manager** (Intune RBAC role).
+- The Log Analytics workspace must be in a [compatible Azure region](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites#log-analytics-regions). You create the workspace in Step 2.
 
-    !!! tip
-        If you also plan to set up **Custom Inventory**, use the workspace created by WUfB Reports when you later [Deploy Custom Inventory Resources](../custom-inventory/deploy-custom-inventory-resources.md) — select **Use an existing workspace** and point it to this workspace.
+Devices must also be able to reach Microsoft's required network endpoints. Most enterprise networks already allow these; for the full list see [Microsoft's prerequisites page](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites#endpoints).
 
-=== "Already have a workspace from Custom Inventory"
+## Step 2: Enable Windows Update for Business reports
 
-    Your Log Analytics workspace already exists. Complete **Steps 1 and 2** on this page to enable WUfB Reports and deploy the configuration profile. When selecting a workspace in Microsoft's guide, point it to your **existing** workspace.
+Microsoft's recommended enrollment method is the Azure Workbook. It creates the Log Analytics workspace and enrolls the tenant into Windows Update for Business reports in a single flow.
 
-    If you have already completed the [Log Analytics Setup](edit-entra-app-registration.md) pages, no additional Power BI configuration is needed — WUfB data will automatically flow to the same workspace and appear in your reports on the next refresh.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. In the search bar at the top, type **Monitor** and select **Monitor**.
+1. In the Monitor left navigation, select **Workbooks**.
+1. In the workbook gallery, select **Windows Update for Business reports**.
+1. Select **Get started** to open the enrollment flyout.
+1. Specify your **Subscription**.
+1. For **Azure Log Analytics Workspace**, select **Create new workspace**, give it a name, and pick a supported region.
+1. Select **Save settings** to enroll the tenant.
 
-=== "Already have a workspace from WUfB (adding Custom Inventory)"
+The initial enrollment takes up to 24 hours.
 
-    You're looking for the Custom Inventory guides. Head to [Create Inventory App Registration](../custom-inventory/create-inventory-app-registration.md) to get started, then [Deploy Custom Inventory Resources](../custom-inventory/deploy-custom-inventory-resources.md) and select **Use an existing workspace** to add custom inventory to your existing WUfB Reports workspace.
+!!! tip "One workspace for both add-ons"
+    If you also plan to set up [Custom Inventory](../custom-inventory/create-inventory-app-registration.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
 
-### Step 1: Enable WUfB reports in Azure
+## Step 3: Deploy the Intune configuration profile to your devices
 
+Windows Update for Business reports requires devices to send the diagnostic data the service relies on. The recommended way to configure this is a Settings catalog configuration profile in Intune.
 
+1. Sign in to the [Intune admin center](https://intune.microsoft.com).
+1. Go to **Devices** > **Windows** > **Configuration profiles**.
+1. Select **Create profile**.
+1. For **Platform**, choose **Windows 10 and later**. For **Profile type**, choose **Settings catalog**. Select **Create**.
+1. On the **Basics** tab, enter a **Name** (for example, `WUfB reports — diagnostic data`) and an optional description.
+1. On **Configuration settings**, select **Add settings** and search the **System** category. Add the following settings:
 
-1. Follow the [guide by Microsoft](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-enable) to Add Windows Update for Business reports to your Azure subscription.
-![](../../images/intune_update_compliance_v2-1024x884.png)
+    | Setting | Value | Required? |
+    |---|---|---|
+    | Allow Telemetry | Basic | Required |
+    | Configure Telemetry Opt In Settings Ux | Disabled | Recommended |
+    | Configure Telemetry Opt In Change Notification | Disabled | Recommended |
+    | Allow device name to be sent in Windows diagnostic data | Allowed | Recommended |
 
-### Step 2: Deploy the configuration profile
+1. On **Assignments**, assign the profile to the device group you want reported on.
+1. Select **Create** to save and assign the profile.
 
+Devices that are active and connected daily typically appear in Windows Update for Business reports within 72 hours. Less active devices may take up to two weeks.
 
+## Step 4: Connect BI for Intune to the Log Analytics workspace
 
-1. Follow the Microsoft documentation to create a [Configuration Profile in Intune](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-configuration-intune) and deploy to Windows computers.
-![](../../images/uc_config_profile.png)
+!!! note "May already be done"
+    If you set up Custom Inventory before Windows Update for Business reports, this step may already be done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **What you'll see in BI for Intune** below.
 
-### Step 3: Verify Power BI Log Analytics integration
+1. In the Power BI service, open the **BI for Intune** workspace.
+1. Open the BI for Intune **semantic model settings**.
+1. Expand **Parameters** and update:
+    - **AzureAD LogAnalytics Enable** = `TRUE`
+    - **AzureAD LogAnalytics WorkspaceID** = the **Workspace ID** from Step 2. Find it at **Azure portal** > **Log Analytics workspaces** > your workspace > **Overview** > **Workspace ID**.
+1. Select **Apply**.
 
+## What you'll see in BI for Intune
 
+After data starts flowing, the following BI for Intune dashboards populate:
 
-If you have already completed the [Log Analytics Setup](edit-entra-app-registration.md) pages, no further action is needed. If not, complete them now:
+- WUfB Quality Updates
+- WUfB Feature Updates
+- WUfB Driver Updates
+- WUfB Delivery Optimization
+- WUfB Windows Readiness
 
-- [Connect Power BI to Log Analytics](edit-entra-app-registration.md) — Add the Log Analytics API Data.Read permission to the Power BI app registration
-- [Dataset Settings for Log Analytics](semantic-model-settings-for-log-analytics.md) — Enable Log Analytics and enter the Workspace ID in the Power BI dataset
+If you don't see data after two weeks, see [Troubleshoot slow syncs](../../administration/troubleshoot-slow-syncs.md).
 
-According to Microsoft you will start seeing data in about 24 hours however, we've had customers report that it took much longer.
-![](../../images/relax.png)
+## Microsoft references
 
-### Step 4: View the WUfB reports data
+This page paraphrases content from Microsoft's official documentation. See Microsoft's docs for the canonical procedures:
 
-
-
-1. After the initial Windows Update for Business Reports data processing has completed you will see data in our "UC Quality Updates" and "UC Feature Updates" pages.
-![Intune Windows Update for Business Reports](../../images/intune_uc_quality_updates-1024x582.png)
+- [Windows Update for Business reports overview](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-overview)
+- [Prerequisites](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites)
+- [Enable Windows Update for Business reports](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-enable)
+- [Configure devices via Intune](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-configuration-intune)

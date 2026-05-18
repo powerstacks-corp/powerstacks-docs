@@ -124,6 +124,7 @@ nav:
   - BI for Intune:
     - bi-for-intune/index.md
     - Installation:
+      - bi-for-intune/installation/index.md
       - Getting Started:
         - Install BI for Intune: bi-for-intune/installation/getting-started/install-bi-for-intune.md
         - Request a License: bi-for-intune/installation/getting-started/request-a-license.md
@@ -136,10 +137,7 @@ nav:
         - Enable Maps: bi-for-intune/installation/setup-guide/enable-maps.md
     - Advanced Configuration:
       - bi-for-intune/advanced-configuration.md
-      - Log Analytics:
-        - Connect Power BI to Log Analytics: bi-for-intune/installation/log-analytics/edit-entra-app-registration.md
-        - Semantic Model Settings for Log Analytics: bi-for-intune/installation/log-analytics/semantic-model-settings-for-log-analytics.md
-        - WUfB Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
+      - Windows Update for Business Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
       - Custom Inventory:
         - Create Entra Application: bi-for-intune/installation/custom-inventory/create-inventory-app-registration.md
         - Deploy Azure Resources: bi-for-intune/installation/custom-inventory/deploy-custom-inventory-resources.md

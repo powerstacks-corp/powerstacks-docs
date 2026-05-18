@@ -1,31 +1,45 @@
 ---
-title: "Advanced Configuration"
+title: "Advanced configurations overview"
 description: "Optional integrations that unlock additional dashboards in BI for Intune."
 ---
+# Advanced configurations overview
 
-# Advanced Configuration
+The pages in this section describe **optional** configuration. BI for Intune is fully usable without any of it — the dashboards in the [Setup Guide](installation/setup-guide/create-entra-app-registration.md) cover everything Microsoft Graph exposes natively.
 
-The pages in this section describe **optional** configuration. BI for Intune is fully usable without any of it — the dashboards in the Setup Guide cover everything Microsoft Graph exposes natively.
-
-These add-ons unlock additional dashboards that depend on data sources Microsoft does not return through the Graph API. If you skip them, the rest of the product still works; the dashboards that depend on them simply show no data.
+These add-ons unlock dashboards that depend on data sources Microsoft does not return through the Graph API. If you skip them, the rest of the product still works. The dashboards that depend on them simply show no data.
 
 ## What each add-on enables
 
-### Log Analytics
+### Windows Update for Business Reports
 
-Connecting BI for Intune to a Log Analytics workspace unlocks reports that pull data from sources Microsoft writes to Log Analytics, not Graph. There are two reasons to set this up:
+[Windows Update for Business reports](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-overview) is a Microsoft cloud service that surfaces Windows update compliance for Microsoft Entra joined devices. Microsoft writes this data into a Log Analytics workspace that you own. Connecting BI for Intune to that Log Analytics workspace populates the following dashboards:
 
-- **WUfB Reports** — Microsoft only exposes Windows Update for Business Reports data (formerly *Azure Update Compliance*) through Log Analytics. If you want the WUfB Reports dashboards to populate, you need this. *(Note: this is separate from the Windows Autopatch data Microsoft is starting to surface in Intune natively — BI for Intune covers both because neither alone gives the full update picture.)*
-- **Custom Inventory** — the Custom Inventory pipeline writes its data into a Log Analytics workspace, so the same Log Analytics connection is used to read Custom Inventory data into Power BI.
+- WUfB Quality Updates
+- WUfB Feature Updates
+- WUfB Driver Updates
+- WUfB Delivery Optimization
+- WUfB Windows Readiness
 
-If you set up either WUfB Reports or Custom Inventory, you set up the Log Analytics connection once and both work against the same workspace.
+See [Set up Windows Update for Business reports](installation/log-analytics/wufb-reports.md) to enable this.
 
 ### Custom Inventory
 
-Custom Inventory is a PowerShell-based collection pipeline that gathers device facts Intune doesn't track natively — local administrator group membership, monitor model and serial, USB device history, warranty info, environment variables, and more. These dashboards are blank until the inventory scripts run on your fleet and start writing data into your Log Analytics workspace.
+Custom Inventory is a PowerShell-based collection pipeline that gathers device facts Intune doesn't track natively. The scripts run on your fleet and write data into a Log Analytics workspace, where BI for Intune reads it back. Custom Inventory populates the following dashboards:
 
-The new install path uses the **Azure Monitor Logs Ingestion API** (DCR-based) and is set up via a one-click ARM template. Existing customers using the older HTTP Data Collector API can migrate; see [Migrate to Log Ingestion API](installation/log-analytics/migrate-to-log-ingestion-api.md) under Administration.
+- Firewall Status
+- App Inventory
+- Driver Inventory
+- Microsoft 365
+- Monitor
+- Disk
+- Battery
+- Warranty
 
-## Want a callout for a specific dashboard?
+!!! note "Warranty dashboard requires manufacturer API keys"
+    The Warranty dashboard looks up warranty data by serial number from each device manufacturer (Dell, Lenovo, HP, and others). You provide your own API keys per manufacturer. Setup instructions are on the Custom Inventory pages.
 
-We're working toward per-dashboard documentation that names exactly which add-on (if any) each dashboard depends on. Until that lands, the rule of thumb is: if a dashboard you care about is empty, check whether its data source is one of the optional add-ons above.
+The current install path uses the **Azure Monitor Logs Ingestion API** (DCR-based) and is set up via a one-click ARM template. Existing customers using the older HTTP Data Collector API can migrate; see [Migrate to Log Ingestion API](installation/log-analytics/migrate-to-log-ingestion-api.md) under Administration.
+
+## One Log Analytics workspace serves both
+
+If you set up both add-ons, point them at the **same** Log Analytics workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one workspace.
