@@ -5,7 +5,7 @@ render_macros: false
 # Versions 58.0 (AppSource Versions 1050)
 **BI for Intune Version 58 (April 12, 2025)**
 
-Version 58 is a very large release with many additions to the [custom inventory for Windows process](../installation/custom-inventory/index.md). These are some highly requested features. See the details below.
+Version 58 is a very large release with many additions to the [custom inventory for Windows process](../installation/custom-inventory.md). These are some highly requested features. See the details below.
 
 **Important Notes:**
 Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!

@@ -8,13 +8,13 @@ Custom Inventory is a PowerShell-based (Windows) and shell-based (macOS) collect
 
 ## Prerequisites
 
-- BI for Intune installed and configured (the [Setup Guide](../setup-guide/create-entra-app-registration.md) is complete).
-- A Log Analytics workspace already in place. The expected path is that you set up [Windows Update for Business reports](../log-analytics/wufb-reports.md) first, which creates the workspace. If you are not using WUfB Reports, [create a workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace) before continuing.
+- BI for Intune installed and configured (the [Setup Guide](setup-guide/create-entra-app-registration.md) is complete).
+- A Log Analytics workspace already in place. The expected path is that you set up [Windows Update for Business reports](log-analytics/wufb-reports.md) first, which creates the workspace. If you are not using WUfB Reports, [create a workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace) before continuing.
 - Microsoft Entra: **Application Administrator** or **Global Administrator**.
 - Azure: **Contributor** or **Owner** on the target subscription or resource group, plus **User Access Administrator** or **Owner** to assign roles (only required for automatic RBAC assignment in Step 2).
 
 !!! tip "One workspace for both add-ons"
-    If you also set up [Windows Update for Business reports](../log-analytics/wufb-reports.md), point it at this same workspace. BI for Intune reads both Custom Inventory data and Windows Update for Business Reports data from one Log Analytics workspace.
+    If you also set up [Windows Update for Business reports](log-analytics/wufb-reports.md), point it at this same workspace. BI for Intune reads both Custom Inventory data and Windows Update for Business Reports data from one Log Analytics workspace.
 
 ## Step 1: Create the Enterprise application
 

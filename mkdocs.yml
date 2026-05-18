@@ -138,7 +138,7 @@ nav:
     - Advanced Configuration:
       - bi-for-intune/advanced-configuration.md
       - Windows Update for Business Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
-      - Custom Inventory: bi-for-intune/installation/custom-inventory/index.md
+      - Custom Inventory: bi-for-intune/installation/custom-inventory.md
     - Administration:
       - bi-for-intune/administration/index.md
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md

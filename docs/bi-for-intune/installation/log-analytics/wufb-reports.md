@@ -38,7 +38,7 @@ Microsoft's recommended enrollment method is the Azure Workbook. It creates the 
 1. Select **Save settings** to enroll the tenant.
 
 !!! tip "One workspace for both add-ons"
-    If you also plan to set up [Custom Inventory](../custom-inventory/index.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
+    If you also plan to set up [Custom Inventory](../custom-inventory.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
 
 ## Step 3: Deploy the Intune configuration profile to your devices
 
