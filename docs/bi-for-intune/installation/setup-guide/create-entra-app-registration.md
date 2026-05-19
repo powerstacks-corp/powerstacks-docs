@@ -51,6 +51,7 @@ The user performing these steps requires Global Admin and Subscription Admin rig
 1. Search for **Policy** and select **Policy.Read.All**.
    ![](../../images/Policy-with-CAP-1024x883.png)
 1. Search for **IdentityRiskyUser** and select **IdentityRiskyUser.Read.All**.
+   ![](../../images/IdentityRiskyUser.png)
 1. (Optional — only for Windows 365 / Cloud PC) Search for **CloudPC** and select **CloudPC.Read.All**.
    ![cloudpc readall](../../images/cloudpc_readall-1024x774.png)
 1. Search for **Reports**, select **Reports.Read.All**, and select **Add permissions**.
