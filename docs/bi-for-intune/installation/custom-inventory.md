@@ -91,7 +91,7 @@ After deployment completes, capture the outputs:
 
 The script gathers data from each Windows endpoint and sends it to the Log Analytics workspace via the Log Ingestion API.
 
-Download `Intune_Windows_Inventory.ps1` from the [PowerStacks Windows-Custom-Inventory repository](https://github.com/powerstacks-corp/Windows-Custom-Inventory).
+Download `Intune_Windows_Inventory.ps1` from the [PowerStacks Windows-Enhanced-Inventory repository](https://github.com/powerstacks-corp/Windows-Enhanced-Inventory).
 
 Update the following settings near the top of the script:
 
@@ -156,7 +156,7 @@ Deploy the script as a **detection script** in an Intune remediation:
 
 If you also manage macOS devices, deploy the macOS script to extend the same custom-inventory pattern to Mac endpoints.
 
-Download `Mac_Custom_Inventory.sh` from the [PowerStacks Mac-Custom-Inventory repository](https://github.com/powerstacks-corp/Mac-Custom-Inventory).
+Download `Mac_Custom_Inventory.sh` from the [PowerStacks Mac-Enhanced-Inventory repository](https://github.com/powerstacks-corp/Mac-Enhanced-Inventory).
 
 Update the following settings near the top of `Mac_Custom_Inventory.sh`:
 
@@ -230,4 +230,4 @@ The scripts write three custom tables to your Log Analytics workspace:
 - **PowerStacksAppInventory_CL** — installed applications
 - **PowerStacksDriverInventory_CL** — installed and optional drivers (Windows only)
 
-For the full field-by-field schemas, see the scripts in the [Windows-Custom-Inventory](https://github.com/powerstacks-corp/Windows-Custom-Inventory) and [Mac-Custom-Inventory](https://github.com/powerstacks-corp/Mac-Custom-Inventory) repositories.
+For the full field-by-field schemas, see the scripts in the [Windows-Enhanced-Inventory](https://github.com/powerstacks-corp/Windows-Enhanced-Inventory) and [Mac-Enhanced-Inventory](https://github.com/powerstacks-corp/Mac-Enhanced-Inventory) repositories.
