@@ -12,7 +12,7 @@ render_macros: false
 
 - Added a retry function for all API calls that use redirects, improving reliability in unstable network conditions.
 - Updated the **Device Timeline Event** parameter — the default value is now **-1 (Disabled)** instead of **7 days**, to prevent unnecessary calls for customers not using Intune Advanced Analytics.
-- Updated the [**Custom Inventory for Windows**](https://github.com/powerstacks-corp/Windows-Custom-Inventory) script to resolve a bug in the driver matching process.
+- Updated the [**Enhanced Inventory for Windows**](https://github.com/powerstacks-corp/Windows-Custom-Inventory) script to resolve a bug in the driver matching process.
 
 ## New Features
 
@@ -37,4 +37,4 @@ render_macros: false
 
 ## Summary
 
-BI for Intune v61 focuses on stability and synchronization performance. Highlights include retry handling for redirected API calls, a new parameter to work around Microsoft Graph 503 / 504 errors, fixes for Autopilot enrollment and group-member sync timeouts, and a refreshed Custom Inventory for Windows script.
+BI for Intune v61 focuses on stability and synchronization performance. Highlights include retry handling for redirected API calls, a new parameter to work around Microsoft Graph 503 / 504 errors, fixes for Autopilot enrollment and group-member sync timeouts, and a refreshed Enhanced Inventory for Windows script.

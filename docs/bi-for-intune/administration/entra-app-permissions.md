@@ -31,7 +31,7 @@ Below are all of the permissions required to be configured on the Azure AD App R
   Reports.Read.All
   CloudPC.Read.All
 
-**Required for custom inventory and Windows Update for Business Reports**
+**Required for Enhanced Inventory and Windows Update for Business Reports**
 
 
 

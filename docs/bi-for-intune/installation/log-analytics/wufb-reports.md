@@ -38,7 +38,7 @@ Microsoft's recommended enrollment method is the Azure Workbook. It creates the 
 1. Select **Save settings** to enroll the tenant.
 
 !!! tip "One workspace for both add-ons"
-    If you also plan to set up [Custom Inventory](../custom-inventory.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one Log Analytics workspace.
+    If you also plan to set up [Enhanced Inventory](../custom-inventory.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Enhanced Inventory data from one Log Analytics workspace.
 
 ## Step 3: Deploy the Intune configuration profile to your devices
 
@@ -69,7 +69,7 @@ Devices that are active and connected daily typically appear in Windows Update f
 ## Step 4: Connect BI for Intune to the Log Analytics workspace
 
 !!! note "May already be done"
-    If you set up Custom Inventory before Windows Update for Business reports, this step may already be done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **What you'll see in BI for Intune** below.
+    If you set up Enhanced Inventory before Windows Update for Business reports, this step may already be done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **What you'll see in BI for Intune** below.
 
 1. In the Power BI service, open the **BI for Intune** workspace.
 1. Open the BI for Intune **semantic model settings**.

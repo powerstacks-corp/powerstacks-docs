@@ -26,7 +26,7 @@ Plan for 30-60 minutes for the core install.
 After the core install, the [Advanced Configuration](../advanced-configuration.md) section covers two optional add-ons:
 
 - **Windows Update for Business Reports** — populates the WUfB Quality Updates, WUfB Feature Updates, WUfB Driver Updates, WUfB Delivery Optimization, and WUfB Windows Readiness dashboards.
-- **Custom Inventory** — populates the Firewall Status, App Inventory, Driver Inventory, Microsoft 365, Monitor, Disk, Battery, and Warranty dashboards.
+- **Enhanced Inventory** — populates the Firewall Status, App Inventory, Driver Inventory, Microsoft 365, Monitor, Disk, Battery, and Warranty dashboards.
 
 If you skip Advanced Configuration entirely, BI for Intune still works — but the dashboards above will be blank. That's expected, not a defect.
 

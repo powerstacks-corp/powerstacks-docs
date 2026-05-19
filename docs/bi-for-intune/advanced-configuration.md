@@ -22,9 +22,9 @@ These add-ons unlock dashboards that depend on data sources Microsoft does not r
 
 See [Set up Windows Update for Business reports](installation/log-analytics/wufb-reports.md) to enable this.
 
-### Custom Inventory
+### Enhanced Inventory
 
-Custom Inventory is a PowerShell-based collection pipeline that gathers device facts Intune doesn't track natively. The scripts run on your fleet and write data into a Log Analytics workspace, where BI for Intune reads it back. Custom Inventory populates the following dashboards:
+Enhanced Inventory is a PowerShell-based collection pipeline that gathers device facts Intune doesn't track natively. The scripts run on your fleet and write data into a Log Analytics workspace, where BI for Intune reads it back. Enhanced Inventory populates the following dashboards:
 
 - Firewall Status
 - App Inventory
@@ -36,10 +36,18 @@ Custom Inventory is a PowerShell-based collection pipeline that gathers device f
 - Warranty
 
 !!! note "Warranty dashboard requires manufacturer API keys"
-    The Warranty dashboard looks up warranty data by serial number from each device manufacturer (Dell, Lenovo, HP, and others). You provide your own API keys per manufacturer. Setup instructions are on the Custom Inventory pages.
+    The Warranty dashboard looks up warranty data by serial number from each device manufacturer (Dell, Lenovo, HP, and others). You provide your own API keys per manufacturer. Setup instructions are on the Enhanced Inventory pages.
 
 The current install path uses the **Azure Monitor Logs Ingestion API** (DCR-based) and is set up via a one-click ARM template. Existing customers using the older HTTP Data Collector API can migrate; see [Migrate to Log Ingestion API](installation/log-analytics/migrate-to-log-ingestion-api.md) under Administration.
 
 ## One Log Analytics workspace serves both
 
-If you set up both add-ons, point them at the **same** Log Analytics workspace. BI for Intune reads both Windows Update for Business Reports data and Custom Inventory data from one workspace.
+If you set up both add-ons, point them at the **same** Log Analytics workspace. BI for Intune reads both Windows Update for Business Reports data and Enhanced Inventory data from one workspace.
+
+## Other optional configuration
+
+These pages aren't add-ons — they tune behavior of the core sync. None of them are required, but each one is worth knowing about:
+
+- **[Export API Parameter](installation/setup-guide/export-api-parameter.md)** — bypass the PowerStacks redirect API by setting the Intune Export URL directly. More secure and avoids a network round-trip through PowerStacks infrastructure.
+- **[Cloud PC Export API Parameter](installation/setup-guide/cloud-pc-export-api-parameter.md)** — equivalent of the above, for Windows 365 (Cloud PC) data. Only needed if you use Cloud PC.
+- **[Enable Maps](installation/setup-guide/enable-maps.md)** — turn on Azure Maps integration so device locations render on a map visualization. Requires an Azure Maps account.

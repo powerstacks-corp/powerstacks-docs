@@ -89,11 +89,11 @@ Number of days of sign-in data to load. Setting this higher slows synchronizatio
 
 ## Log Analytics
 
-These parameters connect BI for Intune to a Log Analytics workspace for Windows Update for Business reports and Custom Inventory data. Required only if you use one or both of those add-ons.
+These parameters connect BI for Intune to a Log Analytics workspace for Windows Update for Business reports and Enhanced Inventory data. Required only if you use one or both of those add-ons.
 
 ### AzureAD LogAnalytics Enable
 
-**Required:** Yes, for [Windows Update for Business reports](../installation/log-analytics/wufb-reports.md) and/or [Custom Inventory](../installation/custom-inventory.md)
+**Required:** Yes, for [Windows Update for Business reports](../installation/log-analytics/wufb-reports.md) and/or [Enhanced Inventory](../installation/custom-inventory.md)
 **Default:** FALSE
 
 Enables BI for Intune to read from Log Analytics.
@@ -102,10 +102,10 @@ Enables BI for Intune to read from Log Analytics.
 
 ### AzureAD LogAnalytics WorkspaceID
 
-**Required:** Yes, for Windows Update for Business reports and/or Custom Inventory
+**Required:** Yes, for Windows Update for Business reports and/or Enhanced Inventory
 **Default:** Blank
 
-The Workspace ID of the Log Analytics workspace where Custom Inventory and Windows Update for Business reports data are stored. Both add-ons must use the same workspace.
+The Workspace ID of the Log Analytics workspace where Enhanced Inventory and Windows Update for Business reports data are stored. Both add-ons must use the same workspace.
 
 ![](../images/AzureAD-LogAnalytics-WorkspaceID.png)
 

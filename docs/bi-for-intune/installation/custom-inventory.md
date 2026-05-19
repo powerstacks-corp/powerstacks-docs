@@ -1,10 +1,10 @@
 ---
-title: "Set up Custom Inventory"
+title: "Set up Enhanced Inventory"
 description: "Collect device facts Intune doesn't track natively, send them to Log Analytics, and surface them in BI for Intune."
 ---
-# Set up Custom Inventory
+# Set up Enhanced Inventory
 
-Custom Inventory is a PowerShell-based (Windows) and shell-based (macOS) collection pipeline that gathers device facts Intune doesn't track natively — hardware specs, monitor model and serial, disk health, battery health, Microsoft 365 channel, driver inventory, and warranty data — and sends them to your Azure Log Analytics workspace via the Log Ingestion API. BI for Intune reads from that workspace to populate the Firewall Status, App Inventory, Driver Inventory, Microsoft 365, Monitor, Disk, Battery, and Warranty dashboards.
+Enhanced Inventory is a PowerShell-based (Windows) and shell-based (macOS) collection pipeline that gathers device facts Intune doesn't track natively — hardware specs, monitor model and serial, disk health, battery health, Microsoft 365 channel, driver inventory, and warranty data — and sends them to your Azure Log Analytics workspace via the Log Ingestion API. BI for Intune reads from that workspace to populate the Firewall Status, App Inventory, Driver Inventory, Microsoft 365, Monitor, Disk, Battery, and Warranty dashboards.
 
 ## Prerequisites
 
@@ -14,11 +14,11 @@ Custom Inventory is a PowerShell-based (Windows) and shell-based (macOS) collect
 - Azure: **Contributor** or **Owner** on the target subscription or resource group, plus **User Access Administrator** or **Owner** to assign roles (only required for automatic RBAC assignment in Step 2).
 
 !!! tip "One workspace for both add-ons"
-    If you also set up [Windows Update for Business reports](log-analytics/wufb-reports.md), point it at this same workspace. BI for Intune reads both Custom Inventory data and Windows Update for Business Reports data from one Log Analytics workspace.
+    If you also set up [Windows Update for Business reports](log-analytics/wufb-reports.md), point it at this same workspace. BI for Intune reads both Enhanced Inventory data and Windows Update for Business Reports data from one Log Analytics workspace.
 
 ## Step 1: Create the Enterprise application
 
-The Custom Inventory scripts use a dedicated Microsoft Entra application to authenticate to Azure and send data via the Log Ingestion API. This is separate from the main BI for Intune app registration.
+The Enhanced Inventory scripts use a dedicated Microsoft Entra application to authenticate to Azure and send data via the Log Ingestion API. This is separate from the main BI for Intune app registration.
 
 !!! warning "Enterprise Application, not App Registration"
     You must create an **Enterprise Application** first, not a standard App Registration. The ARM deployment template in Step 2 requires the **Enterprise Application Object ID** (the service principal Object ID), which is different from the App Registration Object ID.
@@ -186,7 +186,7 @@ Deploy the script via Intune **Shell scripts**:
 ## Step 5: Connect BI for Intune to the Log Analytics workspace
 
 !!! note "May already be done"
-    If you set up WUfB Reports before Custom Inventory, this step is already done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **Verify data ingestion** below.
+    If you set up WUfB Reports before Enhanced Inventory, this step is already done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **Verify data ingestion** below.
 
 1. In the Power BI service, open the **BI for Intune** workspace.
 1. Open the BI for Intune **semantic model settings**.

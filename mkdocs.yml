@@ -132,13 +132,13 @@ nav:
         - Create Entra App Registration: bi-for-intune/installation/setup-guide/create-entra-app-registration.md
         - Configure the Semantic Model: bi-for-intune/installation/setup-guide/configure-the-semantic-model.md
         - Configure Data Sync: bi-for-intune/installation/setup-guide/configure-data-sync.md
-        - Export API Parameter: bi-for-intune/installation/setup-guide/export-api-parameter.md
-        - Cloud PC Export API Parameter: bi-for-intune/installation/setup-guide/cloud-pc-export-api-parameter.md
-        - Enable Maps: bi-for-intune/installation/setup-guide/enable-maps.md
     - Advanced Configuration:
       - bi-for-intune/advanced-configuration.md
       - Windows Update for Business Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
-      - Custom Inventory: bi-for-intune/installation/custom-inventory.md
+      - Enhanced Inventory: bi-for-intune/installation/custom-inventory.md
+      - Export API Parameter: bi-for-intune/installation/setup-guide/export-api-parameter.md
+      - Cloud PC Export API Parameter: bi-for-intune/installation/setup-guide/cloud-pc-export-api-parameter.md
+      - Enable Maps: bi-for-intune/installation/setup-guide/enable-maps.md
     - Administration:
       - bi-for-intune/administration/index.md
       - Semantic Model Parameters: bi-for-intune/administration/semantic-model-parameters.md

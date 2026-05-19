@@ -13,8 +13,8 @@ render_macros: false
 - **Startup Performance** data now uses the Intune Export API instead of Graph, improving sync performance.
 - **Device Enrollment Failure** data now uses the Intune Export API instead of Graph, improving sync performance.
 - **Proactive Remediation State** data now uses the Intune Export API instead of Graph, improving sync performance.
-- The [Custom Inventory Script for Windows](../installation/custom-inventory.md) now collects HP warranty information. _(In our testing the HP API has been intermittently slow, so it may take a while to populate inventory data for all of your HP devices.)_
-- The Custom Inventory Script for Windows now caches warranty data to a local JSON file on each device, eliminating the need to call the warranty APIs every month.
+- The [Enhanced Inventory Script for Windows](../installation/custom-inventory.md) now collects HP warranty information. _(In our testing the HP API has been intermittently slow, so it may take a while to populate inventory data for all of your HP devices.)_
+- The Enhanced Inventory Script for Windows now caches warranty data to a local JSON file on each device, eliminating the need to call the warranty APIs every month.
 
 ## New Features
 
@@ -41,14 +41,14 @@ render_macros: false
 ## Important Notes
 
 - [**Action Required**] The renamed columns on the **Device Details** object will break the Battery page in custom reports. Replace the old column names **Battery Design Capacity (MWh)** and **Battery Full Charge Capacity (MWh)** with the new names **Battery Design Capacity (mWh)** and **Battery Full Charge Capacity (mWh)**.
-- [**Action Required**] To populate OS install date information you must upgrade to the latest [Custom Inventory Script for Windows](../installation/custom-inventory.md). The updated script captures `OsInstallDate` from `Get-ComputerInfo` and emits it as `OSInstallDate` in the inventory record.
+- [**Action Required**] To populate OS install date information you must upgrade to the latest [Enhanced Inventory Script for Windows](../installation/custom-inventory.md). The updated script captures `OsInstallDate` from `Get-ComputerInfo` and emits it as `OSInstallDate` in the inventory record.
 - Always [back up your custom reports](../administration/backup-custom-reports.md) before upgrading.
 
 ## Summary
 
 BI for Intune v60 adds the ability to track actions over time. New fields and measures cover device enrollments, OS installations, and cumulative update installations on a per-day basis. This is useful for reporting on time-to-compliance after updates are released, tracking Intune migration progress, and tracking Windows OS upgrade rollouts.
 
-This release also moves three additional data sources to the Intune Export API for faster syncs and adds HP warranty data and local caching to the Custom Inventory Script for Windows.
+This release also moves three additional data sources to the Intune Export API for faster syncs and adds HP warranty data and local caching to the Enhanced Inventory Script for Windows.
 
 ## Example: Cumulative Updates Installed Per Day
 

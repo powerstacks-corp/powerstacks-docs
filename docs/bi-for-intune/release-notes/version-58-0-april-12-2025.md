@@ -5,7 +5,7 @@ render_macros: false
 # Versions 58.0 (AppSource Versions 1050)
 **BI for Intune Version 58 (April 12, 2025)**
 
-Version 58 is a very large release with many additions to the [custom inventory for Windows process](../installation/custom-inventory.md). These are some highly requested features. See the details below.
+Version 58 is a very large release with many additions to the [Enhanced Inventory for Windows process](../installation/custom-inventory.md). These are some highly requested features. See the details below.
 
 **Important Notes:**
 Several customers have recently reported upgrade failures resulting in the loss of their custom reports. Please do not forget to [backup before you upgrade](../administration/backup-custom-reports.md)!
@@ -14,13 +14,13 @@ Several customers have recently reported upgrade failures resulting in the loss 
 ## Below Are the Changes in Version 58.0
 
 
-- **New Report Pages:** (**Note**: To copy the new pages to your custom reports see the article how to copy pages.)New page: **Driver Inventory** (**Note**: Requires updated version of the [Custom Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)The new **Driver Inventory** page provides a means of reporting on the installed drivers on Windows devices.
-New page: **Microsoft 365** (**Note**: Requires updated version of the [Custom Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)
+- **New Report Pages:** (**Note**: To copy the new pages to your custom reports see the article how to copy pages.)New page: **Driver Inventory** (**Note**: Requires updated version of the [Enhanced Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)The new **Driver Inventory** page provides a means of reporting on the installed drivers on Windows devices.
+New page: **Microsoft 365** (**Note**: Requires updated version of the [Enhanced Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)
 - The new **Microsoft 365** page and corresponding semantic model object use an unsupported Microsoft API to report on the security update compliance of installed Microsoft 365 updates. There’s no guarantee that Microsoft will not remove the API.
-New page: **Warranty** (**Note**: Requires updated version of the [Custom Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)
+New page: **Warranty** (**Note**: Requires updated version of the [Enhanced Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.)
 - Reports on the warranty status of Dell, Lenovo, and Getac computers. See the Collect Warranty Data article for more information.
 **New Features:**
-- **Additions to the semantic model:**Added new object: **Driver Inventory** (**Note**: Requires updated version of the [Custom Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.) New fields in the Driver Inventory object include:Driver Inventory Classification
+- **Additions to the semantic model:**Added new object: **Driver Inventory** (**Note**: Requires updated version of the [Enhanced Inventory Script](https://github.com/powerstacks-corp/Windows-Custom-Inventory) for Windows.) New fields in the Driver Inventory object include:Driver Inventory Classification
 - Driver Inventory Count
 - Driver Inventory Description
 - Driver Inventory Hardware ID
@@ -39,14 +39,14 @@ New page: **Warranty** (**Note**: Requires updated version of the [Custom Invent
 - Release Date
 - Release Date (Days)
 - Windows Update Name
-Added new object: **Device Chassis**(**Note**: Requires updated version of the Custom Inventory Script for Windows.) New fields in the **Device Chassis** object include:
+Added new object: **Device Chassis**(**Note**: Requires updated version of the Enhanced Inventory Script for Windows.) New fields in the **Device Chassis** object include:
 - Chassis Count
 - Chassis Tag
 - Chassis Type
 - Hardware Type
 - Last Update
 - Last Update (Days)
-Added new object: **Device Microsoft 365**(**Note**: Requires updated version of the Custom Inventory Script for Windows.) New fields in the **Device Microsoft 365** object include:
+Added new object: **Device Microsoft 365**(**Note**: Requires updated version of the Enhanced Inventory Script for Windows.) New fields in the **Device Microsoft 365** object include:
 - End Of Support Date
 - End Of Support Date (Days)
 - Installed Version
@@ -61,7 +61,7 @@ Added new object: **Device Microsoft 365**(**Note**: Requires updated version of
 - Release Date
 - Release Date (Days)
 - Update Channel
-Added new object: **Device Warranty**(**Note**: Requires updated version of the Custom Inventory Script for Windows.) New fields in the **Device Warranty** object include:
+Added new object: **Device Warranty**(**Note**: Requires updated version of the Enhanced Inventory Script for Windows.) New fields in the **Device Warranty** object include:
 - Last Update
 - Last Update (Days)
 - Service Level Description
@@ -85,7 +85,7 @@ Added fields to the main table:
 - Driver Inventory Enrolled
 - Device Microsoft 365 Enrolled
 - Device Warranty Enrolled
-Changes to the **Custom Inventory Script for Windows**:
+Changes to the **Enhanced Inventory Script for Windows**:
 - Default value for **$RemoveBuiltInMonitors**changed to **$false**This was done to remediate a known issue. If the built-in laptop screen was not on when the script ran this variable was caused the first external monitor to not get reported.
 Added new parameters:
 - **$CollectDriverInventory** = **$true**Control if you want to collect Device, App, and Driver Inventory (True = Collect)

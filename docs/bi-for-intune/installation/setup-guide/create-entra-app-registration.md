@@ -39,6 +39,7 @@ The user performing these steps requires Global Admin and Subscription Admin rig
     - **DeviceManagementConfiguration.Read.All**
     - **DeviceManagementManagedDevices.Read.All**
     - **DeviceManagementRBAC.Read.All**
+    - **DeviceManagementScripts.Read.All**
     - **DeviceManagementServiceConfig.Read.All**
 
     ![](../../images/Device-Management-Permissions-692x1024.png)
@@ -49,6 +50,7 @@ The user performing these steps requires Global Admin and Subscription Admin rig
    ![](../../images/Audit-Log-Permissions-1024x615.png)
 1. Search for **Policy** and select **Policy.Read.All**.
    ![](../../images/Policy-with-CAP-1024x883.png)
+1. Search for **IdentityRiskyUser** and select **IdentityRiskyUser.Read.All**.
 1. (Optional — only for Windows 365 / Cloud PC) Search for **CloudPC** and select **CloudPC.Read.All**.
    ![cloudpc readall](../../images/cloudpc_readall-1024x774.png)
 1. Search for **Reports**, select **Reports.Read.All**, and select **Add permissions**.
@@ -56,8 +58,8 @@ The user performing these steps requires Global Admin and Subscription Admin rig
 
 ## Step 3: Add Log Analytics permissions
 
-!!! note "Only required for the Custom Inventory solution"
-    Skip this step if you do not plan to use the Custom Inventory solution.
+!!! note "Only required for the Enhanced Inventory solution"
+    Skip this step if you do not plan to use the Enhanced Inventory solution.
 
 1. Select **Add a permission**.
    ![](../../images/Add-Another-Permission-1024x566.png)
