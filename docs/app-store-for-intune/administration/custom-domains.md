@@ -1,9 +1,9 @@
 ---
-title: "Custom Domains"
+title: "Custom domains"
 description: "Configure a custom domain and SSL certificate for your App Store for Intune deployment on Azure App Service."
 ---
 
-# Custom Domain Configuration
+# Custom domain configuration
 
 This guide explains how to configure a custom domain (e.g., `apps.yourdomain.com`) for your App Store for Intune deployment on Azure App Service.
 
@@ -208,7 +208,8 @@ If you have the Teams Bot enabled for proactive notifications, two things need u
 3. Re-zip the manifest files (`manifest.json`, `color.png`, `outline.png`)
 4. In **Teams Admin Center** → **Teams apps** → **Manage apps**, find the existing App Store for Intune bot, select it, and upload the updated package
 
-> **Note:** Keeping both domains in `validDomains` ensures the bot continues to work during the transition. You can remove the `.azurewebsites.net` entry later once the custom domain is fully verified.
+!!! note
+    Keeping both domains in `validDomains` ensures the bot continues to work during the transition. You can remove the `.azurewebsites.net` entry later once the custom domain is fully verified.
 
 ## Verification checklist
 

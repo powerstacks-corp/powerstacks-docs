@@ -3,7 +3,7 @@ title: "Troubleshooting"
 description: "Diagnose and resolve common issues with the App Store for Intune, including logs, packaging errors, and install status problems."
 ---
 
-# Troubleshooting Guide
+# Troubleshooting guide
 
 This guide helps you diagnose and resolve common issues with the App Store for Intune.
 
@@ -641,7 +641,7 @@ az webapp show \
 
 ## Additional resources
 
-- [Administration guide](../administration/) - Complete administration documentation
+- [Administration guide](index.md) - Complete administration documentation
 - [Setup guide](../installation/setup-guide/) - Deployment and configuration
 - [Security guide](security.md) - Security best practices
 - [Architecture](architecture.md) - Why we made certain design choices

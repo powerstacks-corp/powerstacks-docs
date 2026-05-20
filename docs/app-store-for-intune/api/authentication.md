@@ -1,9 +1,9 @@
 ---
-title: "API Authentication"
+title: "API authentication"
 description: "How to register an Entra app, grant it API access, and request a JWT bearer token for App Store for Intune."
 ---
 
-# API Authentication
+# API authentication
 
 App Store for Intune uses **JWT bearer tokens** issued by your Entra ID tenant. Every API request must include `Authorization: Bearer <token>`. Tokens are validated against the App Store backend's Entra app registration: tenant, audience, and signing keys all have to match.
 

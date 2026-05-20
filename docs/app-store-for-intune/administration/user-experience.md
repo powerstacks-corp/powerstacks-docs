@@ -1,9 +1,9 @@
 ---
-title: "User Experience"
+title: "User experience"
 description: "How end users browse the app catalog, request apps, track status, and submit new app requests."
 ---
 
-# User Experience
+# User experience
 
 ### Browsing apps
 

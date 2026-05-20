@@ -1,9 +1,9 @@
 ---
-title: "Admin Guide"
+title: "Admin guide"
 description: "Portal administration and management for App Store for Intune."
 ---
 
-# Admin Guide
+# Admin guide
 
 Operational reference for App Store for Intune administrators. Configure the portal, manage the app catalog and approval workflows, monitor health, and run reports.
 

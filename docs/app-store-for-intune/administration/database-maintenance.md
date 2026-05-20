@@ -1,9 +1,9 @@
 ---
-title: "Database Maintenance"
+title: "Database maintenance"
 description: "Azure SQL Database automatic maintenance, backups, scaling guidance, and the rare manual operations."
 ---
 
-# Database Maintenance
+# Database maintenance
 
 The App Store for Intune uses Azure SQL Database Basic tier, which includes built-in automatic maintenance features. **No manual database maintenance is required.**
 
@@ -49,7 +49,8 @@ Azure SQL Database provides built-in backup and recovery capabilities:
 3. Select a restore point (any time within retention period)
 4. Azure creates a new database with data as of that point in time
 
-> **Note:** Restoring creates a *new* database, it does not overwrite the existing one. You would rename databases after verifying the restore if needed.
+!!! note
+    Restoring creates a *new* database, it does not overwrite the existing one. You would rename databases after verifying the restore if needed.
 
 ### When to consider scaling up
 

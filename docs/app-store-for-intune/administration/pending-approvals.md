@@ -1,9 +1,9 @@
 ---
-title: "Pending Approvals"
+title: "Pending approvals"
 description: "Review and approve or reject app requests waiting in the approval queue."
 ---
 
-# Pending Approvals
+# Pending approvals
 
 The Pending Approvals tab shows all requests waiting for your approval.
 

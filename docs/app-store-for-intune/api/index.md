@@ -1,9 +1,9 @@
 ---
-title: "API Reference"
+title: "API reference"
 description: "Programmatic access to App Store for Intune for CI/CD app uploads, automated update triggers, and external system integration."
 ---
 
-# API Reference
+# API reference
 
 App Store for Intune is API-first. The portal you and your users interact with is a React SPA on top of a REST API; that same API is available for your own automation. Add custom apps from a CI/CD pipeline, trigger update checks in response to a CVE feed, pull approval queue state into a monitoring dashboard, or integrate App Store into any other system that speaks HTTP and JWT.
 

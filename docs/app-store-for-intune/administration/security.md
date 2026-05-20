@@ -1,9 +1,9 @@
 ---
-title: "Security Overview"
+title: "Security overview"
 description: "Security model, Azure resources, permissions, and compliance details for the App Store for Intune."
 ---
 
-# Security Overview
+# Security overview
 
 This document provides full security documentation for the App Store for Intune, including all Azure resources created, permissions granted, and security configurations. It is intended to assist security teams with reviews and compliance requirements.
 

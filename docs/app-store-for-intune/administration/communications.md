@@ -40,7 +40,8 @@ Configure how the portal sends email notifications for request submissions and a
 | **App Installed** | Notify requestor when their app is installed on their device |
 | **App Published** | Notify admin when a WinGet app is published to Intune |
 
-> **Note:** The app registration must have the `Mail.Send` Microsoft Graph application permission with admin consent granted.
+!!! note
+    The app registration must have the `Mail.Send` Microsoft Graph application permission with admin consent granted.
 
 #### Creating a service account for email notifications
 
@@ -101,7 +102,8 @@ Test-ApplicationAccessPolicy -AppId "<your-api-client-id>" -Identity "apprequest
 
 When enabled, approval notification emails include **Approve** and **Reject** buttons directly in the email body (Outlook Actionable Messages). Approvers can approve or reject requests without leaving their inbox.
 
-> **Important:** Actionable email buttons require a one-time [provider registration with Microsoft](#registering-with-microsoft-required) and configuring the **Originator / Provider ID** in the portal settings. Without registration, emails are still sent; they contain the standard HTML body with a "Review Request" link to the portal. The Approve/Reject buttons will only appear once registration is complete and the Originator ID is configured.
+!!! warning
+    Actionable email buttons require a one-time [provider registration with Microsoft](#registering-with-microsoft-required) and configuring the **Originator / Provider ID** in the portal settings. Without registration, emails are still sent; they contain the standard HTML body with a "Review Request" link to the portal. The Approve/Reject buttons will only appear once registration is complete and the Originator ID is configured.
 
 | Setting | Description |
 |---------|-------------|
@@ -149,7 +151,8 @@ Set-OrganizationConfig -ConnectorsActionableMessagesEnabled $true -SmtpActionabl
 Get-Mailbox -Identity apprequests@company.com | FL ConnectorsEnabled
 ```
 
-> **Important:** Microsoft is transitioning Actionable Messages from External Access Tokens (EAT) to Microsoft Entra ID token authentication. If Microsoft requires Microsoft Entra ID tokens for new registrations, the portal's action endpoints may need to be updated in a future release. See the [Microsoft Entra ID Token documentation](https://learn.microsoft.com/en-us/outlook/actionable-messages/enable-entra-token-for-actionable-messages) for details.
+!!! warning
+    Microsoft is transitioning Actionable Messages from External Access Tokens (EAT) to Microsoft Entra ID token authentication. If Microsoft requires Microsoft Entra ID tokens for new registrations, the portal's action endpoints may need to be updated in a future release. See the [Microsoft Entra ID Token documentation](https://learn.microsoft.com/en-us/outlook/actionable-messages/enable-entra-token-for-actionable-messages) for details.
 
 ### Microsoft Teams bot notifications
 
@@ -200,7 +203,8 @@ Send personal Teams notifications to approvers and requestors via a Teams Bot. E
 - **401 errors**: Verify the Azure Bot resource's Microsoft App ID matches your `AzureAd__ClientId` and the client secret is valid
 - **Some users don't receive notifications**: The Teams Admin Center setup policy may take up to 24 hours to propagate
 
-> **Note:** No additional Microsoft Graph API permissions are required for Teams bot notifications. Bot Framework handles its own authentication.
+!!! note
+    No additional Microsoft Graph API permissions are required for Teams bot notifications. Bot Framework handles its own authentication.
 
 ### Approval reminders
 

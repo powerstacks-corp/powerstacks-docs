@@ -1,9 +1,9 @@
 ---
-title: "App Management"
+title: "App management"
 description: "Manage the Intune app catalog: sync apps, configure visibility and approvals, edit deployment settings, and roll back versions."
 ---
 
-# App Management
+# App management
 
 The App Management tab is your central hub for managing which Intune apps are available in the portal and how they behave.
 
@@ -114,7 +114,8 @@ When you set an app's visibility to **No** and it has an active Intune deploymen
 - **OK**: Hides the app AND removes the Intune assignment and deletes the Microsoft Entra ID deployment group
 - **Cancel**: Only hides the app but preserves the deployment infrastructure (useful if you plan to make it visible again later)
 
-> **Note:** Deleting the deployment and group is permanent. Users who currently have the app will lose access when group membership is removed.
+!!! note
+    Deleting the deployment and group is permanent. Users who currently have the app will lose access when group membership is removed.
 
 **Automatic deployment setup:**
 
@@ -131,7 +132,8 @@ When you set an app's visibility to **Yes** for the first time, the portal autom
 
 This automation ensures that when a user's request is approved, they simply need to be added to the group and Intune handles the deployment.
 
-> **Note:** If group or assignment creation fails, the error is logged but the visibility change still succeeds. You can manually create the assignment in Intune if needed.
+!!! note
+    If group or assignment creation fails, the error is logged but the visibility change still succeeds. You can manually create the assignment in Intune if needed.
 
 #### Approval settings
 
@@ -321,7 +323,8 @@ If a new app version causes issues, you can roll back to a previous version:
    - Mark the rolled-back version as "Current"
    - Archive the previously current version
 
-> **Important:** Rollback is only available for versions marked as "Archived". Failed deployments and the current version cannot be rolled back to.
+!!! warning
+    Rollback is only available for versions marked as "Archived". Failed deployments and the current version cannot be rolled back to.
 
 #### Version history limitations
 

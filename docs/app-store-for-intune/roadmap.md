@@ -1,13 +1,13 @@
 ---
-title: "Public Roadmap"
+title: "Public roadmap"
 description: "Planned features, near-term work, and recently shipped capabilities for the App Store for Intune."
 ---
 
-# App Store for Intune - Product Roadmap
+# App Store for Intune product roadmap
 
 This document outlines the planned features and current development status of the App Store for Intune.
 
-**Last updated:** February 2026
+**Last updated:** May 2026
 
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: "Approval Workflows"
+title: "Approval workflows"
 description: "Configure flexible approval workflows for app requests, including linear, pooled, conditional, and SLA-tracked workflows."
 ---
 
-# Approval Workflows
+# Approval workflows
 
 This document describes how to configure flexible approval workflows for app requests.
 
@@ -176,7 +176,7 @@ Removes the workflow configuration. Apps without a workflow will use the default
    - For Pooled: Search and select Microsoft Entra ID groups
 6. Select **Save**
 
-See the [Administration guide](../administration/) for detailed UI instructions.
+See the [Administration guide](index.md) for detailed UI instructions.
 
 ### Using the API
 
@@ -326,7 +326,7 @@ Teams channel notifications provide real-time visibility into approval activity.
 
 Teams notifications are sent to a channel via Incoming Webhook, so all channel members see the activity. Approvers select through to the portal to take action.
 
-See the [Administration guide](../administration/) for Teams setup instructions.
+See the [Administration guide](index.md) for Teams setup instructions.
 
 ### Actionable email messages (v1.6.1)
 
@@ -415,7 +415,7 @@ Configure approval requirements that vary based on app characteristics, requesto
 - **Mobile apps**: iOS/Android apps follow mobile device management approval path
 - **Department-specific**: Engineering department gets expedited approval for dev tools
 
-See the [Administration guide](../administration/) for UI configuration instructions.
+See the [Administration guide](index.md) for UI configuration instructions.
 
 ---
 
@@ -470,7 +470,7 @@ Monitor and enforce Service Level Agreements for request processing times.
 - List of at-risk requests
 - Breach history
 
-See the [Administration guide](../administration/) for configuration details.
+See the [Administration guide](index.md) for configuration details.
 
 ---
 
@@ -545,6 +545,6 @@ Automatically escalate approval requests that have been pending for too long, en
 
 ## See also
 
-- [Administration guide](../administration/) - Detailed UI instructions
+- [Administration guide](index.md) - Detailed UI instructions
 - [Setup guide](../installation/setup-guide/) - Initial configuration
 - [User guide](../user-guides/) - End-user perspective

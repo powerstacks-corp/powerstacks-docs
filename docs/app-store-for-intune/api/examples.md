@@ -1,9 +1,9 @@
 ---
-title: "PowerShell API Examples"
+title: "PowerShell API examples"
 description: "Copy-paste-runnable PowerShell scripts for the most common App Store for Intune API automation scenarios."
 ---
 
-# PowerShell API Examples
+# PowerShell API examples
 
 Working scripts for the three automation patterns App Store for Intune is most often integrated into:
 

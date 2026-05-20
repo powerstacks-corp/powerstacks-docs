@@ -1,9 +1,9 @@
 ---
-title: "Portal Settings"
+title: "Portal settings"
 description: "Configure portal-wide options: authorization, display, deployment, version management, license, and custom domains."
 ---
 
-# Portal Settings
+# Portal settings
 
 The Settings tab lets you configure portal-wide options including authorization, display settings, deployment configuration, and version management. Notification and messaging settings are on the **Communications** tab (see [Communications](communications.md)).
 
@@ -219,7 +219,8 @@ For existing deployments, use the Kudu ZIP deployment feature:
 8. Restart your App Service if needed
 9. Database migrations will run automatically on next startup
 
-> **Note:** This method preserves your existing configuration and database. The ZIP contains only application files.
+!!! note
+    This method preserves your existing configuration and database. The ZIP contains only application files.
 
 **Method 2: Deploy to Azure button (new installations only)**
 
@@ -230,7 +231,8 @@ For fresh installations on an empty resource group:
 3. Select an **empty resource group** or create a new one
 4. Configure deployment parameters
 
-> **Important:** The Deploy to Azure button will fail on resource groups containing existing resources. Use Method 1 for existing deployments.
+!!! warning
+    The Deploy to Azure button will fail on resource groups containing existing resources. Use Method 1 for existing deployments.
 
 ### License management
 
@@ -274,7 +276,8 @@ Users see warning banners in the following situations:
 | Device count in grace period (up to 3% over limit) | "Device count exceeds license limit by X devices. Please contact your IT administrator to upgrade." |
 | License invalid/expired | Warning message explaining the issue |
 
-> **Note:** When device count exceeds the license limit by more than 3%, new app requests are blocked until the license is upgraded or device count is reduced.
+!!! note
+    When device count exceeds the license limit by more than 3%, new app requests are blocked until the license is upgraded or device count is reduced.
 
 #### Device count
 
@@ -313,7 +316,8 @@ When dark mode is enabled, the portal uses a vignette-style design inspired by M
 
 This creates a professional look where the center content draws focus while the periphery provides visual framing.
 
-> **Note:** Dark mode settings persist across page refreshes and sign-in/sign-out cycles. The admin setting is loaded via a public API endpoint so it applies even before the user authenticates.
+!!! note
+    Dark mode settings persist across page refreshes and sign-in/sign-out cycles. The admin setting is loaded via a public API endpoint so it applies even before the user authenticates.
 
 ### App deployment settings
 
@@ -351,4 +355,5 @@ Once your custom domain is configured:
 2. **Update Portal URL** - In Communications > Email Notifications, update the Portal URL to use your custom domain
 3. **Test authentication** - Sign out and sign back in to verify authentication works
 
-> **Note:** For detailed DNS configuration, certificate options, and troubleshooting, see [Custom Domains](custom-domains.md).
+!!! note
+    For detailed DNS configuration, certificate options, and troubleshooting, see [Custom Domains](custom-domains.md).

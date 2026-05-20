@@ -1,9 +1,9 @@
 ---
-title: "Reports and Analytics"
+title: "Reports and analytics"
 description: "Built-in dashboards, install status tracking, by-person reports, and the audit trail with CSV export."
 ---
 
-# Reports and Analytics
+# Reports and analytics
 
 The Admin Dashboard includes built-in reporting capabilities to help you understand app request patterns and deployment status.
 

@@ -1,13 +1,13 @@
 ---
-title: "User Guide"
+title: "User guide"
 description: "How employees browse, request, and track application installations in the App Store for Intune."
 ---
 
-# App Store for Intune - User Guide
+# App Store for Intune user guide
 
 This guide helps employees use the App Store for Intune to browse, request, and track application installations for their devices.
 
-**Last updated:** February 2026
+**Last updated:** May 2026
 
 ---
 

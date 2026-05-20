@@ -3,7 +3,7 @@ title: "Architecture"
 description: "System architecture, components, data model, and data flows for the App Store for Intune."
 ---
 
-# Architecture Overview
+# Architecture overview
 
 This document provides a detailed overview of the App Store for Intune architecture.
 

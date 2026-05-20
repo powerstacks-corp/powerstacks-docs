@@ -1,9 +1,9 @@
 ---
-title: "App Catalog and Cloud Packaging"
+title: "App catalog and cloud packaging"
 description: "Browse WinGet packages, publish to Intune with PSADT wrapping, manage ring-based updates, and configure auto-deploy."
 ---
 
-# App Catalog and Cloud Packaging
+# App catalog and cloud packaging
 
 The **App Catalog** tab in the Admin Dashboard lets you browse over 9,000 apps from Microsoft's official WinGet repository ([microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs)) and publish them directly to Intune as Win32 apps. Package manifests are fetched directly from GitHub (no third-party services), ensuring zero supply chain attack risk.
 

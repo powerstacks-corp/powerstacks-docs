@@ -1,13 +1,13 @@
 ---
-title: "Disaster Recovery"
+title: "Disaster recovery"
 description: "Backup strategies, recovery runbooks, and high availability options for the App Store for Intune."
 ---
 
-# Disaster Recovery Guide
+# Disaster recovery guide
 
 This document provides disaster recovery procedures for the App Store for Intune, including backup strategies, recovery runbooks, and high availability options.
 
-**Last Updated:** February 2026
+**Last updated:** May 2026
 
 ---
 

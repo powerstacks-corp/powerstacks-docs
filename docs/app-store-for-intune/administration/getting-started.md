@@ -1,9 +1,9 @@
 ---
-title: "Getting Started"
+title: "Getting started"
 description: "First-time admin orientation for the App Store for Intune portal, including dashboard layout and the Setup Wizard."
 ---
 
-# Getting Started
+# Getting started
 
 After initial deployment and Entra ID configuration (see [Setup Guide](../installation/setup-guide/)), most portal configuration can be done directly through the Admin Dashboard.
 
@@ -48,7 +48,8 @@ For first-time setup or to reconfigure the portal, use the **Setup Wizard**:
 
 The wizard saves your settings as you progress through each step. You can skip the wizard at any time and configure settings manually.
 
-> **Note:** The License step is required for the portal to be fully operational. Without a valid license, users will see warning banners and some features may be restricted.
+!!! note
+    The License step is required for the portal to be fully operational. Without a valid license, users will see warning banners and some features may be restricted.
 
 **Quick reference commands** (shown in wizard completion):
 

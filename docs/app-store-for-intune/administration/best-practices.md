@@ -1,9 +1,9 @@
 ---
-title: "Best Practices"
+title: "Best practices"
 description: "Operational guidance for app visibility strategy, approval configuration, group management, and email notifications."
 ---
 
-# Best Practices
+# Best practices
 
 ### App visibility strategy
 
@@ -30,7 +30,8 @@ With automatic group and assignment creation, the portal handles most group mana
 3. **Custom Prefix**: Configure the Group Name Prefix in Settings to match your organization's naming conventions
 4. **Manual Override**: You can still manually set a Target Group on an app if you prefer to use an existing group
 
-> **Tip:** To use existing groups instead of auto-created ones, set the Target Group before making the app visible.
+!!! tip
+    To use existing groups instead of auto-created ones, set the Target Group before making the app visible.
 
 ### Email notifications
 
