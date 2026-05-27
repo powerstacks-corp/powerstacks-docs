@@ -115,8 +115,17 @@ Quick summary:
 
     ![Azure Portal Add custom domain dialog with All other domain services selected, App Service Managed Certificate, SNI SSL, and the Domain validation section showing the expected CNAME and TXT records](../images/Install-validate-custom-domain.png)
 
-5. Select **Validate**. This succeeds because DNS from Step 1 is in place.
-6. Select **Add**. The custom domain is added and — if you chose **App Service Managed Certificate** — the certificate is provisioned and bound automatically. Allow up to 10 minutes for the certificate to issue.
+5. Select **Validate**. Each row in the **Domain validation** table flips to a green check once DNS is resolving correctly. If validation fails, your Step 1 DNS records haven't propagated yet — wait and retry.
+
+    ![Add custom domain dialog with successful Domain validation: green checks on both the CNAME and TXT records, Add button now enabled](../images/Install-validation-complete-custom-domain.png)
+
+6. Select **Add**. Azure shows a notification confirming the custom domain was added, the App Service Managed Certificate was created, and the SSL binding was configured — all in one operation.
+
+    ![Azure notification: Successfully added custom domain, successfully created App Service Managed Certificate and configured SSL binding](../images/Install-adding-custom-domain-and-ssl-binding.png)
+
+    Allow a few minutes for the certificate to issue. The **Custom domains** list initially shows the new domain with no binding, then automatically updates to **Secured** with **SNI SSL** once provisioning finishes. No further action is needed in the Managed Certificate path.
+
+    ![Custom domains list showing the new domain with Status: Secured and Binding type: SNI SSL](../images/Install-custom-domain-secured.png)
 
 If you selected **Add certificate later** in Step 4, finish with these extra steps to add and bind your own cert:
 
