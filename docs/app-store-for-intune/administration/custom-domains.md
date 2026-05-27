@@ -102,14 +102,21 @@ Microsoft's official tutorial is the canonical reference: [Tutorial: Map custom 
 Quick summary:
 
 1. Go to **Azure Portal** → **App Services** → your App Service. The App Service name is the `appName` value you captured from the [deployment outputs](../installation/setup-guide/deploy-to-azure.md#capture-the-deployment-outputs).
-2. Go to **Settings** → **Custom domains**
-3. Select **+ Add custom domain**
-4. Enter your custom domain (e.g., `apps.yourdomain.com`)
+2. Go to **Settings** → **Custom domains**.
+3. Select **+ Add custom domain**.
+4. In the **Add custom domain** dialog, set:
+    - **Domain provider**: **All other domain services** (use **App Service Domain** only if you purchased the domain through Azure itself).
+    - **TLS/SSL certificate**: **App Service Managed Certificate** for the free Azure-managed cert. Pick **Add certificate later** if you'll bring your own — see [Other certificate options](#other-certificate-options-manual-only) below.
+    - **TLS/SSL type**: **SNI SSL**.
+    - **Custom domain**: enter your domain (e.g., `apps.yourdomain.com`).
 5. Select **Validate**. This succeeds because DNS from Step 1 is in place.
-6. Select **Add**
-7. Go to **Settings** → **Certificates** → **+ Add certificate** → **App Service Managed Certificate**
-8. Select your custom domain → **Create**
-9. Return to **Settings** → **Custom domains** → select your domain → **Add binding** → choose the managed certificate with **SNI SSL**
+6. Select **Add**. The custom domain is added and — if you chose **App Service Managed Certificate** — the certificate is provisioned and bound automatically. Allow up to 10 minutes for the certificate to issue.
+
+If you selected **Add certificate later** in Step 4, finish with these extra steps to add and bind your own cert:
+
+7. Go to **Settings** → **Certificates** → **+ Add certificate**.
+8. Select your certificate source (Key Vault import, upload, or Managed Certificate) and complete the dialog.
+9. Return to **Settings** → **Custom domains** → select your domain → **Add binding** → choose your certificate with **SNI SSL**.
 
 ### Other certificate options (manual only)
 
