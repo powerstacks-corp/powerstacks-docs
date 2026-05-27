@@ -45,7 +45,11 @@ If using a subdomain like `apps.yourdomain.com`:
 | CNAME | `apps` | `your-app.azurewebsites.net` | 3600 |
 | TXT | `asuid.apps` | `<Custom Domain Verification ID>` | 3600 |
 
-The **Custom Domain Verification ID** comes from Azure Portal → App Service → **Settings** → **Custom domains** → **+ Add custom domain** (it's shown in the dialog before you commit, even though you'll come back to actually save in Step 2).
+To get the **Custom Domain Verification ID**:
+
+1. Go to **Azure Portal** → **App Services** → your App Service. The App Service name is the `appName` value you captured from the [deployment outputs](../installation/setup-guide/deploy-to-azure.md#capture-the-deployment-outputs).
+2. Go to **Settings** → **Custom domains**.
+3. Select **+ Add custom domain**. The **Custom Domain Verification ID** is shown in the dialog. Copy it for your DNS TXT record above. You'll come back here to actually save in Step 2.
 
 ### For apex/root domains
 
