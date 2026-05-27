@@ -108,9 +108,12 @@ Quick summary:
     - **Domain provider**: **All other domain services** (use **App Service Domain** only if you purchased the domain through Azure itself).
     - **TLS/SSL certificate**: **App Service Managed Certificate** for the free Azure-managed cert. Pick **Add certificate later** if you'll bring your own — see [Other certificate options](#other-certificate-options-manual-only) below.
     - **TLS/SSL type**: **SNI SSL**.
-    - **Custom domain**: enter your domain (e.g., `apps.yourdomain.com`).
+    - **Hostname record type**: **CNAME** for subdomains (recommended), **A** for apex/root domains.
+    - **Domain**: enter your custom domain (e.g., `apps.yourdomain.com`).
 
-    ![Azure Portal Add custom domain dialog with Domain provider, TLS/SSL certificate, TLS/SSL type, and Custom domain fields](../images/Install-add-custom-domain.png)
+    Once the domain is entered, the **Domain validation** section shows the DNS records Azure expects and their current resolution status — useful for confirming your Step 1 DNS records are propagated before you click Validate.
+
+    ![Azure Portal Add custom domain dialog with All other domain services selected, App Service Managed Certificate, SNI SSL, and the Domain validation section showing the expected CNAME and TXT records](../images/Install-validate-custom-domain.png)
 
 5. Select **Validate**. This succeeds because DNS from Step 1 is in place.
 6. Select **Add**. The custom domain is added and — if you chose **App Service Managed Certificate** — the certificate is provisioned and bound automatically. Allow up to 10 minutes for the certificate to issue.
