@@ -45,6 +45,15 @@ If using a subdomain like `apps.yourdomain.com`:
 | CNAME | `apps` | `your-app.azurewebsites.net` | 3600 |
 | TXT | `asuid.apps` | `<Custom Domain Verification ID>` | 3600 |
 
+!!! note "Naming the TXT record"
+    The TXT record name is always `asuid.` followed by the subdomain portion of your custom domain. Examples:
+
+    - `apps.yourdomain.com` → `asuid.apps`
+    - `getapps.contoso.io` → `asuid.getapps`
+    - `portal.example.net` → `asuid.portal`
+
+    Some DNS providers (Cloudflare, GoDaddy, Route 53) auto-append the zone when you enter the name. Others want the full FQDN (`asuid.apps.yourdomain.com`). If validation fails after DNS propagation, confirm what was actually published with `nslookup -q=TXT asuid.apps.yourdomain.com`.
+
 To get the **Custom Domain Verification ID**:
 
 1. Go to **Azure Portal** → **App Services** → your App Service. The App Service name is the `appName` value you captured from the [deployment outputs](../installation/setup-guide/deploy-to-azure.md#capture-the-deployment-outputs).
