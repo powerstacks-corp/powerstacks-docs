@@ -9,14 +9,16 @@ Before anyone can sign in to the portal, the frontend app registration needs to 
 
 ## Find the App Service URL
 
-The deploy output includes the App Service URL. To retrieve it:
+If you captured the `appUrl` value from the deployment outputs during [Deploy to Azure](deploy-to-azure.md#capture-the-deployment-outputs), use that. It looks like `https://<sitename>.azurewebsites.net`.
+
+If you didn't capture it, retrieve it now:
 
 1. Go to **Azure Portal** > your resource group > **Deployments**.
 2. Select the deployment that just completed.
 3. Select **Outputs** in the left navigation.
-4. Copy the value of **appUrl**. It looks like `https://<sitename>.azurewebsites.net`.
+4. Copy the value of **appUrl**.
 
-You can also retrieve it later from **App Service** > **Overview** > **Default domain**.
+Or, from the App Service directly: **Azure Portal** > **App Service** > your App Store App Service > **Overview** > **Default domain**.
 
 ## Add the redirect URI
 
