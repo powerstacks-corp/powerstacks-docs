@@ -69,6 +69,9 @@ DNS changes can take anywhere from a few minutes to 48 hours to propagate global
 
 ### Option A: One-click deployment (recommended)
 
+!!! note "First-time setup? Skip to Option B."
+    Option A is launched from inside the portal (**Admin → Settings → Custom Domain Setup**), which means you have to be signed in to the portal already. If you're configuring a custom domain as part of your initial deploy (before you've ever signed in), use Option B instead. You can always come back to Option A for future certificate renewals.
+
 The portal ships an ARM template that adds the custom domain hostname binding **and** provisions a free Azure-managed SSL certificate in a single deployment. From the portal: **Admin → Settings → Custom Domain Setup → Configure Custom Domain in Azure**.
 
 The template lives at:
