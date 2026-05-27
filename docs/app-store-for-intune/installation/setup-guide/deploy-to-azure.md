@@ -77,19 +77,37 @@ Once validation passes, review the deployment summary and select **Create**. The
 
 ## After the deploy completes
 
-After the wizard reports a successful deployment, wait 10 to 15 minutes for the App Service's managed identity to propagate across Microsoft Entra ID before continuing.
+### Capture the deployment outputs
 
-!!! warning "Capture the App Service principal ID from Outputs"
-    Before leaving the deployment page, open the **Outputs** blade and copy the **`appServicePrincipalId`** value. You'll paste it into the PowerShell snippet on the next page to grant Microsoft Graph permissions to the App Service.
+Once the wizard reports a successful deployment, open the deployment's **Outputs** blade and capture the values below before navigating away.
 
-    Path: **Azure Portal** > your resource group > **Deployments** > the deployment that just completed > **Outputs**.
+Path: **Azure Portal** > your resource group > **Deployments** > the deployment that just completed > **Outputs**.
 
-    If you forget, the same value is also available later from **App Service** > **Identity** > **System assigned** > **Object (principal) ID**.
+| Output | Used for |
+| --- | --- |
+| `appServicePrincipalId` | **Required for the next step.** Paste into the PowerShell snippet that grants Microsoft Graph permissions to the App Service. Also available later from **App Service** > **Identity** > **System assigned** > **Object (principal) ID**. |
+| `appUrl` | **Required.** The portal URL. You'll add it as the production redirect URI on the frontend app registration. Also available later from **App Service** > **Overview** > **Default domain**. |
+| `teamsBotMessagingEndpoint` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
+| `teamsBotAppId` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
+| `storageAccountName` | Referenced by the app catalog packaging pipeline. |
+| `keyVaultName` | Holds the SQL and storage connection strings. Referenced when rotating secrets. |
+| `appName` | App Service name. Useful for finding logs and configuring scaling. |
+| `sqlServerFqdn` | SQL Server FQDN. Used for direct SSMS access during troubleshooting. |
+| `databaseName` | Database name. Used with the SQL Server FQDN for direct access. |
+| `keyVaultUri` | Full Key Vault URI. Useful for scripted secret access. |
 
-Then work through these pages in order:
+Save these values in your internal runbook or password manager alongside the SQL credentials you chose during the wizard.
 
-1. [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md)
-2. [Add the production redirect URI](add-redirect-uri.md)
+### Wait for the managed identity to propagate
+
+After capturing the outputs, wait 10 to 15 minutes for the App Service's system-assigned managed identity to propagate across Microsoft Entra ID before continuing. Running the next step before this completes returns a "service principal not found" error.
+
+### Continue with the setup
+
+Work through these pages in order:
+
+1. [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md) — uses `appServicePrincipalId`
+2. [Add the production redirect URI](add-redirect-uri.md) — uses `appUrl`
 3. [Sign in and verify](sign-in.md)
 
 If anything during or after the deploy goes wrong, see [Troubleshooting](troubleshooting.md).
