@@ -62,6 +62,9 @@ After you select **Next** on the Advanced tab, the wizard runs a final round of 
 
 Once validation passes, review the deployment summary and select **Create**. The deploy takes 10 to 15 minutes.
 
+!!! tip "Stay on the deployment page until it completes"
+    The next step needs a value from this deployment's **Outputs** blade. If you navigate away you can still retrieve it later, but it's easiest to grab it before you leave the page.
+
 ## What the template provisions
 
 - **Azure App Service Plan** and the **App Service** itself with system-assigned managed identity enabled. The managed identity is the runtime identity for Microsoft Graph calls.
@@ -74,7 +77,16 @@ Once validation passes, review the deployment summary and select **Create**. The
 
 ## After the deploy completes
 
-After the wizard reports a successful deployment, wait 10 to 15 minutes for the App Service's managed identity to propagate across Microsoft Entra ID before continuing. Then work through these pages in order:
+After the wizard reports a successful deployment, wait 10 to 15 minutes for the App Service's managed identity to propagate across Microsoft Entra ID before continuing.
+
+!!! warning "Capture the App Service principal ID from Outputs"
+    Before leaving the deployment page, open the **Outputs** blade and copy the **`appServicePrincipalId`** value. You'll paste it into the PowerShell snippet on the next page to grant Microsoft Graph permissions to the App Service.
+
+    Path: **Azure Portal** > your resource group > **Deployments** > the deployment that just completed > **Outputs**.
+
+    If you forget, the same value is also available later from **App Service** > **Identity** > **System assigned** > **Object (principal) ID**.
+
+Then work through these pages in order:
 
 1. [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md)
 2. [Add the production redirect URI](add-redirect-uri.md)
