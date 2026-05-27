@@ -151,6 +151,15 @@ If your scenario requires a different certificate path, replace step 7 above wit
 5. Upload your PFX/PEM file
 6. Bind to your custom domain
 
+!!! tip "First-time install? Pause here and return to the install flow."
+    If you arrived on this page from [Add the production redirect URI](../installation/setup-guide/add-redirect-uri.md), Steps 1 and 2 are all you need to finish on this page right now. Once Azure validates and adds the custom domain:
+
+    1. Return to [Add the production redirect URI](../installation/setup-guide/add-redirect-uri.md) and use your new custom domain URL (e.g., `https://apps.yourdomain.com/`) as the redirect URI.
+    2. Continue with the rest of the install ([Sign in and verify](../installation/setup-guide/sign-in.md)).
+    3. After you can sign in to the portal, come back here for **Step 4** (Portal URL setting) and **Step 6** (Teams bot, if enabled). **Step 5** (Force HTTPS) can be done anytime.
+
+    Steps 3, 4, and 6 below are written for an existing deployment that's switching to a new custom domain. They assume you can already sign in to the portal as an admin — which isn't true during a fresh install. Skip them now and the install flow will handle redirect URIs through the page linked above.
+
 ## Step 3: Update Microsoft Entra ID redirect URIs (frontend SPA app registration)
 
 Redirect URIs need to be added to the **Frontend SPA** app registration only. The Backend API app is a confidential client that receives tokens from the SPA, so it doesn't use redirect URIs and doesn't need any change here.
