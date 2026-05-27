@@ -88,7 +88,7 @@ Microsoft's official tutorial is the canonical reference: [Tutorial: Map custom 
 
 Quick summary:
 
-1. Go to **Azure Portal** → **App Services** → your App Service
+1. Go to **Azure Portal** → **App Services** → your App Service. The App Service name is the `appName` value you captured from the [deployment outputs](../installation/setup-guide/deploy-to-azure.md#capture-the-deployment-outputs).
 2. Go to **Settings** → **Custom domains**
 3. Select **+ Add custom domain**
 4. Enter your custom domain (e.g., `apps.yourdomain.com`)
