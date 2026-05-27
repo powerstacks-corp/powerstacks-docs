@@ -47,18 +47,20 @@ Select **Next**.
 
 ### Advanced
 
-- **Release Channel**: select **Latest** for the current stable release.
+- **Release Channel**: select **Stable (Recommended)** for the current stable release. The other option, **Staging (Preview Features)**, gets early access to upcoming features but should only be used on non-production deployments.
 - **App Service Plan Size**: select the App Service plan SKU. **B2** is the recommended starting point and can be scaled later.
 - **Instance Count**: number of App Service plan instances. Start with **1** unless you have a known scale requirement.
 - **Enable Auto-Heal (Recommended)**: leave selected. Automatically restarts the app when issues are detected.
 - **Enable Health Check (Recommended)**: leave selected. Routes traffic away from unhealthy instances.
-- **Enable Teams Bot Notifications**: select if you want personal Teams Adaptive Card notifications for approvers and requestors. Provisioning the bot resource at deploy time is the cleanest path; you can also enable Teams notifications later from the Admin Settings tab.
+- **Enable Teams Bot Notifications (Recommended)**: select if you want personal Teams Adaptive Card notifications for approvers and requestors. Provisioning the bot resource at deploy time is the cleanest path; you can also enable Teams notifications later from the Admin Settings tab.
 
 Select **Next**.
 
 ### Review + create
 
-Review the deployment summary, then select **Create**. The deploy takes 10 to 15 minutes.
+After you select **Next** on the Advanced tab, the wizard runs a final round of validation against your inputs. The page may appear unresponsive for a few seconds while these checks complete — this is expected, don't refresh or navigate away.
+
+Once validation passes, review the deployment summary and select **Create**. The deploy takes 10 to 15 minutes.
 
 ## What the template provisions
 
