@@ -33,6 +33,15 @@ $AppServicePrincipalId = "<paste-the-principal-id-from-deploy-output>"
 
 Connect-MgGraph -Scopes "AppRoleAssignment.ReadWrite.All","Application.Read.All"
 
+# Verify the App Service's managed identity has propagated to Microsoft Entra ID
+# before attempting to grant permissions. If this check fails, the propagation
+# window has not yet elapsed.
+$AppSp = Get-MgServicePrincipal -ServicePrincipalId $AppServicePrincipalId -ErrorAction SilentlyContinue
+if (-not $AppSp) {
+    Write-Warning "App Service principal $AppServicePrincipalId not found in Microsoft Entra ID. Please wait a few minutes for the App Service's system-assigned managed identity to propagate across Microsoft Entra ID, then try again."
+    return
+}
+
 $GraphSp = Get-MgServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'"
 
 $Permissions = @(
@@ -48,7 +57,7 @@ $Permissions = @(
 foreach ($p in $Permissions) {
     $role = $GraphSp.AppRoles | Where-Object { $_.Value -eq $p }
     if (-not $role) {
-        Write-Warning "App role $p not found on Microsoft Graph"
+        Write-Warning "App role $p not found on Microsoft Graph. Skipping."
         continue
     }
     New-MgServicePrincipalAppRoleAssignment `
@@ -66,7 +75,7 @@ The snippet takes about 10 seconds.
 ## What each permission is for
 
 | Permission | Used for |
-|---|---|
+| ---------- | -------- |
 | `DeviceManagementApps.Read.All` | Read the existing Intune app catalog and assignment state |
 | `DeviceManagementApps.ReadWrite.All` | Create and update Intune Win32 app deployments |
 | `DeviceManagementConfiguration.Read.All` | Read Intune assignment filters used by ring deployment settings |
