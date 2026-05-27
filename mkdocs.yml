@@ -56,6 +56,7 @@ extra_css:
 
 extra_javascript:
   - scripts/powerstacks-nav.js         # scroll-aware nav + mobile menu
+  - scripts/external-links.js          # open all external links in a new tab
 
 # ────────────────────────────────────────────────────────────────
 # Markdown
