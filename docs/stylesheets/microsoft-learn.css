@@ -1047,3 +1047,17 @@ html {
 /* ── Sidebar positioning is handled in powerstacks-nav.css ──────────
    (top: 64px, height: calc(100vh - 64px), z-index: 5)
    Old 40px rules removed — superseded by the 64px nav height. */
+
+
+/* ── Screenshot borders ─────────────────────────────────────────────
+   Adds a subtle outline around content images so white-background
+   screenshots stand out from the white page. Scoped to .md-typeset
+   so nav/logo/footer images are unaffected. Emoji/twemoji excluded
+   defensively in case they ever render as <img>. */
+.md-typeset img:not(.emojione):not(.twemoji) {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  max-width: 100%;
+  height: auto;
+}
