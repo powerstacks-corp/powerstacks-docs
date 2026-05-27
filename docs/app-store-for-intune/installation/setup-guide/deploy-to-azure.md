@@ -79,22 +79,28 @@ Once validation passes, review the deployment summary and select **Create**. The
 
 ### Capture the deployment outputs
 
-Once the wizard reports a successful deployment, open the deployment's **Outputs** blade and capture the values below before navigating away.
+Once the wizard reports a successful deployment, you'll see the deployment overview page:
+
+![Azure Portal showing the deployment-is-complete screen](../../images/deploy-wizard-06-deployment-complete.png)
+
+Open the deployment's **Outputs** blade (in the left navigation) and capture the values below before navigating away.
 
 Path: **Azure Portal** > your resource group > **Deployments** > the deployment that just completed > **Outputs**.
 
+![Deployment Outputs blade showing all output values](../../images/deploy-wizard-07-outputs.png)
+
 | Output | Used for |
 | --- | --- |
-| `appServicePrincipalId` | **Required for the next step.** Paste into the PowerShell snippet that grants Microsoft Graph permissions to the App Service. Also available later from **App Service** > **Identity** > **System assigned** > **Object (principal) ID**. |
 | `appUrl` | **Required.** The portal URL. You'll add it as the production redirect URI on the frontend app registration. Also available later from **App Service** > **Overview** > **Default domain**. |
-| `teamsBotMessagingEndpoint` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
-| `teamsBotAppId` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
-| `storageAccountName` | Referenced by the app catalog packaging pipeline. |
-| `keyVaultName` | Holds the SQL and storage connection strings. Referenced when rotating secrets. |
-| `appName` | App Service name. Useful for finding logs and configuring scaling. |
 | `sqlServerFqdn` | SQL Server FQDN. Used for direct SSMS access during troubleshooting. |
 | `databaseName` | Database name. Used with the SQL Server FQDN for direct access. |
+| `appName` | App Service name. Useful for finding logs and configuring scaling. |
+| `storageAccountName` | Referenced by the app catalog packaging pipeline. |
+| `keyVaultName` | Holds the SQL and storage connection strings. Referenced when rotating secrets. |
 | `keyVaultUri` | Full Key Vault URI. Useful for scripted secret access. |
+| `teamsBotMessagingEndpoint` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
+| `teamsBotAppId` | Teams bot configuration (only if **Enable Teams Bot Notifications** was selected). |
+| `appServicePrincipalId` | **Required for the next step.** Paste into the PowerShell snippet that grants Microsoft Graph permissions to the App Service. Also available later from **App Service** > **Identity** > **System assigned** > **Object (principal) ID**. |
 
 Save these values in your internal runbook or password manager alongside the SQL credentials you chose during the wizard.
 
