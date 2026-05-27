@@ -25,8 +25,10 @@ Below are all of the permissions required to be configured on the Azure AD App R
   DeviceManagementConfiguration.Read.All
   DeviceManagementManagedDevice.Read.All
   DeviceManagementRBAC.Read.All
+  DeviceManagementScripts.Read.All
   DeviceManagementServiceConfig.Read.All
   Directory.Read.All
+  IdentityRiskyUser.Read.All
   Policy.Read.All
   Reports.Read.All
   CloudPC.Read.All
