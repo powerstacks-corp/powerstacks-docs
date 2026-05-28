@@ -85,13 +85,11 @@ DNS changes can take anywhere from a few minutes to 48 hours to propagate global
 !!! note "First-time setup? Skip to Option B."
     Option A is launched from inside the portal (**Admin → Settings → Custom Domain Setup**), which means you have to be signed in to the portal already. If you're configuring a custom domain as part of your initial deploy (before you've ever signed in), use Option B instead. You can always come back to Option A for future certificate renewals.
 
-The portal ships an ARM template that adds the custom domain hostname binding **and** provisions a free Azure-managed SSL certificate in a single deployment. From the portal: **Admin → Settings → Custom Domain Setup → Configure Custom Domain in Azure**.
+The portal ships an ARM template that adds the custom domain hostname binding **and** provisions a free Azure-managed SSL certificate in a single deployment. Launch it directly:
 
-The template lives at:
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpowerstacks-corp%2Fapp-store-for-intune%2Fmain%2Fazuredeploy-customdomain.json)
 
-```
-https://raw.githubusercontent.com/powerstacks-corp/app-store-for-intune/main/azuredeploy-customdomain.json
-```
+The same template is also reachable from inside the portal once you're signed in: **Admin → Settings → Custom Domain Setup → Configure Custom Domain in Azure**.
 
 DNS records (Step 1) must already be propagated, otherwise Azure's domain validation will fail at deployment time.
 
@@ -169,12 +167,12 @@ If your scenario requires a different certificate path, replace step 7 above wit
 
     Steps 3, 4, and 6 below are written for an existing deployment that's switching to a new custom domain. They assume you can already sign in to the portal as an admin — which isn't true during a fresh install. Skip them now and the install flow will handle redirect URIs through the page linked above.
 
-## Step 3: Update Microsoft Entra ID redirect URIs (frontend SPA app registration)
+## Step 3: Update Microsoft Entra ID redirect URIs (App Store app registration)
 
-Redirect URIs need to be added to the **Frontend SPA** app registration only. The Backend API app is a confidential client that receives tokens from the SPA, so it doesn't use redirect URIs and doesn't need any change here.
+Redirect URIs are added to the App Store app registration's Single-page application platform.
 
 1. Go to **Microsoft Entra admin center** → **App registrations**
-2. Select your **Frontend SPA** app registration (commonly named *App Store for Intune - Frontend* or similar; if unsure, check `src/AppRequestPortal.Web/src/authConfig.ts`. The `clientId` it imports identifies the SPA app.)
+2. Select your **App Store** app registration (commonly named *App Store for Intune* or similar). If you have multiple app registrations and need to confirm which one the portal uses, get the client ID from **Azure Portal** → **App Service** → your App Store App Service → **Settings** → **Environment variables** (or **Configuration** in older portal versions) → **AzureAd__ClientId**, then match it to the **Application (client) ID** column on the App registrations list.
 3. Go to **Authentication** → **Platform configurations** → **Single-page application**
 4. Add the following redirect URIs:
 

@@ -1,11 +1,11 @@
 ---
 title: "Add the production redirect URI"
-description: "Add the App Service URL to the frontend app registration's Single-page application platform so users can sign in."
+description: "Add the App Service URL to the App Store app registration's Single-page application platform so users can sign in."
 ---
 
 # Add the production redirect URI
 
-Before anyone can sign in to the portal, the frontend app registration needs to know which URL the user will be redirected to after authentication. The App Service URL is generated during deploy and is shown in the deployment outputs.
+Before anyone can sign in to the portal, the App Store app registration needs to know which URL the user will be redirected to after authentication. The App Service URL is generated during deploy and is shown in the deployment outputs.
 
 !!! tip "Planning to use a custom domain?"
     If you'll access the portal through a custom domain (e.g., `apps.yourdomain.com`), set the custom domain up **before** completing this page — follow [Custom Domains](../../administration/custom-domains.md). You'll need the App Service URL from the next section for the CNAME record on that page. Once the custom domain is configured, return here and use the custom domain URL as the redirect URI instead of the App Service URL.
@@ -26,11 +26,11 @@ Or, from the App Service directly: **Azure Portal** > **App Service** > your App
 ## Add the redirect URI
 
 1. Go to **Microsoft Entra admin center** > **App registrations**.
-2. Select your frontend app registration.
+2. Select your App Store app registration.
 3. Select **Authentication (Preview)** in the left navigation. Some tenants may still show this as just **Authentication** during Microsoft's rollout — both paths reach the same configuration.
 4. Select **+ Add Redirect URI**.
 
-    ![Authentication (Preview) blade for the frontend app registration with the + Add Redirect URI button visible](../../images/Install-add-redirect-uri-01-authentication.png)
+    ![Authentication (Preview) blade for the App Store app registration with the + Add Redirect URI button visible](../../images/Install-add-redirect-uri-01-authentication.png)
 
 5. In the **Select a platform to add redirect URI** dialog, select **Single-page application**.
 

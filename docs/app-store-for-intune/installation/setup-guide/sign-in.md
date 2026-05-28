@@ -5,7 +5,7 @@ description: "Verify the portal is healthy, configure the admin security group, 
 
 # Sign in and verify
 
-The portal is deployed, the App Service has its Graph permissions, and the frontend app registration has the production redirect URI. This page walks through the first sign-in and the in-portal Setup Wizard that finishes configuration.
+The portal is deployed, the App Service has its Graph permissions, and the App Store app registration has the production redirect URI. This page walks through the first sign-in and the in-portal Setup Wizard that finishes configuration.
 
 !!! note "Custom domain or App Service URL?"
     If you set up a [custom domain](../../administration/custom-domains.md), use your custom domain URL (e.g., `https://apps.yourdomain.com`) wherever this page shows `https://<sitename>.azurewebsites.net`. Both URLs serve the same App Service.

@@ -16,10 +16,10 @@ The install provisions an App Service, an Azure SQL database, a Key Vault, a sto
 
 ## Setup steps in order
 
-1. [Create Entra app registrations](../setup-guide/create-entra-app-registrations.md) — two registrations: the backend (validates incoming user tokens and exposes the `access_as_user` scope) and the frontend (handles user sign-in in the browser).
+1. [Create the Entra app registration](../setup-guide/create-entra-app-registrations.md) — one registration that both validates incoming user tokens (exposing the `access_as_user` scope) and powers the SPA sign-in flow.
 2. [Deploy to Azure](../setup-guide/deploy-to-azure.md) — run the custom-deployment wizard.
 3. [Grant Microsoft Graph permissions to the App Service](../setup-guide/grant-graph-permissions.md) — one-time post-deploy PowerShell snippet that assigns the required Graph application roles to the App Service's managed identity.
-4. [Add the production redirect URI](../setup-guide/add-redirect-uri.md) — add the App Service URL to the frontend app registration's SPA platform so sign-in succeeds.
+4. [Add the production redirect URI](../setup-guide/add-redirect-uri.md) — add the App Service URL to the App Store app registration's SPA platform so sign-in succeeds.
 5. [Sign in and verify](../setup-guide/sign-in.md) — confirm the portal is healthy and complete the in-portal Setup Wizard (admin group, license activation, first Intune sync).
 
 ## Optional post-deploy configuration

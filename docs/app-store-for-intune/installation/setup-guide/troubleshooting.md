@@ -55,9 +55,9 @@ Sign in as the original deploying admin (or any Entra ID Global Administrator) a
 
 ## Sign-in redirect mismatch
 
-The browser returns an Entra ID error like "The reply URL specified in the request does not match the reply URLs configured for the application." This means the frontend app registration's redirect URI list does not include the URL you are signing in from.
+The browser returns an Entra ID error like "The reply URL specified in the request does not match the reply URLs configured for the application." This means the App Store app registration's redirect URI list does not include the URL you are signing in from.
 
-Add the URL to the frontend app registration per [Add the production redirect URI](add-redirect-uri.md). The URL must include the trailing slash.
+Add the URL to the App Store app registration per [Add the production redirect URI](add-redirect-uri.md). The URL must include the trailing slash.
 
 ## Graph calls return 403 after sign-in
 

@@ -83,21 +83,21 @@ Select any app row in the table to open its **detail view**. The detail view has
 
 #### Editing app settings
 
-There are three ways to edit app settings from the detail view:
+There are two editing surfaces in the detail view, each chosen to match how the underlying fields are actually used:
 
-1. **Side panel (quick edit)**, select "Edit" on the Visibility or Approval section to open a slide-out panel for fast single-field changes
-2. **Settings wizard**, select "Edit" on the Assignment or Deployment Options section to open the full 5-step wizard, starting at the relevant step
-3. **Edit All Settings**, select the "Edit All Settings" button to open the wizard from step 1
+1. **App settings wizard.** Select "Edit" on the Visibility & Store, Assignment, or Deployment Options section. Each opens the same wizard, starting on the section you clicked. Making an app available to users in the App Store requires all three (you can't be visible without an assignment, and Win32 assignments need deployment options), so the wizard lets you set them together and commit them with a single Review + Save.
+2. **Approval side panel.** Select "Edit" on the Approval Settings section to open a focused side panel for the Requires Approval and Acknowledgment fields. Approval governance is a separate concern from store availability and is the field admins most often edit by itself, so it stays a one-screen edit.
 
-The **App Settings Wizard** has 5 steps:
+The **App settings wizard** has 4 steps:
 
 | Step | Title | Fields |
 |------|-------|--------|
 | 1 | Visibility and Store | Visible, Featured, Category, Cost |
-| 2 | Approval | Requires Approval, Acknowledgment |
-| 3 | Assignment | Assignment type, Target group, Assignment filter |
-| 4 | Deployment Options | Install behavior, Restart behavior, Notifications, Grace period (Win32 only) |
-| 5 | Review + Save | Summary of all changes with diff highlighting |
+| 2 | Assignment | Assignment type, Target group, Assignment filter |
+| 3 | Deployment Options | Install behavior, Restart behavior, Notifications, Grace period (Win32 only) |
+| 4 | Review + Save | Summary of all changes with diff highlighting |
+
+For non-Win32 apps the Deployment Options step is skipped automatically — the wizard jumps from Assignment directly to Review + Save.
 
 #### Visibility settings
 

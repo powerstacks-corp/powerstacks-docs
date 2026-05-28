@@ -9,10 +9,9 @@ The custom-deployment wizard provisions every Azure resource App Store for Intun
 
 ## Before you start
 
-Have these values ready from [Create Entra app registrations](create-entra-app-registrations.md):
+Have this value ready from [Create the Entra app registration](create-entra-app-registrations.md):
 
-- **Backend application (client) ID**
-- **Frontend application (client) ID**
+- **Application (client) ID** of the App Store app registration
 
 You'll also choose a SQL administrator username and password during the wizard. Save them in your password manager so you have them for any future direct database access.
 
@@ -32,8 +31,7 @@ Select **Next**.
 
 ### Entra ID Configuration
 
-- **API Application (Backend) > API Client ID**: the backend application (client) ID from the previous step.
-- **Frontend Application (SPA) > Frontend Client ID**: the frontend application (client) ID from the previous step.
+- **App Registration > Application (Client) ID**: the application (client) ID of the App Store app registration from the previous step.
 
 Select **Next**.
 
@@ -91,7 +89,7 @@ Path: **Azure Portal** > your resource group > **Deployments** > the deployment 
 
 | Output | Used for |
 | --- | --- |
-| `appUrl` | **Required.** The portal URL. You'll add it as the production redirect URI on the frontend app registration. Also available later from **App Service** > **Overview** > **Default domain**. |
+| `appUrl` | **Required.** The portal URL. You'll add it as the production redirect URI on the App Store app registration. Also available later from **App Service** > **Overview** > **Default domain**. |
 | `sqlServerFqdn` | SQL Server FQDN. Used for direct SSMS access during troubleshooting. |
 | `databaseName` | Database name. Used with the SQL Server FQDN for direct access. |
 | `appName` | App Service name. Useful for finding logs and configuring scaling. |
