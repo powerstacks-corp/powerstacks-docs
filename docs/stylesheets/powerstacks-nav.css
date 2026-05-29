@@ -214,6 +214,59 @@ body {
   min-width: 280px;
 }
 
+/* ─── Docs search (replaces hidden Material search) ─────────── */
+.ps-header__search {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.ps-header__search:hover,
+.ps-header__search:focus-within {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.ps-header__search-icon {
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+}
+.ps-header__search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  width: 180px;
+  padding: 0;
+}
+.ps-header__search input::placeholder { color: rgba(255, 255, 255, 0.65); }
+@media (min-width: 1024px) {
+  .ps-header__search { display: inline-flex; }
+}
+
+/* Scrolled state: invert for white background */
+.ps-header.ps-header--scrolled .ps-header__search {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+.ps-header.ps-header--scrolled .ps-header__search:hover,
+.ps-header.ps-header--scrolled .ps-header__search:focus-within {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.2);
+}
+.ps-header.ps-header--scrolled .ps-header__search-icon { color: rgba(15, 23, 42, 0.6); }
+.ps-header.ps-header--scrolled .ps-header__search input { color: var(--ps-navy); }
+.ps-header.ps-header--scrolled .ps-header__search input::placeholder {
+  color: rgba(15, 23, 42, 0.5);
+}
+
 /* ─── Get Started CTA — marketing btn-primary (brand-green) ── */
 .ps-header__cta {
   display: none;

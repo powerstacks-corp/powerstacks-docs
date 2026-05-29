@@ -119,6 +119,15 @@
       </div>
     </div>
 
+    {# Docs search. Submits to /?q=<query>, which Material's search plugin
+       picks up on page load and opens the search overlay with results. #}
+    <form class="ps-header__search" role="search" method="get" action="{{ config.site_url }}">
+      <svg class="ps-header__search-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M21 21l-4.35-4.35M11 19a8 8 0 110-16 8 8 0 010 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <input type="search" name="q" placeholder="Search docs" aria-label="Search the documentation" autocomplete="off" />
+    </form>
+
     <a href="{{ config.extra.marketing_url }}/get-started/" class="ps-header__cta">Get Started</a>
 
     <button id="ps-mobile-toggle" class="ps-header__mobile-toggle" aria-label="Toggle menu" type="button">
