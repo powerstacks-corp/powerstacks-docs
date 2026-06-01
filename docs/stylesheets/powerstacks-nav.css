@@ -268,10 +268,16 @@ body {
 }
 
 /* ─── Get Started CTA — marketing btn-primary (brand-green) ── */
+/* margin-left: auto consumes all remaining horizontal space, pinning
+   the CTA to the right edge of the nav. This breaks the visual coupling
+   with the adjacent search box (a fixed gap of 0.75rem was too tight,
+   making the green button read as the search submit button) and matches
+   the right-anchored position the marketing site achieves via its
+   justify-between parent. */
 .ps-header__cta {
   display: none;
   flex-shrink: 0;
-  margin-left: 0.75rem;
+  margin-left: auto;
   background: var(--ps-green);
   color: #ffffff !important;
   font-size: 0.875rem;
