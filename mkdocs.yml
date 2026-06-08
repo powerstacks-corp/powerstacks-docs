@@ -97,7 +97,7 @@ plugins:
       skip_classes:
         - skip-lightbox
   - rss:                           # mkdocs-rss-plugin
-      match_path: "bi-for-.+/release-notes/version-.+"
+      match_path: ".+/release-notes/version-.+"
       date_from_meta:
         as_creation: date
       categories:
@@ -112,6 +112,7 @@ not_in_nav: |
   bi-for-intune/release-notes/version*-*.md
   bi-for-sccm/release-notes/version*-*.md
   bi-for-defender/release-notes/version*-*.md
+  app-store-for-intune/release-notes/version*-*.md
 
 # ────────────────────────────────────────────────────────────────
 # Navigation
@@ -290,3 +291,7 @@ nav:
       - Authentication: app-store-for-intune/api/authentication.md
       - PowerShell Examples: app-store-for-intune/api/examples.md
     - Roadmap: app-store-for-intune/roadmap.md
+    - Release Notes:
+      - app-store-for-intune/release-notes/index.md
+      - Recent Releases: app-store-for-intune/release-notes/latest.md
+      - Archive: app-store-for-intune/release-notes/archive.md
