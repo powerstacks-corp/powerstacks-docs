@@ -73,6 +73,9 @@ The user performing these steps requires Global Admin and Subscription Admin rig
 1. Select **Data.Read** and select **Add permissions**.
    ![](../../images/Log-Analytics-Data.Read_-692x1024.png)
 
+!!! note "This permission alone does not grant workspace access"
+    **Data.Read** lets the app call the Log Analytics API. To read a specific Log Analytics workspace, you also assign this app the **Log Analytics Reader** role on that workspace. That step is covered in [Set up Enhanced Inventory](../custom-inventory.md#step-5-grant-bi-for-intune-read-access-to-the-workspace).
+
 ## Step 4: Grant admin consent
 
 1. Select **Grant admin consent** for your tenant.

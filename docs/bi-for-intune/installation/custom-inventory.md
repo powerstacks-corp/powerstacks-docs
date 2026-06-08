@@ -183,7 +183,20 @@ Deploy the script via Intune **Shell scripts**:
 1. Set **Script frequency** to **Every 1 day**.
 1. Assign the script to your target device groups.
 
-## Step 5: Connect BI for Intune to the Log Analytics workspace
+## Step 5: Grant BI for Intune read access to the workspace
+
+The main BI for Intune app registration (created in the [Setup Guide](setup-guide/create-entra-app-registration.md)) reads inventory data from this Log Analytics workspace. The **Log Analytics API Data.Read** permission you granted lets the app call the API, but it also needs read access to this specific workspace. Without it, data flows into the workspace but the Enhanced Inventory dashboards stay blank.
+
+1. In the [Azure portal](https://portal.azure.com), go to **Log Analytics workspaces** and select the workspace from Step 2.
+1. Select **Access control (IAM)** > **Add** > **Add role assignment**.
+1. On the **Role** tab, select **Log Analytics Reader**, then select **Next**.
+1. On the **Members** tab, set **Assign access to** to **User, group, or service principal**, select **Select members**, and select your **BI for Intune app registration** (search by its name).
+1. Select **Review + assign**.
+
+!!! note "Two roles, two apps"
+    This is the read counterpart to the **Monitoring Metrics Publisher** role on the DCR. The Enterprise Application from Step 1 *writes* inventory data (Monitoring Metrics Publisher on the DCR); the BI for Intune app registration *reads* it (Log Analytics Reader on the workspace). They are separate applications with separate roles.
+
+## Step 6: Connect BI for Intune to the Log Analytics workspace
 
 !!! note "May already be done"
     If you set up WUfB Reports before Enhanced Inventory, this step is already done. Check that the **AzureAD LogAnalytics WorkspaceID** parameter in your BI for Intune dataset matches the workspace from Step 2. If it does, skip to **Verify data ingestion** below.
