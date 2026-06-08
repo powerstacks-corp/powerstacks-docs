@@ -51,6 +51,9 @@ By the end of this step you should have:
 
 This step uses a one-click ARM template to configure the custom tables, Data Collection Endpoint (DCE), and Data Collection Rule (DCR) in your existing Log Analytics workspace.
 
+!!! note "Migrating an existing deployment?"
+    If you already have Enhanced Inventory running and are upgrading the ingestion path (rather than setting it up for the first time), **Step 5: Grant BI for Intune read access to the workspace** and **Step 6: Connect BI for Intune to the Log Analytics workspace** were both completed during your original setup. You can skip them. Complete Steps 2 through 4 as written.
+
 !!! tip "Prefer to watch a walkthrough first?"
     The interactive demo below is an optional supplement to the written steps on this page, not a replacement. The written instructions remain the canonical source of truth.
 
