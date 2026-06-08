@@ -36,16 +36,35 @@ You can optionally do the same with `AppSettings__ApproverGroupId` if you want a
 2. Sign in with the Entra ID account you added to the admin group above. Any account that's a member of the group is recognized as an admin; no Entra directory role (Global Admin, etc.) is required.
 3. The license-acceptance gate appears on first sign-in. Select **Accept** to acknowledge the terms.
 
+   ![License agreement gate shown on first sign-in](../../images/setup-license-acceptance.png)
+
 ## Complete the Setup Wizard
 
-Once you're signed in as an admin, open the Setup Wizard from **Admin → Settings → Setup Wizard**. It has four steps:
+Once you're signed in as an admin, open the Setup Wizard from **Admin → Settings → Setup Wizard**. The wizard opens on a welcome screen, then walks through four steps before a completion screen.
+
+![Setup Wizard welcome screen](../../images/setup-wizard-01-welcome.png)
 
 1. **Activate your license.** Enter the license key supplied by PowerStacks. The wizard validates the key against the licensing service and displays the expiration date and enabled features.
+
+   ![Setup Wizard step showing license activation](../../images/setup-wizard-02-license.png)
+
 2. **Choose your admin security group.** This step writes the admin group selection into the portal database. If you used the bootstrap step above, you can keep the same group here. (Once the database value is set, the `AppSettings__AdminGroupId` environment variable becomes a fallback and can be removed if you prefer to manage the group from inside the portal.)
+
+   ![Setup Wizard step showing admin security group selection](../../images/setup-wizard-03-groups.png)
+
 3. **Configure email notifications.** Optional. Select an Entra ID user mailbox to send notifications from, and enter the From address that recipients will see. You can skip this step and configure email later from **Admin** > **Communications**.
+
+   ![Setup Wizard step showing email notification configuration](../../images/setup-wizard-04-emails.png)
+
 4. **Run the first Intune sync.** Pulls the existing Intune app catalog into the portal so the admin App Catalog tab is populated immediately. This typically takes 30 to 60 seconds depending on catalog size.
 
+   ![Setup Wizard step starting the first Intune sync](../../images/setup-wizard-05-sync-apps.png)
+
+   ![Setup Wizard showing the first Intune sync completed](../../images/setup-wizard-05-sync-apps-complete.png)
+
 Select **Finish**. The wizard saves the settings to the database and routes you to the admin dashboard.
+
+![Setup Wizard completion screen](../../images/setup-wizard-06-complete.png)
 
 ## What "done" looks like
 
