@@ -178,10 +178,10 @@ nav:
         - Configure Database Access: bi-for-sccm/installation/setup-guide/configure-database-access.md
         - Configure the Semantic Model: bi-for-sccm/installation/setup-guide/configure-the-semantic-model.md
         - Enable Azure Maps: bi-for-sccm/installation/setup-guide/enable-azure-maps.md
-        - AD User Discovery: bi-for-sccm/installation/setup-guide/ad-user-discovery.md
     - Advanced Configuration:
       - bi-for-sccm/advanced-configuration.md
       - Custom Inventory:
+        - AD User Discovery: bi-for-sccm/installation/setup-guide/ad-user-discovery.md
         - BitLocker: bi-for-sccm/installation/custom-inventory/bitlocker.md
         - Local Admin Group: bi-for-sccm/installation/custom-inventory/local-admin-group.md
         - Lenovo Model Names: bi-for-sccm/installation/custom-inventory/lenovo-model-names.md
