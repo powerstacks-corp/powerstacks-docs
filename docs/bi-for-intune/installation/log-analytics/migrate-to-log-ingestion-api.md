@@ -92,8 +92,6 @@ If BI for Intune needs to be pointed at the new table names, update the semantic
 After you have confirmed the new pipeline is working and BI for Intune is using the new tables:
 
 1. Remove the old remediation/script assignment from Intune
-2. Revoke or delete the old Workspace Shared Key (if no other services use it)
-3. Optionally delete the old custom tables from Log Analytics to stop storage costs
 
 ## Summary checklist
 
@@ -105,7 +103,7 @@ After you have confirmed the new pipeline is working and BI for Intune is using 
 - [ ] Scripts redeployed via Intune
 - [ ] Data verified in new Log Analytics tables
 - [ ] BI for Intune semantic model updated (if needed)
-- [ ] Old scripts retired and shared keys revoked
+- [ ] Old scripts retired
 
 ## Need help?
 
