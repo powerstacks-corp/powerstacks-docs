@@ -65,6 +65,9 @@ Run the one-time migration script to convert these tables to the DCR-based forma
 
 The script signs you in if needed and migrates only the tables that are still Classic, so it is safe to re-run. Once it reports the tables as migrated, continue to Step 3.
 
+!!! note "Sign-in on locked-down tenants"
+    The script uses an interactive sign-in (a browser window, or your existing Azure Cloud Shell session) and does not use device-code authentication. If your tenant enforces conditional access and the script cannot sign in silently, run `Connect-AzAccount` first, then re-run the script.
+
 ### Step 3: Deploy the new infrastructure
 
 Follow the [Enhanced Inventory setup guide](../custom-inventory.md). You will create new resources but keep your existing workspace:
