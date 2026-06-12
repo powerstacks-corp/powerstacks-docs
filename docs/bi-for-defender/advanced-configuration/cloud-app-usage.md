@@ -1,8 +1,8 @@
 ---
-title: "Capture Cloud App usage data"
+title: "Capture Cloud App Usage Data"
 description: "Surface the per-user and compliance detail behind discovered cloud apps in BI for Defender by tagging the apps in Microsoft Defender and adding the tag to the semantic model."
 ---
-# Capture Cloud App usage data
+# Capture Cloud App Usage Data
 
 The Cloud App page in BI for Defender lists the cloud apps discovered across your fleet, with each app's category, data volume, and a count of users, IP addresses, and devices. By default, the detailed breakdown, which specific users accessed an app and how the app rates against compliance frameworks, is not pulled.
 
