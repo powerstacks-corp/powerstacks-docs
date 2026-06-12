@@ -224,9 +224,11 @@ nav:
         - Create Entra App Registration: bi-for-defender/installation/setup-guide/create-entra-app-registration.md
         - Configure the Semantic Model: bi-for-defender/installation/setup-guide/configure-the-semantic-model.md
         - Configure Data Sync: bi-for-defender/installation/setup-guide/configure-data-sync.md
-        - Application Controls: bi-for-defender/installation/setup-guide/application-controls.md
     - Advanced Configuration:
-      - bi-for-defender/advanced-configuration.md
+      - bi-for-defender/advanced-configuration/index.md
+      - Application Controls: bi-for-defender/installation/setup-guide/application-controls.md
+      - Browser Extension Inventory: bi-for-defender/advanced-configuration/browser-extension-inventory.md
+      - Cloud App Usage: bi-for-defender/advanced-configuration/cloud-app-usage.md
     - Administration:
       - bi-for-defender/administration/index.md
       - Semantic Model Parameters: bi-for-defender/administration/semantic-model-parameters.md
