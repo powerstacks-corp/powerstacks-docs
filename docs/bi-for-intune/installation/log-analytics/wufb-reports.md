@@ -34,7 +34,7 @@ Microsoft's recommended enrollment method is the Azure Workbook. It creates the 
 1. In the workbook gallery, select **Windows Update for Business reports**.
 1. Select **Get started** to open the enrollment flyout.
 1. Specify your **Subscription**.
-1. For **Azure Log Analytics Workspace**, select **Create new workspace** and give it a name in a [supported region](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites#log-analytics-regions). If you already created a workspace in [Set up the Log Analytics workspace](set-up-log-analytics-workspace.md), select **Use existing workspace** and choose it instead.
+1. For **Azure Log Analytics Workspace**, select **Create new workspace** and give it a name in a [supported region](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites#log-analytics-regions). If you already created one, select **Use existing workspace** and choose it instead.
 1. Select **Save settings** to enroll the tenant.
 
 !!! tip "One workspace for both add-ons"
