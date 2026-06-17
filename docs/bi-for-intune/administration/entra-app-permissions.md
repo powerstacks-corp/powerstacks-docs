@@ -20,18 +20,7 @@ Below are all of the permissions required to be configured on the Azure AD App R
 - **Permission Type:**
   Application
 - **Permissions:**
-  AuditLog.Read.All
-  DeviceManagementApps.Read.All
-  DeviceManagementConfiguration.Read.All
-  DeviceManagementManagedDevice.Read.All
-  DeviceManagementRBAC.Read.All
-  DeviceManagementScripts.Read.All
-  DeviceManagementServiceConfig.Read.All
-  Directory.Read.All
-  IdentityRiskyUser.Read.All
-  Policy.Read.All
-  Reports.Read.All
-  CloudPC.Read.All
+  AuditLog.Read.All, DeviceManagementApps.Read.All, DeviceManagementConfiguration.Read.All, DeviceManagementManagedDevice.Read.All, DeviceManagementRBAC.Read.All, DeviceManagementScripts.Read.All, DeviceManagementServiceConfig.Read.All, Directory.Read.All, IdentityRiskyUser.Read.All, Policy.Read.All, Reports.Read.All, CloudPC.Read.All
 
 **Required for Enhanced Inventory and Windows Update for Business Reports**
 
@@ -44,4 +33,4 @@ Below are all of the permissions required to be configured on the Azure AD App R
   Application
 - **Permissions:**
   Data.Read
-![intune app permissions](../images/intune_app_permissions-1-1024x714.png)
+![intune app permissions](../images/intune_app_permissions.png)
