@@ -9,7 +9,7 @@ Enhanced Inventory is a PowerShell-based (Windows) and shell-based (macOS) colle
 ## Prerequisites
 
 - BI for Intune installed and configured (the [Setup Guide](setup-guide/create-entra-app-registration.md) is complete).
-- A Log Analytics workspace already in place. The expected path is that you set up [Windows Update for Business reports](log-analytics/wufb-reports.md) first, which creates the workspace. If you are not using WUfB Reports, [create a workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace) before continuing.
+- A Log Analytics workspace set up per [Set up the Log Analytics workspace](log-analytics/set-up-log-analytics-workspace.md), including the BI for Intune app registration's **Log Analytics API Data.Read** permission and its **Log Analytics Reader** role on the workspace. If you also use [Windows Update for Business reports](log-analytics/wufb-reports.md), both add-ons share that same workspace.
 - Microsoft Entra: **Application Administrator** or **Global Administrator**.
 - Azure: **Contributor** or **Owner** on the target subscription or resource group, plus **User Access Administrator** or **Owner** to assign roles (only required for automatic RBAC assignment in Step 2).
 
@@ -188,13 +188,7 @@ Deploy the script via Intune **Shell scripts**:
 
 ## Step 5: Grant BI for Intune read access to the workspace
 
-The main BI for Intune app registration (created in the [Setup Guide](setup-guide/create-entra-app-registration.md)) reads inventory data from this Log Analytics workspace. The **Log Analytics API Data.Read** permission you granted lets the app call the API, but it also needs read access to this specific workspace. Without it, data flows into the workspace but the Enhanced Inventory dashboards stay blank.
-
-1. In the [Azure portal](https://portal.azure.com), go to **Log Analytics workspaces** and select the workspace from Step 2.
-1. Select **Access control (IAM)** > **Add** > **Add role assignment**.
-1. On the **Role** tab, select **Log Analytics Reader**, then select **Next**.
-1. On the **Members** tab, set **Assign access to** to **User, group, or service principal**, select **Select members**, and select your **BI for Intune app registration** (search by its name).
-1. Select **Review + assign**.
+The main BI for Intune app registration reads inventory data from this Log Analytics workspace using the **Log Analytics Reader** role. This is configured in [Set up the Log Analytics workspace](log-analytics/set-up-log-analytics-workspace.md#step-3-grant-the-app-registration-read-access-to-the-workspace). If you completed that page, this is already done; confirm the role is assigned and continue. Without it, data flows into the workspace but the Enhanced Inventory dashboards stay blank.
 
 !!! note "Two roles, two apps"
     This is the read counterpart to the **Monitoring Metrics Publisher** role on the DCR. The Enterprise Application from Step 1 *writes* inventory data (Monitoring Metrics Publisher on the DCR); the BI for Intune app registration *reads* it (Log Analytics Reader on the workspace). They are separate applications with separate roles.

@@ -34,11 +34,14 @@ Microsoft's recommended enrollment method is the Azure Workbook. It creates the 
 1. In the workbook gallery, select **Windows Update for Business reports**.
 1. Select **Get started** to open the enrollment flyout.
 1. Specify your **Subscription**.
-1. For **Azure Log Analytics Workspace**, select **Create new workspace**, give it a name, and pick a supported region.
+1. For **Azure Log Analytics Workspace**, select **Create new workspace** and give it a name in a [supported region](https://learn.microsoft.com/en-us/windows/deployment/update/wufb-reports-prerequisites#log-analytics-regions). If you already created a workspace in [Set up the Log Analytics workspace](set-up-log-analytics-workspace.md), select **Use existing workspace** and choose it instead.
 1. Select **Save settings** to enroll the tenant.
 
 !!! tip "One workspace for both add-ons"
     If you also plan to set up [Enhanced Inventory](../custom-inventory.md), point it at this same workspace. BI for Intune reads both Windows Update for Business Reports data and Enhanced Inventory data from one Log Analytics workspace.
+
+!!! important "Grant BI for Intune access to the workspace"
+    Enrolling creates the workspace, but BI for Intune cannot read it until the app registration has the right permissions. Complete [Set up the Log Analytics workspace](set-up-log-analytics-workspace.md) to add the **Log Analytics API Data.Read** permission and the **Log Analytics Reader** role on this workspace. Without them, the Windows Update for Business reports dashboards stay blank.
 
 ## Step 3: Deploy the Intune configuration profile to your devices
 

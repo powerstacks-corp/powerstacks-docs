@@ -136,6 +136,7 @@ nav:
         - Configure Data Sync: bi-for-intune/installation/setup-guide/configure-data-sync.md
     - Advanced Configuration:
       - bi-for-intune/advanced-configuration.md
+      - Set Up the Log Analytics Workspace: bi-for-intune/installation/log-analytics/set-up-log-analytics-workspace.md
       - Windows Update for Business Reports: bi-for-intune/installation/log-analytics/wufb-reports.md
       - Enhanced Inventory: bi-for-intune/installation/custom-inventory.md
       - Export API Parameter: bi-for-intune/installation/setup-guide/export-api-parameter.md
