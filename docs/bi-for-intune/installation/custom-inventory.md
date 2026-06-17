@@ -90,6 +90,15 @@ After deployment completes, capture the outputs:
 !!! info "If you skipped the Enterprise App Object ID"
     If you left the field blank during deployment, manually assign the **Monitoring Metrics Publisher** role to your Enterprise Application on the Data Collection Rule: **DCR** > **Access control (IAM)** > **Add role assignment**.
 
+!!! tip "Scaling to very large fleets"
+    Each Data Collection Rule has its own ingestion limit, so a very large fleet can saturate a single DCR. The inventory script accepts a **list** of DCR immutable IDs and spreads devices evenly across them, giving each device a stable starting DCR so no single rule becomes a bottleneck:
+
+    ```powershell
+    $DcrImmutableId = @("dcr-aaaa...", "dcr-bbbb...", "dcr-cccc...")
+    ```
+
+    To add capacity, provision additional DCRs behind this same Data Collection Endpoint (re-run the deployment with a different DCR name, or add them in Azure), then list their immutable IDs as shown. Each enabled inventory type is sent as its own call; combining types into one call was tested and dropped because it saves nothing, since the limit is per DCR, not per call.
+
 ## Step 3: Deploy the Windows inventory script
 
 The script gathers data from each Windows endpoint and sends it to the Log Analytics workspace via the Log Ingestion API.
@@ -204,6 +213,17 @@ The main BI for Intune app registration reads inventory data from this Log Analy
     - **AzureAD LogAnalytics Enable** = `TRUE`
     - **AzureAD LogAnalytics WorkspaceID** = the **Workspace ID** of the Log Analytics workspace from Step 2. Find it at **Azure portal** > **Log Analytics workspaces** > your workspace > **Overview** > **Workspace ID**.
 1. Select **Apply**.
+
+## Optional: secretless ingestion with a managed identity
+
+By default, each endpoint authenticates with the inventory app registration's **client secret**, set in the script in Step 1 and Step 3. This is the supported default, the simplest to run, and the reason the [separate Enterprise Application](#step-1-create-the-enterprise-application) is required.
+
+If a security review objects to a write-capable secret on every device, there is an optional path that removes it. You deploy a small Azure Function into your own subscription, and endpoints post their inventory to that Function instead of straight to the Log Ingestion API. The Function writes to your Data Collection Rule using its own **system-assigned managed identity**, so no Entra client secret is distributed to endpoints, and the inventory-upload app registration is no longer needed.
+
+!!! warning "What this changes, and what it does not"
+    This removes the Entra **client secret** from endpoints, but it is not a security upgrade on its own. The endpoint still holds a low-privilege **function key** in the Function URL: a different, instantly rotatable secret that can only call that one Function and reaches nothing else in Entra or Azure. And because any process running as SYSTEM on a device can post inventory either way, the device stays the trust boundary. Use this when a security team specifically objects to a distributed write secret, not as a way to make ingestion un-spoofable.
+
+To enable it, deploy the ingestion Function with the deploy script in the [EnhancedInventoryDeploy repository](https://github.com/powerstacks-corp/EnhancedInventoryDeploy), then set `FunctionUrl` in the inventory script to the URL it prints and leave the `TenantId`, `ClientId`, and `ClientSecret` placeholders as-is. Setting `FunctionUrl` switches the script to the secretless path; clearing it returns to the default.
 
 ## Verify data ingestion
 
