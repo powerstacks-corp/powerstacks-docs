@@ -53,10 +53,12 @@ extra_css:
   - stylesheets/microsoft-learn.css    # existing hero + content styling
   - stylesheets/powerstacks-nav.css?v=3  # ported marketing-site nav (cache-bust)
   - stylesheets/storylane.css          # Storylane embed wrapper
+  - stylesheets/pax-widget.css         # Pax assistant chat widget
 
 extra_javascript:
   - scripts/powerstacks-nav.js         # scroll-aware nav + mobile menu
   - scripts/external-links.js          # open all external links in a new tab
+  - scripts/pax-widget.js              # Pax assistant chat widget
 
 # ────────────────────────────────────────────────────────────────
 # Markdown
