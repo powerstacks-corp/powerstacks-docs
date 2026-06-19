@@ -3,8 +3,8 @@
  * Styling lives in stylesheets/pax-widget.css.
  */
 (function () {
-  // Pax backend URL. Swap to https://assistant.powerstacks.com once the custom domain is live.
-  var PAX_URL = "https://pax-assistant-prod-pwst-f7cyh9hedegkd3e4.eastus2-01.azurewebsites.net";
+  // Pax backend URL (branded custom domain).
+  var PAX_URL = "https://assistant.powerstacks.com";
 
   var CHAT_ICON =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
