@@ -76,7 +76,7 @@ After configuration, verify it's working:
 2. You should see performance metrics, error counts, and usage data.
 3. If you see "Application Insights is not configured", check that both `ApplicationInsights__AppId` and `ApplicationInsights__ApiKey` are set correctly.
 
-For detailed troubleshooting, see [Troubleshooting](../../administration/troubleshooting.md).
+For detailed troubleshooting, see [Troubleshooting](../../administration/troubleshooting/index.md).
 
 ## Next steps
 

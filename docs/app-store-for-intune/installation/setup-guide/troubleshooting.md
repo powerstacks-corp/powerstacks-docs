@@ -67,4 +67,4 @@ Run the snippet from [Grant Microsoft Graph permissions to the App Service](gran
 
 ## Further help
 
-For deployment issues not covered here, see the [administration Troubleshooting guide](../../administration/troubleshooting.md) or contact [PowerStacks Support](https://www.powerstacks.com/contact).
+For deployment issues not covered here, see the [administration Troubleshooting guide](../../administration/troubleshooting/index.md) or contact [PowerStacks Support](https://www.powerstacks.com/contact).

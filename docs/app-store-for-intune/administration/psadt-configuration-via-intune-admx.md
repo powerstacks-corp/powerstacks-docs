@@ -119,5 +119,5 @@ Both are on the App Store for Intune roadmap as in-portal customization features
 ## Cross-references
 
 - [App Catalog and Cloud Packaging](app-catalog-cloud-packaging.md) — how App Store wraps each package with PSADT before deploying.
-- [Troubleshooting](troubleshooting.md) — log locations and diagnostic flows. PSADT logs end up in the same folder as IME logs once `Toolkit.LogPath` is set per the baseline above.
+- [Troubleshooting](troubleshooting/index.md) — log locations and diagnostic flows. PSADT logs end up in the same folder as IME logs once `Toolkit.LogPath` is set per the baseline above.
 - [PSADT v4 Configuration Reference](https://psappdeploytoolkit.com/docs/reference/functions/Get-ADTConfig) (external) — full setting reference for every value you can configure via ADMX.
