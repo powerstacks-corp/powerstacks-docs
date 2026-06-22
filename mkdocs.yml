@@ -256,11 +256,13 @@ nav:
   # ═══════════════════════════════════════════════════════════════
   - App Store for Intune:
     - app-store-for-intune/index.md
+    - Architecture: app-store-for-intune/administration/architecture.md
     - Installation:
       - Getting Started:
         - Install App Store for Intune: app-store-for-intune/installation/getting-started/install-app-store-for-intune.md
       - Setup Guide:
-        - Create Entra app registrations: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
+        - Prerequisites: app-store-for-intune/installation/setup-guide/prerequisites.md
+        - Create Entra App Registration: app-store-for-intune/installation/setup-guide/create-entra-app-registrations.md
         - Deploy to Azure: app-store-for-intune/installation/setup-guide/deploy-to-azure.md
         - Grant Microsoft Graph permissions: app-store-for-intune/installation/setup-guide/grant-graph-permissions.md
         - Add the production redirect URI: app-store-for-intune/installation/setup-guide/add-redirect-uri.md
@@ -280,17 +282,24 @@ nav:
       - App Catalog and Cloud Packaging: app-store-for-intune/administration/app-catalog-cloud-packaging.md
       - Approval Workflows: app-store-for-intune/administration/approval-workflows.md
       - Pending Approvals: app-store-for-intune/administration/pending-approvals.md
-      - User Experience: app-store-for-intune/administration/user-experience.md
       - Reports and Analytics: app-store-for-intune/administration/reports-analytics.md
-      - Best Practices: app-store-for-intune/administration/best-practices.md
       - Database Maintenance: app-store-for-intune/administration/database-maintenance.md
       - Disaster Recovery: app-store-for-intune/administration/disaster-recovery.md
       - Security Overview: app-store-for-intune/administration/security.md
       - Configure PSADT via Intune ADMX: app-store-for-intune/administration/psadt-configuration-via-intune-admx.md
       - Troubleshooting: app-store-for-intune/administration/troubleshooting.md
-      - Architecture: app-store-for-intune/administration/architecture.md
-    - User Guides:
+    - User Guide:
       - app-store-for-intune/user-guides/index.md
+      - Getting started: app-store-for-intune/user-guides/getting-started.md
+      - Browsing apps: app-store-for-intune/user-guides/browsing-apps.md
+      - Request an app: app-store-for-intune/user-guides/request-an-app.md
+      - Ask IT to add an app: app-store-for-intune/user-guides/ask-it-to-add-an-app.md
+      - Tracking your requests: app-store-for-intune/user-guides/tracking-requests.md
+      - Install status: app-store-for-intune/user-guides/install-status.md
+      - Request on behalf of another user: app-store-for-intune/user-guides/request-on-behalf.md
+      - Settings and preferences: app-store-for-intune/user-guides/settings-preferences.md
+      - FAQ: app-store-for-intune/user-guides/faq.md
+      - Glossary: app-store-for-intune/user-guides/glossary.md
     - API Reference:
       - app-store-for-intune/api/index.md
       - Authentication: app-store-for-intune/api/authentication.md

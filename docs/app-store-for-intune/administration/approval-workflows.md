@@ -7,6 +7,12 @@ description: "Configure flexible approval workflows for app requests, including 
 
 This document describes how to configure flexible approval workflows for app requests.
 
+!!! tip "Best practice: matching approval to app type"
+    - **Free productivity tools**: no approval required
+    - **Licensed software**: manager approval
+    - **Admin or privileged tools**: multi-stage with IT Security
+    - **Developer tools**: manager plus IT approval
+
 ## Overview
 
 Each app can be configured to either require approval or not. For apps that require approval, you can configure a custom workflow that determines how requests are processed.

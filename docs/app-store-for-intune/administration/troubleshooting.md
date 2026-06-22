@@ -589,13 +589,9 @@ If you can't resolve an issue:
    - Steps to reproduce the issue
    - Timestamp when the error occurred
 
-2. **Check existing issues:**
-   - GitHub Issues: https://github.com/powerstacks-corp/app-store-for-intune/issues
+2. **Ask Pax:** Select the chat icon in the bottom-right corner and describe the issue. Pax can often point you to the right guide or a known fix.
 
-3. **Open a new issue:**
-   - Include all gathered information
-   - Paste Application Insights query results
-   - Include screenshots if helpful
+3. **Contact support:** If Pax doesn't resolve it, reach us through the [contact page](https://powerstacks.com/contact-us/) and include the information you gathered, along with your Application Insights query results and any screenshots.
 
 ---
 

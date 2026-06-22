@@ -16,9 +16,7 @@ Operational reference for App Store for Intune administrators. Configure the por
 | [App Catalog and Cloud Packaging](app-catalog-cloud-packaging.md) | WinGet catalog + cloud packaging pipeline |
 | [Approval Workflows](approval-workflows.md) | Multi-stage approval configuration |
 | [Pending Approvals](pending-approvals.md) | Reviewing approval queue |
-| [User Experience](user-experience.md) | Self-service portal UX configuration |
 | [Reports and Analytics](reports-analytics.md) | Built-in reports and CSV exports |
-| [Best Practices](best-practices.md) | Operational guidance |
 | [Custom Domains](custom-domains.md) | Custom domain + SSL setup |
 | [Database Maintenance](database-maintenance.md) | Backups, retention, cleanup |
 | [Disaster Recovery](disaster-recovery.md) | Backup and recovery procedures |

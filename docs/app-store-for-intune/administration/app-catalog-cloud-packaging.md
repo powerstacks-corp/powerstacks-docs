@@ -37,6 +37,20 @@ When apps are published from the WinGet catalog:
 - Dots in version numbers are replaced with dashes (e.g., `25.10.186.0` becomes `v25-10-186-0`)
 - This helps identify which variant and version of multi-architecture apps is deployed, and prevents duplicate deployments of the same version
 
+### Handling new app requests
+
+When the end-user portal is enabled, employees can ask for an app that isn't in the catalog using the **Request new app** button on the Browse Apps page (see [Ask IT to add an app](../user-guides/ask-it-to-add-an-app.md)). The portal emails every member of the Admin Group and logs the request in the audit trail. The email includes the requestor's name and email, the app name and publisher, the business justification, the download URL if provided, and suggestions for how to add the app.
+
+When you receive a new app request:
+
+1. **Evaluate the request**: decide whether the app is appropriate for your organization.
+2. **Find the app**: search the App Catalog above for easy publishing, look in Intune if it's already there, or download it from the vendor.
+3. **Add it to the portal**: publish it from the App Catalog above, or add it to Intune manually and sync.
+4. **Configure visibility**: make the app visible in the portal so the requestor can request it.
+5. **Notify the user**: reply to the email, or tell the requestor directly that the app is available.
+
+New app requests reuse your existing email notification settings, so no extra configuration is required. Admin Group members receive the emails, sent with the same `Mail.Send` configuration as other notifications (see [Communications](communications.md)). If email notifications are disabled, the **Request new app** feature returns an error to the user.
+
 ### Packaging jobs
 
 The Packaging Jobs section shows all queued and completed packaging operations:

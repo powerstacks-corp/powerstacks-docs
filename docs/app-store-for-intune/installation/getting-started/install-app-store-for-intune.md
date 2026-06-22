@@ -11,8 +11,7 @@ The install provisions an App Service, an Azure SQL database, a Key Vault, a sto
 
 ## Prerequisites
 
-- An **Azure subscription** with Contributor permission on the target subscription or resource group.
-- A **Microsoft Entra ID** Global Administrator or Application Administrator role, used to create the app registrations and to grant Microsoft Graph application permissions to the managed identity post-deploy.
+Review the [Prerequisites](../setup-guide/prerequisites.md) before you start: the Microsoft Entra roles (Global Administrator, or Privileged Role Administrator with Cloud Application Administrator), the Azure role (Owner on the subscription), the App Service quota check, and what the install deploys.
 
 ## Setup steps in order
 

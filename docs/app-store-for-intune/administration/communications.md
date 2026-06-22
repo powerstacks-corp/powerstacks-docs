@@ -7,6 +7,12 @@ description: "Configure email notifications, Teams bot notifications, approval r
 
 The Communications tab (formerly "Terms of Service") consolidates all notification, messaging, and company branding settings in one place.
 
+!!! tip "Best practice: email notifications"
+    - Use a dedicated shared mailbox for notifications.
+    - Grant the app `Mail.Send` permission on that mailbox.
+    - Use a recognizable From address, such as `apprequest@company.com`.
+    - Include your portal URL so users can open it to view status.
+
 ### Company information
 
 Configure your organization's branding details. These fields are used in notification messages and will support further message customization in future releases.

@@ -205,34 +205,31 @@ The portal supports one-click updates directly from the Admin Dashboard. This fe
 
 If auto-update is not configured, you can manually update using either method below:
 
+!!! tip "Back up the database before upgrading"
+    App Store applies database migrations automatically when the new version starts. Before a major upgrade, take a backup so you can roll back if a migration causes problems: export a BACPAC to your storage account, or note the current UTC timestamp to use Azure SQL point-in-time restore. See [Disaster recovery](disaster-recovery.md#sql-database-backups).
+
 **Method 1: Kudu ZIP Deploy (recommended for existing installations)**
 
 For existing deployments, use the Kudu ZIP deployment feature:
 
-1. Go to the [releases repository](https://github.com/powerstacks-corp/app-store-for-intune/releases)
-2. Download the latest `AppRequestPortal-X.X.X.zip` file (not the source code)
-3. In Azure Portal, go to your App Service
-4. Select **Advanced Tools** → **Go** (opens Kudu)
-5. Select **Tools** → **Zip Push Deploy**
-6. Drag and drop the downloaded ZIP file into the deployment area
-7. Wait for deployment to complete (watch the logs)
-8. Restart your App Service if needed
-9. Database migrations will run automatically on next startup
+1. Download the latest application package: [AppRequestPortal.zip](https://bi.powerstacks.com/appstoreforintune/bin/latest/AppRequestPortal.zip)
+2. In Azure Portal, go to your App Service
+3. Select **Advanced Tools** → **Go** (opens Kudu)
+4. Select **Tools** → **Zip Push Deploy**
+5. Drag and drop the downloaded ZIP file into the deployment area
+6. Wait for deployment to complete (watch the logs)
+7. Restart your App Service if needed
+8. Database migrations will run automatically on next startup
 
 !!! note
     This method preserves your existing configuration and database. The ZIP contains only application files.
 
-**Method 2: Deploy to Azure button (new installations only)**
+**Method 2: Fresh install from the Azure Marketplace (new installations only)**
 
-For fresh installations on an empty resource group:
-
-1. Go to the [releases repository](https://github.com/powerstacks-corp/app-store-for-intune)
-2. Select the **Deploy to Azure** button
-3. Select an **empty resource group** or create a new one
-4. Configure deployment parameters
+For a brand-new installation, deploy from the Azure Marketplace. See [Install from the Azure Marketplace](../installation/setup-guide/deploy-to-azure.md) for the full walkthrough.
 
 !!! warning
-    The Deploy to Azure button will fail on resource groups containing existing resources. Use Method 1 for existing deployments.
+    A fresh Marketplace deployment provisions new resources and should target a new, empty resource group. To update an existing deployment, use Method 1 above.
 
 ### License management
 

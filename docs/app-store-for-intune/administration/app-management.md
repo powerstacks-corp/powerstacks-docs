@@ -7,6 +7,15 @@ description: "Manage the Intune app catalog: sync apps, configure visibility and
 
 The App Management tab is your central hub for managing which Intune apps are available in the portal and how they behave.
 
+!!! tip "Best practice: app visibility strategy"
+    - Sync all apps to get your full Intune catalog.
+    - Keep system apps hidden (dependencies, frameworks, required apps).
+    - Make user-requestable apps visible (productivity tools, optional software).
+    - Use Intune categories to help users find apps.
+
+!!! tip "Best practice: group management"
+    When you make an app visible, the portal automatically creates a security group and Intune assignment named `{GroupNamePrefix}{AppName}-{arch}-{locale}-v{version}-Required` (dots in versions become dashes). Set the **Group Name Prefix** in Settings to match your naming conventions. To reuse an existing group instead of an auto-created one, set the **Target Group** on the app before making it visible.
+
 ### Syncing apps from Intune
 
 1. Select the **Sync Apps from Intune** button

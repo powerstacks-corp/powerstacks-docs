@@ -15,16 +15,23 @@ Have this value ready from [Create the Entra app registration](create-entra-app-
 
 You'll also choose a SQL administrator username and password during the wizard. Save them in your password manager so you have them for any future direct database access.
 
-## Launch the wizard
+## Install from the Azure Marketplace
 
-Select the **Deploy to Azure** button on the [App Store for Intune GitHub repository](https://github.com/powerstacks-corp/app-store-for-intune). Azure Portal opens the custom deployment wizard.
+App Store for Intune is published in the Azure Marketplace. Installing from the Marketplace runs the same custom deployment wizard documented below.
+
+1. Sign in to the [Azure portal](https://portal.azure.com) with an account that can create resources in the subscription that will host App Store for Intune.
+2. Find the offer. Select **Create a resource**, then search for **App Store for Intune**, or open the [App Store for Intune listing](https://azuremarketplace.microsoft.com/marketplace/apps/powerstackscorporation1641419080242.appstoreforintune) in the Azure Marketplace.
+3. On the offer page, select **Get It Now** (or **Create**, if you started from inside the portal).
+4. Select the **App Store for Intune** plan, then select **Create**.
+
+Azure opens the custom deployment wizard. Continue with the steps below.
 
 ## Complete the custom deployment wizard
 
 ### Basics
 
 - **Subscription**: select the Azure subscription that will host App Store for Intune.
-- **Resource group**: select an existing resource group, or select **Create new**.
+- **Resource group**: select **Create new** and give it a name. Deploying into an existing resource group isn't supported.
 - **Region**: select the Azure region for all resources.
 
 Select **Next**.
@@ -32,6 +39,8 @@ Select **Next**.
 ### Entra ID Configuration
 
 - **App Registration > Application (Client) ID**: the application (client) ID of the App Store app registration from the previous step.
+
+The tenant ID is detected automatically from your session, so there's nothing else to enter on this page.
 
 Select **Next**.
 
@@ -45,7 +54,7 @@ Select **Next**.
 
 ### Advanced
 
-- **Release Channel**: select **Stable (Recommended)** for the current stable release. The other option, **Staging (Preview Features)**, gets early access to upcoming features but should only be used on non-production deployments.
+- **Release Channel**: select **Latest (Recommended)** for the current stable release. The other option, **Preview (Early Access)**, gets early access to upcoming features but should only be used on non-production deployments.
 - **App Service Plan Size**: select the App Service plan SKU. **B2** is the recommended starting point and can be scaled later.
 - **Instance Count**: number of App Service plan instances. Start with **1** unless you have a known scale requirement.
 - **Enable Auto-Heal (Recommended)**: leave selected. Automatically restarts the app when issues are detected.

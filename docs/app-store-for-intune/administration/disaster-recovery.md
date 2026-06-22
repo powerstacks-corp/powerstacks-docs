@@ -282,14 +282,15 @@ The default ARM template deployment includes these disaster recovery features:
 
 **Recovery steps:**
 
-1. **Rollback to previous version:**
+1. **Roll back the application package:**
    ```bash
-   # Get previous version URL from GitHub releases
-   # Example: v1.5.5
+   # Point the App Service at the previous version on the package host.
+   # Each release is published to a versioned path:
+   #   https://bi.powerstacks.com/appstoreforintune/bin/<version>/AppRequestPortal.zip
    az webapp config appsettings set \
      --resource-group <rg> \
      --name <app-name> \
-     --settings WEBSITE_RUN_FROM_PACKAGE="https://github.com/powerstacks-corp/app-store-for-intune/releases/download/v1.5.5/AppRequestPortal.zip"
+     --settings WEBSITE_RUN_FROM_PACKAGE="https://bi.powerstacks.com/appstoreforintune/bin/<version>/AppRequestPortal.zip"
    ```
 
 2. **Restart App Service:**
@@ -297,9 +298,14 @@ The default ARM template deployment includes these disaster recovery features:
    az webapp restart --resource-group <rg> --name <app-name>
    ```
 
-3. **Verify rollback successful**
+3. **Verify the rollback was successful.**
 
-**Estimated recovery time:** 5-15 minutes
+!!! warning "Roll back the database too if the bad release changed the schema"
+    App Store applies Entity Framework Core migrations automatically on startup, and migrations are generally forward-only. If the release you are rolling back from added or changed database schema, the older package may fail to start against the newer schema. In that case, also restore the database to the pre-upgrade point in time, or to the BACPAC export you took before upgrading. See [SQL Database backups](#sql-database-backups).
+
+    To avoid this, take a database backup before every upgrade that may change the schema: a BACPAC export to the storage account, or simply note the UTC timestamp so you can use point-in-time restore.
+
+**Estimated recovery time:** 5-15 minutes (add 30-60 minutes if a database restore is required)
 
 ---
 
