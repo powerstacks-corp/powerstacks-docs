@@ -285,12 +285,13 @@ The default ARM template deployment includes these disaster recovery features:
 1. **Roll back the application package:**
    ```bash
    # Point the App Service at the previous version on the package host.
-   # Each release is published to a versioned path:
-   #   https://bi.powerstacks.com/appstoreforintune/bin/<version>/AppRequestPortal.zip
+   # Each release is published with a versioned filename in its channel folder, e.g.:
+   #   https://bi.powerstacks.com/appstoreforintune/bin/latest/AppRequestPortal-1.33.0.zip
+   # (preview-channel builds live under .../bin/preview/)
    az webapp config appsettings set \
      --resource-group <rg> \
      --name <app-name> \
-     --settings WEBSITE_RUN_FROM_PACKAGE="https://bi.powerstacks.com/appstoreforintune/bin/<version>/AppRequestPortal.zip"
+     --settings WEBSITE_RUN_FROM_PACKAGE="https://bi.powerstacks.com/appstoreforintune/bin/latest/AppRequestPortal-<version>.zip"
    ```
 
 2. **Restart App Service:**

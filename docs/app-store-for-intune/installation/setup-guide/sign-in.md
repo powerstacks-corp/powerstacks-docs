@@ -44,7 +44,7 @@ Once you're signed in as an admin, open the Setup Wizard from **Admin → Settin
 
 ![Setup Wizard welcome screen](../../images/setup-wizard-01-welcome.png)
 
-1. **Activate your license.** Enter the license key supplied by PowerStacks. The wizard validates the key against the licensing service and displays the expiration date and enabled features.
+1. **Activate your license.** Enter the license key supplied by PowerStacks. The wizard validates the key against the licensing service and displays the expiration date and enabled features. If you don't have a key yet, choose a plan or start a trial at [powerstacks.com/plans](https://powerstacks.com/plans/).
 
    ![Setup Wizard step showing license activation](../../images/setup-wizard-02-license.png)
 
