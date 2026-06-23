@@ -531,41 +531,7 @@ Updates can be deployed automatically when detected, eliminating the need to sel
 
 ### WinGet integration settings
 
-In **Admin** > **Settings** > **WinGet Integration**:
-
-| Setting | Description |
-|---------|-------------|
-| **WinGet Repository URL** | GitHub repository URL for WinGet packages. Default: `https://github.com/microsoft/winget-pkgs` (Microsoft's official repository). Format: `https://github.com/owner/repo` or `owner/repo`. Organizations with custom/private WinGet repositories can point to their internal GitLab/GitHub mirror. **Warning**: Changing this will clear the entire package cache. |
-| **GitHub Personal Access Token** | Recommended. Required for the "Show More Results" live search feature (GitHub's Code Search API requires authentication). Also increases API rate limits from 60/hour to 5,000/hour for faster cache syncs. Create a classic token at [https://github.com/settings/tokens](https://github.com/settings/tokens) with `public_repo` scope. |
-
-#### Why use a GitHub token?
-
-**Without token** (unauthenticated):
-
-- 60 API requests per hour
-- Initial cache sync takes 2-3 hours
-- May hit rate limits during heavy use
-- **"Show More Results" live search will not work**, GitHub's Code Search API requires authentication. Only cached results and exact package ID lookups (e.g., `Google.Chrome`) will return results.
-
-**With token** (authenticated):
-
-- 5,000 API requests per hour
-- Initial cache sync takes 30-60 minutes
-- Reliable operation even with many users
-- **Full live search**, "Show More Results" queries the entire WinGet repository in real time via GitHub Code Search, finding packages that may not yet be in the local cache
-
-**Creating a GitHub personal access token:**
-
-1. Go to [GitHub Settings → Personal Access Tokens → Tokens (classic)](https://github.com/settings/tokens)
-2. Select "Generate new token" → "Generate new token (classic)"
-3. Give it a descriptive name: "App Store for Intune WinGet Integration"
-4. Select scope: **public_repo** (Access public repositories)
-5. Select "Generate token"
-6. Copy the token (starts with `ghp_...`)
-7. Paste into Admin Settings → WinGet Integration → GitHub Personal Access Token
-8. Select Save Settings
-
-**Note**: Tokens are stored securely in Azure Key Vault and never exposed in logs or UI.
+The App Catalog's WinGet settings, the GitHub personal access token and the WinGet repository URL, are configured in **Admin** > **Settings** > **WinGet Integration**. A token is optional but strongly recommended for higher API rate limits and live search. See [Configure WinGet integration](../installation/setup-guide/configure-winget-integration.md) for the full walkthrough.
 
 ### Local development testing
 

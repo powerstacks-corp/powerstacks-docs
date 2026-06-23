@@ -269,6 +269,7 @@ nav:
         - Sign in and verify: app-store-for-intune/installation/setup-guide/sign-in.md
         - Troubleshooting the install: app-store-for-intune/installation/setup-guide/troubleshooting.md
       - Optional configuration:
+        - Configure WinGet integration: app-store-for-intune/installation/setup-guide/configure-winget-integration.md
         - Configure email notifications: app-store-for-intune/installation/setup-guide/configure-email-notifications.md
         - Configure Microsoft Teams Bot: app-store-for-intune/installation/setup-guide/configure-teams-bot.md
         - Configure Application Insights: app-store-for-intune/installation/setup-guide/configure-application-insights.md

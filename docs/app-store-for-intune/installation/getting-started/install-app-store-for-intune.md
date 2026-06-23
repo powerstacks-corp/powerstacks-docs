@@ -25,6 +25,7 @@ Review the [Prerequisites](../setup-guide/prerequisites.md) before you start: th
 
 The portal is fully functional after step 5. The following are optional and can be configured at any time from the admin UI:
 
+- [Configure WinGet integration](../setup-guide/configure-winget-integration.md) (recommended)
 - [Configure email notifications](../setup-guide/configure-email-notifications.md)
 - [Configure Microsoft Teams Bot](../setup-guide/configure-teams-bot.md)
 - [Configure Application Insights](../setup-guide/configure-application-insights.md)
