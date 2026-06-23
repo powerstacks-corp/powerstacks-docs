@@ -23,6 +23,16 @@ description: "Fixes for common App Store for Intune problems: the 403 admin erro
 
 **Prevention:** Always keep `AdminGroupId` set in `appsettings.json` or environment variables as a fallback, even after configuring it in the portal UI.
 
+### Group or user search in the Setup Wizard is empty
+
+**Symptom:** In the Setup Wizard, searching for a security group (admin group step) or a user (email notification step) returns no results, even though the groups and users exist.
+
+**Cause:** The App Service is using a Microsoft Graph token that was issued *before* the Graph permissions were granted to its managed identity. Graph app-role grants don't apply to a token the app already cached, so directory search stays empty until the App Service gets a fresh token.
+
+**Fix:** Restart the App Service so it requests a new managed-identity token that carries the granted roles: Azure Portal → your App Service → **Restart**. Give the role assignments a couple of minutes to propagate first; if search is still empty immediately after a restart, wait a few minutes and restart once more.
+
+The [Grant Microsoft Graph permissions](../../installation/setup-guide/grant-graph-permissions.md) snippet now performs this wait-and-restart automatically, so this mainly affects installs where the permissions were granted by hand or topped up later.
+
 ### WinGet package publishing errors
 
 #### Error: "Failed to download installer manifest from GitHub: NotFound"
