@@ -24,6 +24,10 @@ App Store for Intune is published in the Azure Marketplace. Installing from the 
 3. On the offer page, select **Get It Now** (or **Create**, if you started from inside the portal).
 4. Select the **App Store for Intune** plan, then select **Create**.
 
+![The App Store for Intune listing in the Azure Marketplace](../../images/marketplace-01-get-it-now.png)
+
+![Confirming the App Store for Intune plan before selecting Get It Now](../../images/marketplace-02-confirm-details.png)
+
 Azure opens the custom deployment wizard. Continue with the steps below.
 
 ## Complete the custom deployment wizard
@@ -34,6 +38,8 @@ Azure opens the custom deployment wizard. Continue with the steps below.
 - **Resource group**: select **Create new** and give it a name. Deploying into an existing resource group isn't supported.
 - **Region**: select the Azure region for all resources.
 
+![Basics tab of the App Store for Intune deployment wizard](../../images/deploy-wizard-01-basics.png)
+
 Select **Next**.
 
 ### Entra ID Configuration
@@ -42,6 +48,8 @@ Select **Next**.
 
 The tenant ID is detected automatically from your session, so there's nothing else to enter on this page.
 
+![Entra ID Configuration tab showing the Application (Client) ID field](../../images/deploy-wizard-02-entra-id-configuration.png)
+
 Select **Next**.
 
 ### SQL Database
@@ -49,6 +57,8 @@ Select **Next**.
 - **SQL Admin Username**: a new administrator login name for the Azure SQL Server that will be created.
 - **SQL Admin Password**: a strong password meeting Azure SQL complexity requirements.
 - **Confirm password**: re-enter the password.
+
+![SQL Database tab of the deployment wizard](../../images/deploy-wizard-03-sql-database.png)
 
 Select **Next**.
 
@@ -61,6 +71,8 @@ Select **Next**.
 - **Enable Health Check (Recommended)**: leave selected. Routes traffic away from unhealthy instances.
 - **Enable Teams Bot Notifications (Recommended)**: select if you want personal Teams Adaptive Card notifications for approvers and requestors. Provisioning the bot resource at deploy time is the cleanest path; you can also enable Teams notifications later from the Admin Settings tab.
 
+![Advanced tab with release channel, plan size, and resiliency options](../../images/deploy-wizard-04-advanced.png)
+
 Select **Next**.
 
 ### Review + create
@@ -68,6 +80,8 @@ Select **Next**.
 After you select **Next** on the Advanced tab, the wizard runs a final round of validation against your inputs. The page may appear unresponsive for a few seconds while these checks complete — this is expected, don't refresh or navigate away.
 
 Once validation passes, review the deployment summary and select **Create**. The deploy takes 10 to 15 minutes.
+
+![Review and create tab with the deployment summary](../../images/deploy-wizard-05-review.png)
 
 !!! tip "Stay on the deployment page until it completes"
     The next step needs a value from this deployment's **Outputs** blade. If you navigate away you can still retrieve it later, but it's easiest to grab it before you leave the page.
