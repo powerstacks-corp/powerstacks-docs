@@ -1,6 +1,6 @@
 ---
 title: "Common issues"
-description: "Fixes for common App Store for Intune problems: the 403 admin error, WinGet publishing errors, install-status issues, an empty assignment-filter dropdown, and migrations."
+description: "Fixes for common App Store for Intune problems: the 403 admin error, the Multi Admin Approval publishing block, WinGet publishing errors, install-status issues, an empty assignment-filter dropdown, and migrations."
 ---
 
 # Common issues
@@ -32,6 +32,10 @@ description: "Fixes for common App Store for Intune problems: the 403 admin erro
 **Fix:** Restart the App Service so it requests a new managed-identity token that carries the granted roles: Azure Portal → your App Service → **Restart**. Give the role assignments a couple of minutes to propagate first; if search is still empty immediately after a restart, wait a few minutes and restart once more.
 
 The [Grant Microsoft Graph permissions](../../installation/setup-guide/grant-graph-permissions.md) snippet now performs this wait-and-restart automatically, so this mainly affects installs where the permissions were granted by hand or topped up later.
+
+### App publishing fails with a 403 "ApprovalRequired" error
+
+Your tenant's Intune Multi Admin Approval policy is blocking the App Store's application-authenticated Graph calls. See [Multi Admin Approval (MAA)](../multi-admin-approval.md) for how to exclude the App Store so publishing works.
 
 ### WinGet package publishing errors
 
