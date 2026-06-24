@@ -287,6 +287,7 @@ nav:
       - Database Maintenance: app-store-for-intune/administration/database-maintenance.md
       - Disaster Recovery: app-store-for-intune/administration/disaster-recovery.md
       - Security Overview: app-store-for-intune/administration/security.md
+      - Multi Admin Approval: app-store-for-intune/administration/multi-admin-approval.md
       - Configure PSADT via Intune ADMX: app-store-for-intune/administration/psadt-configuration-via-intune-admx.md
       - Troubleshooting:
         - app-store-for-intune/administration/troubleshooting/index.md

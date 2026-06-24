@@ -7,7 +7,7 @@ description: "Planned features, near-term work, and recently shipped capabilitie
 
 This document outlines the planned features and current development status of the App Store for Intune.
 
-**Last updated:** May 2026
+**Last updated:** June 2026
 
 ---
 
@@ -77,6 +77,8 @@ The App Store for Intune is a self-service application catalog for Microsoft Int
 | **PSADT integration** | PowerShell App Deployment Toolkit wrapper generation for enterprise deployments |
 | ~~**Disaster recovery**~~ | ~~DR documentation, geo-redundancy options, backup/restore procedures~~ (Completed) |
 | **Rate limiting** | API rate limiting for security and performance |
+| **Intune Multi Admin Approval support** | Honor a tenant's Intune MAA policy when publishing apps to Intune, using the Microsoft Graph approval workflow |
+| **Admin publishing approval workflow** | Optional in-app approval gate for admin app publishing, configurable per action (new apps vs. version updates), built on the existing App Store approval engine |
 
 ### Long-term (6+ months)
 
