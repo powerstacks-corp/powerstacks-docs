@@ -20,7 +20,7 @@ You'll also choose a SQL administrator username and password during the wizard. 
 App Store for Intune is published in the Azure Marketplace. Installing from the Marketplace runs the same custom deployment wizard documented below.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) with an account that can create resources in the subscription that will host App Store for Intune.
-2. Find the offer. Select **Create a resource**, then search for **App Store for Intune**, or open the [App Store for Intune listing](https://azuremarketplace.microsoft.com/marketplace/apps/powerstackscorporation1641419080242.appstoreforintune) in the Azure Marketplace.
+2. Find the offer. Select **Create a resource**, then search for **App Store for Intune**, or open the [App Store for Intune listing](https://marketplace.microsoft.com/en-us/product/azure-application/powerstackscorporation1641419080242.appstoreforintune) in the Azure Marketplace.
 3. On the offer page, select **Get It Now** (or **Create**, if you started from inside the portal).
 4. Select the **App Store for Intune** plan, then select **Create**.
 
