@@ -35,6 +35,20 @@ If you don't have enough quota, raise a Microsoft support request to increase th
 
 For the full picture, see [Architecture overview](../../administration/architecture.md).
 
+## Estimated Azure costs
+
+The App Store runs entirely in your own Azure subscription, so you pay Azure directly for the resources it deploys. A typical deployment costs about **$200 to $300 USD per month**, depending on your region and usage.
+
+| Resource | Typical monthly cost |
+|---|---|
+| App Service Plan (B2 Basic, the install default) | $150 to $220 |
+| Azure SQL Database (Basic, with geo-redundant backups) | $20 to $30 |
+| Storage account (Standard GRS) | About $10 |
+| Key Vault (Standard) | $2 to $10 |
+| Application Insights and Log Analytics | Pay-as-you-go, about $10 to $20 per GB ingested |
+
+You can scale the App Service Plan and SQL Database up or down at any time after deployment. For higher availability, production deployments may use a Standard or Premium tier App Service Plan, which raises the App Service cost. For figures specific to your region and scale, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+
 ## Outbound network access
 
 Standard deployments need no network configuration. If you restrict outbound traffic with VNet integration or a firewall, allow the App Service to reach:
