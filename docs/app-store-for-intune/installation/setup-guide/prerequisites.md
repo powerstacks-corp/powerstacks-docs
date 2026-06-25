@@ -43,7 +43,7 @@ The App Store runs entirely in your own Azure subscription, so you pay Azure dir
 |---|---|
 | App Service Plan (B2 Basic, the install default) | $150 to $220 |
 | Azure SQL Database (Basic, with geo-redundant backups) | $20 to $30 |
-| Storage account (Standard GRS) | About $10 |
+| Storage account (Standard GRS) | About $0.02 to $0.04 per GB per month, so it grows with the number and size of packages you store |
 | Key Vault (Standard) | $2 to $10 |
 | Application Insights and Log Analytics | Pay-as-you-go, about $10 to $20 per GB ingested |
 
