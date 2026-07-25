@@ -52,6 +52,7 @@ $Permissions = @(
     "DeviceManagementApps.ReadWrite.All",
     "DeviceManagementConfiguration.Read.All",
     "DeviceManagementManagedDevices.Read.All",
+    "Device.Read.All",
     "Group.ReadWrite.All",
     "User.Read.All",
     "Mail.Send"
@@ -95,13 +96,14 @@ The grant itself takes about 10 seconds. The snippet then waits roughly 2 minute
 | `DeviceManagementApps.ReadWrite.All` | Create and update Intune Win32 app deployments |
 | `DeviceManagementConfiguration.Read.All` | Read Intune assignment filters used by ring deployment settings |
 | `DeviceManagementManagedDevices.Read.All` | Read managed devices associated with the requesting user |
+| `Device.Read.All` | Resolve an Entra device from its Azure AD Device ID so Group Automations can add it to a target group |
 | `Group.ReadWrite.All` | Create and manage the security groups that drive app assignments |
 | `User.Read.All` | Read user profiles, managers, and group memberships for approvals |
 | `Mail.Send` | Send email notifications from a configured mailbox (optional, used only if email notifications are enabled) |
 
 ## Verify the grant
 
-In Azure Portal, go to **Microsoft Entra ID** > **Enterprise applications** > **All applications**. Change the **Application type** filter to **Managed Identities** and find the App Service by name. Select it, then select **Permissions** in the left navigation. You should see all seven Graph application permissions listed with admin consent granted.
+In Azure Portal, go to **Microsoft Entra ID** > **Enterprise applications** > **All applications**. Change the **Application type** filter to **Managed Identities** and find the App Service by name. Select it, then select **Permissions** in the left navigation. You should see all eight Graph application permissions listed with admin consent granted.
 
 You can also verify by signing in to the portal and selecting **Admin** > **App Catalog** > **Sync from Intune**. If apps appear, the permissions are in place.
 
