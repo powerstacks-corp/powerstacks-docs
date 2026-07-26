@@ -35,6 +35,32 @@ For apps that require approval, the system supports two types of workflows:
 
 You can also require manager approval before the workflow stages begin.
 
+### Reusable (shared) workflows
+
+A workflow can be defined once and shared across many apps, so you don't configure each app separately. Manage shared workflows under **Automations** > **Approval Workflows**, where you can list, create, edit, set a default, and delete them. Each workflow shows a **Used by** count so you can see how many apps point at it.
+
+One workflow is the tenant default. New apps that require approval use the default automatically, so approval is configured once and every new app inherits it.
+
+!!! note
+    The default workflow cannot be deleted. To remove it, set another workflow as the default first. Deleting a workflow that apps were using drops those apps back to the default.
+
+#### Choosing a workflow per app
+
+In **App Management**, open an app's approval settings. **Approval for this app** offers three choices:
+
+- **Use the default workflow**: the app follows the tenant default. This is the normal case.
+- **Use a shared workflow**: the app follows a specific named workflow that you pick.
+- **Custom for this app**: an override that applies only to this app.
+
+#### Resolution order
+
+When a request is submitted for an app that requires approval, the effective workflow is resolved in this order:
+
+1. The app's custom override, if one is defined.
+2. The shared workflow the app selected, if any.
+3. The tenant default workflow.
+4. If none of the above exist, a single pooled approval stage using the global approver group.
+
 ## Workflow configuration
 
 ### Settings per app

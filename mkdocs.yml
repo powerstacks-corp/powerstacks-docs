@@ -281,6 +281,7 @@ nav:
       - Communications: app-store-for-intune/administration/communications.md
       - App Management: app-store-for-intune/administration/app-management.md
       - App Catalog and Cloud Packaging: app-store-for-intune/administration/app-catalog-cloud-packaging.md
+      - Group Automations: app-store-for-intune/administration/group-automations.md
       - Approval Workflows: app-store-for-intune/administration/approval-workflows.md
       - Pending Approvals: app-store-for-intune/administration/pending-approvals.md
       - Reports and Analytics: app-store-for-intune/administration/reports-analytics.md
