@@ -43,6 +43,17 @@ This is what the backend uses to validate incoming tokens, and what the portal a
 10. **State**: **Enabled**
 11. Select **Add scope**.
 
+## Grant consent for the profile photo
+
+The portal shows the signed-in user's profile photo in the header, which it reads from Microsoft Graph using the delegated `User.Read` permission. `User.Read` lists **Admin consent required: No**, so it is easy to assume no action is needed, but the portal requests this permission silently (it is not part of the sign-in consent prompt), so it has to be consented in advance. Without consent the photo call fails and users see their initials instead.
+
+1. On the app registration, select **API permissions**.
+2. Confirm **Microsoft Graph > User.Read** (Delegated) is listed. If it is not, select **Add a permission > Microsoft Graph > Delegated permissions**, search for `User.Read`, select it, then **Add permissions**.
+3. Select **Grant admin consent for [your tenant]**, then **Yes**. `User.Read` then shows a green check in the **Status** column.
+
+!!! note
+    This is the only permission the app registration needs consent for. Microsoft Graph application permissions are granted separately, to the App Service managed identity, after deploy (see [Grant Microsoft Graph permissions to the App Service](grant-graph-permissions.md)).
+
 ## Next step
 
 Continue to [Deploy to Azure](deploy-to-azure.md).
