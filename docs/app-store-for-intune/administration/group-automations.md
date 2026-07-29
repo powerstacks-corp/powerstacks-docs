@@ -1,11 +1,14 @@
 ---
-title: "Group automations"
+title: "Group automations (Preview)"
 description: "Keep a Microsoft Entra ID device group in sync with the devices that have a given app installed, refreshed daily from BI for Intune."
 ---
 
-# Group automations
+# Group automations (Preview)
 
 Group Automations keeps a Microsoft Entra ID device group in sync with the devices that have a given app installed. Membership is refreshed once a day from BI for Intune, so you can target an app update or ring deployment at just the devices that need it instead of targeting everyone.
+
+!!! warning "Preview feature"
+    Group Automations is a preview feature. Preview features are made available so you can try them and give us feedback. They may be incomplete, can change before general availability, and are provided without a service level agreement or production-level support. Some behavior may not be fully supported. We do not recommend depending on a preview feature for critical production workloads. Test it in a limited scope first, and tell us how it performs in your environment.
 
 !!! tip "Best practice: reuse a group for update deployments"
     Point an App Update or ring deployment at the Entra device group an automation manages. Only the devices that actually have the app receive the update, and the membership stays current without manual edits.
